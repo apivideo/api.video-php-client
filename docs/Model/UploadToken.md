@@ -1,0 +1,12 @@
+# # UploadToken
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**token** | **string** | The unique identifier for the token you will use to authenticate an upload. | [optional]
+**ttl** | **int** | Time-to-live - how long the upload token is valid for. | [optional]
+**created_at** | [**\DateTime**](\DateTime.md) | When the token was created, displayed in ISO-8601 format. | [optional]
+**expires_at** | [**\DateTime**](\DateTime.md) | When the token expires, displayed in ISO-8601 format. | [optional]
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
