@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**\OpenAPI\Client\Model\PlayerSessionEvent[]**](PlayerSessionEvent.md) |  | [optional]
-**pagination** | [**\OpenAPI\Client\Model\Pagination**](Pagination.md) |  | [optional]
+**data** | [**\ApiVideo\Client\Model\PlayerSessionEvent[]**](PlayerSessionEvent.md) |  |
+**pagination** | [**\ApiVideo\Client\Model\Pagination**](Pagination.md) |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
