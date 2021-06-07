@@ -478,13 +478,13 @@ class PlayerThemesApi implements ApiInterface
      *
      * @param  string $playerId The unique identifier for the player. (required)
      * @param  \SplFileObject $file The name of the file you want to use for your logo. (required)
-     * @param  string $link The path to the file you want to upload and use as a logo. (required)
+     * @param  string $link A public link that you want to advertise in your player. For example, you could add a link to your company. When a viewer clicks on your logo, they will be taken to this address. (optional)
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \ApiVideo\Client\Model\PlayerTheme|\ApiVideo\Client\Model\BadRequest|\ApiVideo\Client\Model\NotFound
      */
-    public function uploadLogo(string $playerId, \SplFileObject $file, string $link): \ApiVideo\Client\Model\PlayerTheme
+    public function uploadLogo(string $playerId, \SplFileObject $file, string $link = null): \ApiVideo\Client\Model\PlayerTheme
     {
         $request = $this->buildUploadLogoRequest($playerId, $file, $link);
 
@@ -499,12 +499,12 @@ class PlayerThemesApi implements ApiInterface
      *
      * @param  string $playerId The unique identifier for the player. (required)
      * @param  \SplFileObject $file The name of the file you want to use for your logo. (required)
-     * @param  string $link The path to the file you want to upload and use as a logo. (required)
+     * @param  string $link A public link that you want to advertise in your player. For example, you could add a link to your company. When a viewer clicks on your logo, they will be taken to this address. (optional)
      *
      * @throws \InvalidArgumentException
      * @return Request
      */
-    private function buildUploadLogoRequest(string $playerId, \SplFileObject $file, string $link): Request
+    private function buildUploadLogoRequest(string $playerId, \SplFileObject $file, string $link = null): Request
     {
         // verify the required parameter 'playerId' is set
         if ($playerId === null || (is_array($playerId) && count($playerId) === 0)) {
@@ -516,12 +516,6 @@ class PlayerThemesApi implements ApiInterface
         if ($file === null || (is_array($file) && count($file) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $file when calling '
-            );
-        }
-        // verify the required parameter 'link' is set
-        if ($link === null || (is_array($link) && count($link) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $link when calling '
             );
         }
 
