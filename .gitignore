@@ -1,0 +1,9 @@
+vendor
+composer.lock
+
+test.php
+.idea
+.openapi-generator
+.openapi-generator-ignore
+.phpunit.result.cache
+post-generate.sh
