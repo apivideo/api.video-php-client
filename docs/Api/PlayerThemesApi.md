@@ -220,7 +220,7 @@ Name | Type | Description  | Example | Notes
 The uploaded image maximum size should be 200x100 and its weight should be 200KB. It will be scaled down to 30px height and converted to PNG to be displayed in the player.
 
 ```php
-uploadLogo(string $playerId, \SplFileObject $file, string $link): \ApiVideo\Client\Model\PlayerTheme
+uploadLogo(string $playerId, \SplFileObject $file, string $link = null): \ApiVideo\Client\Model\PlayerTheme
 ```
 
 ### Arguments
@@ -231,7 +231,7 @@ Name | Type | Description  | Example | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
  `playerId` | **string**| The unique identifier for the player. | `pl14Db6oMJRH6SRVoOwORacK` |
  `file` | **\SplFileObject**| The name of the file you want to use for your logo. | `new \SplFileObject('path')` |
- `link` | **string**| The path to the file you want to upload and use as a logo. | `'link_example'` |
+ `link` | **string**| A public link that you want to advertise in your player. For example, you could add a link to your company. When a viewer clicks on your logo, they will be taken to this address. | `'link_example'` | [optional]
 
 
 
