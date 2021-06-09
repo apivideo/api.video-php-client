@@ -286,7 +286,7 @@ class VideosApi implements ApiInterface
 
         // query params
         if ($title !== null) {
-            if('form' === 'form' && is_array($title)) {
+            if(is_array($title)) {
                 foreach($title as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -297,7 +297,7 @@ class VideosApi implements ApiInterface
         }
         // query params
         if ($tags !== null) {
-            if('form' === 'form' && is_array($tags)) {
+            if(is_array($tags)) {
                 foreach($tags as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -308,18 +308,19 @@ class VideosApi implements ApiInterface
         }
         // query params
         if ($metadata !== null) {
-            if('form' === 'deepObject' && is_array($metadata)) {
+            if(is_array($metadata)) {
+                $queryParams["metadata"] = array();
                 foreach($metadata as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams['metadata'][$key] = $value;
                 }
             }
             else {
-                $queryParams['metadata'] = $metadata;
+                throw new \InvalidArgumentException('invalid value for "$metadata" when calling VideosApi.List, must be an array.');
             }
         }
         // query params
         if ($description !== null) {
-            if('form' === 'form' && is_array($description)) {
+            if(is_array($description)) {
                 foreach($description as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -330,7 +331,7 @@ class VideosApi implements ApiInterface
         }
         // query params
         if ($liveStreamId !== null) {
-            if('form' === 'form' && is_array($liveStreamId)) {
+            if(is_array($liveStreamId)) {
                 foreach($liveStreamId as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -341,7 +342,7 @@ class VideosApi implements ApiInterface
         }
         // query params
         if ($sortBy !== null) {
-            if('form' === 'form' && is_array($sortBy)) {
+            if(is_array($sortBy)) {
                 foreach($sortBy as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -352,7 +353,7 @@ class VideosApi implements ApiInterface
         }
         // query params
         if ($sortOrder !== null) {
-            if('form' === 'form' && is_array($sortOrder)) {
+            if(is_array($sortOrder)) {
                 foreach($sortOrder as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -363,7 +364,7 @@ class VideosApi implements ApiInterface
         }
         // query params
         if ($currentPage !== null) {
-            if('form' === 'form' && is_array($currentPage)) {
+            if(is_array($currentPage)) {
                 foreach($currentPage as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -374,7 +375,7 @@ class VideosApi implements ApiInterface
         }
         // query params
         if ($pageSize !== null) {
-            if('form' === 'form' && is_array($pageSize)) {
+            if(is_array($pageSize)) {
                 foreach($pageSize as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -610,7 +611,7 @@ class VideosApi implements ApiInterface
 
         // query params
         if ($token !== null) {
-            if('form' === 'form' && is_array($token)) {
+            if(is_array($token)) {
                 foreach($token as $key => $value) {
                     $queryParams[$key] = $value;
                 }

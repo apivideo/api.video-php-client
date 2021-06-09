@@ -214,7 +214,7 @@ class WebhooksApi implements ApiInterface
 
         // query params
         if ($events !== null) {
-            if('form' === 'form' && is_array($events)) {
+            if(is_array($events)) {
                 foreach($events as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -225,7 +225,7 @@ class WebhooksApi implements ApiInterface
         }
         // query params
         if ($currentPage !== null) {
-            if('form' === 'form' && is_array($currentPage)) {
+            if(is_array($currentPage)) {
                 foreach($currentPage as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -236,7 +236,7 @@ class WebhooksApi implements ApiInterface
         }
         // query params
         if ($pageSize !== null) {
-            if('form' === 'form' && is_array($pageSize)) {
+            if(is_array($pageSize)) {
                 foreach($pageSize as $key => $value) {
                     $queryParams[$key] = $value;
                 }

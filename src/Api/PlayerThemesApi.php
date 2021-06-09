@@ -212,7 +212,7 @@ class PlayerThemesApi implements ApiInterface
 
         // query params
         if ($sortBy !== null) {
-            if('form' === 'form' && is_array($sortBy)) {
+            if(is_array($sortBy)) {
                 foreach($sortBy as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -223,7 +223,7 @@ class PlayerThemesApi implements ApiInterface
         }
         // query params
         if ($sortOrder !== null) {
-            if('form' === 'form' && is_array($sortOrder)) {
+            if(is_array($sortOrder)) {
                 foreach($sortOrder as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -234,7 +234,7 @@ class PlayerThemesApi implements ApiInterface
         }
         // query params
         if ($currentPage !== null) {
-            if('form' === 'form' && is_array($currentPage)) {
+            if(is_array($currentPage)) {
                 foreach($currentPage as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -245,7 +245,7 @@ class PlayerThemesApi implements ApiInterface
         }
         // query params
         if ($pageSize !== null) {
-            if('form' === 'form' && is_array($pageSize)) {
+            if(is_array($pageSize)) {
                 foreach($pageSize as $key => $value) {
                     $queryParams[$key] = $value;
                 }

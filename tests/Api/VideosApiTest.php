@@ -7,6 +7,7 @@ use ApiVideo\Client\Model\VideoCreationPayload;
 use ApiVideo\Client\Model\VideosListResponse;
 use ApiVideo\Client\Model\VideoThumbnailPickPayload;
 use ApiVideo\Client\Model\VideoUpdatePayload;
+use ApiVideo\Client\Model\Metadata;
 use SplFileObject;
 use Symfony\Component\HttpClient\Psr18Client;
 
@@ -76,8 +77,12 @@ class VideosApiTest extends AbstractApiTest
         $this->assertCount(0, $videos->getData());
 
         $this->client->videos()->create((new VideoCreationPayload())->setTitle('Video A'));
-        $this->client->videos()->create((new VideoCreationPayload())->setTitle('Video B'));
-        $this->client->videos()->create((new VideoCreationPayload())->setTitle('Video C'));
+        $this->client->videos()->create((new VideoCreationPayload())
+            ->setTitle('Video B')
+            ->setMetadata(array(new Metadata(['key' => 'k', 'value' => 'v']))));
+        $this->client->videos()->create((new VideoCreationPayload())
+            ->setTitle('Video C')
+            ->setMetadata(array(new Metadata(['key' => 'k', 'value' => 'v']))));
 
         $videos = $this->client->videos()->list([]);
         $this->assertCount(3, $videos->getData());
@@ -99,10 +104,10 @@ class VideosApiTest extends AbstractApiTest
 
         // Sorting desc
 
-        $videos = $this->client->videos()->list(['sortBy' => 'title', 'sortOrder' => 'desc']);
+        $videos = $this->client->videos()->list(['sortBy' => 'title', 'sortOrder' => 'desc', 'metadata' => ['k' => 'v']]);
+        $this->assertCount(2, $videos->getData());
         $this->assertEquals('Video C', $videos->getData()[0]->getTitle());
         $this->assertEquals('Video B', $videos->getData()[1]->getTitle());
-        $this->assertEquals('Video A', $videos->getData()[2]->getTitle());
     }
 
     public function testGet()
