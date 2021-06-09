@@ -93,7 +93,7 @@ class RawStatisticsApi implements ApiInterface
 
         // query params
         if ($period !== null) {
-            if('form' === 'form' && is_array($period)) {
+            if(is_array($period)) {
                 foreach($period as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -104,7 +104,7 @@ class RawStatisticsApi implements ApiInterface
         }
         // query params
         if ($currentPage !== null) {
-            if('form' === 'form' && is_array($currentPage)) {
+            if(is_array($currentPage)) {
                 foreach($currentPage as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -115,7 +115,7 @@ class RawStatisticsApi implements ApiInterface
         }
         // query params
         if ($pageSize !== null) {
-            if('form' === 'form' && is_array($pageSize)) {
+            if(is_array($pageSize)) {
                 foreach($pageSize as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -198,7 +198,7 @@ class RawStatisticsApi implements ApiInterface
 
         // query params
         if ($currentPage !== null) {
-            if('form' === 'form' && is_array($currentPage)) {
+            if(is_array($currentPage)) {
                 foreach($currentPage as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -209,7 +209,7 @@ class RawStatisticsApi implements ApiInterface
         }
         // query params
         if ($pageSize !== null) {
-            if('form' === 'form' && is_array($pageSize)) {
+            if(is_array($pageSize)) {
                 foreach($pageSize as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -294,7 +294,7 @@ class RawStatisticsApi implements ApiInterface
 
         // query params
         if ($period !== null) {
-            if('form' === 'form' && is_array($period)) {
+            if(is_array($period)) {
                 foreach($period as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -305,18 +305,19 @@ class RawStatisticsApi implements ApiInterface
         }
         // query params
         if ($metadata !== null) {
-            if('form' === 'form' && is_array($metadata)) {
+            if(is_array($metadata)) {
+                $queryParams["metadata"] = array();
                 foreach($metadata as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams['metadata'][$key] = $value;
                 }
             }
             else {
-                $queryParams['metadata'] = $metadata;
+                throw new \InvalidArgumentException('invalid value for "$metadata" when calling RawStatisticsApi.ListVideoSessions, must be an array.');
             }
         }
         // query params
         if ($currentPage !== null) {
-            if('form' === 'form' && is_array($currentPage)) {
+            if(is_array($currentPage)) {
                 foreach($currentPage as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -327,7 +328,7 @@ class RawStatisticsApi implements ApiInterface
         }
         // query params
         if ($pageSize !== null) {
-            if('form' === 'form' && is_array($pageSize)) {
+            if(is_array($pageSize)) {
                 foreach($pageSize as $key => $value) {
                     $queryParams[$key] = $value;
                 }

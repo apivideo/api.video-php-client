@@ -83,7 +83,7 @@ class BaseClient
             $request = $request->withHeader($name, $value);
         }
 
-        $request = $request->withHeader('User-Agent', 'api.video client (php; v:0.0.1; )');
+        $request = $request->withHeader('User-Agent', 'api.video client (php; v:0.0.2; )');
 
         return $this->sendRequest($request);
     }

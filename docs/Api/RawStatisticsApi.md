@@ -113,7 +113,7 @@ Note: `$queryParams` argument is an associative array with the keys listed below
 Name | Type | Description  | Example | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
  `period` | **string**| Period must have one of the following formats:  - For a day : 2018-01-01, - For a week: 2018-W01, - For a month: 2018-01 - For a year: 2018  For a range period: -  Date range: 2018-01-01/2018-01-15 | `'period_example'` | [optional]
- `metadata` | [**string[]**](../Model/string.md)| Metadata and Dynamic Metadata filter. Send an array of key value pairs you want to filter sessios with. | `[{"key": "Author", "value": "John Doe"}, {"key": "Format", "value": "Tutorial"}]` | [optional]
+ `metadata` | [**map[string,string]**](../Model/string.md)| Metadata and Dynamic Metadata filter. Send an array of key value pairs you want to filter sessios with. | `metadata[Author]=John Doe&metadata[Format]=Tutorial` | [optional]
  `currentPage` | **int**| Choose the number of search results to return per page. Minimum value: 1 | `2` | [optional] [default to 1]
  `pageSize` | **int**| Results per page. Allowed values 1-100, default is 25. | `30` | [optional] [default to 25]
 

@@ -33,27 +33,32 @@ class VideoSessionSession implements ModelInterface, \JsonSerializable
             [
                 'sessionId' => 'string',
                 'loadedAt' => '\DateTime',
-                'endedAt' => '\DateTime'
+                'endedAt' => '\DateTime',
+                'metadata' => '\ApiVideo\Client\Model\Metadata[]'
             ],
             [
                 'sessionId' => null,
                 'loadedAt' => 'date-time',
-                'endedAt' => 'date-time'
+                'endedAt' => 'date-time',
+                'metadata' => null
             ],
             [
                 'sessionId' => 'sessionId',
                 'loadedAt' => 'loadedAt',
-                'endedAt' => 'endedAt'
+                'endedAt' => 'endedAt',
+                'metadata' => 'metadata'
             ],
             [
                 'sessionId' => 'setSessionId',
                 'loadedAt' => 'setLoadedAt',
-                'endedAt' => 'setEndedAt'
+                'endedAt' => 'setEndedAt',
+                'metadata' => 'setMetadata'
             ],
             [
                 'sessionId' => 'getSessionId',
                 'loadedAt' => 'getLoadedAt',
-                'endedAt' => 'getEndedAt'
+                'endedAt' => 'getEndedAt',
+                'metadata' => 'getMetadata'
             ],
             null
         );
@@ -78,6 +83,7 @@ class VideoSessionSession implements ModelInterface, \JsonSerializable
         $this->container['sessionId'] = $data['sessionId'] ?? null;
         $this->container['loadedAt'] = $data['loadedAt'] ?? null;
         $this->container['endedAt'] = $data['endedAt'] ?? null;
+        $this->container['metadata'] = $data['metadata'] ?? null;
     }
 
     /**
@@ -172,6 +178,30 @@ class VideoSessionSession implements ModelInterface, \JsonSerializable
     public function setEndedAt($endedAt)
     {
         $this->container['endedAt'] = $endedAt;
+
+        return $this;
+    }
+
+    /**
+     * Gets metadata
+     *
+     * @return \ApiVideo\Client\Model\Metadata[]|null
+     */
+    public function getMetadata()
+    {
+        return $this->container['metadata'];
+    }
+
+    /**
+     * Sets metadata
+     *
+     * @param \ApiVideo\Client\Model\Metadata[]|null $metadata A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic, allowing you to segment your audience. You can also just use the pairs as another way to tag and categorize your videos.
+     *
+     * @return self
+     */
+    public function setMetadata($metadata)
+    {
+        $this->container['metadata'] = $metadata;
 
         return $this;
     }
