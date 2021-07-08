@@ -13,9 +13,9 @@
   ],
   "require": {
     "php": "^7.3 || ^8.0",
+    "ext-json": "*",
     "psr/http-client": "^1.0",
     "psr/http-factory": "^1.0",
-    "ext-json": "^1.7",
     "php-http/multipart-stream-builder": "^1.1"
   },
   "require-dev": {
