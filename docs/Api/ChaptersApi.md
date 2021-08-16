@@ -86,6 +86,7 @@ Name | Type | Description  | Example | Notes
 ## get()
 
 
+Chapters help your viewers find the sections of the video they are most interested in viewing. Tutorials that use the [chapters endpoint](https://api.video/blog/endpoints/chapters).
 
 ```php
 get(string $videoId, string $language): \ApiVideo\Client\Model\Chapter

@@ -79,7 +79,7 @@ void (empty response body)
 ## list()
 
 
-Retrieve a list of all the players you created, as well as details about each one.
+Retrieve a list of all the players you created, as well as details about each one. Tutorials that use the [player endpoint](https://api.video/blog/endpoints/player).
 
 ```php
 list(array $queryParams = []): \ApiVideo\Client\Model\PlayerThemesListResponse
