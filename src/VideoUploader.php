@@ -35,7 +35,7 @@ final class VideoUploader
         return $this->execute(
             sprintf('/videos/%s/source', $videoId),
             $file,
-            self::getChunkSize($contentRange)
+            $this->getChunkSize($contentRange)
         );
     }
 
@@ -53,7 +53,7 @@ final class VideoUploader
         return $this->execute(
             '/upload?token='.$token,
             $file,
-            self::getChunkSize($contentRange)
+            $this->getChunkSize($contentRange)
         );
     }
 
@@ -115,10 +115,10 @@ final class VideoUploader
      *
      * @return int
      */
-    private static function getChunkSize(?string $contentRange): int
+    private function getChunkSize(?string $contentRange): int
     {
         if (!$contentRange) {
-            return 1000000;
+            return $this->client->getChunkSize();
         }
 
         preg_match('/^bytes ([0-9]*)-([0-9]*)\/[0-9]*$/', $contentRange, $matches);
