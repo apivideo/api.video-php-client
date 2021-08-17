@@ -8,6 +8,10 @@ use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 
+const MIN_CHUNK_SIZE = 5 * 1024 * 1024;
+const MAX_CHUNK_SIZE = 128 * 1024 * 1024;
+const DEFAULT_CHUNK_SIZE = 50 * 1024 * 1024;
+
 /**
  * Api.video client
  */
@@ -29,8 +33,9 @@ class Client
      * @param ClientInterface              $httpClient
      * @param RequestFactoryInterface|null $requestFactory
      * @param StreamFactoryInterface|null  $streamFactory
+     * @param int|null                     $chunkSize
      */
-    public function __construct(string $baseUri, ?string $apiKey, ClientInterface $httpClient, ?RequestFactoryInterface $requestFactory = null, ?StreamFactoryInterface $streamFactory = null)
+    public function __construct(string $baseUri, ?string $apiKey, ClientInterface $httpClient, ?RequestFactoryInterface $requestFactory = null, ?StreamFactoryInterface $streamFactory = null, ?int $chunkSize = DEFAULT_CHUNK_SIZE)
     {
         if ($httpClient instanceof RequestFactoryInterface) {
             $requestFactory = $httpClient;
@@ -40,7 +45,11 @@ class Client
             $streamFactory = $httpClient;
         }
 
-        $this->baseClient = new BaseClient($baseUri, $apiKey, $httpClient, $requestFactory, $streamFactory);
+        if($chunkSize < MIN_CHUNK_SIZE || $chunkSize > MAX_CHUNK_SIZE) {
+            throw new \InvalidArgumentException('Invalid chunk size value. Must be greater than $MIN_CHUNK_SIZE bytes and lower than $MAX_CHUNK_SIZE bytes.');
+        }
+
+        $this->baseClient = new BaseClient($baseUri, $apiKey, $httpClient, $requestFactory, $streamFactory, $chunkSize);
     }
 
     

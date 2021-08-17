@@ -49,7 +49,7 @@ class VideosApiTest extends AbstractApiTest
         $createdVideo = $this->client->videos()->create((new VideoCreationPayload())->setTitle('Test video upload'));
         $uploadedVideo = $this->client->videos()->upload(
             $createdVideo->getVideoId(),
-            new SplFileObject(__DIR__ . '/../resources/earth.mp4')
+            new SplFileObject(__DIR__ . '/../resources/558k.mp4')
         );
 
         $this->assertNotNull($uploadedVideo->getAssets()->getPlayer());
@@ -168,8 +168,7 @@ class VideosApiTest extends AbstractApiTest
 
         $uploadedVideo = $client->videos()->uploadWithUploadToken(
             $token->getToken(),
-            new SplFileObject(__DIR__ . '/../resources/earth.mp4'),
-            'bytes 0-500000/0'
+            new SplFileObject(__DIR__ . '/../resources/558k.mp4')
         );
 
         $this->assertNotNull($uploadedVideo->getAssets()->getPlayer());

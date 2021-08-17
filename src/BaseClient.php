@@ -41,19 +41,28 @@ class BaseClient
      */
     private $streamFactory;
 
+
+    /**
+     * @var int
+     */
+    private $chunkSize;
+
+
     /**
      * @param string                  $baseUri
      * @param string|null             $apiKey
      * @param ClientInterface         $httpClient
      * @param RequestFactoryInterface $requestFactory
      * @param StreamFactoryInterface  $streamFactory
+     * @param int                     $chunkSize
      */
-    public function __construct(string $baseUri, ?string $apiKey, ClientInterface $httpClient, RequestFactoryInterface $requestFactory, StreamFactoryInterface $streamFactory)
+    public function __construct(string $baseUri, ?string $apiKey, ClientInterface $httpClient, RequestFactoryInterface $requestFactory, StreamFactoryInterface $streamFactory, int $chunkSize)
     {
         $this->baseUri = $baseUri;
         $this->httpClient = $httpClient;
         $this->requestFactory = $requestFactory;
         $this->streamFactory = $streamFactory;
+        $this->chunkSize = $chunkSize;
 
         if ($apiKey) {
             $this->authenticator = new Authenticator($this, $apiKey);
@@ -83,9 +92,17 @@ class BaseClient
             $request = $request->withHeader($name, $value);
         }
 
-        $request = $request->withHeader('User-Agent', 'api.video client (php; v:0.0.2; )');
+        $request = $request->withHeader('User-Agent', 'api.video client (php; v:0.0.4; )');
 
         return $this->sendRequest($request);
+    }
+
+    /**
+     * @return int
+     */
+    public function getChunkSize(): int
+    {
+        return $this->chunkSize;
     }
 
     /**
