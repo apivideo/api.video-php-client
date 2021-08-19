@@ -48,11 +48,6 @@ class PlayerTheme implements ModelInterface, \JsonSerializable
                 'playerId' => 'string',
                 'createdAt' => '\DateTime',
                 'updatedAt' => '\DateTime',
-                'shapeMargin' => 'int',
-                'shapeRadius' => 'int',
-                'shapeAspect' => 'string',
-                'shapeBackgroundTop' => 'string',
-                'shapeBackgroundBottom' => 'string',
                 'linkActive' => 'string',
                 'assets' => '\ApiVideo\Client\Model\PlayerThemeAssets'
             ],
@@ -74,11 +69,6 @@ class PlayerTheme implements ModelInterface, \JsonSerializable
                 'playerId' => null,
                 'createdAt' => 'date-time',
                 'updatedAt' => 'date-time',
-                'shapeMargin' => null,
-                'shapeRadius' => null,
-                'shapeAspect' => null,
-                'shapeBackgroundTop' => null,
-                'shapeBackgroundBottom' => null,
                 'linkActive' => null,
                 'assets' => null
             ],
@@ -100,11 +90,6 @@ class PlayerTheme implements ModelInterface, \JsonSerializable
                 'playerId' => 'playerId',
                 'createdAt' => 'createdAt',
                 'updatedAt' => 'updatedAt',
-                'shapeMargin' => 'shapeMargin',
-                'shapeRadius' => 'shapeRadius',
-                'shapeAspect' => 'shapeAspect',
-                'shapeBackgroundTop' => 'shapeBackgroundTop',
-                'shapeBackgroundBottom' => 'shapeBackgroundBottom',
                 'linkActive' => 'linkActive',
                 'assets' => 'assets'
             ],
@@ -126,11 +111,6 @@ class PlayerTheme implements ModelInterface, \JsonSerializable
                 'playerId' => 'setPlayerId',
                 'createdAt' => 'setCreatedAt',
                 'updatedAt' => 'setUpdatedAt',
-                'shapeMargin' => 'setShapeMargin',
-                'shapeRadius' => 'setShapeRadius',
-                'shapeAspect' => 'setShapeAspect',
-                'shapeBackgroundTop' => 'setShapeBackgroundTop',
-                'shapeBackgroundBottom' => 'setShapeBackgroundBottom',
                 'linkActive' => 'setLinkActive',
                 'assets' => 'setAssets'
             ],
@@ -152,11 +132,6 @@ class PlayerTheme implements ModelInterface, \JsonSerializable
                 'playerId' => 'getPlayerId',
                 'createdAt' => 'getCreatedAt',
                 'updatedAt' => 'getUpdatedAt',
-                'shapeMargin' => 'getShapeMargin',
-                'shapeRadius' => 'getShapeRadius',
-                'shapeAspect' => 'getShapeAspect',
-                'shapeBackgroundTop' => 'getShapeBackgroundTop',
-                'shapeBackgroundBottom' => 'getShapeBackgroundBottom',
                 'linkActive' => 'getLinkActive',
                 'assets' => 'getAssets'
             ],
@@ -197,11 +172,6 @@ class PlayerTheme implements ModelInterface, \JsonSerializable
         $this->container['playerId'] = $data['playerId'] ?? null;
         $this->container['createdAt'] = $data['createdAt'] ?? null;
         $this->container['updatedAt'] = $data['updatedAt'] ?? null;
-        $this->container['shapeMargin'] = $data['shapeMargin'] ?? null;
-        $this->container['shapeRadius'] = $data['shapeRadius'] ?? null;
-        $this->container['shapeAspect'] = $data['shapeAspect'] ?? null;
-        $this->container['shapeBackgroundTop'] = $data['shapeBackgroundTop'] ?? null;
-        $this->container['shapeBackgroundBottom'] = $data['shapeBackgroundBottom'] ?? null;
         $this->container['linkActive'] = $data['linkActive'] ?? null;
         $this->container['assets'] = $data['assets'] ?? null;
     }
@@ -637,126 +607,6 @@ class PlayerTheme implements ModelInterface, \JsonSerializable
     public function setUpdatedAt($updatedAt)
     {
         $this->container['updatedAt'] = $updatedAt;
-
-        return $this;
-    }
-
-    /**
-     * Gets shapeMargin
-     *
-     * @return int|null
-     */
-    public function getShapeMargin()
-    {
-        return $this->container['shapeMargin'];
-    }
-
-    /**
-     * Sets shapeMargin
-     *
-     * @param int|null $shapeMargin Deprecated
-     *
-     * @return self
-     */
-    public function setShapeMargin($shapeMargin)
-    {
-        $this->container['shapeMargin'] = $shapeMargin;
-
-        return $this;
-    }
-
-    /**
-     * Gets shapeRadius
-     *
-     * @return int|null
-     */
-    public function getShapeRadius()
-    {
-        return $this->container['shapeRadius'];
-    }
-
-    /**
-     * Sets shapeRadius
-     *
-     * @param int|null $shapeRadius Deprecated
-     *
-     * @return self
-     */
-    public function setShapeRadius($shapeRadius)
-    {
-        $this->container['shapeRadius'] = $shapeRadius;
-
-        return $this;
-    }
-
-    /**
-     * Gets shapeAspect
-     *
-     * @return string|null
-     */
-    public function getShapeAspect()
-    {
-        return $this->container['shapeAspect'];
-    }
-
-    /**
-     * Sets shapeAspect
-     *
-     * @param string|null $shapeAspect Deprecated
-     *
-     * @return self
-     */
-    public function setShapeAspect($shapeAspect)
-    {
-        $this->container['shapeAspect'] = $shapeAspect;
-
-        return $this;
-    }
-
-    /**
-     * Gets shapeBackgroundTop
-     *
-     * @return string|null
-     */
-    public function getShapeBackgroundTop()
-    {
-        return $this->container['shapeBackgroundTop'];
-    }
-
-    /**
-     * Sets shapeBackgroundTop
-     *
-     * @param string|null $shapeBackgroundTop Deprecated
-     *
-     * @return self
-     */
-    public function setShapeBackgroundTop($shapeBackgroundTop)
-    {
-        $this->container['shapeBackgroundTop'] = $shapeBackgroundTop;
-
-        return $this;
-    }
-
-    /**
-     * Gets shapeBackgroundBottom
-     *
-     * @return string|null
-     */
-    public function getShapeBackgroundBottom()
-    {
-        return $this->container['shapeBackgroundBottom'];
-    }
-
-    /**
-     * Sets shapeBackgroundBottom
-     *
-     * @param string|null $shapeBackgroundBottom Deprecated
-     *
-     * @return self
-     */
-    public function setShapeBackgroundBottom($shapeBackgroundBottom)
-    {
-        $this->container['shapeBackgroundBottom'] = $shapeBackgroundBottom;
 
         return $this;
     }
