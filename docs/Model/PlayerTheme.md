@@ -21,11 +21,6 @@ Name | Type | Description | Notes
 **playerId** | **string** |  |
 **createdAt** | [**\DateTime**](\DateTime.md) | When the player was created, presented in ISO-8601 format. | [optional]
 **updatedAt** | [**\DateTime**](\DateTime.md) | When the player was last updated, presented in ISO-8601 format. | [optional]
-**shapeMargin** | **int** | Deprecated | [optional]
-**shapeRadius** | **int** | Deprecated | [optional]
-**shapeAspect** | **string** | Deprecated | [optional]
-**shapeBackgroundTop** | **string** | Deprecated | [optional]
-**shapeBackgroundBottom** | **string** | Deprecated | [optional]
 **linkActive** | **string** | Deprecated | [optional]
 **assets** | [**\ApiVideo\Client\Model\PlayerThemeAssets**](PlayerThemeAssets.md) |  | [optional]
 
