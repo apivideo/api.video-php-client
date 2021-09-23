@@ -39,8 +39,7 @@ class VideoCreationPayload implements ModelInterface, \JsonSerializable
                 'mp4Support' => 'bool',
                 'playerId' => 'string',
                 'tags' => 'string[]',
-                'metadata' => '\ApiVideo\Client\Model\Metadata[]',
-                'publishedAt' => '\DateTime'
+                'metadata' => '\ApiVideo\Client\Model\Metadata[]'
             ],
             [
                 'title' => null,
@@ -51,8 +50,7 @@ class VideoCreationPayload implements ModelInterface, \JsonSerializable
                 'mp4Support' => null,
                 'playerId' => null,
                 'tags' => null,
-                'metadata' => null,
-                'publishedAt' => 'date-time'
+                'metadata' => null
             ],
             [
                 'title' => 'title',
@@ -63,8 +61,7 @@ class VideoCreationPayload implements ModelInterface, \JsonSerializable
                 'mp4Support' => 'mp4Support',
                 'playerId' => 'playerId',
                 'tags' => 'tags',
-                'metadata' => 'metadata',
-                'publishedAt' => 'publishedAt'
+                'metadata' => 'metadata'
             ],
             [
                 'title' => 'setTitle',
@@ -75,8 +72,7 @@ class VideoCreationPayload implements ModelInterface, \JsonSerializable
                 'mp4Support' => 'setMp4Support',
                 'playerId' => 'setPlayerId',
                 'tags' => 'setTags',
-                'metadata' => 'setMetadata',
-                'publishedAt' => 'setPublishedAt'
+                'metadata' => 'setMetadata'
             ],
             [
                 'title' => 'getTitle',
@@ -87,8 +83,7 @@ class VideoCreationPayload implements ModelInterface, \JsonSerializable
                 'mp4Support' => 'getMp4Support',
                 'playerId' => 'getPlayerId',
                 'tags' => 'getTags',
-                'metadata' => 'getMetadata',
-                'publishedAt' => 'getPublishedAt'
+                'metadata' => 'getMetadata'
             ],
             null
         );
@@ -119,7 +114,6 @@ class VideoCreationPayload implements ModelInterface, \JsonSerializable
         $this->container['playerId'] = $data['playerId'] ?? null;
         $this->container['tags'] = $data['tags'] ?? null;
         $this->container['metadata'] = $data['metadata'] ?? null;
-        $this->container['publishedAt'] = $data['publishedAt'] ?? null;
     }
 
     /**
@@ -361,30 +355,6 @@ class VideoCreationPayload implements ModelInterface, \JsonSerializable
     public function setMetadata($metadata)
     {
         $this->container['metadata'] = $metadata;
-
-        return $this;
-    }
-
-    /**
-     * Gets publishedAt
-     *
-     * @return \DateTime|null
-     */
-    public function getPublishedAt()
-    {
-        return $this->container['publishedAt'];
-    }
-
-    /**
-     * Sets publishedAt
-     *
-     * @param \DateTime|null $publishedAt The API uses ISO-8601 format for time, and includes 3 places for milliseconds.
-     *
-     * @return self
-     */
-    public function setPublishedAt($publishedAt)
-    {
-        $this->container['publishedAt'] = $publishedAt;
 
         return $this;
     }
