@@ -334,3 +334,9 @@ These identifiers must belong to a real Api.video account.
 ```
 $ BASE_URI="" API_KEY="..." vendor/bin/phpunit
 ```
+
+## Have you gotten use from this API client?
+
+Please take a moment to leave a star on the client ⭐
+
+This helps other users to find the clients and also helps us understand which clients are most popular. Thank you!
