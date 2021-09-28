@@ -115,7 +115,7 @@ Name | Type | Description  | Example | Notes
 ## list()
 
 
-Requests to this endpoint return a list of your videos (with all their details). With no parameters added to this query, the API returns all videos. You can filter what videos the API returns using the parameters described below. We have [several tutorials](https://api.video/blog/endpoints/video-list) that demonstrate this endpoint.
+Requests to this endpoint return a list of your videos (with all their details). With no parameters added to this query, the API returns all videos. You can filter what videos the API returns using the parameters described below. We have [several tutorials](https://api.video/blog/endpoints/video-list) that demonstrate this endpoint..
 
 ```php
 list(array $queryParams = []): \ApiVideo\Client\Model\VideosListResponse
