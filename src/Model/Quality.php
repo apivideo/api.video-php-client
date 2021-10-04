@@ -31,22 +31,27 @@ class Quality implements ModelInterface, \JsonSerializable
         return new ModelDefinition(
             'quality',
             [
+                'type' => 'string',
                 'quality' => 'string',
                 'status' => 'string'
             ],
             [
+                'type' => null,
                 'quality' => null,
                 'status' => null
             ],
             [
+                'type' => 'type',
                 'quality' => 'quality',
                 'status' => 'status'
             ],
             [
+                'type' => 'setType',
                 'quality' => 'setQuality',
                 'status' => 'setStatus'
             ],
             [
+                'type' => 'getType',
                 'quality' => 'getQuality',
                 'status' => 'getStatus'
             ],
@@ -54,6 +59,8 @@ class Quality implements ModelInterface, \JsonSerializable
         );
     }
 
+    const TYPE_HLS = 'hls';
+    const TYPE_MP4 = 'mp4';
     const QUALITY__240P = '240p';
     const QUALITY__360P = '360p';
     const QUALITY__480P = '480p';
@@ -64,6 +71,19 @@ class Quality implements ModelInterface, \JsonSerializable
     const STATUS_ENCODING = 'encoding';
     const STATUS_ENCODED = 'encoded';
     const STATUS_FAILED = 'failed';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_HLS,
+            self::TYPE_MP4,
+        ];
+    }
 
     /**
      * Gets allowable values of the enum
@@ -112,6 +132,7 @@ class Quality implements ModelInterface, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->container['type'] = $data['type'] ?? null;
         $this->container['quality'] = $data['quality'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
     }
@@ -124,6 +145,15 @@ class Quality implements ModelInterface, \JsonSerializable
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'type', must be one of '%s'",
+                $this->container['type'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         $allowedValues = $this->getQualityAllowableValues();
         if (!is_null($this->container['quality']) && !in_array($this->container['quality'], $allowedValues, true)) {
@@ -157,6 +187,40 @@ class Quality implements ModelInterface, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets type
+     *
+     * @return string|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string|null $type The type of video (hls or mp4).
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($type) && !in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['type'] = $type;
+
+        return $this;
+    }
 
     /**
      * Gets quality
