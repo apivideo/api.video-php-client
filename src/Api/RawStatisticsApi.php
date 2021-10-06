@@ -56,7 +56,6 @@ class RawStatisticsApi implements ApiInterface
         $request = $this->buildListLiveStreamSessionsRequest($liveStreamId, $queryParams);
 
         $model = new \ApiVideo\Client\Model\RawStatisticsListLiveStreamAnalyticsResponse($this->client->request($request));
-        ModelPreprocessor::execute($model);
 
         return $model;
     }
@@ -91,40 +90,20 @@ class RawStatisticsApi implements ApiInterface
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // period query params
         if ($period !== null) {
-            if(is_array($period)) {
-                foreach($period as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['period'] = $period;
-            }
-        }
-        // query params
-        if ($currentPage !== null) {
-            if(is_array($currentPage)) {
-                foreach($currentPage as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['currentPage'] = $currentPage;
-            }
-        }
-        // query params
-        if ($pageSize !== null) {
-            if(is_array($pageSize)) {
-                foreach($pageSize as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['pageSize'] = $pageSize;
-            }
+            $queryParams['period'] = $period;
         }
 
+        // currentPage query params
+        if ($currentPage !== null) {
+            $queryParams['currentPage'] = $currentPage;
+        }
+
+        // pageSize query params
+        if ($pageSize !== null) {
+            $queryParams['pageSize'] = $pageSize;
+        }
 
         // path params
         if ($liveStreamId !== null) {
@@ -162,7 +141,6 @@ class RawStatisticsApi implements ApiInterface
         $request = $this->buildListSessionEventsRequest($sessionId, $queryParams);
 
         $model = new \ApiVideo\Client\Model\RawStatisticsListPlayerSessionEventsResponse($this->client->request($request));
-        ModelPreprocessor::execute($model);
 
         return $model;
     }
@@ -196,29 +174,15 @@ class RawStatisticsApi implements ApiInterface
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // currentPage query params
         if ($currentPage !== null) {
-            if(is_array($currentPage)) {
-                foreach($currentPage as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['currentPage'] = $currentPage;
-            }
-        }
-        // query params
-        if ($pageSize !== null) {
-            if(is_array($pageSize)) {
-                foreach($pageSize as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['pageSize'] = $pageSize;
-            }
+            $queryParams['currentPage'] = $currentPage;
         }
 
+        // pageSize query params
+        if ($pageSize !== null) {
+            $queryParams['pageSize'] = $pageSize;
+        }
 
         // path params
         if ($sessionId !== null) {
@@ -256,7 +220,6 @@ class RawStatisticsApi implements ApiInterface
         $request = $this->buildListVideoSessionsRequest($videoId, $queryParams);
 
         $model = new \ApiVideo\Client\Model\RawStatisticsListSessionsResponse($this->client->request($request));
-        ModelPreprocessor::execute($model);
 
         return $model;
     }
@@ -292,18 +255,12 @@ class RawStatisticsApi implements ApiInterface
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // period query params
         if ($period !== null) {
-            if(is_array($period)) {
-                foreach($period as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['period'] = $period;
-            }
+            $queryParams['period'] = $period;
         }
-        // query params
+
+        // metadata query params
         if ($metadata !== null) {
             if(is_array($metadata)) {
                 $queryParams["metadata"] = array();
@@ -315,29 +272,16 @@ class RawStatisticsApi implements ApiInterface
                 throw new \InvalidArgumentException('invalid value for "$metadata" when calling RawStatisticsApi.ListVideoSessions, must be an array.');
             }
         }
-        // query params
+
+        // currentPage query params
         if ($currentPage !== null) {
-            if(is_array($currentPage)) {
-                foreach($currentPage as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['currentPage'] = $currentPage;
-            }
-        }
-        // query params
-        if ($pageSize !== null) {
-            if(is_array($pageSize)) {
-                foreach($pageSize as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['pageSize'] = $pageSize;
-            }
+            $queryParams['currentPage'] = $currentPage;
         }
 
+        // pageSize query params
+        if ($pageSize !== null) {
+            $queryParams['pageSize'] = $pageSize;
+        }
 
         // path params
         if ($videoId !== null) {

@@ -81,8 +81,6 @@ class PlayerThemesApi implements ApiInterface
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
         if ($playerId !== null) {
             $resourcePath = str_replace(
@@ -144,8 +142,6 @@ class PlayerThemesApi implements ApiInterface
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
         if ($playerId !== null) {
             $resourcePath = str_replace(
@@ -181,7 +177,6 @@ class PlayerThemesApi implements ApiInterface
         $request = $this->buildListRequest($queryParams);
 
         $model = new \ApiVideo\Client\Model\PlayerThemesListResponse($this->client->request($request));
-        ModelPreprocessor::execute($model);
 
         return $model;
     }
@@ -210,51 +205,25 @@ class PlayerThemesApi implements ApiInterface
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // sortBy query params
         if ($sortBy !== null) {
-            if(is_array($sortBy)) {
-                foreach($sortBy as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['sortBy'] = $sortBy;
-            }
-        }
-        // query params
-        if ($sortOrder !== null) {
-            if(is_array($sortOrder)) {
-                foreach($sortOrder as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['sortOrder'] = $sortOrder;
-            }
-        }
-        // query params
-        if ($currentPage !== null) {
-            if(is_array($currentPage)) {
-                foreach($currentPage as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['currentPage'] = $currentPage;
-            }
-        }
-        // query params
-        if ($pageSize !== null) {
-            if(is_array($pageSize)) {
-                foreach($pageSize as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['pageSize'] = $pageSize;
-            }
+            $queryParams['sortBy'] = $sortBy;
         }
 
+        // sortOrder query params
+        if ($sortOrder !== null) {
+            $queryParams['sortOrder'] = $sortOrder;
+        }
+
+        // currentPage query params
+        if ($currentPage !== null) {
+            $queryParams['currentPage'] = $currentPage;
+        }
+
+        // pageSize query params
+        if ($pageSize !== null) {
+            $queryParams['pageSize'] = $pageSize;
+        }
 
 
 
@@ -283,7 +252,6 @@ class PlayerThemesApi implements ApiInterface
         $request = $this->buildGetRequest($playerId);
 
         $model = new \ApiVideo\Client\Model\PlayerTheme($this->client->request($request));
-        ModelPreprocessor::execute($model);
 
         return $model;
     }
@@ -311,8 +279,6 @@ class PlayerThemesApi implements ApiInterface
         $headers = [];
         $httpBody = '';
         $multipart = false;
-
-
 
         // path params
         if ($playerId !== null) {
@@ -350,7 +316,6 @@ class PlayerThemesApi implements ApiInterface
         $request = $this->buildUpdateRequest($playerId, $playerThemeUpdatePayload);
 
         $model = new \ApiVideo\Client\Model\PlayerTheme($this->client->request($request));
-        ModelPreprocessor::execute($model);
 
         return $model;
     }
@@ -385,8 +350,6 @@ class PlayerThemesApi implements ApiInterface
         $headers = [];
         $httpBody = '';
         $multipart = false;
-
-
 
         // path params
         if ($playerId !== null) {
@@ -426,7 +389,6 @@ class PlayerThemesApi implements ApiInterface
         $request = $this->buildCreateRequest($playerThemeCreationPayload);
 
         $model = new \ApiVideo\Client\Model\PlayerTheme($this->client->request($request));
-        ModelPreprocessor::execute($model);
 
         return $model;
     }
@@ -454,8 +416,6 @@ class PlayerThemesApi implements ApiInterface
         $headers = [];
         $httpBody = '';
         $multipart = false;
-
-
 
 
         if ($playerThemeCreationPayload) {
@@ -489,7 +449,6 @@ class PlayerThemesApi implements ApiInterface
         $request = $this->buildUploadLogoRequest($playerId, $file, $link);
 
         $model = new \ApiVideo\Client\Model\PlayerTheme($this->client->request($request));
-        ModelPreprocessor::execute($model);
 
         return $model;
     }
@@ -525,8 +484,6 @@ class PlayerThemesApi implements ApiInterface
         $headers = [];
         $httpBody = '';
         $multipart = false;
-
-
 
         // path params
         if ($playerId !== null) {

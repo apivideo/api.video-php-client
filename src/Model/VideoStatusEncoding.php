@@ -76,8 +76,8 @@ class VideoStatusEncoding implements ModelInterface, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->container['playable'] = $data['playable'] ?? null;
-        $this->container['qualities'] = $data['qualities'] ?? null;
-        $this->container['metadata'] = $data['metadata'] ?? null;
+        $this->container['qualities'] = isset($data['qualities']) ?  array_map(function(array $value): Quality { return new Quality($value); }, $data['qualities']) : null;
+        $this->container['metadata'] = isset($data['metadata']) ? new VideoStatusEncodingMetadata($data['metadata']) : null;
     }
 
     /**

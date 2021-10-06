@@ -70,8 +70,8 @@ class VideosListResponse implements ModelInterface, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['data'] = $data['data'] ?? null;
-        $this->container['pagination'] = $data['pagination'] ?? null;
+        $this->container['data'] = isset($data['data']) ?  array_map(function(array $value): Video { return new Video($value); }, $data['data']) : null;
+        $this->container['pagination'] = isset($data['pagination']) ? new Pagination($data['pagination']) : null;
     }
 
     /**

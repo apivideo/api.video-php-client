@@ -81,9 +81,9 @@ class VideoSessionSession implements ModelInterface, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->container['sessionId'] = $data['sessionId'] ?? null;
-        $this->container['loadedAt'] = $data['loadedAt'] ?? null;
-        $this->container['endedAt'] = $data['endedAt'] ?? null;
-        $this->container['metadata'] = $data['metadata'] ?? null;
+        $this->container['loadedAt'] = isset($data['loadedAt']) ? new \DateTime($data['loadedAt']) : null;
+        $this->container['endedAt'] = isset($data['endedAt']) ? new \DateTime($data['endedAt']) : null;
+        $this->container['metadata'] = isset($data['metadata']) ?  array_map(function(array $value): Metadata { return new Metadata($value); }, $data['metadata']) : null;
     }
 
     /**

@@ -81,8 +81,6 @@ class VideosApi implements ApiInterface
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
         if ($videoId !== null) {
             $resourcePath = str_replace(
@@ -118,7 +116,6 @@ class VideosApi implements ApiInterface
         $request = $this->buildGetRequest($videoId);
 
         $model = new \ApiVideo\Client\Model\Video($this->client->request($request));
-        ModelPreprocessor::execute($model);
 
         return $model;
     }
@@ -146,8 +143,6 @@ class VideosApi implements ApiInterface
         $headers = [];
         $httpBody = '';
         $multipart = false;
-
-
 
         // path params
         if ($videoId !== null) {
@@ -184,7 +179,6 @@ class VideosApi implements ApiInterface
         $request = $this->buildGetStatusRequest($videoId);
 
         $model = new \ApiVideo\Client\Model\VideoStatus($this->client->request($request));
-        ModelPreprocessor::execute($model);
 
         return $model;
     }
@@ -212,8 +206,6 @@ class VideosApi implements ApiInterface
         $headers = [];
         $httpBody = '';
         $multipart = false;
-
-
 
         // path params
         if ($videoId !== null) {
@@ -250,7 +242,6 @@ class VideosApi implements ApiInterface
         $request = $this->buildListRequest($queryParams);
 
         $model = new \ApiVideo\Client\Model\VideosListResponse($this->client->request($request));
-        ModelPreprocessor::execute($model);
 
         return $model;
     }
@@ -284,29 +275,17 @@ class VideosApi implements ApiInterface
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // title query params
         if ($title !== null) {
-            if(is_array($title)) {
-                foreach($title as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['title'] = $title;
-            }
+            $queryParams['title'] = $title;
         }
-        // query params
+
+        // tags query params
         if ($tags !== null) {
-            if(is_array($tags)) {
-                foreach($tags as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['tags'] = $tags;
-            }
+            $queryParams['tags'] = is_array($tags) ? implode(',', $tags) : $tags;
         }
-        // query params
+
+        // metadata query params
         if ($metadata !== null) {
             if(is_array($metadata)) {
                 $queryParams["metadata"] = array();
@@ -318,73 +297,36 @@ class VideosApi implements ApiInterface
                 throw new \InvalidArgumentException('invalid value for "$metadata" when calling VideosApi.List, must be an array.');
             }
         }
-        // query params
+
+        // description query params
         if ($description !== null) {
-            if(is_array($description)) {
-                foreach($description as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['description'] = $description;
-            }
-        }
-        // query params
-        if ($liveStreamId !== null) {
-            if(is_array($liveStreamId)) {
-                foreach($liveStreamId as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['liveStreamId'] = $liveStreamId;
-            }
-        }
-        // query params
-        if ($sortBy !== null) {
-            if(is_array($sortBy)) {
-                foreach($sortBy as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['sortBy'] = $sortBy;
-            }
-        }
-        // query params
-        if ($sortOrder !== null) {
-            if(is_array($sortOrder)) {
-                foreach($sortOrder as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['sortOrder'] = $sortOrder;
-            }
-        }
-        // query params
-        if ($currentPage !== null) {
-            if(is_array($currentPage)) {
-                foreach($currentPage as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['currentPage'] = $currentPage;
-            }
-        }
-        // query params
-        if ($pageSize !== null) {
-            if(is_array($pageSize)) {
-                foreach($pageSize as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['pageSize'] = $pageSize;
-            }
+            $queryParams['description'] = $description;
         }
 
+        // liveStreamId query params
+        if ($liveStreamId !== null) {
+            $queryParams['liveStreamId'] = $liveStreamId;
+        }
+
+        // sortBy query params
+        if ($sortBy !== null) {
+            $queryParams['sortBy'] = $sortBy;
+        }
+
+        // sortOrder query params
+        if ($sortOrder !== null) {
+            $queryParams['sortOrder'] = $sortOrder;
+        }
+
+        // currentPage query params
+        if ($currentPage !== null) {
+            $queryParams['currentPage'] = $currentPage;
+        }
+
+        // pageSize query params
+        if ($pageSize !== null) {
+            $queryParams['pageSize'] = $pageSize;
+        }
 
 
 
@@ -414,7 +356,6 @@ class VideosApi implements ApiInterface
         $request = $this->buildUpdateRequest($videoId, $videoUpdatePayload);
 
         $model = new \ApiVideo\Client\Model\Video($this->client->request($request));
-        ModelPreprocessor::execute($model);
 
         return $model;
     }
@@ -449,8 +390,6 @@ class VideosApi implements ApiInterface
         $headers = [];
         $httpBody = '';
         $multipart = false;
-
-
 
         // path params
         if ($videoId !== null) {
@@ -491,7 +430,6 @@ class VideosApi implements ApiInterface
         $request = $this->buildPickThumbnailRequest($videoId, $videoThumbnailPickPayload);
 
         $model = new \ApiVideo\Client\Model\Video($this->client->request($request));
-        ModelPreprocessor::execute($model);
 
         return $model;
     }
@@ -526,8 +464,6 @@ class VideosApi implements ApiInterface
         $headers = [];
         $httpBody = '';
         $multipart = false;
-
-
 
         // path params
         if ($videoId !== null) {
@@ -568,7 +504,6 @@ class VideosApi implements ApiInterface
     {
         $videoUploader = new VideoUploader($this->client);
         $model = $videoUploader->uploadWithUploadToken($token, $file, $contentRange, $videoId);
-        ModelPreprocessor::execute($model);
 
         return $model;
     }
@@ -609,23 +544,15 @@ class VideosApi implements ApiInterface
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // token query params
         if ($token !== null) {
-            if(is_array($token)) {
-                foreach($token as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['token'] = $token;
-            }
+            $queryParams['token'] = $token;
         }
 
         // header params
         if ($contentRange !== null) {
             $headerParams['Content-Range'] = ObjectSerializer::toHeaderValue($contentRange);
         }
-
 
 
         // form params
@@ -675,7 +602,6 @@ class VideosApi implements ApiInterface
         $request = $this->buildCreateRequest($videoCreationPayload);
 
         $model = new \ApiVideo\Client\Model\Video($this->client->request($request));
-        ModelPreprocessor::execute($model);
 
         return $model;
     }
@@ -703,8 +629,6 @@ class VideosApi implements ApiInterface
         $headers = [];
         $httpBody = '';
         $multipart = false;
-
-
 
 
         if ($videoCreationPayload) {
@@ -737,7 +661,6 @@ class VideosApi implements ApiInterface
     {
         $videoUploader = new VideoUploader($this->client);
         $model = $videoUploader->upload($videoId, $file, $contentRange);
-        ModelPreprocessor::execute($model);
 
         return $model;
     }
@@ -778,12 +701,10 @@ class VideosApi implements ApiInterface
         $httpBody = '';
         $multipart = false;
 
-
         // header params
         if ($contentRange !== null) {
             $headerParams['Content-Range'] = ObjectSerializer::toHeaderValue($contentRange);
         }
-
         // path params
         if ($videoId !== null) {
             $resourcePath = str_replace(
@@ -839,7 +760,6 @@ class VideosApi implements ApiInterface
         $request = $this->buildUploadThumbnailRequest($videoId, $file);
 
         $model = new \ApiVideo\Client\Model\Video($this->client->request($request));
-        ModelPreprocessor::execute($model);
 
         return $model;
     }
@@ -874,8 +794,6 @@ class VideosApi implements ApiInterface
         $headers = [];
         $httpBody = '';
         $multipart = false;
-
-
 
         // path params
         if ($videoId !== null) {

@@ -81,7 +81,7 @@ class Webhook implements ModelInterface, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->container['webhookId'] = $data['webhookId'] ?? null;
-        $this->container['createdAt'] = $data['createdAt'] ?? null;
+        $this->container['createdAt'] = isset($data['createdAt']) ? new \DateTime($data['createdAt']) : null;
         $this->container['events'] = $data['events'] ?? null;
         $this->container['url'] = $data['url'] ?? null;
     }

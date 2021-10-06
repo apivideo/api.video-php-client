@@ -89,7 +89,7 @@ class BadRequest implements ModelInterface, \JsonSerializable
         $this->container['title'] = $data['title'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
-        $this->container['problems'] = $data['problems'] ?? null;
+        $this->container['problems'] = isset($data['problems']) ?  array_map(function(array $value): BadRequest { return new BadRequest($value); }, $data['problems']) : null;
     }
 
     /**

@@ -81,8 +81,6 @@ class UploadTokensApi implements ApiInterface
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
         if ($uploadToken !== null) {
             $resourcePath = str_replace(
@@ -118,7 +116,6 @@ class UploadTokensApi implements ApiInterface
         $request = $this->buildListRequest($queryParams);
 
         $model = new \ApiVideo\Client\Model\TokenListResponse($this->client->request($request));
-        ModelPreprocessor::execute($model);
 
         return $model;
     }
@@ -147,51 +144,25 @@ class UploadTokensApi implements ApiInterface
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // sortBy query params
         if ($sortBy !== null) {
-            if(is_array($sortBy)) {
-                foreach($sortBy as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['sortBy'] = $sortBy;
-            }
-        }
-        // query params
-        if ($sortOrder !== null) {
-            if(is_array($sortOrder)) {
-                foreach($sortOrder as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['sortOrder'] = $sortOrder;
-            }
-        }
-        // query params
-        if ($currentPage !== null) {
-            if(is_array($currentPage)) {
-                foreach($currentPage as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['currentPage'] = $currentPage;
-            }
-        }
-        // query params
-        if ($pageSize !== null) {
-            if(is_array($pageSize)) {
-                foreach($pageSize as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['pageSize'] = $pageSize;
-            }
+            $queryParams['sortBy'] = $sortBy;
         }
 
+        // sortOrder query params
+        if ($sortOrder !== null) {
+            $queryParams['sortOrder'] = $sortOrder;
+        }
+
+        // currentPage query params
+        if ($currentPage !== null) {
+            $queryParams['currentPage'] = $currentPage;
+        }
+
+        // pageSize query params
+        if ($pageSize !== null) {
+            $queryParams['pageSize'] = $pageSize;
+        }
 
 
 
@@ -220,7 +191,6 @@ class UploadTokensApi implements ApiInterface
         $request = $this->buildGetTokenRequest($uploadToken);
 
         $model = new \ApiVideo\Client\Model\UploadToken($this->client->request($request));
-        ModelPreprocessor::execute($model);
 
         return $model;
     }
@@ -248,8 +218,6 @@ class UploadTokensApi implements ApiInterface
         $headers = [];
         $httpBody = '';
         $multipart = false;
-
-
 
         // path params
         if ($uploadToken !== null) {
@@ -286,7 +254,6 @@ class UploadTokensApi implements ApiInterface
         $request = $this->buildCreateTokenRequest($tokenCreationPayload);
 
         $model = new \ApiVideo\Client\Model\UploadToken($this->client->request($request));
-        ModelPreprocessor::execute($model);
 
         return $model;
     }
@@ -314,8 +281,6 @@ class UploadTokensApi implements ApiInterface
         $headers = [];
         $httpBody = '';
         $multipart = false;
-
-
 
 
         if ($tokenCreationPayload) {

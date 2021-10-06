@@ -115,11 +115,11 @@ class LiveStream implements ModelInterface, \JsonSerializable
         $this->container['streamKey'] = $data['streamKey'] ?? null;
         $this->container['record'] = $data['record'] ?? null;
         $this->container['public'] = $data['public'] ?? null;
-        $this->container['assets'] = $data['assets'] ?? null;
+        $this->container['assets'] = isset($data['assets']) ? new LiveStreamAssets($data['assets']) : null;
         $this->container['playerId'] = $data['playerId'] ?? null;
         $this->container['broadcasting'] = $data['broadcasting'] ?? null;
-        $this->container['createdAt'] = $data['createdAt'] ?? null;
-        $this->container['updatedAt'] = $data['updatedAt'] ?? null;
+        $this->container['createdAt'] = isset($data['createdAt']) ? new \DateTime($data['createdAt']) : null;
+        $this->container['updatedAt'] = isset($data['updatedAt']) ? new \DateTime($data['updatedAt']) : null;
     }
 
     /**

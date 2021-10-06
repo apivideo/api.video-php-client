@@ -26,12 +26,16 @@ Note : If the HTTP client also implements RequestFactoryInterface and StreamFact
 The Symfony HTTP client has the triple advantage of playing the role of **HTTP client**, but also of **request factory** and **stream factory**. It is therefore sufficient to pass it as an argument 3 times.
 
 ```php
+<?php
+require __DIR__ . '/vendor/autoload.php';
+
 $httpClient = new \Symfony\Component\HttpClient\Psr18Client();
 $client = new \ApiVideo\Client(
     'https://sandbox.api.video',
     'YOUR_API_TOKEN',
     $httpClient
 );
+?>
 ```
 
 ## Public endpoints
@@ -39,12 +43,16 @@ $client = new \ApiVideo\Client(
 Some endpoints don't require authentication. These one can be called with a Client instantiated with a `null` API token:
 
 ```php
+<?php
+require __DIR__ . '/vendor/autoload.php';
+
 $httpClient = new \Symfony\Component\HttpClient\Psr18Client();
 $client = new \ApiVideo\Client(
     'https://sandbox.api.video',
     null,
     $httpClient
 );
+?>
 ```
 
 ## Cookbook

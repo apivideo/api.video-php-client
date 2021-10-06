@@ -78,7 +78,7 @@ class VideoSource implements ModelInterface, \JsonSerializable
     {
         $this->container['uri'] = $data['uri'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
-        $this->container['liveStream'] = $data['liveStream'] ?? null;
+        $this->container['liveStream'] = isset($data['liveStream']) ? new VideoSourceLiveStream($data['liveStream']) : null;
     }
 
     /**

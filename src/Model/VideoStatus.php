@@ -70,8 +70,8 @@ class VideoStatus implements ModelInterface, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['ingest'] = $data['ingest'] ?? null;
-        $this->container['encoding'] = $data['encoding'] ?? null;
+        $this->container['ingest'] = isset($data['ingest']) ? new VideoStatusIngest($data['ingest']) : null;
+        $this->container['encoding'] = isset($data['encoding']) ? new VideoStatusEncoding($data['encoding']) : null;
     }
 
     /**
