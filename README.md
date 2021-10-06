@@ -25,6 +25,15 @@ Note : If the HTTP client also implements RequestFactoryInterface and StreamFact
 
 The Symfony HTTP client has the triple advantage of playing the role of **HTTP client**, but also of **request factory** and **stream factory**. It is therefore sufficient to pass it as an argument 3 times.
 
+If the HTTP client isn't yet in your project, you can add it with:
+
+```shell
+composer require symfony/http-client
+composer require nyholm/psr7
+```
+
+After that, you'll be able to create the api.video client:
+
 ```php
 <?php
 require __DIR__ . '/vendor/autoload.php';
