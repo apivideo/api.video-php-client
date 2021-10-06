@@ -96,7 +96,7 @@ else $videos = $client->videos()->list();
 foreach($videos->getData() as $video) {
     echo $video->getTitle().' - '.$video->getVideoId()."\n";
 
-    echo echo 'Publication date :'.$video->getPublishedAt()."\n";
+    echo 'Publication date :'.$video->getPublishedAt()."\n";
     if($video->getDescription()) echo 'Description :'.$video->getDescription()."\n";
     if($video->getAssets()) {
         echo "Assets:\n";
