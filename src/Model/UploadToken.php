@@ -82,8 +82,8 @@ class UploadToken implements ModelInterface, \JsonSerializable
     {
         $this->container['token'] = $data['token'] ?? null;
         $this->container['ttl'] = $data['ttl'] ?? null;
-        $this->container['createdAt'] = $data['createdAt'] ?? null;
-        $this->container['expiresAt'] = $data['expiresAt'] ?? null;
+        $this->container['createdAt'] = isset($data['createdAt']) ? new \DateTime($data['createdAt']) : null;
+        $this->container['expiresAt'] = isset($data['expiresAt']) ? new \DateTime($data['expiresAt']) : null;
     }
 
     /**

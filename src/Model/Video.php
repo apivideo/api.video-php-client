@@ -131,15 +131,15 @@ class Video implements ModelInterface, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->container['videoId'] = $data['videoId'] ?? null;
-        $this->container['createdAt'] = $data['createdAt'] ?? null;
+        $this->container['createdAt'] = isset($data['createdAt']) ? new \DateTime($data['createdAt']) : null;
         $this->container['title'] = $data['title'] ?? null;
         $this->container['description'] = $data['description'] ?? null;
         $this->container['publishedAt'] = $data['publishedAt'] ?? null;
-        $this->container['updatedAt'] = $data['updatedAt'] ?? null;
+        $this->container['updatedAt'] = isset($data['updatedAt']) ? new \DateTime($data['updatedAt']) : null;
         $this->container['tags'] = $data['tags'] ?? null;
-        $this->container['metadata'] = $data['metadata'] ?? null;
-        $this->container['source'] = $data['source'] ?? null;
-        $this->container['assets'] = $data['assets'] ?? null;
+        $this->container['metadata'] = isset($data['metadata']) ?  array_map(function(array $value): Metadata { return new Metadata($value); }, $data['metadata']) : null;
+        $this->container['source'] = isset($data['source']) ? new VideoSource($data['source']) : null;
+        $this->container['assets'] = isset($data['assets']) ? new VideoAssets($data['assets']) : null;
         $this->container['playerId'] = $data['playerId'] ?? null;
         $this->container['public'] = $data['public'] ?? null;
         $this->container['panoramic'] = $data['panoramic'] ?? null;

@@ -107,7 +107,7 @@ class VideoUpdatePayload implements ModelInterface, \JsonSerializable
         $this->container['panoramic'] = $data['panoramic'] ?? null;
         $this->container['mp4Support'] = $data['mp4Support'] ?? null;
         $this->container['tags'] = $data['tags'] ?? null;
-        $this->container['metadata'] = $data['metadata'] ?? null;
+        $this->container['metadata'] = isset($data['metadata']) ?  array_map(function(array $value): Metadata { return new Metadata($value); }, $data['metadata']) : null;
     }
 
     /**

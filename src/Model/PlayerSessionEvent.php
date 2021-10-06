@@ -86,7 +86,7 @@ class PlayerSessionEvent implements ModelInterface, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->container['type'] = $data['type'] ?? null;
-        $this->container['emittedAt'] = $data['emittedAt'] ?? null;
+        $this->container['emittedAt'] = isset($data['emittedAt']) ? new \DateTime($data['emittedAt']) : null;
         $this->container['at'] = $data['at'] ?? null;
         $this->container['from'] = $data['from'] ?? null;
         $this->container['to'] = $data['to'] ?? null;

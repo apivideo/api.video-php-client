@@ -72,7 +72,7 @@ class VideoSourceLiveStream implements ModelInterface, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->container['liveStreamId'] = $data['liveStreamId'] ?? null;
-        $this->container['links'] = $data['links'] ?? null;
+        $this->container['links'] = isset($data['links']) ?  array_map(function(array $value): VideoSourceLiveStreamLink { return new VideoSourceLiveStreamLink($value); }, $data['links']) : null;
     }
 
     /**

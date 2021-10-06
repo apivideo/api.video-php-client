@@ -70,6 +70,55 @@ class VideosApiTest extends AbstractApiTest
         $this->assertContains($videoStatus->getIngest()->getStatus(), ['uploaded', 'uploading']);
     }
 
+    public function testTags() {
+        $this->client->videos()->create((new VideoCreationPayload())
+            ->setTitle('Video A'));
+        $this->client->videos()->create((new VideoCreationPayload())
+            ->setTitle('Video B')
+            ->setTags(array("TAG1","TAG2")));
+        $this->client->videos()->create((new VideoCreationPayload())
+            ->setTitle('Video C')
+            ->setTags(array("TAG2")));
+
+        $videos = $this->client->videos()->list(['tags' => 'TAG2,TAG1']);
+        $this->assertCount(1, $videos->getData());
+        $this->assertEquals('Video B', $videos->getData()[0]->getTitle());
+
+        $videos = $this->client->videos()->list(['tags' => ['TAG2','TAG1']]);
+        $this->assertCount(1, $videos->getData());
+        $this->assertEquals('Video B', $videos->getData()[0]->getTitle());
+
+        $videos = $this->client->videos()->list(['tags' => ['TAG2']]);
+        $this->assertCount(2, $videos->getData());
+
+        $videos = $this->client->videos()->list(['tags' => 'TAG2']);
+        $this->assertCount(2, $videos->getData());
+    }
+
+    public function testMetadata() {
+        $this->client->videos()->create((new VideoCreationPayload())
+            ->setTitle('Video A'));
+        $this->client->videos()->create((new VideoCreationPayload())
+            ->setTitle('Video B')
+            ->setMetadata(array(
+                new Metadata(['key' => 'key1', 'value' => 'key1value1']),
+                new Metadata(['key' => 'key2', 'value' => 'key2value1']))));
+        $this->client->videos()->create((new VideoCreationPayload())
+            ->setTitle('Video C')
+            ->setMetadata(array(new Metadata(['key' => 'key1', 'value' => 'key1value1']))));
+
+        $videos = $this->client->videos()->list(['metadata' => ['key1' => 'key1value1']]);
+        $this->assertCount(2, $videos->getData());
+
+        $videos = $this->client->videos()->list(['metadata' => ['key2' => 'key2value1']]);
+        $this->assertCount(1, $videos->getData());
+        $this->assertEquals('Video B', $videos->getData()[0]->getTitle());
+
+        $videos = $this->client->videos()->list(['metadata' => ['key1' => 'key1value1', 'key2' => 'key2value1']]);
+        $this->assertCount(1, $videos->getData());
+        $this->assertEquals('Video B', $videos->getData()[0]->getTitle());
+    }
+
     public function testList()
     {
         /** @var VideosListResponse $videos */

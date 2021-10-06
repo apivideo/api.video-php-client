@@ -81,8 +81,6 @@ class LiveStreamsApi implements ApiInterface
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
         if ($liveStreamId !== null) {
             $resourcePath = str_replace(
@@ -118,7 +116,6 @@ class LiveStreamsApi implements ApiInterface
         $request = $this->buildDeleteThumbnailRequest($liveStreamId);
 
         $model = new \ApiVideo\Client\Model\LiveStream($this->client->request($request));
-        ModelPreprocessor::execute($model);
 
         return $model;
     }
@@ -146,8 +143,6 @@ class LiveStreamsApi implements ApiInterface
         $headers = [];
         $httpBody = '';
         $multipart = false;
-
-
 
         // path params
         if ($liveStreamId !== null) {
@@ -184,7 +179,6 @@ class LiveStreamsApi implements ApiInterface
         $request = $this->buildListRequest($queryParams);
 
         $model = new \ApiVideo\Client\Model\LiveStreamListResponse($this->client->request($request));
-        ModelPreprocessor::execute($model);
 
         return $model;
     }
@@ -215,73 +209,35 @@ class LiveStreamsApi implements ApiInterface
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // streamKey query params
         if ($streamKey !== null) {
-            if(is_array($streamKey)) {
-                foreach($streamKey as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['streamKey'] = $streamKey;
-            }
-        }
-        // query params
-        if ($name !== null) {
-            if(is_array($name)) {
-                foreach($name as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['name'] = $name;
-            }
-        }
-        // query params
-        if ($sortBy !== null) {
-            if(is_array($sortBy)) {
-                foreach($sortBy as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['sortBy'] = $sortBy;
-            }
-        }
-        // query params
-        if ($sortOrder !== null) {
-            if(is_array($sortOrder)) {
-                foreach($sortOrder as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['sortOrder'] = $sortOrder;
-            }
-        }
-        // query params
-        if ($currentPage !== null) {
-            if(is_array($currentPage)) {
-                foreach($currentPage as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['currentPage'] = $currentPage;
-            }
-        }
-        // query params
-        if ($pageSize !== null) {
-            if(is_array($pageSize)) {
-                foreach($pageSize as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['pageSize'] = $pageSize;
-            }
+            $queryParams['streamKey'] = $streamKey;
         }
 
+        // name query params
+        if ($name !== null) {
+            $queryParams['name'] = $name;
+        }
+
+        // sortBy query params
+        if ($sortBy !== null) {
+            $queryParams['sortBy'] = $sortBy;
+        }
+
+        // sortOrder query params
+        if ($sortOrder !== null) {
+            $queryParams['sortOrder'] = $sortOrder;
+        }
+
+        // currentPage query params
+        if ($currentPage !== null) {
+            $queryParams['currentPage'] = $currentPage;
+        }
+
+        // pageSize query params
+        if ($pageSize !== null) {
+            $queryParams['pageSize'] = $pageSize;
+        }
 
 
 
@@ -310,7 +266,6 @@ class LiveStreamsApi implements ApiInterface
         $request = $this->buildGetRequest($liveStreamId);
 
         $model = new \ApiVideo\Client\Model\LiveStream($this->client->request($request));
-        ModelPreprocessor::execute($model);
 
         return $model;
     }
@@ -338,8 +293,6 @@ class LiveStreamsApi implements ApiInterface
         $headers = [];
         $httpBody = '';
         $multipart = false;
-
-
 
         // path params
         if ($liveStreamId !== null) {
@@ -377,7 +330,6 @@ class LiveStreamsApi implements ApiInterface
         $request = $this->buildUpdateRequest($liveStreamId, $liveStreamUpdatePayload);
 
         $model = new \ApiVideo\Client\Model\LiveStream($this->client->request($request));
-        ModelPreprocessor::execute($model);
 
         return $model;
     }
@@ -412,8 +364,6 @@ class LiveStreamsApi implements ApiInterface
         $headers = [];
         $httpBody = '';
         $multipart = false;
-
-
 
         // path params
         if ($liveStreamId !== null) {
@@ -453,7 +403,6 @@ class LiveStreamsApi implements ApiInterface
         $request = $this->buildCreateRequest($liveStreamCreationPayload);
 
         $model = new \ApiVideo\Client\Model\LiveStream($this->client->request($request));
-        ModelPreprocessor::execute($model);
 
         return $model;
     }
@@ -481,8 +430,6 @@ class LiveStreamsApi implements ApiInterface
         $headers = [];
         $httpBody = '';
         $multipart = false;
-
-
 
 
         if ($liveStreamCreationPayload) {
@@ -515,7 +462,6 @@ class LiveStreamsApi implements ApiInterface
         $request = $this->buildUploadThumbnailRequest($liveStreamId, $file);
 
         $model = new \ApiVideo\Client\Model\LiveStream($this->client->request($request));
-        ModelPreprocessor::execute($model);
 
         return $model;
     }
@@ -550,8 +496,6 @@ class LiveStreamsApi implements ApiInterface
         $headers = [];
         $httpBody = '';
         $multipart = false;
-
-
 
         // path params
         if ($liveStreamId !== null) {

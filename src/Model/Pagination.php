@@ -95,7 +95,7 @@ class Pagination implements ModelInterface, \JsonSerializable
         $this->container['pageSize'] = $data['pageSize'] ?? null;
         $this->container['currentPage'] = $data['currentPage'] ?? null;
         $this->container['currentPageItems'] = $data['currentPageItems'] ?? null;
-        $this->container['links'] = $data['links'] ?? null;
+        $this->container['links'] = isset($data['links']) ?  array_map(function(array $value): PaginationLink { return new PaginationLink($value); }, $data['links']) : null;
     }
 
     /**

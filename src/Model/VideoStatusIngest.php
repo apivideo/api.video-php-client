@@ -95,7 +95,7 @@ class VideoStatusIngest implements ModelInterface, \JsonSerializable
     {
         $this->container['status'] = $data['status'] ?? null;
         $this->container['filesize'] = $data['filesize'] ?? null;
-        $this->container['receivedBytes'] = $data['receivedBytes'] ?? null;
+        $this->container['receivedBytes'] = isset($data['receivedBytes']) ?  array_map(function(array $value): BytesRange { return new BytesRange($value); }, $data['receivedBytes']) : null;
     }
 
     /**

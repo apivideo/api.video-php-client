@@ -89,8 +89,6 @@ class CaptionsApi implements ApiInterface
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
         if ($videoId !== null) {
             $resourcePath = str_replace(
@@ -135,7 +133,6 @@ class CaptionsApi implements ApiInterface
         $request = $this->buildListRequest($videoId, $queryParams);
 
         $model = new \ApiVideo\Client\Model\CaptionsListResponse($this->client->request($request));
-        ModelPreprocessor::execute($model);
 
         return $model;
     }
@@ -169,29 +166,15 @@ class CaptionsApi implements ApiInterface
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // currentPage query params
         if ($currentPage !== null) {
-            if(is_array($currentPage)) {
-                foreach($currentPage as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['currentPage'] = $currentPage;
-            }
-        }
-        // query params
-        if ($pageSize !== null) {
-            if(is_array($pageSize)) {
-                foreach($pageSize as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['pageSize'] = $pageSize;
-            }
+            $queryParams['currentPage'] = $currentPage;
         }
 
+        // pageSize query params
+        if ($pageSize !== null) {
+            $queryParams['pageSize'] = $pageSize;
+        }
 
         // path params
         if ($videoId !== null) {
@@ -229,7 +212,6 @@ class CaptionsApi implements ApiInterface
         $request = $this->buildGetRequest($videoId, $language);
 
         $model = new \ApiVideo\Client\Model\Caption($this->client->request($request));
-        ModelPreprocessor::execute($model);
 
         return $model;
     }
@@ -264,8 +246,6 @@ class CaptionsApi implements ApiInterface
         $headers = [];
         $httpBody = '';
         $multipart = false;
-
-
 
         // path params
         if ($videoId !== null) {
@@ -312,7 +292,6 @@ class CaptionsApi implements ApiInterface
         $request = $this->buildUpdateRequest($videoId, $language, $captionsUpdatePayload);
 
         $model = new \ApiVideo\Client\Model\Caption($this->client->request($request));
-        ModelPreprocessor::execute($model);
 
         return $model;
     }
@@ -354,8 +333,6 @@ class CaptionsApi implements ApiInterface
         $headers = [];
         $httpBody = '';
         $multipart = false;
-
-
 
         // path params
         if ($videoId !== null) {
@@ -405,7 +382,6 @@ class CaptionsApi implements ApiInterface
         $request = $this->buildUploadRequest($videoId, $language, $file);
 
         $model = new \ApiVideo\Client\Model\Caption($this->client->request($request));
-        ModelPreprocessor::execute($model);
 
         return $model;
     }
@@ -447,8 +423,6 @@ class CaptionsApi implements ApiInterface
         $headers = [];
         $httpBody = '';
         $multipart = false;
-
-
 
         // path params
         if ($videoId !== null) {

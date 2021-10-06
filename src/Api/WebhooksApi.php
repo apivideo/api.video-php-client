@@ -81,8 +81,6 @@ class WebhooksApi implements ApiInterface
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
         if ($webhookId !== null) {
             $resourcePath = str_replace(
@@ -118,7 +116,6 @@ class WebhooksApi implements ApiInterface
         $request = $this->buildGetRequest($webhookId);
 
         $model = new \ApiVideo\Client\Model\Webhook($this->client->request($request));
-        ModelPreprocessor::execute($model);
 
         return $model;
     }
@@ -146,8 +143,6 @@ class WebhooksApi implements ApiInterface
         $headers = [];
         $httpBody = '';
         $multipart = false;
-
-
 
         // path params
         if ($webhookId !== null) {
@@ -184,7 +179,6 @@ class WebhooksApi implements ApiInterface
         $request = $this->buildListRequest($queryParams);
 
         $model = new \ApiVideo\Client\Model\WebhooksListResponse($this->client->request($request));
-        ModelPreprocessor::execute($model);
 
         return $model;
     }
@@ -212,40 +206,20 @@ class WebhooksApi implements ApiInterface
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // events query params
         if ($events !== null) {
-            if(is_array($events)) {
-                foreach($events as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['events'] = $events;
-            }
-        }
-        // query params
-        if ($currentPage !== null) {
-            if(is_array($currentPage)) {
-                foreach($currentPage as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['currentPage'] = $currentPage;
-            }
-        }
-        // query params
-        if ($pageSize !== null) {
-            if(is_array($pageSize)) {
-                foreach($pageSize as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['pageSize'] = $pageSize;
-            }
+            $queryParams['events'] = $events;
         }
 
+        // currentPage query params
+        if ($currentPage !== null) {
+            $queryParams['currentPage'] = $currentPage;
+        }
+
+        // pageSize query params
+        if ($pageSize !== null) {
+            $queryParams['pageSize'] = $pageSize;
+        }
 
 
 
@@ -274,7 +248,6 @@ class WebhooksApi implements ApiInterface
         $request = $this->buildCreateRequest($webhooksCreationPayload);
 
         $model = new \ApiVideo\Client\Model\Webhook($this->client->request($request));
-        ModelPreprocessor::execute($model);
 
         return $model;
     }
@@ -302,8 +275,6 @@ class WebhooksApi implements ApiInterface
         $headers = [];
         $httpBody = '';
         $multipart = false;
-
-
 
 
         if ($webhooksCreationPayload) {

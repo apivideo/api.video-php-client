@@ -90,12 +90,12 @@ class LiveStreamSession implements ModelInterface, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['session'] = $data['session'] ?? null;
-        $this->container['location'] = $data['location'] ?? null;
-        $this->container['referrer'] = $data['referrer'] ?? null;
-        $this->container['device'] = $data['device'] ?? null;
-        $this->container['os'] = $data['os'] ?? null;
-        $this->container['client'] = $data['client'] ?? null;
+        $this->container['session'] = isset($data['session']) ? new LiveStreamSessionSession($data['session']) : null;
+        $this->container['location'] = isset($data['location']) ? new LiveStreamSessionLocation($data['location']) : null;
+        $this->container['referrer'] = isset($data['referrer']) ? new LiveStreamSessionReferrer($data['referrer']) : null;
+        $this->container['device'] = isset($data['device']) ? new LiveStreamSessionDevice($data['device']) : null;
+        $this->container['os'] = isset($data['os']) ? new VideoSessionOs($data['os']) : null;
+        $this->container['client'] = isset($data['client']) ? new LiveStreamSessionClient($data['client']) : null;
     }
 
     /**

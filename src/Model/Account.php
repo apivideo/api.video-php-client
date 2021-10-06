@@ -75,7 +75,7 @@ class Account implements ModelInterface, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['quota'] = $data['quota'] ?? null;
+        $this->container['quota'] = isset($data['quota']) ? new AccountQuota($data['quota']) : null;
         $this->container['features'] = $data['features'] ?? null;
         $this->container['environment'] = $data['environment'] ?? null;
     }

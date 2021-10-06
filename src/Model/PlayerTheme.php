@@ -170,10 +170,10 @@ class PlayerTheme implements ModelInterface, \JsonSerializable
         $this->container['hideTitle'] = $data['hideTitle'] ?? null;
         $this->container['forceLoop'] = $data['forceLoop'] ?? null;
         $this->container['playerId'] = $data['playerId'] ?? null;
-        $this->container['createdAt'] = $data['createdAt'] ?? null;
-        $this->container['updatedAt'] = $data['updatedAt'] ?? null;
+        $this->container['createdAt'] = isset($data['createdAt']) ? new \DateTime($data['createdAt']) : null;
+        $this->container['updatedAt'] = isset($data['updatedAt']) ? new \DateTime($data['updatedAt']) : null;
         $this->container['linkActive'] = $data['linkActive'] ?? null;
-        $this->container['assets'] = $data['assets'] ?? null;
+        $this->container['assets'] = isset($data['assets']) ? new PlayerThemeAssets($data['assets']) : null;
     }
 
     /**
