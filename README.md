@@ -93,13 +93,15 @@ $this->client->videos()->upload(
 
 #### Chunks
 
-The video is automatically split into 1 Mb chunks.
+The video is automatically split into 50 Mb chunks.
 
 To modify the size of the chunks, fill in the last argument `$contentRange` as follows:
 
 - `bytes 0-{size}/0` where `{size}` is the size of the chunk.
 
 For example : `bytes 0-500000/0` for 500 Kb chunks.
+
+The chunks size value must be between 5 Mb and 128mb.
 
 ## API Endpoints
 
