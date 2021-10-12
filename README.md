@@ -39,7 +39,7 @@ After that, you'll be able to create the api.video client:
 require __DIR__ . '/vendor/autoload.php';
 
 $httpClient = new \Symfony\Component\HttpClient\Psr18Client();
-$client = new \ApiVideo\Client(
+$client = new \ApiVideo\Client\Client(
     'https://sandbox.api.video',
     'YOUR_API_TOKEN',
     $httpClient
@@ -56,7 +56,7 @@ Some endpoints don't require authentication. These one can be called with a Clie
 require __DIR__ . '/vendor/autoload.php';
 
 $httpClient = new \Symfony\Component\HttpClient\Psr18Client();
-$client = new \ApiVideo\Client(
+$client = new \ApiVideo\Client\Client(
     'https://sandbox.api.video',
     null,
     $httpClient
