@@ -21,6 +21,7 @@ use Psr\Http\Client\ClientExceptionInterface;
 use ApiVideo\Client\Request;
 use ApiVideo\Client\ObjectSerializer;
 use ApiVideo\Client\VideoUploader;
+use ApiVideo\Client\ProgressiveUploadSession;
 
 /**
  * @category Class
@@ -118,6 +119,7 @@ class CaptionsApi implements ApiInterface
         );
     }
 
+
     /**
      * List video captions
      *
@@ -197,6 +199,7 @@ class CaptionsApi implements ApiInterface
         );
     }
 
+
     /**
      * Show a caption
      *
@@ -275,6 +278,7 @@ class CaptionsApi implements ApiInterface
             $httpBody
         );
     }
+
 
     /**
      * Update caption
@@ -365,6 +369,7 @@ class CaptionsApi implements ApiInterface
             $httpBody
         );
     }
+
 
     /**
      * Upload a caption
@@ -471,5 +476,6 @@ class CaptionsApi implements ApiInterface
             $httpBody
         );
     }
+
 
 }

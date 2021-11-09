@@ -21,6 +21,7 @@ use Psr\Http\Client\ClientExceptionInterface;
 use ApiVideo\Client\Request;
 use ApiVideo\Client\ObjectSerializer;
 use ApiVideo\Client\VideoUploader;
+use ApiVideo\Client\ProgressiveUploadSession;
 
 /**
  * @category Class
@@ -102,6 +103,7 @@ class WebhooksApi implements ApiInterface
         );
     }
 
+
     /**
      * Show Webhook details
      *
@@ -164,6 +166,7 @@ class WebhooksApi implements ApiInterface
             $httpBody
         );
     }
+
 
     /**
      * List all webhooks
@@ -234,6 +237,7 @@ class WebhooksApi implements ApiInterface
         );
     }
 
+
     /**
      * Create Webhook
      *
@@ -291,5 +295,6 @@ class WebhooksApi implements ApiInterface
             $httpBody
         );
     }
+
 
 }

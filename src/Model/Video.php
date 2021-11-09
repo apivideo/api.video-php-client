@@ -213,7 +213,7 @@ class Video implements ModelInterface, \JsonSerializable
     /**
      * Sets createdAt
      *
-     * @param \DateTime|null $createdAt When an webhook was created, presented in ISO-8601 format.
+     * @param \DateTime|null $createdAt When a video was created, presented in ISO-8601 format.
      *
      * @return self
      */
@@ -357,7 +357,7 @@ class Video implements ModelInterface, \JsonSerializable
     /**
      * Sets metadata
      *
-     * @param \ApiVideo\Client\Model\Metadata[]|null $metadata Metadata you can use to categorise and filter videos. Metadata is a list of dictionaries, where each dictionary represents a key value pair for categorising a video.
+     * @param \ApiVideo\Client\Model\Metadata[]|null $metadata Metadata you can use to categorise and filter videos. Metadata is a list of dictionaries, where each dictionary represents a key value pair for categorising a video. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) allows you to define a key that allows any value pair.
      *
      * @return self
      */
@@ -453,7 +453,7 @@ class Video implements ModelInterface, \JsonSerializable
     /**
      * Sets public
      *
-     * @param bool|null $public Defines if the content is publicly reachable or if a unique token is needed for each play session.
+     * @param bool|null $public Defines if the content is publicly reachable or if a unique token is needed for each play session. Default is true. Tutorials on [private videos](https://api.video/blog/endpoints/private-videos).
      *
      * @return self
      */

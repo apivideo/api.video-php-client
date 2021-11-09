@@ -17,9 +17,6 @@ Method | HTTP request | Description
 
 
 
-```php
-delete(string $liveStreamId): void
-```
 
 ### Arguments
 
@@ -36,22 +33,14 @@ Name | Type | Description  | Example | Notes
 
 void (empty response body)
 
-### Authorization
 
-[bearerAuth](../../README.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
 
 ## deleteThumbnail()
 
 
 Send the unique identifier for a live stream to delete it from the system.
 
-```php
-deleteThumbnail(string $liveStreamId): \ApiVideo\Client\Model\LiveStream
-```
 
 ### Arguments
 
@@ -68,22 +57,14 @@ Name | Type | Description  | Example | Notes
 
 [**\ApiVideo\Client\Model\LiveStream**](../Model/LiveStream.md)
 
-### Authorization
 
-[bearerAuth](../../README.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
 
 ## list()
 
 
 With no parameters added to the url, this will return all livestreams. Query by name or key to limit the list.
 
-```php
-list(array $queryParams = []): \ApiVideo\Client\Model\LiveStreamListResponse
-```
 
 ### Arguments
 
@@ -111,22 +92,14 @@ Name | Type | Description  | Example | Notes
 
 [**\ApiVideo\Client\Model\LiveStreamListResponse**](../Model/LiveStreamListResponse.md)
 
-### Authorization
 
-[bearerAuth](../../README.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
 
 ## get()
 
 
 Supply a LivestreamId, and you'll get all the details for streaming into, and watching the livestream. Tutorials that use the [show livestream endpoint](https://api.video/blog/endpoints/live-stream-status).
 
-```php
-get(string $liveStreamId): \ApiVideo\Client\Model\LiveStream
-```
 
 ### Arguments
 
@@ -143,22 +116,14 @@ Name | Type | Description  | Example | Notes
 
 [**\ApiVideo\Client\Model\LiveStream**](../Model/LiveStream.md)
 
-### Authorization
 
-[bearerAuth](../../README.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
 
 ## update()
 
 
 Use this endpoint to update the player, or to turn recording on/off (saving a copy of the livestream). NOTE: If the livestream is actively streaming, changing the recording status will only affect the NEXT stream.    The public=false 'private livestream' is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer.
 
-```php
-update(string $liveStreamId, \ApiVideo\Client\Model\LiveStreamUpdatePayload $liveStreamUpdatePayload): \ApiVideo\Client\Model\LiveStream
-```
 
 ### Arguments
 
@@ -176,22 +141,14 @@ Name | Type | Description  | Example | Notes
 
 [**\ApiVideo\Client\Model\LiveStream**](../Model/LiveStream.md)
 
-### Authorization
 
-[bearerAuth](../../README.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
 
 ## create()
 
 
-A live stream will give you the 'connection point' to RTMP your video stream to api.video. It will also give you the details for viewers to watch the same livestream. The public=false 'private livestream' is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer.  See our [Live Stream Tutorial](https://api.video/blog/tutorials/live-stream-tutorial) for a walkthrough of this API with OBS. Your RTMP endpoint for the livestream is rtmp://broadcast.api.video/s/{streamKey} Tutorials that [create live streams](https://api.video/blog/endpoints/live-create).
+A live stream will give you the 'connection point' to RTMP your video stream to api.video. It will also give you the details for viewers to watch the same livestream.  The public=false 'private livestream' is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer. See our [Live Stream Tutorial](https://api.video/blog/tutorials/live-stream-tutorial) for a walkthrough of this API with OBS. Your RTMP endpoint for the livestream is rtmp://broadcast.api.video/s/{streamKey} Tutorials that [create live streams](https://api.video/blog/endpoints/live-create).
 
-```php
-create(\ApiVideo\Client\Model\LiveStreamCreationPayload $liveStreamCreationPayload): \ApiVideo\Client\Model\LiveStream
-```
 
 ### Arguments
 
@@ -208,22 +165,14 @@ Name | Type | Description  | Example | Notes
 
 [**\ApiVideo\Client\Model\LiveStream**](../Model/LiveStream.md)
 
-### Authorization
 
-[bearerAuth](../../README.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
 
 ## uploadThumbnail()
 
 
 Upload an image to use as a backdrop for your livestream. Tutorials that [update live stream thumbnails](https://api.video/blog/endpoints/live-upload-a-thumbnail).
 
-```php
-uploadThumbnail(string $liveStreamId, \SplFileObject $file): \ApiVideo\Client\Model\LiveStream
-```
 
 ### Arguments
 
@@ -241,10 +190,5 @@ Name | Type | Description  | Example | Notes
 
 [**\ApiVideo\Client\Model\LiveStream**](../Model/LiveStream.md)
 
-### Authorization
 
-[bearerAuth](../../README.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)

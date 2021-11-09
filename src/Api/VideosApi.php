@@ -21,6 +21,7 @@ use Psr\Http\Client\ClientExceptionInterface;
 use ApiVideo\Client\Request;
 use ApiVideo\Client\ObjectSerializer;
 use ApiVideo\Client\VideoUploader;
+use ApiVideo\Client\ProgressiveUploadSession;
 
 /**
  * @category Class
@@ -102,6 +103,7 @@ class VideosApi implements ApiInterface
         );
     }
 
+
     /**
      * Show a video
      *
@@ -165,6 +167,7 @@ class VideosApi implements ApiInterface
         );
     }
 
+
     /**
      * Show video status
      *
@@ -227,6 +230,7 @@ class VideosApi implements ApiInterface
             $httpBody
         );
     }
+
 
     /**
      * List all videos
@@ -341,6 +345,7 @@ class VideosApi implements ApiInterface
         );
     }
 
+
     /**
      * Update a video
      *
@@ -415,6 +420,7 @@ class VideosApi implements ApiInterface
         );
     }
 
+
     /**
      * Pick a thumbnail
      *
@@ -488,6 +494,7 @@ class VideosApi implements ApiInterface
             $httpBody
         );
     }
+
 
     /**
      * Upload with an upload token
@@ -588,6 +595,23 @@ class VideosApi implements ApiInterface
         );
     }
 
+
+    public function createUploadWithUploadTokenProgressiveSession(string $token, string $videoId = null) {
+        $resourcePath = '/upload';
+
+        $queryParams = [];
+
+        // token query params
+        if ($token !== null) {
+            $queryParams['token'] = $token;
+        }
+
+        $query = \http_build_query($queryParams);
+        $resourcePath = $resourcePath . ($query ? "?{$query}" : '');
+
+        return new ProgressiveUploadSession($this->client, $resourcePath, $videoId);
+    }
+
     /**
      * Create a video
      *
@@ -645,6 +669,7 @@ class VideosApi implements ApiInterface
             $httpBody
         );
     }
+
 
     /**
      * Upload a video
@@ -745,6 +770,21 @@ class VideosApi implements ApiInterface
         );
     }
 
+
+    public function createUploadProgressiveSession(string $videoId) {
+        $resourcePath = '/videos/{videoId}/source';
+        // path params
+        if ($videoId !== null) {
+            $resourcePath = str_replace(
+                '{' . 'videoId' . '}',
+                ObjectSerializer::toPathValue($videoId),
+                $resourcePath
+            );
+        }
+
+        return new ProgressiveUploadSession($this->client, $resourcePath);
+    }
+
     /**
      * Upload a thumbnail
      *
@@ -834,5 +874,6 @@ class VideosApi implements ApiInterface
             $httpBody
         );
     }
+
 
 }

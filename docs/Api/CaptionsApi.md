@@ -16,9 +16,6 @@ Method | HTTP request | Description
 
 Delete a caption in a specific language by providing the video ID for the video you want to delete the caption from and the language the caption is in.
 
-```php
-delete(string $videoId, string $language): void
-```
 
 ### Arguments
 
@@ -36,22 +33,14 @@ Name | Type | Description  | Example | Notes
 
 void (empty response body)
 
-### Authorization
 
-[bearerAuth](../../README.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
 
 ## list()
 
 
 Retrieve a list of available captions for the videoId you provide.
 
-```php
-list(string $videoId, array $queryParams = []): \ApiVideo\Client\Model\CaptionsListResponse
-```
 
 ### Arguments
 
@@ -77,22 +66,14 @@ Name | Type | Description  | Example | Notes
 
 [**\ApiVideo\Client\Model\CaptionsListResponse**](../Model/CaptionsListResponse.md)
 
-### Authorization
 
-[bearerAuth](../../README.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
 
 ## get()
 
 
 Display a caption for a video in a specific language. If the language is available, the caption is returned. Otherwise, you will get a response indicating the caption was not found. Tutorials that use the [captions endpoint](https://api.video/blog/endpoints/captions).
 
-```php
-get(string $videoId, string $language): \ApiVideo\Client\Model\Caption
-```
 
 ### Arguments
 
@@ -110,22 +91,14 @@ Name | Type | Description  | Example | Notes
 
 [**\ApiVideo\Client\Model\Caption**](../Model/Caption.md)
 
-### Authorization
 
-[bearerAuth](../../README.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
 
 ## update()
 
 
 To have the captions on automatically, use this PATCH to set default: true.
 
-```php
-update(string $videoId, string $language, \ApiVideo\Client\Model\CaptionsUpdatePayload $captionsUpdatePayload): \ApiVideo\Client\Model\Caption
-```
 
 ### Arguments
 
@@ -144,22 +117,14 @@ Name | Type | Description  | Example | Notes
 
 [**\ApiVideo\Client\Model\Caption**](../Model/Caption.md)
 
-### Authorization
 
-[bearerAuth](../../README.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
 
 ## upload()
 
 
 Upload a VTT file to add captions to your video.  Read our [captioning tutorial](https://api.video/blog/tutorials/adding-captions) for more details.
 
-```php
-upload(string $videoId, string $language, \SplFileObject $file): \ApiVideo\Client\Model\Caption
-```
 
 ### Arguments
 
@@ -178,10 +143,5 @@ Name | Type | Description  | Example | Notes
 
 [**\ApiVideo\Client\Model\Caption**](../Model/Caption.md)
 
-### Authorization
 
-[bearerAuth](../../README.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)

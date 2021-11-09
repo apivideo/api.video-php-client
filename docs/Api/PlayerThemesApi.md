@@ -18,9 +18,6 @@ Method | HTTP request | Description
 
 Delete a player if you no longer need it. You can delete any player that you have the player ID for.
 
-```php
-delete(string $playerId): void
-```
 
 ### Arguments
 
@@ -37,21 +34,13 @@ Name | Type | Description  | Example | Notes
 
 void (empty response body)
 
-### Authorization
 
-[bearerAuth](../../README.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
 
 ## deleteLogo()
 
 
 
-```php
-deleteLogo(string $playerId): void
-```
 
 ### Arguments
 
@@ -68,22 +57,14 @@ Name | Type | Description  | Example | Notes
 
 void (empty response body)
 
-### Authorization
 
-[bearerAuth](../../README.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
 
 ## list()
 
 
 Retrieve a list of all the players you created, as well as details about each one. Tutorials that use the [player endpoint](https://api.video/blog/endpoints/player).
 
-```php
-list(array $queryParams = []): \ApiVideo\Client\Model\PlayerThemesListResponse
-```
 
 ### Arguments
 
@@ -109,22 +90,14 @@ Name | Type | Description  | Example | Notes
 
 [**\ApiVideo\Client\Model\PlayerThemesListResponse**](../Model/PlayerThemesListResponse.md)
 
-### Authorization
 
-[bearerAuth](../../README.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
 
 ## get()
 
 
 Use a player ID to retrieve details about the player and display it for viewers.
 
-```php
-get(string $playerId): \ApiVideo\Client\Model\PlayerTheme
-```
 
 ### Arguments
 
@@ -141,22 +114,14 @@ Name | Type | Description  | Example | Notes
 
 [**\ApiVideo\Client\Model\PlayerTheme**](../Model/PlayerTheme.md)
 
-### Authorization
 
-[bearerAuth](../../README.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
 
 ## update()
 
 
 Use a player ID to update specific details for a player. NOTE: It may take up to 10 min before the new player configuration is available from our CDN.
 
-```php
-update(string $playerId, \ApiVideo\Client\Model\PlayerThemeUpdatePayload $playerThemeUpdatePayload): \ApiVideo\Client\Model\PlayerTheme
-```
 
 ### Arguments
 
@@ -174,22 +139,14 @@ Name | Type | Description  | Example | Notes
 
 [**\ApiVideo\Client\Model\PlayerTheme**](../Model/PlayerTheme.md)
 
-### Authorization
 
-[bearerAuth](../../README.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
 
 ## create()
 
 
 Create a player for your video, and customise it.
 
-```php
-create(\ApiVideo\Client\Model\PlayerThemeCreationPayload $playerThemeCreationPayload): \ApiVideo\Client\Model\PlayerTheme
-```
 
 ### Arguments
 
@@ -206,22 +163,14 @@ Name | Type | Description  | Example | Notes
 
 [**\ApiVideo\Client\Model\PlayerTheme**](../Model/PlayerTheme.md)
 
-### Authorization
 
-[bearerAuth](../../README.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
 
 ## uploadLogo()
 
 
-The uploaded image maximum size should be 200x100 and its weight should be 200KB. It will be scaled down to 30px height and converted to PNG to be displayed in the player.
+The uploaded image maximum size should be 200x100 and its weight should be 200KB.  It will be scaled down to 30px height and converted to PNG to be displayed in the player.
 
-```php
-uploadLogo(string $playerId, \SplFileObject $file, string $link = null): \ApiVideo\Client\Model\PlayerTheme
-```
 
 ### Arguments
 
@@ -240,10 +189,5 @@ Name | Type | Description  | Example | Notes
 
 [**\ApiVideo\Client\Model\PlayerTheme**](../Model/PlayerTheme.md)
 
-### Authorization
 
-[bearerAuth](../../README.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
