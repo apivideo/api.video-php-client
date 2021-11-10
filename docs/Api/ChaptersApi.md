@@ -14,9 +14,6 @@ Method | HTTP request | Description
 
 
 
-```php
-delete(string $videoId, string $language): void
-```
 
 ### Arguments
 
@@ -34,22 +31,14 @@ Name | Type | Description  | Example | Notes
 
 void (empty response body)
 
-### Authorization
 
-[bearerAuth](../../README.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
 
 ## list()
 
 
 Retrieve a list of all chapters for a specified video.
 
-```php
-list(string $videoId, array $queryParams = []): \ApiVideo\Client\Model\ChaptersListResponse
-```
 
 ### Arguments
 
@@ -75,22 +64,14 @@ Name | Type | Description  | Example | Notes
 
 [**\ApiVideo\Client\Model\ChaptersListResponse**](../Model/ChaptersListResponse.md)
 
-### Authorization
 
-[bearerAuth](../../README.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
 
 ## get()
 
 
 Chapters help your viewers find the sections of the video they are most interested in viewing. Tutorials that use the [chapters endpoint](https://api.video/blog/endpoints/chapters).
 
-```php
-get(string $videoId, string $language): \ApiVideo\Client\Model\Chapter
-```
 
 ### Arguments
 
@@ -108,22 +89,14 @@ Name | Type | Description  | Example | Notes
 
 [**\ApiVideo\Client\Model\Chapter**](../Model/Chapter.md)
 
-### Authorization
 
-[bearerAuth](../../README.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
 
 ## upload()
 
 
 Chapters help break the video into sections. Read our [tutorial](https://api.video/blog/tutorials/adding-chapters-to-your-videos) for more details.
 
-```php
-upload(string $videoId, string $language, \SplFileObject $file): \ApiVideo\Client\Model\Chapter
-```
 
 ### Arguments
 
@@ -142,10 +115,5 @@ Name | Type | Description  | Example | Notes
 
 [**\ApiVideo\Client\Model\Chapter**](../Model/Chapter.md)
 
-### Authorization
 
-[bearerAuth](../../README.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)

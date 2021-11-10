@@ -21,6 +21,7 @@ use Psr\Http\Client\ClientExceptionInterface;
 use ApiVideo\Client\Request;
 use ApiVideo\Client\ObjectSerializer;
 use ApiVideo\Client\VideoUploader;
+use ApiVideo\Client\ProgressiveUploadSession;
 
 /**
  * @category Class
@@ -102,6 +103,7 @@ class UploadTokensApi implements ApiInterface
         );
     }
 
+
     /**
      * List all active upload tokens.
      *
@@ -177,6 +179,7 @@ class UploadTokensApi implements ApiInterface
         );
     }
 
+
     /**
      * Show upload token
      *
@@ -240,6 +243,7 @@ class UploadTokensApi implements ApiInterface
         );
     }
 
+
     /**
      * Generate an upload token
      *
@@ -297,5 +301,6 @@ class UploadTokensApi implements ApiInterface
             $httpBody
         );
     }
+
 
 }

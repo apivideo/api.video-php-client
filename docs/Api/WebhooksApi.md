@@ -15,9 +15,6 @@ Method | HTTP request | Description
 
 This endpoint will delete the indicated webhook.
 
-```php
-delete(string $webhookId): void
-```
 
 ### Arguments
 
@@ -34,22 +31,14 @@ Name | Type | Description  | Example | Notes
 
 void (empty response body)
 
-### Authorization
 
-[bearerAuth](../../README.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
 
 ## get()
 
 
 This call provides the same JSON information provided on Webjhook creation.
 
-```php
-get(string $webhookId): \ApiVideo\Client\Model\Webhook
-```
 
 ### Arguments
 
@@ -66,22 +55,14 @@ Name | Type | Description  | Example | Notes
 
 [**\ApiVideo\Client\Model\Webhook**](../Model/Webhook.md)
 
-### Authorization
 
-[bearerAuth](../../README.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
 
 ## list()
 
 
 Requests to this endpoint return a list of your webhooks (with all their details). You can filter what the webhook list that the API returns using the parameters described below.
 
-```php
-list(array $queryParams = []): \ApiVideo\Client\Model\WebhooksListResponse
-```
 
 ### Arguments
 
@@ -106,22 +87,14 @@ Name | Type | Description  | Example | Notes
 
 [**\ApiVideo\Client\Model\WebhooksListResponse**](../Model/WebhooksListResponse.md)
 
-### Authorization
 
-[bearerAuth](../../README.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
 
 ## create()
 
 
-Webhooks can push notifications to your server, rather than polling api.video for changes. We currently offer four events: * ```video.encoding.quality.completed```  When a new video is uploaded into your account, it will be encoded into several different HLS sizes/bitrates.  When each version is encoded, your webhook will get a notification.  It will look like ```{ \\\"type\\\": \\\"video.encoding.quality.completed\\\", \\\"emittedAt\\\": \\\"2021-01-29T16:46:25.217+01:00\\\", \\\"videoId\\\": \\\"viXXXXXXXX\\\", \\\"encoding\\\": \\\"hls\\\", \\\"quality\\\": \\\"720p\\\"} ```. This request says that the 720p HLS encoding was completed. * ```live-stream.broadcast.started```  When a livestream begins broadcasting, the broadcasting parameter changes from false to true, and this webhook fires. * ```live-stream.broadcast.ended```  This event fores when the livestream has finished broadcasting, and the broadcasting parameter flips from false to true. * ```video.source.recorded```  This event is similar to ```video.encoding.quality.completed```, but tells you if a livestream has been recorded as a VOD.
+Webhooks can push notifications to your server, rather than polling api.video for changes. We currently offer four events:  * ```video.encoding.quality.completed```  When a new video is uploaded into your account, it will be encoded into several different HLS sizes/bitrates.  When each version is encoded, your webhook will get a notification.  It will look like ```{ \\\"type\\\": \\\"video.encoding.quality.completed\\\", \\\"emittedAt\\\": \\\"2021-01-29T16:46:25.217+01:00\\\", \\\"videoId\\\": \\\"viXXXXXXXX\\\", \\\"encoding\\\": \\\"hls\\\", \\\"quality\\\": \\\"720p\\\"} ```. This request says that the 720p HLS encoding was completed. * ```live-stream.broadcast.started```  When a livestream begins broadcasting, the broadcasting parameter changes from false to true, and this webhook fires. * ```live-stream.broadcast.ended```  This event fores when the livestream has finished broadcasting, and the broadcasting parameter flips from false to true. * ```video.source.recorded```  This event is similar to ```video.encoding.quality.completed```, but tells you if a livestream has been recorded as a VOD.
 
-```php
-create(\ApiVideo\Client\Model\WebhooksCreationPayload $webhooksCreationPayload): \ApiVideo\Client\Model\Webhook
-```
 
 ### Arguments
 
@@ -138,10 +111,5 @@ Name | Type | Description  | Example | Notes
 
 [**\ApiVideo\Client\Model\Webhook**](../Model/Webhook.md)
 
-### Authorization
 
-[bearerAuth](../../README.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)

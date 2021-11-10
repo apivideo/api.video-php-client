@@ -21,6 +21,7 @@ use Psr\Http\Client\ClientExceptionInterface;
 use ApiVideo\Client\Request;
 use ApiVideo\Client\ObjectSerializer;
 use ApiVideo\Client\VideoUploader;
+use ApiVideo\Client\ProgressiveUploadSession;
 
 /**
  * @category Class
@@ -126,6 +127,7 @@ class RawStatisticsApi implements ApiInterface
         );
     }
 
+
     /**
      * List player session events
      *
@@ -204,6 +206,7 @@ class RawStatisticsApi implements ApiInterface
             $httpBody
         );
     }
+
 
     /**
      * List video player sessions
@@ -303,5 +306,6 @@ class RawStatisticsApi implements ApiInterface
             $httpBody
         );
     }
+
 
 }

@@ -21,6 +21,7 @@ use Psr\Http\Client\ClientExceptionInterface;
 use ApiVideo\Client\Request;
 use ApiVideo\Client\ObjectSerializer;
 use ApiVideo\Client\VideoUploader;
+use ApiVideo\Client\ProgressiveUploadSession;
 
 /**
  * @category Class
@@ -102,6 +103,7 @@ class PlayerThemesApi implements ApiInterface
         );
     }
 
+
     /**
      * Delete logo
      *
@@ -162,6 +164,7 @@ class PlayerThemesApi implements ApiInterface
             $httpBody
         );
     }
+
 
     /**
      * List all players
@@ -238,6 +241,7 @@ class PlayerThemesApi implements ApiInterface
         );
     }
 
+
     /**
      * Show a player
      *
@@ -300,6 +304,7 @@ class PlayerThemesApi implements ApiInterface
             $httpBody
         );
     }
+
 
     /**
      * Update a player
@@ -375,6 +380,7 @@ class PlayerThemesApi implements ApiInterface
         );
     }
 
+
     /**
      * Create a player
      *
@@ -432,6 +438,7 @@ class PlayerThemesApi implements ApiInterface
             $httpBody
         );
     }
+
 
     /**
      * Upload a logo
@@ -527,5 +534,6 @@ class PlayerThemesApi implements ApiInterface
             $httpBody
         );
     }
+
 
 }

@@ -15,9 +15,6 @@ Method | HTTP request | Description
 
 Delete an existing upload token. This is especially useful for tokens you may have created that do not expire.
 
-```php
-deleteToken(string $uploadToken): void
-```
 
 ### Arguments
 
@@ -34,22 +31,14 @@ Name | Type | Description  | Example | Notes
 
 void (empty response body)
 
-### Authorization
 
-[bearerAuth](../../README.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
 
 ## list()
 
 
 A delegated token is used to allow secure uploads without exposing your API key. Use this endpoint to retrieve a list of all currently active delegated tokens. Tutorials using [delegated upload](https://api.video/blog/endpoints/delegated-upload).
 
-```php
-list(array $queryParams = []): \ApiVideo\Client\Model\TokenListResponse
-```
 
 ### Arguments
 
@@ -75,22 +64,14 @@ Name | Type | Description  | Example | Notes
 
 [**\ApiVideo\Client\Model\TokenListResponse**](../Model/TokenListResponse.md)
 
-### Authorization
 
-[bearerAuth](../../README.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
 
 ## getToken()
 
 
 You can retrieve details about a specific upload token if you have the unique identifier for the upload token. Add it in the path of the endpoint. Details include time-to-live (ttl), when the token was created, and when it will expire.
 
-```php
-getToken(string $uploadToken): \ApiVideo\Client\Model\UploadToken
-```
 
 ### Arguments
 
@@ -107,22 +88,14 @@ Name | Type | Description  | Example | Notes
 
 [**\ApiVideo\Client\Model\UploadToken**](../Model/UploadToken.md)
 
-### Authorization
 
-[bearerAuth](../../README.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
 
 ## createToken()
 
 
 Use this endpoint to generate an upload token. You can use this token to authenticate video uploads while keeping your API key safe. Tutorials using [delegated upload](https://api.video/blog/endpoints/delegated-upload).
 
-```php
-createToken(\ApiVideo\Client\Model\TokenCreationPayload $tokenCreationPayload): \ApiVideo\Client\Model\UploadToken
-```
 
 ### Arguments
 
@@ -139,10 +112,5 @@ Name | Type | Description  | Example | Notes
 
 [**\ApiVideo\Client\Model\UploadToken**](../Model/UploadToken.md)
 
-### Authorization
 
-[bearerAuth](../../README.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)

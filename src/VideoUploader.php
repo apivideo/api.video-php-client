@@ -73,6 +73,9 @@ final class VideoUploader
 
         $response = null;
         $videoId = null;
+        $part = 1;
+        $partsCount = ceil($fileSize / $chunkSize);
+
         while ($start < $fileSize) {
             $contents = fread($handle, $chunkSize);
 
@@ -92,7 +95,7 @@ final class VideoUploader
                 [
                     'Accept' => 'application/json',
                     'Content-Type' => sprintf('multipart/form-data; boundary="%s"', $builder->getBoundary()),
-                    'Content-Range' => sprintf('bytes %s-%s/%s', $start, $start + strlen($contents) - 1, $fileSize),
+                    'Content-Range' => sprintf('part %s/%s', $part, $partsCount),
                 ]
             );
             $request->setStream($builder->build());
@@ -103,6 +106,7 @@ final class VideoUploader
 
             $start += strlen($contents);
             fseek($handle, $start);
+            $part++;
         }
 
         fclose($handle);

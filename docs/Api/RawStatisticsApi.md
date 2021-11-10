@@ -13,9 +13,6 @@ Method | HTTP request | Description
 
 
 
-```php
-listLiveStreamSessions(string $liveStreamId, array $queryParams = []): \ApiVideo\Client\Model\RawStatisticsListLiveStreamAnalyticsResponse
-```
 
 ### Arguments
 
@@ -29,7 +26,7 @@ Note: `$queryParams` argument is an associative array with the keys listed below
 
 Name | Type | Description  | Example | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
- `period` | **string**| Period must have one of the following formats:  - For a day : \&quot;2018-01-01\&quot;, - For a week: \&quot;2018-W01\&quot;, - For a month: \&quot;2018-01\&quot; - For a year: \&quot;2018\&quot;  For a range period: -  Date range: \&quot;2018-01-01/2018-01-15\&quot; | `2019-01-01` | [optional]
+ `period` | **string**| Period must have one of the following formats:  - For a day : \&quot;2018-01-01\&quot;, - For a week: \&quot;2018-W01\&quot;,  - For a month: \&quot;2018-01\&quot; - For a year: \&quot;2018\&quot; For a range period:  -  Date range: \&quot;2018-01-01/2018-01-15\&quot; | `2019-01-01` | [optional]
  `currentPage` | **int**| Choose the number of search results to return per page. Minimum value: 1 | `2` | [optional] [default to 1]
  `pageSize` | **int**| Results per page. Allowed values 1-100, default is 25. | `30` | [optional] [default to 25]
 
@@ -42,22 +39,14 @@ Name | Type | Description  | Example | Notes
 
 [**\ApiVideo\Client\Model\RawStatisticsListLiveStreamAnalyticsResponse**](../Model/RawStatisticsListLiveStreamAnalyticsResponse.md)
 
-### Authorization
 
-[bearerAuth](../../README.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
 
 ## listSessionEvents()
 
 
 Useful to track and measure video's engagement.
 
-```php
-listSessionEvents(string $sessionId, array $queryParams = []): \ApiVideo\Client\Model\RawStatisticsListPlayerSessionEventsResponse
-```
 
 ### Arguments
 
@@ -83,22 +72,14 @@ Name | Type | Description  | Example | Notes
 
 [**\ApiVideo\Client\Model\RawStatisticsListPlayerSessionEventsResponse**](../Model/RawStatisticsListPlayerSessionEventsResponse.md)
 
-### Authorization
 
-[bearerAuth](../../README.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
 
 ## listVideoSessions()
 
 
 Retrieve all available user sessions for a specific video. Tutorials that use the [analytics endpoint](https://api.video/blog/endpoints/analytics).
 
-```php
-listVideoSessions(string $videoId, array $queryParams = []): \ApiVideo\Client\Model\RawStatisticsListSessionsResponse
-```
 
 ### Arguments
 
@@ -112,8 +93,8 @@ Note: `$queryParams` argument is an associative array with the keys listed below
 
 Name | Type | Description  | Example | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
- `period` | **string**| Period must have one of the following formats:  - For a day : 2018-01-01, - For a week: 2018-W01, - For a month: 2018-01 - For a year: 2018  For a range period: -  Date range: 2018-01-01/2018-01-15 | `'period_example'` | [optional]
- `metadata` | [**map[string,string]**](../Model/string.md)| Metadata and Dynamic Metadata filter. Send an array of key value pairs you want to filter sessios with. | `metadata[Author]=John Doe&metadata[Format]=Tutorial` | [optional]
+ `period` | **string**| Period must have one of the following formats:  - For a day : 2018-01-01, - For a week: 2018-W01,  - For a month: 2018-01 - For a year: 2018 For a range period:  -  Date range: 2018-01-01/2018-01-15 | `'period_example'` | [optional]
+ `metadata` | [**map[string,string]**](../Model/string.md)| Metadata and [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) filter. Send an array of key value pairs you want to filter sessios with. | `metadata[Author]=John Doe&metadata[Format]=Tutorial` | [optional]
  `currentPage` | **int**| Choose the number of search results to return per page. Minimum value: 1 | `2` | [optional] [default to 1]
  `pageSize` | **int**| Results per page. Allowed values 1-100, default is 25. | `30` | [optional] [default to 25]
 
@@ -126,10 +107,5 @@ Name | Type | Description  | Example | Notes
 
 [**\ApiVideo\Client\Model\RawStatisticsListSessionsResponse**](../Model/RawStatisticsListSessionsResponse.md)
 
-### Authorization
 
-[bearerAuth](../../README.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)

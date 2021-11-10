@@ -21,6 +21,7 @@ use Psr\Http\Client\ClientExceptionInterface;
 use ApiVideo\Client\Request;
 use ApiVideo\Client\ObjectSerializer;
 use ApiVideo\Client\VideoUploader;
+use ApiVideo\Client\ProgressiveUploadSession;
 
 /**
  * @category Class
@@ -118,6 +119,7 @@ class ChaptersApi implements ApiInterface
         );
     }
 
+
     /**
      * List video chapters
      *
@@ -197,6 +199,7 @@ class ChaptersApi implements ApiInterface
         );
     }
 
+
     /**
      * Show a chapter
      *
@@ -275,6 +278,7 @@ class ChaptersApi implements ApiInterface
             $httpBody
         );
     }
+
 
     /**
      * Upload a chapter
@@ -381,5 +385,6 @@ class ChaptersApi implements ApiInterface
             $httpBody
         );
     }
+
 
 }
