@@ -676,7 +676,7 @@ class VideosApi implements ApiInterface
      *
      * @param  string $videoId Enter the videoId you want to use to upload your video. (required)
      * @param  \SplFileObject $file The path to the video you would like to upload. The path must be local. If you want to use a video from an online source, you must use the \\\&quot;/videos\\\&quot; endpoint and add the \\\&quot;source\\\&quot; parameter when you create a new video. (required)
-     * @param  string $contentRange Content-Range represents the range of bytes that will be returned as a result of the request. Byte ranges are inclusive, meaning that bytes 0-999 represents the first 1000 bytes in a file or object. (optional)
+     * @param  string $contentRange Content-Range can be used if you want to split your file. You can do this by parts, or by chunk. * If you split your file by bytes, bear in mind byte ranges are inclusive, meaning that bytes 0-5242880 represents the first 5,242,880 bytes in a file or object.\\nAlso, the Content-Range header value must match the following pattern: bytes &lt;from_byte&gt;-&lt;to_byte&gt;/&lt;total_bytes&gt;:  * &lt;from_byte&gt; is a positive integer or 0. It represents the range start (aka lower bound), i.e., the first byte of the chunk compared to the total bytes composing the full video source. The first sequential range always starts at 0.  * &lt;to_byte&gt; is a positive integer representing the range end (aka upper bound), i.e., the last byte of the chunk compared to the total bytes composing the full video source.  * &lt;total_bytes&gt; is a positive integer representing the total bytes composing the full video source. It can also be * if or as long as it is unknown. Technically, this value is required only one time and cannot differ in several requests. * If you split your file by part (recommended option), the &#x60;Content-Range&#x60; header value must match the following pattern: &#x60;part &lt;part&gt;/&lt;total_parts&gt;&#x60;:  * &#x60;&lt;part&gt;&#x60; is a positive integer representing the part number. The first sequential part number is always 1.  * &#x60;&lt;total_parts&gt;&#x60; is a positive integer representing the total parts of the video source. It can also be &#x60;*&#x60; if or as long as it is unknown. Technically, this value is required only one time and cannot differ in several requests. (optional)
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -695,7 +695,7 @@ class VideosApi implements ApiInterface
      *
      * @param  string $videoId Enter the videoId you want to use to upload your video. (required)
      * @param  \SplFileObject $file The path to the video you would like to upload. The path must be local. If you want to use a video from an online source, you must use the \\\&quot;/videos\\\&quot; endpoint and add the \\\&quot;source\\\&quot; parameter when you create a new video. (required)
-     * @param  string $contentRange Content-Range represents the range of bytes that will be returned as a result of the request. Byte ranges are inclusive, meaning that bytes 0-999 represents the first 1000 bytes in a file or object. (optional)
+     * @param  string $contentRange Content-Range can be used if you want to split your file. You can do this by parts, or by chunk. * If you split your file by bytes, bear in mind byte ranges are inclusive, meaning that bytes 0-5242880 represents the first 5,242,880 bytes in a file or object.\\nAlso, the Content-Range header value must match the following pattern: bytes &lt;from_byte&gt;-&lt;to_byte&gt;/&lt;total_bytes&gt;:  * &lt;from_byte&gt; is a positive integer or 0. It represents the range start (aka lower bound), i.e., the first byte of the chunk compared to the total bytes composing the full video source. The first sequential range always starts at 0.  * &lt;to_byte&gt; is a positive integer representing the range end (aka upper bound), i.e., the last byte of the chunk compared to the total bytes composing the full video source.  * &lt;total_bytes&gt; is a positive integer representing the total bytes composing the full video source. It can also be * if or as long as it is unknown. Technically, this value is required only one time and cannot differ in several requests. * If you split your file by part (recommended option), the &#x60;Content-Range&#x60; header value must match the following pattern: &#x60;part &lt;part&gt;/&lt;total_parts&gt;&#x60;:  * &#x60;&lt;part&gt;&#x60; is a positive integer representing the part number. The first sequential part number is always 1.  * &#x60;&lt;total_parts&gt;&#x60; is a positive integer representing the total parts of the video source. It can also be &#x60;*&#x60; if or as long as it is unknown. Technically, this value is required only one time and cannot differ in several requests. (optional)
      *
      * @throws \InvalidArgumentException
      * @return Request
@@ -714,8 +714,8 @@ class VideosApi implements ApiInterface
                 'Missing the required parameter $file when calling '
             );
         }
-        if ($contentRange !== null && !preg_match("/^bytes [0-9]*-[0-9]*_\/[0-9]*$/", $contentRange)) {
-            throw new \InvalidArgumentException("invalid value for \"contentRange\" when calling VideosApi.Upload, must conform to the pattern /^bytes [0-9]*-[0-9]*_\/[0-9]*$/.");
+        if ($contentRange !== null && !preg_match("/(?:bytes (?<from>\\d+)-(?<to>\\d+)|part (?<part>\\d+))/(?<total>\\d+|\\*)/", $contentRange)) {
+            throw new \InvalidArgumentException("invalid value for \"contentRange\" when calling VideosApi.Upload, must conform to the pattern /(?:bytes (?<from>\\d+)-(?<to>\\d+)|part (?<part>\\d+))/(?<total>\\d+|\\*)/.");
         }
 
 
