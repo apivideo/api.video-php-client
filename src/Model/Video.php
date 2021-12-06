@@ -158,9 +158,6 @@ class Video implements ModelInterface, \JsonSerializable
         if ($this->container['videoId'] === null) {
             $invalidProperties[] = "'videoId' can't be null";
         }
-        if ($this->container['title'] === null) {
-            $invalidProperties[] = "'title' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -227,7 +224,7 @@ class Video implements ModelInterface, \JsonSerializable
     /**
      * Gets title
      *
-     * @return string
+     * @return string|null
      */
     public function getTitle()
     {
@@ -237,7 +234,7 @@ class Video implements ModelInterface, \JsonSerializable
     /**
      * Sets title
      *
-     * @param string $title The title of the video content.
+     * @param string|null $title The title of the video content.
      *
      * @return self
      */
