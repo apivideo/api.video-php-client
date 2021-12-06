@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete()**](PlayerThemesApi.md#delete) | **DELETE** `/players/{playerId}` | Delete a player
 [**deleteLogo()**](PlayerThemesApi.md#deleteLogo) | **DELETE** `/players/{playerId}/logo` | Delete logo
-[**list()**](PlayerThemesApi.md#list) | **GET** `/players` | List all players
+[**list()**](PlayerThemesApi.md#list) | **GET** `/players` | List all player themes
 [**get()**](PlayerThemesApi.md#get) | **GET** `/players/{playerId}` | Show a player
 [**update()**](PlayerThemesApi.md#update) | **PATCH** `/players/{playerId}` | Update a player
 [**create()**](PlayerThemesApi.md#create) | **POST** `/players` | Create a player
@@ -63,7 +63,7 @@ void (empty response body)
 ## list()
 
 
-Retrieve a list of all the players you created, as well as details about each one. Tutorials that use the [player endpoint](https://api.video/blog/endpoints/player).
+Retrieve a list of all the player themes you created, as well as details about each one. Tutorials that use the [player endpoint](https://api.video/blog/endpoints/player).
 
 
 ### Arguments

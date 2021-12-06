@@ -31,6 +31,7 @@ class PlayerTheme implements ModelInterface, \JsonSerializable
         return new ModelDefinition(
             'player-theme',
             [
+                'name' => 'string',
                 'text' => 'string',
                 'link' => 'string',
                 'linkHover' => 'string',
@@ -52,6 +53,7 @@ class PlayerTheme implements ModelInterface, \JsonSerializable
                 'assets' => '\ApiVideo\Client\Model\PlayerThemeAssets'
             ],
             [
+                'name' => null,
                 'text' => null,
                 'link' => null,
                 'linkHover' => null,
@@ -73,6 +75,7 @@ class PlayerTheme implements ModelInterface, \JsonSerializable
                 'assets' => null
             ],
             [
+                'name' => 'name',
                 'text' => 'text',
                 'link' => 'link',
                 'linkHover' => 'linkHover',
@@ -94,6 +97,7 @@ class PlayerTheme implements ModelInterface, \JsonSerializable
                 'assets' => 'assets'
             ],
             [
+                'name' => 'setName',
                 'text' => 'setText',
                 'link' => 'setLink',
                 'linkHover' => 'setLinkHover',
@@ -115,6 +119,7 @@ class PlayerTheme implements ModelInterface, \JsonSerializable
                 'assets' => 'setAssets'
             ],
             [
+                'name' => 'getName',
                 'text' => 'getText',
                 'link' => 'getLink',
                 'linkHover' => 'getLinkHover',
@@ -155,6 +160,7 @@ class PlayerTheme implements ModelInterface, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->container['name'] = $data['name'] ?? null;
         $this->container['text'] = $data['text'] ?? null;
         $this->container['link'] = $data['link'] ?? null;
         $this->container['linkHover'] = $data['linkHover'] ?? null;
@@ -202,6 +208,30 @@ class PlayerTheme implements ModelInterface, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name The name of the player theme
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
+
+        return $this;
+    }
 
     /**
      * Gets text

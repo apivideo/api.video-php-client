@@ -167,7 +167,7 @@ class PlayerThemesApi implements ApiInterface
 
 
     /**
-     * List all players
+     * List all player themes
      *
      * @param  array $queryParams
      *
