@@ -377,7 +377,7 @@ The thumbnail is the poster that appears in the player window before video playb
 Name | Type | Description  | Example | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
  `videoId` | **string**| Unique identifier of the chosen video | `'videoId_example'` |
- `file` | **\SplFileObject**| The image to be added as a thumbnail. | `new \SplFileObject('path')` |
+ `file` | **\SplFileObject**| The .jpg image to be added as a thumbnail. | `new \SplFileObject('path')` |
 
 
 

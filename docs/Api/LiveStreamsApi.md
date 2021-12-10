@@ -181,7 +181,7 @@ Upload an image to use as a backdrop for your livestream. Tutorials that [update
 Name | Type | Description  | Example | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
  `liveStreamId` | **string**| The unique ID for the live stream you want to upload. | `vi4k0jvEUuaTdRAEjQ4Jfrgz` |
- `file` | **\SplFileObject**| The image to be added as a thumbnail. | `new \SplFileObject('path')` |
+ `file` | **\SplFileObject**| The .jpg image to be added as a thumbnail. | `new \SplFileObject('path')` |
 
 
 
