@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **playerId** | **string** |  |
 **createdAt** | [**\DateTime**](\DateTime.md) | When the player was created, presented in ISO-8601 format. | [optional]
 **updatedAt** | [**\DateTime**](\DateTime.md) | When the player was last updated, presented in ISO-8601 format. | [optional]
-**linkActive** | **string** | Deprecated | [optional]
+**linkActive** | **string** | RGBA color for the play button when hovered. | [optional]
 **assets** | [**\ApiVideo\Client\Model\PlayerThemeAssets**](PlayerThemeAssets.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

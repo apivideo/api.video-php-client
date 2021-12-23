@@ -654,7 +654,7 @@ class PlayerTheme implements ModelInterface, \JsonSerializable
     /**
      * Sets linkActive
      *
-     * @param string|null $linkActive Deprecated
+     * @param string|null $linkActive RGBA color for the play button when hovered.
      *
      * @return self
      */
