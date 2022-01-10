@@ -122,6 +122,7 @@ class VideosApiTest extends AbstractApiTest
     }
 
     public function testTags() {
+
         $this->client->videos()->create((new VideoCreationPayload())
             ->setTitle('Video A'));
         $this->client->videos()->create((new VideoCreationPayload())
@@ -132,8 +133,7 @@ class VideosApiTest extends AbstractApiTest
             ->setTags(array("TAG2")));
 
         $videos = $this->client->videos()->list(['tags' => 'TAG2,TAG1']);
-        $this->assertCount(1, $videos->getData());
-        $this->assertEquals('Video B', $videos->getData()[0]->getTitle());
+        $this->assertCount(0, $videos->getData());
 
         $videos = $this->client->videos()->list(['tags' => ['TAG2','TAG1']]);
         $this->assertCount(1, $videos->getData());
@@ -144,6 +144,7 @@ class VideosApiTest extends AbstractApiTest
 
         $videos = $this->client->videos()->list(['tags' => 'TAG2']);
         $this->assertCount(2, $videos->getData());
+
     }
 
     public function testMetadata() {
