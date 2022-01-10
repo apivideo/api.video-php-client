@@ -286,7 +286,7 @@ class VideosApi implements ApiInterface
 
         // tags query params
         if ($tags !== null) {
-            $queryParams['tags'] = is_array($tags) ? implode(',', $tags) : $tags;
+            $queryParams['tags'] = $tags;
         }
 
         // metadata query params
