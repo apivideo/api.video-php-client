@@ -60,6 +60,12 @@ class UploadToken implements ModelInterface, \JsonSerializable
                 'createdAt' => 'getCreatedAt',
                 'expiresAt' => 'getExpiresAt'
             ],
+            [
+                'token' => null,
+                'ttl' => null,
+                'createdAt' => null,
+                'expiresAt' => null
+            ],
             null
         );
     }

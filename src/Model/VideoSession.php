@@ -70,6 +70,14 @@ class VideoSession implements ModelInterface, \JsonSerializable
                 'os' => 'getOs',
                 'client' => 'getClient'
             ],
+            [
+                'session' => null,
+                'location' => null,
+                'referrer' => null,
+                'device' => null,
+                'os' => null,
+                'client' => null
+            ],
             null
         );
     }

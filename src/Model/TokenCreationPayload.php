@@ -45,6 +45,9 @@ class TokenCreationPayload implements ModelInterface, \JsonSerializable
             [
                 'ttl' => 'getTtl'
             ],
+            [
+                'ttl' => null
+            ],
             null
         );
     }

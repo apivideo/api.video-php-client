@@ -60,6 +60,12 @@ class VideoSessionReferrer implements ModelInterface, \JsonSerializable
                 'source' => 'getSource',
                 'searchTerm' => 'getSearchTerm'
             ],
+            [
+                'url' => null,
+                'medium' => null,
+                'source' => null,
+                'searchTerm' => null
+            ],
             null
         );
     }

@@ -50,6 +50,10 @@ class VideoStatus implements ModelInterface, \JsonSerializable
                 'ingest' => 'getIngest',
                 'encoding' => 'getEncoding'
             ],
+            [
+                'ingest' => null,
+                'encoding' => null
+            ],
             null
         );
     }

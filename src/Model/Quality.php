@@ -55,6 +55,11 @@ class Quality implements ModelInterface, \JsonSerializable
                 'quality' => 'getQuality',
                 'status' => 'getStatus'
             ],
+            [
+                'type' => null,
+                'quality' => null,
+                'status' => null
+            ],
             null
         );
     }

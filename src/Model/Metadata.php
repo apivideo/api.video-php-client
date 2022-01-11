@@ -50,6 +50,10 @@ class Metadata implements ModelInterface, \JsonSerializable
                 'key' => 'getKey',
                 'value' => 'getValue'
             ],
+            [
+                'key' => null,
+                'value' => null
+            ],
             null
         );
     }

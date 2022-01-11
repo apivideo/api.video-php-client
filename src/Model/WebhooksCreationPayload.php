@@ -50,6 +50,10 @@ class WebhooksCreationPayload implements ModelInterface, \JsonSerializable
                 'events' => 'getEvents',
                 'url' => 'getUrl'
             ],
+            [
+                'events' => null,
+                'url' => null
+            ],
             null
         );
     }

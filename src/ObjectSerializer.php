@@ -71,6 +71,10 @@ class ObjectSerializer
                 $formats = $data::getDefinition()->openAPIFormats;
                 foreach ($data::getDefinition()->openAPITypes as $property => $openAPIType) {
                     $getter = $data::getDefinition()->getters[$property];
+                    $isDefinedCheckers = $data::getDefinition()->isDefinedCheckers[$property];
+                    if(isset($isDefinedCheckers) && !$data->$isDefinedCheckers()) {
+                        continue;
+                    }
                     $value = $data->$getter();
                     if ($value !== null && !in_array($openAPIType, ['DateTime', 'bool', 'boolean', 'byte', 'double', 'float', 'int', 'integer', 'mixed', 'number', 'object', 'string', 'void'], true)) {
                         $callable = [$openAPIType, 'getAllowableEnumValues'];
@@ -85,6 +89,8 @@ class ObjectSerializer
                     }
                     if ($value !== null) {
                         $values[$data::getDefinition()->attributeMap[$property]] = self::sanitizeForSerialization($value, $openAPIType, $formats[$property]);
+                    } else if(isset($isDefinedCheckers) && $data->$isDefinedCheckers()) {
+                        $values[$data::getDefinition()->attributeMap[$property]] = NULL;
                     }
                 }
             } else {

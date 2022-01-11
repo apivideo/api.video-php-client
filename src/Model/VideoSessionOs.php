@@ -56,6 +56,11 @@ class VideoSessionOs implements ModelInterface, \JsonSerializable
                 'shortname' => 'getShortname',
                 'version' => 'getVersion'
             ],
+            [
+                'name' => null,
+                'shortname' => null,
+                'version' => null
+            ],
             null
         );
     }

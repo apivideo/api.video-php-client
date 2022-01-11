@@ -50,6 +50,10 @@ class RawStatisticsListPlayerSessionEventsResponse implements ModelInterface, \J
                 'data' => 'getData',
                 'pagination' => 'getPagination'
             ],
+            [
+                'data' => null,
+                'pagination' => null
+            ],
             null
         );
     }

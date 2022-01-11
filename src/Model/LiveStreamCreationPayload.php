@@ -60,6 +60,12 @@ class LiveStreamCreationPayload implements ModelInterface, \JsonSerializable
                 'public' => 'getPublic',
                 'playerId' => 'getPlayerId'
             ],
+            [
+                'name' => null,
+                'record' => null,
+                'public' => null,
+                'playerId' => null
+            ],
             null
         );
     }

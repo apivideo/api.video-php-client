@@ -85,6 +85,17 @@ class VideoStatusEncodingMetadata implements ModelInterface, \JsonSerializable
                 'audioCodec' => 'getAudioCodec',
                 'aspectRatio' => 'getAspectRatio'
             ],
+            [
+                'width' => null,
+                'height' => null,
+                'bitrate' => null,
+                'duration' => null,
+                'framerate' => null,
+                'samplerate' => null,
+                'videoCodec' => null,
+                'audioCodec' => null,
+                'aspectRatio' => null
+            ],
             null
         );
     }

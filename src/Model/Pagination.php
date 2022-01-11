@@ -70,6 +70,14 @@ class Pagination implements ModelInterface, \JsonSerializable
                 'currentPageItems' => 'getCurrentPageItems',
                 'links' => 'getLinks'
             ],
+            [
+                'itemsTotal' => null,
+                'pagesTotal' => null,
+                'pageSize' => null,
+                'currentPage' => null,
+                'currentPageItems' => null,
+                'links' => null
+            ],
             null
         );
     }

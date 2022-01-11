@@ -51,6 +51,10 @@ class LiveStreamSessionLocation implements ModelInterface, \JsonSerializable
                 'country' => 'getCountry',
                 'city' => 'getCity'
             ],
+            [
+                'country' => null,
+                'city' => null
+            ],
             null
         );
     }

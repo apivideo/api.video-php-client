@@ -45,6 +45,9 @@ class VideoThumbnailPickPayload implements ModelInterface, \JsonSerializable
             [
                 'timecode' => 'getTimecode'
             ],
+            [
+                'timecode' => null
+            ],
             null
         );
     }

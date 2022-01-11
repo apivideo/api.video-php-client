@@ -140,6 +140,28 @@ class PlayerTheme implements ModelInterface, \JsonSerializable
                 'linkActive' => 'getLinkActive',
                 'assets' => 'getAssets'
             ],
+            [
+                'name' => null,
+                'text' => null,
+                'link' => null,
+                'linkHover' => null,
+                'trackPlayed' => null,
+                'trackUnplayed' => null,
+                'trackBackground' => null,
+                'backgroundTop' => null,
+                'backgroundBottom' => null,
+                'backgroundText' => null,
+                'enableApi' => null,
+                'enableControls' => null,
+                'forceAutoplay' => null,
+                'hideTitle' => null,
+                'forceLoop' => null,
+                'playerId' => null,
+                'createdAt' => null,
+                'updatedAt' => null,
+                'linkActive' => null,
+                'assets' => null
+            ],
             null
         );
     }

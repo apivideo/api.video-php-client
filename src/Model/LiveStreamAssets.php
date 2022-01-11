@@ -60,6 +60,12 @@ class LiveStreamAssets implements ModelInterface, \JsonSerializable
                 'player' => 'getPlayer',
                 'thumbnail' => 'getThumbnail'
             ],
+            [
+                'hls' => null,
+                'iframe' => null,
+                'player' => null,
+                'thumbnail' => null
+            ],
             null
         );
     }

@@ -38,6 +38,11 @@ final class ModelDefinition
     public $getters;
 
     /**
+     * @var string[]
+     */
+    public $isDefinedCheckers;
+
+    /**
      * @var string|null
      */
     public $discriminator;
@@ -49,6 +54,7 @@ final class ModelDefinition
         array $attributeMap,
         array $setters,
         array $getters,
+        array $isDefinedCheckers,
         ?string $discriminator = null
     ) {
         $this->modelName = $modelName;
@@ -57,6 +63,7 @@ final class ModelDefinition
         $this->attributeMap = $attributeMap;
         $this->setters = $setters;
         $this->getters = $getters;
+        $this->isDefinedCheckers = $isDefinedCheckers;
         $this->discriminator = $discriminator;
     }
 }
