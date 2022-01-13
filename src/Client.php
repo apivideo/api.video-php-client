@@ -138,6 +138,18 @@ class Client
     }
     
     /**
+     * @return \ApiVideo\Client\Api\WatermarksApi
+     */
+    public function watermarks(): \ApiVideo\Client\Api\WatermarksApi
+    {
+        if (!array_key_exists('watermarks', $this->services)) {
+            $this->services['watermarks'] = new \ApiVideo\Client\Api\WatermarksApi($this->baseClient);
+        }
+
+        return $this->services['watermarks'];
+    }
+    
+    /**
      * @return \ApiVideo\Client\Api\WebhooksApi
      */
     public function webhooks(): \ApiVideo\Client\Api\WebhooksApi

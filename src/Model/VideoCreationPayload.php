@@ -39,7 +39,9 @@ class VideoCreationPayload implements ModelInterface, \JsonSerializable
                 'mp4Support' => 'bool',
                 'playerId' => 'string',
                 'tags' => 'string[]',
-                'metadata' => '\ApiVideo\Client\Model\Metadata[]'
+                'metadata' => '\ApiVideo\Client\Model\Metadata[]',
+                'clip' => '\ApiVideo\Client\Model\VideoClip',
+                'watermark' => '\ApiVideo\Client\Model\VideoWatermark'
             ],
             [
                 'title' => null,
@@ -50,7 +52,9 @@ class VideoCreationPayload implements ModelInterface, \JsonSerializable
                 'mp4Support' => null,
                 'playerId' => null,
                 'tags' => null,
-                'metadata' => null
+                'metadata' => null,
+                'clip' => null,
+                'watermark' => null
             ],
             [
                 'title' => 'title',
@@ -61,7 +65,9 @@ class VideoCreationPayload implements ModelInterface, \JsonSerializable
                 'mp4Support' => 'mp4Support',
                 'playerId' => 'playerId',
                 'tags' => 'tags',
-                'metadata' => 'metadata'
+                'metadata' => 'metadata',
+                'clip' => 'clip',
+                'watermark' => 'watermark'
             ],
             [
                 'title' => 'setTitle',
@@ -72,7 +78,9 @@ class VideoCreationPayload implements ModelInterface, \JsonSerializable
                 'mp4Support' => 'setMp4Support',
                 'playerId' => 'setPlayerId',
                 'tags' => 'setTags',
-                'metadata' => 'setMetadata'
+                'metadata' => 'setMetadata',
+                'clip' => 'setClip',
+                'watermark' => 'setWatermark'
             ],
             [
                 'title' => 'getTitle',
@@ -83,7 +91,9 @@ class VideoCreationPayload implements ModelInterface, \JsonSerializable
                 'mp4Support' => 'getMp4Support',
                 'playerId' => 'getPlayerId',
                 'tags' => 'getTags',
-                'metadata' => 'getMetadata'
+                'metadata' => 'getMetadata',
+                'clip' => 'getClip',
+                'watermark' => 'getWatermark'
             ],
             [
                 'title' => null,
@@ -94,7 +104,9 @@ class VideoCreationPayload implements ModelInterface, \JsonSerializable
                 'mp4Support' => null,
                 'playerId' => null,
                 'tags' => null,
-                'metadata' => null
+                'metadata' => null,
+                'clip' => null,
+                'watermark' => null
             ],
             null
         );
@@ -125,6 +137,8 @@ class VideoCreationPayload implements ModelInterface, \JsonSerializable
         $this->container['playerId'] = $data['playerId'] ?? null;
         $this->container['tags'] = $data['tags'] ?? null;
         $this->container['metadata'] = isset($data['metadata']) ?  array_map(function(array $value): Metadata { return new Metadata($value); }, $data['metadata']) : null;
+        $this->container['clip'] = isset($data['clip']) ? new VideoClip($data['clip']) : null;
+        $this->container['watermark'] = isset($data['watermark']) ? new VideoWatermark($data['watermark']) : null;
     }
 
     /**
@@ -366,6 +380,54 @@ class VideoCreationPayload implements ModelInterface, \JsonSerializable
     public function setMetadata($metadata)
     {
         $this->container['metadata'] = $metadata;
+
+        return $this;
+    }
+
+    /**
+     * Gets clip
+     *
+     * @return \ApiVideo\Client\Model\VideoClip|null
+     */
+    public function getClip()
+    {
+        return $this->container['clip'];
+    }
+
+    /**
+     * Sets clip
+     *
+     * @param \ApiVideo\Client\Model\VideoClip|null $clip clip
+     *
+     * @return self
+     */
+    public function setClip($clip)
+    {
+        $this->container['clip'] = $clip;
+
+        return $this;
+    }
+
+    /**
+     * Gets watermark
+     *
+     * @return \ApiVideo\Client\Model\VideoWatermark|null
+     */
+    public function getWatermark()
+    {
+        return $this->container['watermark'];
+    }
+
+    /**
+     * Sets watermark
+     *
+     * @param \ApiVideo\Client\Model\VideoWatermark|null $watermark watermark
+     *
+     * @return self
+     */
+    public function setWatermark($watermark)
+    {
+        $this->container['watermark'] = $watermark;
 
         return $this;
     }

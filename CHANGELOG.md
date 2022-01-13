@@ -1,6 +1,12 @@
 # Changelog
 All changes to this project will be documented in this file.
 
+## [1.2.0] - 2022-01-07
+- Add watermark endpoints
+- Add video clips
+- Fix tags[] query parameter format of GET /videos
+- Correctly distinguish between "undefined", "defined" and "null" values if the playerId parameter of PATCH /videos/{videoId}
+
 ## [1.1.0] - 2021-12-06
 - Add `name` attribute in player themes
 
