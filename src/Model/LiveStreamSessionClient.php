@@ -56,6 +56,11 @@ class LiveStreamSessionClient implements ModelInterface, \JsonSerializable
                 'version' => 'getVersion',
                 'type' => 'getType'
             ],
+            [
+                'name' => null,
+                'version' => null,
+                'type' => null
+            ],
             null
         );
     }

@@ -50,6 +50,10 @@ class PaginationLink implements ModelInterface, \JsonSerializable
                 'rel' => 'getRel',
                 'uri' => 'getUri'
             ],
+            [
+                'rel' => null,
+                'uri' => null
+            ],
             null
         );
     }

@@ -55,6 +55,11 @@ class Chapter implements ModelInterface, \JsonSerializable
                 'src' => 'getSrc',
                 'language' => 'getLanguage'
             ],
+            [
+                'uri' => null,
+                'src' => null,
+                'language' => null
+            ],
             null
         );
     }

@@ -66,6 +66,13 @@ class VideoAssets implements ModelInterface, \JsonSerializable
                 'thumbnail' => 'getThumbnail',
                 'mp4' => 'getMp4'
             ],
+            [
+                'hls' => null,
+                'iframe' => null,
+                'player' => null,
+                'thumbnail' => null,
+                'mp4' => null
+            ],
             null
         );
     }

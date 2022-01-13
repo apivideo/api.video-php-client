@@ -55,6 +55,11 @@ class LiveStreamSessionSession implements ModelInterface, \JsonSerializable
                 'loadedAt' => 'getLoadedAt',
                 'endedAt' => 'getEndedAt'
             ],
+            [
+                'sessionId' => null,
+                'loadedAt' => null,
+                'endedAt' => null
+            ],
             null
         );
     }

@@ -60,6 +60,12 @@ class VideoSessionSession implements ModelInterface, \JsonSerializable
                 'endedAt' => 'getEndedAt',
                 'metadata' => 'getMetadata'
             ],
+            [
+                'sessionId' => null,
+                'loadedAt' => null,
+                'endedAt' => null,
+                'metadata' => null
+            ],
             null
         );
     }

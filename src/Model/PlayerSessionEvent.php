@@ -65,6 +65,13 @@ class PlayerSessionEvent implements ModelInterface, \JsonSerializable
                 'from' => 'getFrom',
                 'to' => 'getTo'
             ],
+            [
+                'type' => null,
+                'emittedAt' => null,
+                'at' => null,
+                'from' => null,
+                'to' => null
+            ],
             null
         );
     }

@@ -50,6 +50,10 @@ class RawStatisticsListSessionsResponse implements ModelInterface, \JsonSerializ
                 'data' => 'getData',
                 'pagination' => 'getPagination'
             ],
+            [
+                'data' => null,
+                'pagination' => null
+            ],
             null
         );
     }

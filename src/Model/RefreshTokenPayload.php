@@ -45,6 +45,9 @@ class RefreshTokenPayload implements ModelInterface, \JsonSerializable
             [
                 'refreshToken' => 'getRefreshToken'
             ],
+            [
+                'refreshToken' => null
+            ],
             null
         );
     }

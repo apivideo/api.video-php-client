@@ -80,6 +80,16 @@ class VideoUpdatePayload implements ModelInterface, \JsonSerializable
                 'tags' => 'getTags',
                 'metadata' => 'getMetadata'
             ],
+            [
+                'playerId' => 'isPlayerIdDefined',
+                'title' => null,
+                'description' => null,
+                'public' => null,
+                'panoramic' => null,
+                'mp4Support' => null,
+                'tags' => null,
+                'metadata' => null
+            ],
             null
         );
     }
@@ -100,7 +110,7 @@ class VideoUpdatePayload implements ModelInterface, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['playerId'] = $data['playerId'] ?? null;
+        if(array_key_exists('playerId', $this->container)) $this->container = $data['playerId']; // playerId can be null or undefined
         $this->container['title'] = $data['title'] ?? null;
         $this->container['description'] = $data['description'] ?? null;
         $this->container['public'] = $data['public'] ?? null;
@@ -142,6 +152,16 @@ class VideoUpdatePayload implements ModelInterface, \JsonSerializable
     public function getPlayerId()
     {
         return $this->container['playerId'];
+    }
+
+    /**
+     * Gets a boolean indicating if the nullable field playerId is defined
+     *
+     * @return boolean
+     */
+    public function isPlayerIdDefined()
+    {
+        return array_key_exists('playerId', $this->container);
     }
 
     /**

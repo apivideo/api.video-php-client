@@ -56,6 +56,11 @@ class VideoSessionDevice implements ModelInterface, \JsonSerializable
                 'vendor' => 'getVendor',
                 'model' => 'getModel'
             ],
+            [
+                'type' => null,
+                'vendor' => null,
+                'model' => null
+            ],
             null
         );
     }

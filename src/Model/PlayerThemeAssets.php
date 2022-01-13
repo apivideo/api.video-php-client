@@ -50,6 +50,10 @@ class PlayerThemeAssets implements ModelInterface, \JsonSerializable
                 'logo' => 'getLogo',
                 'link' => 'getLink'
             ],
+            [
+                'logo' => null,
+                'link' => null
+            ],
             null
         );
     }

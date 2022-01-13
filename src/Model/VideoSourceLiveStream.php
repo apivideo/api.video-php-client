@@ -51,6 +51,10 @@ class VideoSourceLiveStream implements ModelInterface, \JsonSerializable
                 'liveStreamId' => 'getLiveStreamId',
                 'links' => 'getLinks'
             ],
+            [
+                'liveStreamId' => null,
+                'links' => null
+            ],
             null
         );
     }

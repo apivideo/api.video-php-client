@@ -56,6 +56,11 @@ class VideoStatusIngest implements ModelInterface, \JsonSerializable
                 'filesize' => 'getFilesize',
                 'receivedBytes' => 'getReceivedBytes'
             ],
+            [
+                'status' => null,
+                'filesize' => null,
+                'receivedBytes' => null
+            ],
             null
         );
     }

@@ -65,6 +65,13 @@ class BadRequest implements ModelInterface, \JsonSerializable
                 'status' => 'getStatus',
                 'problems' => 'getProblems'
             ],
+            [
+                'type' => null,
+                'title' => null,
+                'name' => null,
+                'status' => null,
+                'problems' => null
+            ],
             null
         );
     }

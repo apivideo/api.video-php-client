@@ -50,6 +50,10 @@ class TokenListResponse implements ModelInterface, \JsonSerializable
                 'data' => 'getData',
                 'pagination' => 'getPagination'
             ],
+            [
+                'data' => null,
+                'pagination' => null
+            ],
             null
         );
     }

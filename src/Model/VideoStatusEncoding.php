@@ -55,6 +55,11 @@ class VideoStatusEncoding implements ModelInterface, \JsonSerializable
                 'qualities' => 'getQualities',
                 'metadata' => 'getMetadata'
             ],
+            [
+                'playable' => null,
+                'qualities' => null,
+                'metadata' => null
+            ],
             null
         );
     }

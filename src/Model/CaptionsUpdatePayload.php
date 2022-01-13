@@ -45,6 +45,9 @@ class CaptionsUpdatePayload implements ModelInterface, \JsonSerializable
             [
                 'default' => 'getDefault'
             ],
+            [
+                'default' => null
+            ],
             null
         );
     }

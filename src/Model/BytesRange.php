@@ -55,6 +55,11 @@ class BytesRange implements ModelInterface, \JsonSerializable
                 'to' => 'getTo',
                 'total' => 'getTotal'
             ],
+            [
+                'from' => null,
+                'to' => null,
+                'total' => null
+            ],
             null
         );
     }

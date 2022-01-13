@@ -60,6 +60,12 @@ class Webhook implements ModelInterface, \JsonSerializable
                 'events' => 'getEvents',
                 'url' => 'getUrl'
             ],
+            [
+                'webhookId' => null,
+                'createdAt' => null,
+                'events' => null,
+                'url' => null
+            ],
             null
         );
     }

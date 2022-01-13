@@ -50,6 +50,10 @@ class Link implements ModelInterface, \JsonSerializable
                 'rel' => 'getRel',
                 'uri' => 'getUri'
             ],
+            [
+                'rel' => null,
+                'uri' => null
+            ],
             null
         );
     }

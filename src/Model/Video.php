@@ -110,6 +110,22 @@ class Video implements ModelInterface, \JsonSerializable
                 'panoramic' => 'getPanoramic',
                 'mp4Support' => 'getMp4Support'
             ],
+            [
+                'videoId' => null,
+                'createdAt' => null,
+                'title' => null,
+                'description' => null,
+                'publishedAt' => null,
+                'updatedAt' => null,
+                'tags' => null,
+                'metadata' => null,
+                'source' => null,
+                'assets' => null,
+                'playerId' => null,
+                'public' => null,
+                'panoramic' => null,
+                'mp4Support' => null
+            ],
             null
         );
     }

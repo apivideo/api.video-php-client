@@ -56,6 +56,11 @@ class VideoSource implements ModelInterface, \JsonSerializable
                 'type' => 'getType',
                 'liveStream' => 'getLiveStream'
             ],
+            [
+                'uri' => null,
+                'type' => null,
+                'liveStream' => null
+            ],
             null
         );
     }

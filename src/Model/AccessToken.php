@@ -60,6 +60,12 @@ class AccessToken implements ModelInterface, \JsonSerializable
                 'refreshToken' => 'getRefreshToken',
                 'expiresIn' => 'getExpiresIn'
             ],
+            [
+                'accessToken' => null,
+                'tokenType' => null,
+                'refreshToken' => null,
+                'expiresIn' => null
+            ],
             null
         );
     }

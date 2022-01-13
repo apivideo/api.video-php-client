@@ -60,6 +60,12 @@ class NotFound implements ModelInterface, \JsonSerializable
                 'name' => 'getName',
                 'status' => 'getStatus'
             ],
+            [
+                'type' => null,
+                'title' => null,
+                'name' => null,
+                'status' => null
+            ],
             null
         );
     }

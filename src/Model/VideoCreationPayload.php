@@ -85,6 +85,17 @@ class VideoCreationPayload implements ModelInterface, \JsonSerializable
                 'tags' => 'getTags',
                 'metadata' => 'getMetadata'
             ],
+            [
+                'title' => null,
+                'description' => null,
+                'source' => null,
+                'public' => null,
+                'panoramic' => null,
+                'mp4Support' => null,
+                'playerId' => null,
+                'tags' => null,
+                'metadata' => null
+            ],
             null
         );
     }

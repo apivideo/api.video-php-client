@@ -60,6 +60,12 @@ class LiveStreamUpdatePayload implements ModelInterface, \JsonSerializable
                 'record' => 'getRecord',
                 'playerId' => 'getPlayerId'
             ],
+            [
+                'name' => null,
+                'public' => null,
+                'record' => null,
+                'playerId' => null
+            ],
             null
         );
     }

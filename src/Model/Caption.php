@@ -60,6 +60,12 @@ class Caption implements ModelInterface, \JsonSerializable
                 'srclang' => 'getSrclang',
                 'default' => 'getDefault'
             ],
+            [
+                'uri' => null,
+                'src' => null,
+                'srclang' => null,
+                'default' => null
+            ],
             null
         );
     }

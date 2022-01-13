@@ -115,6 +115,23 @@ class PlayerThemeCreationPayload implements ModelInterface, \JsonSerializable
                 'hideTitle' => 'getHideTitle',
                 'forceLoop' => 'getForceLoop'
             ],
+            [
+                'name' => null,
+                'text' => null,
+                'link' => null,
+                'linkHover' => null,
+                'trackPlayed' => null,
+                'trackUnplayed' => null,
+                'trackBackground' => null,
+                'backgroundTop' => null,
+                'backgroundBottom' => null,
+                'backgroundText' => null,
+                'enableApi' => null,
+                'enableControls' => null,
+                'forceAutoplay' => null,
+                'hideTitle' => null,
+                'forceLoop' => null
+            ],
             null
         );
     }

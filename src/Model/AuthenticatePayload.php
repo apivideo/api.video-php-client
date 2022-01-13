@@ -45,6 +45,9 @@ class AuthenticatePayload implements ModelInterface, \JsonSerializable
             [
                 'apiKey' => 'getApiKey'
             ],
+            [
+                'apiKey' => null
+            ],
             null
         );
     }

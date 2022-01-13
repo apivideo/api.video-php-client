@@ -50,6 +50,10 @@ class RawStatisticsListLiveStreamAnalyticsResponse implements ModelInterface, \J
                 'data' => 'getData',
                 'pagination' => 'getPagination'
             ],
+            [
+                'data' => null,
+                'pagination' => null
+            ],
             null
         );
     }

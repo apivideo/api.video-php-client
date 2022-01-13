@@ -90,6 +90,18 @@ class LiveStream implements ModelInterface, \JsonSerializable
                 'createdAt' => 'getCreatedAt',
                 'updatedAt' => 'getUpdatedAt'
             ],
+            [
+                'liveStreamId' => null,
+                'name' => null,
+                'streamKey' => null,
+                'record' => null,
+                'public' => null,
+                'assets' => null,
+                'playerId' => null,
+                'broadcasting' => null,
+                'createdAt' => null,
+                'updatedAt' => null
+            ],
             null
         );
     }
