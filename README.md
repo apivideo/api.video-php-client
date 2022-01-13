@@ -25,6 +25,7 @@
     - [RawStatisticsApi](#rawstatisticsapi)
     - [UploadTokensApi](#uploadtokensapi)
     - [VideosApi](#videosapi)
+    - [WatermarksApi](#watermarksapi)
     - [WebhooksApi](#webhooksapi)
   - [Models](#models)
   - [Authentication](#authentication)
@@ -261,6 +262,24 @@ Method | HTTP request | Description
 [**uploadThumbnail**](docs/Api/VideosApi.md#uploadThumbnail) | **POST** `/videos/{videoId}/thumbnail` | Upload a thumbnail
 
 
+### WatermarksApi
+
+#### Retrieve an instance of WatermarksApi
+
+```php
+// The $client must already be initialized
+$watermarks = $client->watermarks();
+```
+
+#### Endpoints
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**delete**](docs/Api/WatermarksApi.md#delete) | **DELETE** `/watermarks/{watermarkId}` | Delete a watermark
+[**list**](docs/Api/WatermarksApi.md#list) | **GET** `/watermarks` | List all watermarks
+[**upload**](docs/Api/WatermarksApi.md#upload) | **POST** `/watermarks` | Upload a watermark
+
+
 ### WebhooksApi
 
 #### Retrieve an instance of WebhooksApi
@@ -324,6 +343,7 @@ Method | HTTP request | Description
  - [UploadToken](docs/Model/UploadToken.md)
  - [Video](docs/Model/Video.md)
  - [VideoAssets](docs/Model/VideoAssets.md)
+ - [VideoClip](docs/Model/VideoClip.md)
  - [VideoCreationPayload](docs/Model/VideoCreationPayload.md)
  - [VideoSession](docs/Model/VideoSession.md)
  - [VideoSessionClient](docs/Model/VideoSessionClient.md)
@@ -341,7 +361,10 @@ Method | HTTP request | Description
  - [VideoStatusIngest](docs/Model/VideoStatusIngest.md)
  - [VideoThumbnailPickPayload](docs/Model/VideoThumbnailPickPayload.md)
  - [VideoUpdatePayload](docs/Model/VideoUpdatePayload.md)
+ - [VideoWatermark](docs/Model/VideoWatermark.md)
  - [VideosListResponse](docs/Model/VideosListResponse.md)
+ - [Watermark](docs/Model/Watermark.md)
+ - [WatermarksListResponse](docs/Model/WatermarksListResponse.md)
  - [Webhook](docs/Model/Webhook.md)
  - [WebhooksCreationPayload](docs/Model/WebhooksCreationPayload.md)
  - [WebhooksListResponse](docs/Model/WebhooksListResponse.md)
