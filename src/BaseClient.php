@@ -16,6 +16,8 @@ use Psr\Http\Message\StreamFactoryInterface;
  */
 class BaseClient
 {
+    private const DEFAULT_USER_AGENT = 'api.video client (php; v:1.2.1; )';
+
     /**
      * @var Authenticator
      */
@@ -41,11 +43,15 @@ class BaseClient
      */
     private $streamFactory;
 
-
     /**
      * @var int
      */
     private $chunkSize;
+
+    /**
+     * @var string
+     */
+    private $userAgent;
 
 
     /**
@@ -63,6 +69,7 @@ class BaseClient
         $this->requestFactory = $requestFactory;
         $this->streamFactory = $streamFactory;
         $this->chunkSize = $chunkSize;
+        $this->userAgent = self::DEFAULT_USER_AGENT;
 
         if ($apiKey) {
             $this->authenticator = new Authenticator($this, $apiKey);
@@ -92,9 +99,26 @@ class BaseClient
             $request = $request->withHeader($name, $value);
         }
 
-        $request = $request->withHeader('User-Agent', 'api.video client (php; v:1.2.0; )');
+        $request = $request->withHeader('User-Agent', $this->userAgent);
 
         return $this->sendRequest($request);
+    }
+
+    /**
+     * @param string $applicationName the application name. Allowed characters: A-Z, a-z, 0-9, -, _, /. Max length: 50.
+     */
+    public function setApplicationName(string $applicationName) {
+        if($applicationName) {
+            if (!preg_match_all('/^[\w\-.\/]{1,50}$/m', $applicationName)) {
+                throw new \InvalidArgumentException(
+                    'Invalid application name. Allowed characters: A-Z, a-z, 0-9, \'-\', \'_\', \'/\'. Max length: 50.'
+                );
+            }
+            $this->userAgent = self::DEFAULT_USER_AGENT . " " . $applicationName;
+            print("setted" . $this->userAgent . "\n");
+        } else {
+            $this->userAgent = self::DEFAULT_USER_AGENT;
+        }
     }
 
     /**

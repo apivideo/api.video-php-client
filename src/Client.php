@@ -52,6 +52,14 @@ class Client
         $this->baseClient = new BaseClient($baseUri, $apiKey, $httpClient, $requestFactory, $streamFactory, $chunkSize);
     }
 
+    /**
+     * @param string $applicationName the application name. Allowed characters: A-Z, a-z, 0-9, -, _, /. Max length: 50.
+     */
+    public function setApplicationName(string $applicationName)
+    {
+        $this->baseClient->setApplicationName($applicationName);
+    }
+
     
     /**
      * @return \ApiVideo\Client\Api\CaptionsApi
