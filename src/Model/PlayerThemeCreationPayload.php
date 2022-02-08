@@ -35,6 +35,7 @@ class PlayerThemeCreationPayload implements ModelInterface, \JsonSerializable
                 'text' => 'string',
                 'link' => 'string',
                 'linkHover' => 'string',
+                'linkActive' => 'string',
                 'trackPlayed' => 'string',
                 'trackUnplayed' => 'string',
                 'trackBackground' => 'string',
@@ -52,6 +53,7 @@ class PlayerThemeCreationPayload implements ModelInterface, \JsonSerializable
                 'text' => null,
                 'link' => null,
                 'linkHover' => null,
+                'linkActive' => null,
                 'trackPlayed' => null,
                 'trackUnplayed' => null,
                 'trackBackground' => null,
@@ -69,6 +71,7 @@ class PlayerThemeCreationPayload implements ModelInterface, \JsonSerializable
                 'text' => 'text',
                 'link' => 'link',
                 'linkHover' => 'linkHover',
+                'linkActive' => 'linkActive',
                 'trackPlayed' => 'trackPlayed',
                 'trackUnplayed' => 'trackUnplayed',
                 'trackBackground' => 'trackBackground',
@@ -86,6 +89,7 @@ class PlayerThemeCreationPayload implements ModelInterface, \JsonSerializable
                 'text' => 'setText',
                 'link' => 'setLink',
                 'linkHover' => 'setLinkHover',
+                'linkActive' => 'setLinkActive',
                 'trackPlayed' => 'setTrackPlayed',
                 'trackUnplayed' => 'setTrackUnplayed',
                 'trackBackground' => 'setTrackBackground',
@@ -103,6 +107,7 @@ class PlayerThemeCreationPayload implements ModelInterface, \JsonSerializable
                 'text' => 'getText',
                 'link' => 'getLink',
                 'linkHover' => 'getLinkHover',
+                'linkActive' => 'getLinkActive',
                 'trackPlayed' => 'getTrackPlayed',
                 'trackUnplayed' => 'getTrackUnplayed',
                 'trackBackground' => 'getTrackBackground',
@@ -120,6 +125,7 @@ class PlayerThemeCreationPayload implements ModelInterface, \JsonSerializable
                 'text' => null,
                 'link' => null,
                 'linkHover' => null,
+                'linkActive' => null,
                 'trackPlayed' => null,
                 'trackUnplayed' => null,
                 'trackBackground' => null,
@@ -156,6 +162,7 @@ class PlayerThemeCreationPayload implements ModelInterface, \JsonSerializable
         $this->container['text'] = $data['text'] ?? null;
         $this->container['link'] = $data['link'] ?? null;
         $this->container['linkHover'] = $data['linkHover'] ?? null;
+        $this->container['linkActive'] = $data['linkActive'] ?? null;
         $this->container['trackPlayed'] = $data['trackPlayed'] ?? null;
         $this->container['trackUnplayed'] = $data['trackUnplayed'] ?? null;
         $this->container['trackBackground'] = $data['trackBackground'] ?? null;
@@ -293,6 +300,30 @@ class PlayerThemeCreationPayload implements ModelInterface, \JsonSerializable
     public function setLinkHover($linkHover)
     {
         $this->container['linkHover'] = $linkHover;
+
+        return $this;
+    }
+
+    /**
+     * Gets linkActive
+     *
+     * @return string|null
+     */
+    public function getLinkActive()
+    {
+        return $this->container['linkActive'];
+    }
+
+    /**
+     * Sets linkActive
+     *
+     * @param string|null $linkActive RGBA color for the play button when hovered.
+     *
+     * @return self
+     */
+    public function setLinkActive($linkActive)
+    {
+        $this->container['linkActive'] = $linkActive;
 
         return $this;
     }

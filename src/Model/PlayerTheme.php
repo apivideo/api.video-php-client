@@ -35,6 +35,7 @@ class PlayerTheme implements ModelInterface, \JsonSerializable
                 'text' => 'string',
                 'link' => 'string',
                 'linkHover' => 'string',
+                'linkActive' => 'string',
                 'trackPlayed' => 'string',
                 'trackUnplayed' => 'string',
                 'trackBackground' => 'string',
@@ -49,7 +50,6 @@ class PlayerTheme implements ModelInterface, \JsonSerializable
                 'playerId' => 'string',
                 'createdAt' => '\DateTime',
                 'updatedAt' => '\DateTime',
-                'linkActive' => 'string',
                 'assets' => '\ApiVideo\Client\Model\PlayerThemeAssets'
             ],
             [
@@ -57,6 +57,7 @@ class PlayerTheme implements ModelInterface, \JsonSerializable
                 'text' => null,
                 'link' => null,
                 'linkHover' => null,
+                'linkActive' => null,
                 'trackPlayed' => null,
                 'trackUnplayed' => null,
                 'trackBackground' => null,
@@ -71,7 +72,6 @@ class PlayerTheme implements ModelInterface, \JsonSerializable
                 'playerId' => null,
                 'createdAt' => 'date-time',
                 'updatedAt' => 'date-time',
-                'linkActive' => null,
                 'assets' => null
             ],
             [
@@ -79,6 +79,7 @@ class PlayerTheme implements ModelInterface, \JsonSerializable
                 'text' => 'text',
                 'link' => 'link',
                 'linkHover' => 'linkHover',
+                'linkActive' => 'linkActive',
                 'trackPlayed' => 'trackPlayed',
                 'trackUnplayed' => 'trackUnplayed',
                 'trackBackground' => 'trackBackground',
@@ -93,7 +94,6 @@ class PlayerTheme implements ModelInterface, \JsonSerializable
                 'playerId' => 'playerId',
                 'createdAt' => 'createdAt',
                 'updatedAt' => 'updatedAt',
-                'linkActive' => 'linkActive',
                 'assets' => 'assets'
             ],
             [
@@ -101,6 +101,7 @@ class PlayerTheme implements ModelInterface, \JsonSerializable
                 'text' => 'setText',
                 'link' => 'setLink',
                 'linkHover' => 'setLinkHover',
+                'linkActive' => 'setLinkActive',
                 'trackPlayed' => 'setTrackPlayed',
                 'trackUnplayed' => 'setTrackUnplayed',
                 'trackBackground' => 'setTrackBackground',
@@ -115,7 +116,6 @@ class PlayerTheme implements ModelInterface, \JsonSerializable
                 'playerId' => 'setPlayerId',
                 'createdAt' => 'setCreatedAt',
                 'updatedAt' => 'setUpdatedAt',
-                'linkActive' => 'setLinkActive',
                 'assets' => 'setAssets'
             ],
             [
@@ -123,6 +123,7 @@ class PlayerTheme implements ModelInterface, \JsonSerializable
                 'text' => 'getText',
                 'link' => 'getLink',
                 'linkHover' => 'getLinkHover',
+                'linkActive' => 'getLinkActive',
                 'trackPlayed' => 'getTrackPlayed',
                 'trackUnplayed' => 'getTrackUnplayed',
                 'trackBackground' => 'getTrackBackground',
@@ -137,7 +138,6 @@ class PlayerTheme implements ModelInterface, \JsonSerializable
                 'playerId' => 'getPlayerId',
                 'createdAt' => 'getCreatedAt',
                 'updatedAt' => 'getUpdatedAt',
-                'linkActive' => 'getLinkActive',
                 'assets' => 'getAssets'
             ],
             [
@@ -145,6 +145,7 @@ class PlayerTheme implements ModelInterface, \JsonSerializable
                 'text' => null,
                 'link' => null,
                 'linkHover' => null,
+                'linkActive' => null,
                 'trackPlayed' => null,
                 'trackUnplayed' => null,
                 'trackBackground' => null,
@@ -159,7 +160,6 @@ class PlayerTheme implements ModelInterface, \JsonSerializable
                 'playerId' => null,
                 'createdAt' => null,
                 'updatedAt' => null,
-                'linkActive' => null,
                 'assets' => null
             ],
             null
@@ -186,6 +186,7 @@ class PlayerTheme implements ModelInterface, \JsonSerializable
         $this->container['text'] = $data['text'] ?? null;
         $this->container['link'] = $data['link'] ?? null;
         $this->container['linkHover'] = $data['linkHover'] ?? null;
+        $this->container['linkActive'] = $data['linkActive'] ?? null;
         $this->container['trackPlayed'] = $data['trackPlayed'] ?? null;
         $this->container['trackUnplayed'] = $data['trackUnplayed'] ?? null;
         $this->container['trackBackground'] = $data['trackBackground'] ?? null;
@@ -200,7 +201,6 @@ class PlayerTheme implements ModelInterface, \JsonSerializable
         $this->container['playerId'] = $data['playerId'] ?? null;
         $this->container['createdAt'] = isset($data['createdAt']) ? new \DateTime($data['createdAt']) : null;
         $this->container['updatedAt'] = isset($data['updatedAt']) ? new \DateTime($data['updatedAt']) : null;
-        $this->container['linkActive'] = $data['linkActive'] ?? null;
         $this->container['assets'] = isset($data['assets']) ? new PlayerThemeAssets($data['assets']) : null;
     }
 
@@ -323,6 +323,30 @@ class PlayerTheme implements ModelInterface, \JsonSerializable
     public function setLinkHover($linkHover)
     {
         $this->container['linkHover'] = $linkHover;
+
+        return $this;
+    }
+
+    /**
+     * Gets linkActive
+     *
+     * @return string|null
+     */
+    public function getLinkActive()
+    {
+        return $this->container['linkActive'];
+    }
+
+    /**
+     * Sets linkActive
+     *
+     * @param string|null $linkActive RGBA color for the play button when hovered.
+     *
+     * @return self
+     */
+    public function setLinkActive($linkActive)
+    {
+        $this->container['linkActive'] = $linkActive;
 
         return $this;
     }
@@ -659,30 +683,6 @@ class PlayerTheme implements ModelInterface, \JsonSerializable
     public function setUpdatedAt($updatedAt)
     {
         $this->container['updatedAt'] = $updatedAt;
-
-        return $this;
-    }
-
-    /**
-     * Gets linkActive
-     *
-     * @return string|null
-     */
-    public function getLinkActive()
-    {
-        return $this->container['linkActive'];
-    }
-
-    /**
-     * Sets linkActive
-     *
-     * @param string|null $linkActive RGBA color for the play button when hovered.
-     *
-     * @return self
-     */
-    public function setLinkActive($linkActive)
-    {
-        $this->container['linkActive'] = $linkActive;
 
         return $this;
     }
