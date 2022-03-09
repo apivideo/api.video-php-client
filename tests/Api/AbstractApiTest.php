@@ -25,5 +25,7 @@ abstract class AbstractApiTest extends TestCase
             $_ENV['API_KEY'],
             $httpClient
         );
+        
+        $this->client->setApplicationName("client-integration-tests");
     }
 }

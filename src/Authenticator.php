@@ -30,13 +30,33 @@ class Authenticator
     private $accessToken;
 
     /**
+     * @var string
+     */
+    private $originAppHeaderValue;
+
+    /**
+     * @var string
+     */
+    private $originClientHeaderValue;
+
+    /**
      * @param BaseClient $client
      * @param string     $apiKey
+     * @param string     $originClientHeaderValue
      */
-    public function __construct(BaseClient $client, string $apiKey)
+    public function __construct(BaseClient $client, string $apiKey, string $originClientHeaderValue)
     {
         $this->client = $client;
         $this->apiKey = $apiKey;
+        $this->originClientHeaderValue = $originClientHeaderValue;
+    }
+
+    /**
+     * @param String $originAppHeaderValue
+     */
+    public function setOriginAppHeaderValue($originAppHeaderValue): void
+    {
+        $this->originAppHeaderValue = $originAppHeaderValue;
     }
 
     /**
@@ -50,9 +70,14 @@ class Authenticator
             [
                 'Accept' => 'application/json',
                 'Content-Type' => 'application/json',
+                'AV-Origin-Client' => $this->originClientHeaderValue,
             ],
             json_encode(['apiKey' => $this->apiKey])
         );
+
+        if($this->originAppHeaderValue) {
+            $request = $request->setHeader('AV-Origin-App', $this->originAppHeaderValue);
+        }
 
         $properties = $this->client->request($request);
 
