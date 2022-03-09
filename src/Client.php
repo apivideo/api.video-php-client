@@ -53,11 +53,12 @@ class Client
     }
 
     /**
-     * @param string $applicationName the application name. Allowed characters: A-Z, a-z, 0-9, -, _, /. Max length: 50.
+     * @param string $applicationName the application name. Allowed characters: A-Z, a-z, 0-9, -. Max length: 50.
+     * @param string $applicationVersion the application version (optional). Pattern: xxx[.yyy][.zzz].
      */
-    public function setApplicationName(string $applicationName)
+    public function setApplicationName(string $applicationName, string $applicationVersion = "")
     {
-        $this->baseClient->setApplicationName($applicationName);
+        $this->baseClient->setApplicationName($applicationName, $applicationVersion);
     }
 
     
