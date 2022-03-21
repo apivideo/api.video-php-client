@@ -170,7 +170,7 @@ class BytesRange implements ModelInterface, \JsonSerializable
     /**
      * Sets total
      *
-     * @param int|null $total The total number of bytes in the provided range.
+     * @param int|null $total The total number of expected bytes.
      *
      * @return self
      */
