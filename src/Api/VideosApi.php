@@ -789,7 +789,7 @@ class VideosApi implements ApiInterface
      * Upload a thumbnail
      *
      * @param  string $videoId Unique identifier of the chosen video (required)
-     * @param  \SplFileObject $file The .jpg image to be added as a thumbnail. (required)
+     * @param  \SplFileObject $file The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The max allowed size is 8 MiB. (required)
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -808,7 +808,7 @@ class VideosApi implements ApiInterface
      * Create request for operation 'uploadThumbnail'
      *
      * @param  string $videoId Unique identifier of the chosen video (required)
-     * @param  \SplFileObject $file The .jpg image to be added as a thumbnail. (required)
+     * @param  \SplFileObject $file The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The max allowed size is 8 MiB. (required)
      *
      * @throws \InvalidArgumentException
      * @return Request

@@ -183,7 +183,7 @@ class WatermarksApi implements ApiInterface
     /**
      * Upload a watermark
      *
-     * @param  \SplFileObject $file The .jpg or .png image to be added as a watermark. (required)
+     * @param  \SplFileObject $file The &#x60;.jpg&#x60; or &#x60;.png&#x60; image to be added as a watermark. (required)
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -201,7 +201,7 @@ class WatermarksApi implements ApiInterface
     /**
      * Create request for operation 'upload'
      *
-     * @param  \SplFileObject $file The .jpg or .png image to be added as a watermark. (required)
+     * @param  \SplFileObject $file The &#x60;.jpg&#x60; or &#x60;.png&#x60; image to be added as a watermark. (required)
      *
      * @throws \InvalidArgumentException
      * @return Request

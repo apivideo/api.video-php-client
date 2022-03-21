@@ -377,7 +377,7 @@ The thumbnail is the poster that appears in the player window before video playb
 Name | Type | Description  | Example | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
  `videoId` | **string**| Unique identifier of the chosen video | `'videoId_example'` |
- `file` | **\SplFileObject**| The .jpg image to be added as a thumbnail. | `new \SplFileObject('path')` |
+ `file` | **\SplFileObject**| The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The max allowed size is 8 MiB. | `new \SplFileObject('path')` |
 
 
 
