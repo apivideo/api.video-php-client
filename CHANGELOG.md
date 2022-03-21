@@ -1,6 +1,9 @@
 # Changelog
 All changes to this project will be documented in this file.
 
+## [1.2.3] - 2022-03-21
+- Add `ingest.receivedParts` attribute in GET /videos/{video_id}/status
+
 ## [1.2.2] - 2022-03-09
 - Add Origin identification headers
 

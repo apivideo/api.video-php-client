@@ -12,7 +12,7 @@ Method | HTTP request | Description
 ## delete()
 
 
-Delete a watermark. A watermark is a static image overlapping a video used as a \"stamp\" to limit leetching.
+Delete a watermark. A watermark is a static image, directly burnt-into a video.
 
 
 ### Arguments
@@ -36,7 +36,7 @@ void (empty response body)
 ## list()
 
 
-List all watermarks. A watermark is a static image overlapping a video used as a \"stamp\" to limit leetching.
+List all watermarks. A watermark is a static image, directly burnt into a video. After you have created your watermark, you can define its placement and aspect when you [create a video](https://docs.api.video/reference/post-video).
 
 
 ### Arguments
@@ -69,8 +69,42 @@ Name | Type | Description  | Example | Notes
 ## upload()
 
 
-Create a new watermark by uploading a .jpg or a .png image. A watermark is a static image overlapping a video used as a \"stamp\" to limit leetching.
+Create a new watermark by uploading a `JPG` or a `PNG` image. A watermark is a static image, directly burnt into a video. After you have created your watermark, you can define its placement and aspect when you [create a video](https://docs.api.video/reference/post-video).
 
+### Example
+
+```php
+<?php
+  use ApiVideo\Client\Model\VideoCreationPayload;
+  use ApiVideo\Client\Model\VideoWatermark;
+
+  require __DIR__ . '/vendor/autoload.php';
+
+  $httpClient = new \Symfony\Component\HttpClient\Psr18Client();
+  $client = new \ApiVideo\Client(
+                      'https://sandbox.api.video',
+                      'YOUR_API_TOKEN',
+                      $httpClient
+                  );
+
+  // upload the watermark
+  $watermark = $client->watermarks()->upload(new SplFileObject(__DIR__ . '/watermark.png'));
+
+  // create a new video with the watermark
+  $video = $client->videos()->create((new VideoCreationPayload())
+          ->setWatermark((new VideoWatermark())
+                  ->setId($watermark->getWatermarkId())
+                  ->setTop("0px")
+                  ->setLeft("0px")
+                  ->setWidth("100px")
+                  ->setHeight("100px"))
+          ->setTitle("Test PHP watermark")
+  );
+
+  // upload the video
+  $client->videos()->upload($video->getVideoId(), new SplFileObject(__DIR__ . '/558k.mp4'));
+
+```
 
 ### Arguments
 
@@ -78,7 +112,7 @@ Create a new watermark by uploading a .jpg or a .png image. A watermark is a sta
 
 Name | Type | Description  | Example | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
- `file` | **\SplFileObject**| The .jpg or .png image to be added as a watermark. | `new \SplFileObject('path')` |
+ `file` | **\SplFileObject**| The &#x60;.jpg&#x60; or &#x60;.png&#x60; image to be added as a watermark. | `new \SplFileObject('path')` |
 
 
 

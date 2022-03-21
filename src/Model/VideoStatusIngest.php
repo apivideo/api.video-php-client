@@ -34,32 +34,38 @@ class VideoStatusIngest implements ModelInterface, \JsonSerializable
             [
                 'status' => 'string',
                 'filesize' => 'int',
-                'receivedBytes' => '\ApiVideo\Client\Model\BytesRange[]'
+                'receivedBytes' => '\ApiVideo\Client\Model\BytesRange[]',
+                'receivedParts' => '\ApiVideo\Client\Model\VideoStatusIngestReceivedParts'
             ],
             [
                 'status' => null,
                 'filesize' => null,
-                'receivedBytes' => null
+                'receivedBytes' => null,
+                'receivedParts' => null
             ],
             [
                 'status' => 'status',
                 'filesize' => 'filesize',
-                'receivedBytes' => 'receivedBytes'
+                'receivedBytes' => 'receivedBytes',
+                'receivedParts' => 'receivedParts'
             ],
             [
                 'status' => 'setStatus',
                 'filesize' => 'setFilesize',
-                'receivedBytes' => 'setReceivedBytes'
+                'receivedBytes' => 'setReceivedBytes',
+                'receivedParts' => 'setReceivedParts'
             ],
             [
                 'status' => 'getStatus',
                 'filesize' => 'getFilesize',
-                'receivedBytes' => 'getReceivedBytes'
+                'receivedBytes' => 'getReceivedBytes',
+                'receivedParts' => 'getReceivedParts'
             ],
             [
                 'status' => null,
                 'filesize' => null,
-                'receivedBytes' => null
+                'receivedBytes' => null,
+                'receivedParts' => null
             ],
             null
         );
@@ -101,6 +107,7 @@ class VideoStatusIngest implements ModelInterface, \JsonSerializable
         $this->container['status'] = $data['status'] ?? null;
         $this->container['filesize'] = $data['filesize'] ?? null;
         $this->container['receivedBytes'] = isset($data['receivedBytes']) ?  array_map(function(array $value): BytesRange { return new BytesRange($value); }, $data['receivedBytes']) : null;
+        $this->container['receivedParts'] = isset($data['receivedParts']) ? new VideoStatusIngestReceivedParts($data['receivedParts']) : null;
     }
 
     /**
@@ -214,6 +221,30 @@ class VideoStatusIngest implements ModelInterface, \JsonSerializable
     public function setReceivedBytes($receivedBytes)
     {
         $this->container['receivedBytes'] = $receivedBytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets receivedParts
+     *
+     * @return \ApiVideo\Client\Model\VideoStatusIngestReceivedParts|null
+     */
+    public function getReceivedParts()
+    {
+        return $this->container['receivedParts'];
+    }
+
+    /**
+     * Sets receivedParts
+     *
+     * @param \ApiVideo\Client\Model\VideoStatusIngestReceivedParts|null $receivedParts receivedParts
+     *
+     * @return self
+     */
+    public function setReceivedParts($receivedParts)
+    {
+        $this->container['receivedParts'] = $receivedParts;
 
         return $this;
     }

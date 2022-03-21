@@ -359,6 +359,7 @@ Method | HTTP request | Description
  - [VideoStatusEncoding](docs/Model/VideoStatusEncoding.md)
  - [VideoStatusEncodingMetadata](docs/Model/VideoStatusEncodingMetadata.md)
  - [VideoStatusIngest](docs/Model/VideoStatusIngest.md)
+ - [VideoStatusIngestReceivedParts](docs/Model/VideoStatusIngestReceivedParts.md)
  - [VideoThumbnailPickPayload](docs/Model/VideoThumbnailPickPayload.md)
  - [VideoUpdatePayload](docs/Model/VideoUpdatePayload.md)
  - [VideoWatermark](docs/Model/VideoWatermark.md)

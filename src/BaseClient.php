@@ -71,7 +71,7 @@ class BaseClient
         $this->originAppHeaderValue = "";
 
         if ($apiKey) {
-            $this->authenticator = new Authenticator($this, $apiKey, 'php:1.2.2');
+            $this->authenticator = new Authenticator($this, $apiKey, 'php:1.2.3');
         }
     }
 
@@ -101,7 +101,7 @@ class BaseClient
         if($this->originAppHeaderValue) {
             $request = $request->withHeader('AV-Origin-App', $this->originAppHeaderValue);
         }
-        $request = $request->withHeader('AV-Origin-Client', 'php:1.2.2');
+        $request = $request->withHeader('AV-Origin-Client', 'php:1.2.3');
 
         return $this->sendRequest($request);
     }
