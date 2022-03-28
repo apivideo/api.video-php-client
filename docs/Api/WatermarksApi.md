@@ -83,7 +83,7 @@ Create a new watermark by uploading a `JPG` or a `PNG` image. A watermark is a s
   $httpClient = new \Symfony\Component\HttpClient\Psr18Client();
   $client = new \ApiVideo\Client(
                       'https://sandbox.api.video',
-                      'YOUR_API_TOKEN',
+                      'YOUR_API_KEY',
                       $httpClient
                   );
 
@@ -103,7 +103,6 @@ Create a new watermark by uploading a `JPG` or a `PNG` image. A watermark is a s
 
   // upload the video
   $client->videos()->upload($video->getVideoId(), new SplFileObject(__DIR__ . '/558k.mp4'));
-
 ```
 
 ### Arguments

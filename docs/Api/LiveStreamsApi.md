@@ -149,6 +149,22 @@ Name | Type | Description  | Example | Notes
 
 A live stream will give you the 'connection point' to RTMP your video stream to api.video. It will also give you the details for viewers to watch the same livestream.  The public=false 'private livestream' is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer. See our [Live Stream Tutorial](https://api.video/blog/tutorials/live-stream-tutorial) for a walkthrough of this API with OBS. Your RTMP endpoint for the livestream is rtmp://broadcast.api.video/s/{streamKey} Tutorials that [create live streams](https://api.video/blog/endpoints/live-create).
 
+### Example
+
+```php
+// instantiate the client 
+$client = new \ApiVideo\Client\Client(
+    'https://ws.api.video',
+    'YOUR_API_KEY',
+    new \Symfony\Component\HttpClient\Psr18Client()
+);
+
+$liveStream = $client->liveStreams()->create((new \ApiVideo\Client\Model\LiveStreamCreationPayload())
+    ->setRecord(false)
+    ->setName("My Live Stream Video")
+    ->setPublic(true)
+    ->setPlayerId("pl4f4ferf5erfr5zed4fsdd"));
+```
 
 ### Arguments
 

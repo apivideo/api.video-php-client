@@ -103,7 +103,7 @@ require __DIR__ . '/vendor/autoload.php';
 $httpClient = new \Symfony\Component\HttpClient\Psr18Client();
 $client = new \ApiVideo\Client(
                     'https://sandbox.api.video',
-                    'YOUR_API_TOKEN',
+                    'YOUR_API_KEY',
                     $httpClient
                 );
 
@@ -119,7 +119,6 @@ $videosWithTag = $client->videos()->list(['tags' => ['TAG2','TAG1']]);
 
 // list videos that have all the given metadata values (only first results page)
 $videosWithMetadata = $client->videos()->list(['metadata' => ['key1' => 'key1value1', 'key2' => 'key2value1']]);
-
 ```
 
 ### Arguments
@@ -175,7 +174,7 @@ require __DIR__ . '/../../../vendor/autoload.php';
 $httpClient = new \Symfony\Component\HttpClient\Psr18Client();
 $client = new \ApiVideo\Client(
                     'https://sandbox.api.video',
-                    'YOUR_API_TOKEN',
+                    'YOUR_API_KEY',
                     $httpClient
                 );
 
@@ -187,7 +186,6 @@ $client->videos()->update("vi6DEWhlgoHU3Ig5tgPlYkBc", (new VideoUpdatePayload())
     ->setMetadata(array(
         new Metadata(["key" => "aa", 'value' => "bb"]),
         new Metadata(["key" => "aa2", 'value' => "bb2"]))));
-
 ```
 
 ### Arguments
@@ -284,7 +282,7 @@ require __DIR__ . '/vendor/autoload.php';
 $httpClient = new \Symfony\Component\HttpClient\Psr18Client();
 $client = new \ApiVideo\Client(
                     'https://sandbox.api.video',
-                    'YOUR_API_TOKEN',
+                    'YOUR_API_KEY',
                     $httpClient
                 );
 
@@ -294,7 +292,6 @@ $myVideo = $client->videos()->create((new VideoCreationPayload())
     ->setMetadata(array(
         new Metadata(['key' => 'key1', 'value' => 'key1value1']),
         new Metadata(['key' => 'key2', 'value' => 'key2value1']))));
-
 ```
 
 ### Arguments
@@ -341,7 +338,7 @@ require __DIR__ . '/vendor/autoload.php';
 $httpClient = new \Symfony\Component\HttpClient\Psr18Client();
 $client = new \ApiVideo\Client(
                     'https://sandbox.api.video',
-                    'YOUR_API_TOKEN',
+                    'YOUR_API_KEY',
                     $httpClient
                 );
 
@@ -358,7 +355,6 @@ $progressiveSession->uploadPart(new SplFileObject(__DIR__ . '/../../../tests/res
 $progressiveSession->uploadPart(new SplFileObject(__DIR__ . '/../../../tests/resources/10m.mp4.part.b'));
 
 $progressiveSession->uploadLastPart(new SplFileObject(__DIR__ . '/../../../tests/resources/10m.mp4.part.c'));
-
 ```
 
 ### Arguments
