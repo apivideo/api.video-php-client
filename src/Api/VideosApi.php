@@ -105,7 +105,7 @@ class VideosApi implements ApiInterface
 
 
     /**
-     * Show a video
+     * Retrieve a video
      *
      * @param  string $videoId The unique identifier for the video you want details about. (required)
      *
@@ -169,7 +169,7 @@ class VideosApi implements ApiInterface
 
 
     /**
-     * Show video status
+     * Retrieve video status
      *
      * @param  string $videoId The unique identifier for the video you want the status for. (required)
      *

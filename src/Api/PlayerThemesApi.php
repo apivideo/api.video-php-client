@@ -243,7 +243,7 @@ class PlayerThemesApi implements ApiInterface
 
 
     /**
-     * Show a player
+     * Retrieve a player
      *
      * @param  string $playerId The unique identifier for the player you want to retrieve. (required)
      *

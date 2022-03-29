@@ -181,7 +181,7 @@ class UploadTokensApi implements ApiInterface
 
 
     /**
-     * Show upload token
+     * Retrieve upload token
      *
      * @param  string $uploadToken The unique identifier for the token you want information about. (required)
      *

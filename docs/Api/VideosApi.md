@@ -5,8 +5,8 @@ All URIs are relative to https://ws.api.video.
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete()**](VideosApi.md#delete) | **DELETE** `/videos/{videoId}` | Delete a video
-[**get()**](VideosApi.md#get) | **GET** `/videos/{videoId}` | Show a video
-[**getStatus()**](VideosApi.md#getStatus) | **GET** `/videos/{videoId}/status` | Show video status
+[**get()**](VideosApi.md#get) | **GET** `/videos/{videoId}` | Retrieve a video
+[**getStatus()**](VideosApi.md#getStatus) | **GET** `/videos/{videoId}/status` | Retrieve video status
 [**list()**](VideosApi.md#list) | **GET** `/videos` | List all videos
 [**update()**](VideosApi.md#update) | **PATCH** `/videos/{videoId}` | Update a video
 [**pickThumbnail()**](VideosApi.md#pickThumbnail) | **PATCH** `/videos/{videoId}/thumbnail` | Pick a thumbnail
@@ -158,7 +158,10 @@ Name | Type | Description  | Example | Notes
 
 Updates the parameters associated with your video. The video you are updating is determined by the video ID you provide. 
 
+
+
 NOTE: If you are updating an array, you must provide the entire array as what you provide here overwrites what is in the system rather than appending to it.
+
 
 
 ### Example
@@ -212,9 +215,14 @@ Name | Type | Description  | Example | Notes
 
 Pick a thumbnail from the given time code. 
 
+
+
 If you'd like to upload an image for your thumbnail, use the dedicated [method](#uploadThumbnail). 
 
+
+
 There may be a short delay for the thumbnail to update.
+
 
 
 
@@ -317,13 +325,22 @@ Name | Type | Description  | Example | Notes
 
 To upload a video to the videoId you created. You can only upload your video to the videoId once.
 
+
+
 We offer 2 types of upload: 
+
 * Regular upload 
+
 * Progressive upload
+
 The latter allows you to split a video source into X chunks and send those chunks independently (concurrently or sequentially). The 2 main goals for our users are to
+
   * allow the upload of video sources > 200 MiB (200 MiB = the max. allowed file size for regular upload)
+
   * allow to send a video source "progressively", i.e., before before knowing the total size of the video.
+
   Once all chunks have been sent, they are reaggregated to one source file. The video source is considered as "completely sent" when the "last" chunk is sent (i.e., the chunk that "completes" the upload).
+
 
 
 ### Example
@@ -382,9 +399,15 @@ Name | Type | Description  | Example | Notes
 
 The thumbnail is the poster that appears in the player window before video playback begins.
 
+
+
 This endpoint allows you to upload an image for the thumbnail.
 
+
+
 To select a still frame from the video using a time stamp, use the [dedicated method](#pickThumbnail) to pick a time in the video.
+
+
 
 Note: There may be a short delay before the new thumbnail is delivered to our CDN.
 
