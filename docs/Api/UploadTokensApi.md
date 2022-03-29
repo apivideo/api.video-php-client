@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**deleteToken()**](UploadTokensApi.md#deleteToken) | **DELETE** `/upload-tokens/{uploadToken}` | Delete an upload token
 [**list()**](UploadTokensApi.md#list) | **GET** `/upload-tokens` | List all active upload tokens.
-[**getToken()**](UploadTokensApi.md#getToken) | **GET** `/upload-tokens/{uploadToken}` | Show upload token
+[**getToken()**](UploadTokensApi.md#getToken) | **GET** `/upload-tokens/{uploadToken}` | Retrieve upload token
 [**createToken()**](UploadTokensApi.md#createToken) | **POST** `/upload-tokens` | Generate an upload token
 
 

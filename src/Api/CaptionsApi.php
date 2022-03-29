@@ -201,7 +201,7 @@ class CaptionsApi implements ApiInterface
 
 
     /**
-     * Show a caption
+     * Retrieve a caption
      *
      * @param  string $videoId The unique identifier for the video you want captions for. (required)
      * @param  string $language A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation (required)
@@ -281,7 +281,7 @@ class CaptionsApi implements ApiInterface
 
 
     /**
-     * Update caption
+     * Update a caption
      *
      * @param  string $videoId The unique identifier for the video you want to have automatic captions for. (required)
      * @param  string $language A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation. (required)

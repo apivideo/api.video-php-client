@@ -107,7 +107,7 @@ class LiveStreamsApi implements ApiInterface
     /**
      * Delete a thumbnail
      *
-     * @param  string $liveStreamId The unique identifier for the live stream you want to delete. (required)
+     * @param  string $liveStreamId The unique identifier of the live stream whose thumbnail you want to delete. (required)
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -125,7 +125,7 @@ class LiveStreamsApi implements ApiInterface
     /**
      * Create request for operation 'deleteThumbnail'
      *
-     * @param  string $liveStreamId The unique identifier for the live stream you want to delete. (required)
+     * @param  string $liveStreamId The unique identifier of the live stream whose thumbnail you want to delete. (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
@@ -257,7 +257,7 @@ class LiveStreamsApi implements ApiInterface
 
 
     /**
-     * Show live stream
+     * Retrieve live stream
      *
      * @param  string $liveStreamId The unique ID for the live stream you want to watch. (required)
      *

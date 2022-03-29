@@ -105,7 +105,7 @@ class WebhooksApi implements ApiInterface
 
 
     /**
-     * Show Webhook details
+     * Retrieve Webhook details
      *
      * @param  string $webhookId The unique webhook you wish to retreive details on. (required)
      *

@@ -79,7 +79,7 @@ require __DIR__ . '/vendor/autoload.php';
 $httpClient = new \Symfony\Component\HttpClient\Psr18Client();
 $client = new \ApiVideo\Client\Client(
     'https://sandbox.api.video',
-    'YOUR_API_TOKEN',
+    'YOUR_API_KEY',
     $httpClient
 );
 ?>
@@ -132,8 +132,8 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete**](docs/Api/CaptionsApi.md#delete) | **DELETE** `/videos/{videoId}/captions/{language}` | Delete a caption
 [**list**](docs/Api/CaptionsApi.md#list) | **GET** `/videos/{videoId}/captions` | List video captions
-[**get**](docs/Api/CaptionsApi.md#get) | **GET** `/videos/{videoId}/captions/{language}` | Show a caption
-[**update**](docs/Api/CaptionsApi.md#update) | **PATCH** `/videos/{videoId}/captions/{language}` | Update caption
+[**get**](docs/Api/CaptionsApi.md#get) | **GET** `/videos/{videoId}/captions/{language}` | Retrieve a caption
+[**update**](docs/Api/CaptionsApi.md#update) | **PATCH** `/videos/{videoId}/captions/{language}` | Update a caption
 [**upload**](docs/Api/CaptionsApi.md#upload) | **POST** `/videos/{videoId}/captions/{language}` | Upload a caption
 
 
@@ -152,7 +152,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete**](docs/Api/ChaptersApi.md#delete) | **DELETE** `/videos/{videoId}/chapters/{language}` | Delete a chapter
 [**list**](docs/Api/ChaptersApi.md#list) | **GET** `/videos/{videoId}/chapters` | List video chapters
-[**get**](docs/Api/ChaptersApi.md#get) | **GET** `/videos/{videoId}/chapters/{language}` | Show a chapter
+[**get**](docs/Api/ChaptersApi.md#get) | **GET** `/videos/{videoId}/chapters/{language}` | Retrieve a chapter
 [**upload**](docs/Api/ChaptersApi.md#upload) | **POST** `/videos/{videoId}/chapters/{language}` | Upload a chapter
 
 
@@ -172,7 +172,7 @@ Method | HTTP request | Description
 [**delete**](docs/Api/LiveStreamsApi.md#delete) | **DELETE** `/live-streams/{liveStreamId}` | Delete a live stream
 [**deleteThumbnail**](docs/Api/LiveStreamsApi.md#deleteThumbnail) | **DELETE** `/live-streams/{liveStreamId}/thumbnail` | Delete a thumbnail
 [**list**](docs/Api/LiveStreamsApi.md#list) | **GET** `/live-streams` | List all live streams
-[**get**](docs/Api/LiveStreamsApi.md#get) | **GET** `/live-streams/{liveStreamId}` | Show live stream
+[**get**](docs/Api/LiveStreamsApi.md#get) | **GET** `/live-streams/{liveStreamId}` | Retrieve live stream
 [**update**](docs/Api/LiveStreamsApi.md#update) | **PATCH** `/live-streams/{liveStreamId}` | Update a live stream
 [**create**](docs/Api/LiveStreamsApi.md#create) | **POST** `/live-streams` | Create live stream
 [**uploadThumbnail**](docs/Api/LiveStreamsApi.md#uploadThumbnail) | **POST** `/live-streams/{liveStreamId}/thumbnail` | Upload a thumbnail
@@ -194,7 +194,7 @@ Method | HTTP request | Description
 [**delete**](docs/Api/PlayerThemesApi.md#delete) | **DELETE** `/players/{playerId}` | Delete a player
 [**deleteLogo**](docs/Api/PlayerThemesApi.md#deleteLogo) | **DELETE** `/players/{playerId}/logo` | Delete logo
 [**list**](docs/Api/PlayerThemesApi.md#list) | **GET** `/players` | List all player themes
-[**get**](docs/Api/PlayerThemesApi.md#get) | **GET** `/players/{playerId}` | Show a player
+[**get**](docs/Api/PlayerThemesApi.md#get) | **GET** `/players/{playerId}` | Retrieve a player
 [**update**](docs/Api/PlayerThemesApi.md#update) | **PATCH** `/players/{playerId}` | Update a player
 [**create**](docs/Api/PlayerThemesApi.md#create) | **POST** `/players` | Create a player
 [**uploadLogo**](docs/Api/PlayerThemesApi.md#uploadLogo) | **POST** `/players/{playerId}/logo` | Upload a logo
@@ -233,7 +233,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**deleteToken**](docs/Api/UploadTokensApi.md#deleteToken) | **DELETE** `/upload-tokens/{uploadToken}` | Delete an upload token
 [**list**](docs/Api/UploadTokensApi.md#list) | **GET** `/upload-tokens` | List all active upload tokens.
-[**getToken**](docs/Api/UploadTokensApi.md#getToken) | **GET** `/upload-tokens/{uploadToken}` | Show upload token
+[**getToken**](docs/Api/UploadTokensApi.md#getToken) | **GET** `/upload-tokens/{uploadToken}` | Retrieve upload token
 [**createToken**](docs/Api/UploadTokensApi.md#createToken) | **POST** `/upload-tokens` | Generate an upload token
 
 
@@ -251,8 +251,8 @@ $videos = $client->videos();
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete**](docs/Api/VideosApi.md#delete) | **DELETE** `/videos/{videoId}` | Delete a video
-[**get**](docs/Api/VideosApi.md#get) | **GET** `/videos/{videoId}` | Show a video
-[**getStatus**](docs/Api/VideosApi.md#getStatus) | **GET** `/videos/{videoId}/status` | Show video status
+[**get**](docs/Api/VideosApi.md#get) | **GET** `/videos/{videoId}` | Retrieve a video
+[**getStatus**](docs/Api/VideosApi.md#getStatus) | **GET** `/videos/{videoId}/status` | Retrieve video status
 [**list**](docs/Api/VideosApi.md#list) | **GET** `/videos` | List all videos
 [**update**](docs/Api/VideosApi.md#update) | **PATCH** `/videos/{videoId}` | Update a video
 [**pickThumbnail**](docs/Api/VideosApi.md#pickThumbnail) | **PATCH** `/videos/{videoId}/thumbnail` | Pick a thumbnail
@@ -294,7 +294,7 @@ $webhooks = $client->webhooks();
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete**](docs/Api/WebhooksApi.md#delete) | **DELETE** `/webhooks/{webhookId}` | Delete a Webhook
-[**get**](docs/Api/WebhooksApi.md#get) | **GET** `/webhooks/{webhookId}` | Show Webhook details
+[**get**](docs/Api/WebhooksApi.md#get) | **GET** `/webhooks/{webhookId}` | Retrieve Webhook details
 [**list**](docs/Api/WebhooksApi.md#list) | **GET** `/webhooks` | List all webhooks
 [**create**](docs/Api/WebhooksApi.md#create) | **POST** `/webhooks` | Create Webhook
 
@@ -373,7 +373,7 @@ Method | HTTP request | Description
 
 ## Authentication
 
-Some endpoints don't require authentication. These one can be called with a Client instantiated with a `null` API token:
+Some endpoints don't require authentication. These one can be called with a Client instantiated with a `null` API key:
 
 ```php
 <?php

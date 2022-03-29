@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**delete()**](PlayerThemesApi.md#delete) | **DELETE** `/players/{playerId}` | Delete a player
 [**deleteLogo()**](PlayerThemesApi.md#deleteLogo) | **DELETE** `/players/{playerId}/logo` | Delete logo
 [**list()**](PlayerThemesApi.md#list) | **GET** `/players` | List all player themes
-[**get()**](PlayerThemesApi.md#get) | **GET** `/players/{playerId}` | Show a player
+[**get()**](PlayerThemesApi.md#get) | **GET** `/players/{playerId}` | Retrieve a player
 [**update()**](PlayerThemesApi.md#update) | **PATCH** `/players/{playerId}` | Update a player
 [**create()**](PlayerThemesApi.md#create) | **POST** `/players` | Create a player
 [**uploadLogo()**](PlayerThemesApi.md#uploadLogo) | **POST** `/players/{playerId}/logo` | Upload a logo
@@ -40,6 +40,7 @@ void (empty response body)
 ## deleteLogo()
 
 
+Delete the logo associated to a player.
 
 
 ### Arguments
@@ -120,7 +121,7 @@ Name | Type | Description  | Example | Notes
 ## update()
 
 
-Use a player ID to update specific details for a player. NOTE: It may take up to 10 min before the new player configuration is available from our CDN.
+Use a player ID to update specific details for a player.  NOTE: It may take up to 10 min before the new player configuration is available from our CDN.
 
 
 ### Arguments

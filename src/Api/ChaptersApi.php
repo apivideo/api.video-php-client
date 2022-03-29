@@ -201,7 +201,7 @@ class ChaptersApi implements ApiInterface
 
 
     /**
-     * Show a chapter
+     * Retrieve a chapter
      *
      * @param  string $videoId The unique identifier for the video you want to show a chapter for. (required)
      * @param  string $language A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation. (required)
