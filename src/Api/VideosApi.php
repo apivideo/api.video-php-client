@@ -43,576 +43,6 @@ class VideosApi implements ApiInterface
     }
 
     /**
-     * Delete a video
-     *
-     * @param  string $videoId The video ID for the video you want to delete. (required)
-     *
-     * @throws \ApiVideo\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return void
-     */
-    public function delete(string $videoId): void
-    {
-        $request = $this->buildDeleteRequest($videoId);
-
-        $this->client->request($request);
-    }
-
-    /**
-     * Create request for operation 'delete'
-     *
-     * @param  string $videoId The video ID for the video you want to delete. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return Request
-     */
-    private function buildDeleteRequest(string $videoId): Request
-    {
-        // verify the required parameter 'videoId' is set
-        if ($videoId === null || (is_array($videoId) && count($videoId) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $videoId when calling '
-            );
-        }
-
-        $resourcePath = '/videos/{videoId}';
-        $formParams = [];
-        $queryParams = [];
-        $headers = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // path params
-        if ($videoId !== null) {
-            $resourcePath = str_replace(
-                '{' . 'videoId' . '}',
-                ObjectSerializer::toPathValue($videoId),
-                $resourcePath
-            );
-        }
-
-
-
-        $query = \http_build_query($queryParams);
-
-        return new Request(
-            'DELETE',
-            $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-
-    /**
-     * Retrieve a video
-     *
-     * @param  string $videoId The unique identifier for the video you want details about. (required)
-     *
-     * @throws \ApiVideo\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\Video|\ApiVideo\Client\Model\NotFound
-     */
-    public function get(string $videoId): \ApiVideo\Client\Model\Video
-    {
-        $request = $this->buildGetRequest($videoId);
-
-        $model = new \ApiVideo\Client\Model\Video($this->client->request($request));
-
-        return $model;
-    }
-
-    /**
-     * Create request for operation 'get'
-     *
-     * @param  string $videoId The unique identifier for the video you want details about. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return Request
-     */
-    private function buildGetRequest(string $videoId): Request
-    {
-        // verify the required parameter 'videoId' is set
-        if ($videoId === null || (is_array($videoId) && count($videoId) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $videoId when calling '
-            );
-        }
-
-        $resourcePath = '/videos/{videoId}';
-        $formParams = [];
-        $queryParams = [];
-        $headers = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // path params
-        if ($videoId !== null) {
-            $resourcePath = str_replace(
-                '{' . 'videoId' . '}',
-                ObjectSerializer::toPathValue($videoId),
-                $resourcePath
-            );
-        }
-
-
-
-        $query = \http_build_query($queryParams);
-
-        return new Request(
-            'GET',
-            $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-
-    /**
-     * Retrieve video status
-     *
-     * @param  string $videoId The unique identifier for the video you want the status for. (required)
-     *
-     * @throws \ApiVideo\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\VideoStatus|\ApiVideo\Client\Model\NotFound
-     */
-    public function getStatus(string $videoId): \ApiVideo\Client\Model\VideoStatus
-    {
-        $request = $this->buildGetStatusRequest($videoId);
-
-        $model = new \ApiVideo\Client\Model\VideoStatus($this->client->request($request));
-
-        return $model;
-    }
-
-    /**
-     * Create request for operation 'getStatus'
-     *
-     * @param  string $videoId The unique identifier for the video you want the status for. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return Request
-     */
-    private function buildGetStatusRequest(string $videoId): Request
-    {
-        // verify the required parameter 'videoId' is set
-        if ($videoId === null || (is_array($videoId) && count($videoId) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $videoId when calling '
-            );
-        }
-
-        $resourcePath = '/videos/{videoId}/status';
-        $formParams = [];
-        $queryParams = [];
-        $headers = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // path params
-        if ($videoId !== null) {
-            $resourcePath = str_replace(
-                '{' . 'videoId' . '}',
-                ObjectSerializer::toPathValue($videoId),
-                $resourcePath
-            );
-        }
-
-
-
-        $query = \http_build_query($queryParams);
-
-        return new Request(
-            'GET',
-            $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-
-    /**
-     * List all videos
-     *
-     * @param  array $queryParams
-     *
-     * @throws \ApiVideo\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\VideosListResponse|\ApiVideo\Client\Model\BadRequest
-     */
-    public function list(array $queryParams = []): \ApiVideo\Client\Model\VideosListResponse
-    {
-        $request = $this->buildListRequest($queryParams);
-
-        $model = new \ApiVideo\Client\Model\VideosListResponse($this->client->request($request));
-
-        return $model;
-    }
-
-    /**
-     * Create request for operation 'list'
-     *
-     * @param  array $queryParams
-     *
-     * @throws \InvalidArgumentException
-     * @return Request
-     */
-    private function buildListRequest(array $queryParams = []): Request
-    {
-        // unbox the parameters from the associative array
-        $title = array_key_exists('title', $queryParams) ? $queryParams['title'] : null;
-        $tags = array_key_exists('tags', $queryParams) ? $queryParams['tags'] : null;
-        $metadata = array_key_exists('metadata', $queryParams) ? $queryParams['metadata'] : null;
-        $description = array_key_exists('description', $queryParams) ? $queryParams['description'] : null;
-        $liveStreamId = array_key_exists('liveStreamId', $queryParams) ? $queryParams['liveStreamId'] : null;
-        $sortBy = array_key_exists('sortBy', $queryParams) ? $queryParams['sortBy'] : null;
-        $sortOrder = array_key_exists('sortOrder', $queryParams) ? $queryParams['sortOrder'] : null;
-        $currentPage = array_key_exists('currentPage', $queryParams) ? $queryParams['currentPage'] : 1;
-        $pageSize = array_key_exists('pageSize', $queryParams) ? $queryParams['pageSize'] : 25;
-
-
-        $resourcePath = '/videos';
-        $formParams = [];
-        $queryParams = [];
-        $headers = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // title query params
-        if ($title !== null) {
-            $queryParams['title'] = $title;
-        }
-
-        // tags query params
-        if ($tags !== null) {
-            $queryParams['tags'] = $tags;
-        }
-
-        // metadata query params
-        if ($metadata !== null) {
-            if(is_array($metadata)) {
-                $queryParams["metadata"] = array();
-                foreach($metadata as $key => $value) {
-                    $queryParams['metadata'][$key] = $value;
-                }
-            }
-            else {
-                throw new \InvalidArgumentException('invalid value for "$metadata" when calling VideosApi.List, must be an array.');
-            }
-        }
-
-        // description query params
-        if ($description !== null) {
-            $queryParams['description'] = $description;
-        }
-
-        // liveStreamId query params
-        if ($liveStreamId !== null) {
-            $queryParams['liveStreamId'] = $liveStreamId;
-        }
-
-        // sortBy query params
-        if ($sortBy !== null) {
-            $queryParams['sortBy'] = $sortBy;
-        }
-
-        // sortOrder query params
-        if ($sortOrder !== null) {
-            $queryParams['sortOrder'] = $sortOrder;
-        }
-
-        // currentPage query params
-        if ($currentPage !== null) {
-            $queryParams['currentPage'] = $currentPage;
-        }
-
-        // pageSize query params
-        if ($pageSize !== null) {
-            $queryParams['pageSize'] = $pageSize;
-        }
-
-
-
-
-        $query = \http_build_query($queryParams);
-
-        return new Request(
-            'GET',
-            $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-
-    /**
-     * Update a video
-     *
-     * @param  string $videoId The video ID for the video you want to delete. (required)
-     * @param  \ApiVideo\Client\Model\VideoUpdatePayload $videoUpdatePayload videoUpdatePayload (required)
-     *
-     * @throws \ApiVideo\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\Video|\ApiVideo\Client\Model\BadRequest|\ApiVideo\Client\Model\NotFound
-     */
-    public function update(string $videoId, \ApiVideo\Client\Model\VideoUpdatePayload $videoUpdatePayload): \ApiVideo\Client\Model\Video
-    {
-        $request = $this->buildUpdateRequest($videoId, $videoUpdatePayload);
-
-        $model = new \ApiVideo\Client\Model\Video($this->client->request($request));
-
-        return $model;
-    }
-
-    /**
-     * Create request for operation 'update'
-     *
-     * @param  string $videoId The video ID for the video you want to delete. (required)
-     * @param  \ApiVideo\Client\Model\VideoUpdatePayload $videoUpdatePayload (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return Request
-     */
-    private function buildUpdateRequest(string $videoId, \ApiVideo\Client\Model\VideoUpdatePayload $videoUpdatePayload): Request
-    {
-        // verify the required parameter 'videoId' is set
-        if ($videoId === null || (is_array($videoId) && count($videoId) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $videoId when calling '
-            );
-        }
-        // verify the required parameter 'videoUpdatePayload' is set
-        if ($videoUpdatePayload === null || (is_array($videoUpdatePayload) && count($videoUpdatePayload) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $videoUpdatePayload when calling '
-            );
-        }
-
-        $resourcePath = '/videos/{videoId}';
-        $formParams = [];
-        $queryParams = [];
-        $headers = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // path params
-        if ($videoId !== null) {
-            $resourcePath = str_replace(
-                '{' . 'videoId' . '}',
-                ObjectSerializer::toPathValue($videoId),
-                $resourcePath
-            );
-        }
-
-        if ($videoUpdatePayload) {
-            $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($videoUpdatePayload));
-        }
-
-
-        $query = \http_build_query($queryParams);
-
-        return new Request(
-            'PATCH',
-            $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-
-    /**
-     * Pick a thumbnail
-     *
-     * @param  string $videoId Unique identifier of the video you want to add a thumbnail to, where you use a section of your video as the thumbnail. (required)
-     * @param  \ApiVideo\Client\Model\VideoThumbnailPickPayload $videoThumbnailPickPayload videoThumbnailPickPayload (required)
-     *
-     * @throws \ApiVideo\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\Video|\ApiVideo\Client\Model\NotFound
-     */
-    public function pickThumbnail(string $videoId, \ApiVideo\Client\Model\VideoThumbnailPickPayload $videoThumbnailPickPayload): \ApiVideo\Client\Model\Video
-    {
-        $request = $this->buildPickThumbnailRequest($videoId, $videoThumbnailPickPayload);
-
-        $model = new \ApiVideo\Client\Model\Video($this->client->request($request));
-
-        return $model;
-    }
-
-    /**
-     * Create request for operation 'pickThumbnail'
-     *
-     * @param  string $videoId Unique identifier of the video you want to add a thumbnail to, where you use a section of your video as the thumbnail. (required)
-     * @param  \ApiVideo\Client\Model\VideoThumbnailPickPayload $videoThumbnailPickPayload (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return Request
-     */
-    private function buildPickThumbnailRequest(string $videoId, \ApiVideo\Client\Model\VideoThumbnailPickPayload $videoThumbnailPickPayload): Request
-    {
-        // verify the required parameter 'videoId' is set
-        if ($videoId === null || (is_array($videoId) && count($videoId) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $videoId when calling '
-            );
-        }
-        // verify the required parameter 'videoThumbnailPickPayload' is set
-        if ($videoThumbnailPickPayload === null || (is_array($videoThumbnailPickPayload) && count($videoThumbnailPickPayload) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $videoThumbnailPickPayload when calling '
-            );
-        }
-
-        $resourcePath = '/videos/{videoId}/thumbnail';
-        $formParams = [];
-        $queryParams = [];
-        $headers = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // path params
-        if ($videoId !== null) {
-            $resourcePath = str_replace(
-                '{' . 'videoId' . '}',
-                ObjectSerializer::toPathValue($videoId),
-                $resourcePath
-            );
-        }
-
-        if ($videoThumbnailPickPayload) {
-            $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($videoThumbnailPickPayload));
-        }
-
-
-        $query = \http_build_query($queryParams);
-
-        return new Request(
-            'PATCH',
-            $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-
-    /**
-     * Upload with an upload token
-     *
-     * @param  \SplFileObject $file The path to the video you want to upload. (required)
-     * @param  string $contentRange Content-Range represents the range of bytes that will be returned as a result of the request. Byte ranges are inclusive, meaning that bytes 0-999 represents the first 1000 bytes in a file or object. (optional)
-     * @param  string $videoId The video id returned by the first call to this endpoint in a large video upload scenario. (optional)
-     *
-     * @throws \ApiVideo\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\Video|\ApiVideo\Client\Model\BadRequest
-     */
-    public function uploadWithUploadToken(string $token, \SplFileObject $file, string $contentRange = null, string $videoId = null): \ApiVideo\Client\Model\Video
-    {
-        $videoUploader = new VideoUploader($this->client);
-        $model = $videoUploader->uploadWithUploadToken($token, $file, $contentRange, $videoId);
-
-        return $model;
-    }
-
-    /**
-     * Create request for operation 'uploadWithUploadToken'
-     *
-     * @param  \SplFileObject $file The path to the video you want to upload. (required)
-     * @param  string $contentRange Content-Range represents the range of bytes that will be returned as a result of the request. Byte ranges are inclusive, meaning that bytes 0-999 represents the first 1000 bytes in a file or object. (optional)
-     * @param  string $videoId The video id returned by the first call to this endpoint in a large video upload scenario. (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return Request
-     */
-    private function buildUploadWithUploadTokenRequest(string $token, \SplFileObject $file, string $contentRange = null, string $videoId = null): Request
-    {
-        // verify the required parameter 'token' is set
-        if ($token === null || (is_array($token) && count($token) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $token when calling '
-            );
-        }
-        // verify the required parameter 'file' is set
-        if ($file === null || (is_array($file) && count($file) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $file when calling '
-            );
-        }
-        if ($contentRange !== null && !preg_match("/^bytes [0-9]*-[0-9]*_\/[0-9]*$/", $contentRange)) {
-            throw new \InvalidArgumentException("invalid value for \"contentRange\" when calling VideosApi.UploadWithUploadToken, must conform to the pattern /^bytes [0-9]*-[0-9]*_\/[0-9]*$/.");
-        }
-
-
-        $resourcePath = '/upload';
-        $formParams = [];
-        $queryParams = [];
-        $headers = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // token query params
-        if ($token !== null) {
-            $queryParams['token'] = $token;
-        }
-
-        // header params
-        if ($contentRange !== null) {
-            $headerParams['Content-Range'] = ObjectSerializer::toHeaderValue($contentRange);
-        }
-
-
-        // form params
-        if ($file !== null) {
-            $builder = new MultipartStreamBuilder($this->client->getStreamFactory());
-            $builder->addResource('file', $file->fread($file->getSize()), [
-                'filename' => basename($file->getRealPath()),
-                'headers' => ['Content-Type' => 'application/octet-stream']]
-            );
-            $request = new Request(
-                'POST',
-                $resourcePath,
-                [
-                    'Accept' => 'application/json',
-                    'Content-Type' => 'multipart/form-data; boundary="'.$builder->getBoundary().'"',
-                ]
-            );
-            $request->setStream($builder->build());
-
-            return $request;
-        }
-        // form params
-        if ($videoId !== null) {
-        }
-
-        $query = \http_build_query($queryParams);
-
-        return new Request(
-            'POST',
-            $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-
-    public function createUploadWithUploadTokenProgressiveSession(string $token, string $videoId = null) {
-        $resourcePath = '/upload';
-
-        $queryParams = [];
-
-        // token query params
-        if ($token !== null) {
-            $queryParams['token'] = $token;
-        }
-
-        $query = \http_build_query($queryParams);
-        $resourcePath = $resourcePath . ($query ? "?{$query}" : '');
-
-        return new ProgressiveUploadSession($this->client, $resourcePath, $videoId);
-    }
-
-    /**
      * Create a video
      *
      * @param  \ApiVideo\Client\Model\VideoCreationPayload $videoCreationPayload video to create (required)
@@ -786,6 +216,437 @@ class VideosApi implements ApiInterface
     }
 
     /**
+     * Upload with an upload token
+     *
+     * @param  \SplFileObject $file The path to the video you want to upload. (required)
+     * @param  string $contentRange Content-Range represents the range of bytes that will be returned as a result of the request. Byte ranges are inclusive, meaning that bytes 0-999 represents the first 1000 bytes in a file or object. (optional)
+     * @param  string $videoId The video id returned by the first call to this endpoint in a large video upload scenario. (optional)
+     *
+     * @throws \ApiVideo\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \ApiVideo\Client\Model\Video|\ApiVideo\Client\Model\BadRequest
+     */
+    public function uploadWithUploadToken(string $token, \SplFileObject $file, string $contentRange = null, string $videoId = null): \ApiVideo\Client\Model\Video
+    {
+        $videoUploader = new VideoUploader($this->client);
+        $model = $videoUploader->uploadWithUploadToken($token, $file, $contentRange, $videoId);
+
+        return $model;
+    }
+
+    /**
+     * Create request for operation 'uploadWithUploadToken'
+     *
+     * @param  \SplFileObject $file The path to the video you want to upload. (required)
+     * @param  string $contentRange Content-Range represents the range of bytes that will be returned as a result of the request. Byte ranges are inclusive, meaning that bytes 0-999 represents the first 1000 bytes in a file or object. (optional)
+     * @param  string $videoId The video id returned by the first call to this endpoint in a large video upload scenario. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return Request
+     */
+    private function buildUploadWithUploadTokenRequest(string $token, \SplFileObject $file, string $contentRange = null, string $videoId = null): Request
+    {
+        // verify the required parameter 'token' is set
+        if ($token === null || (is_array($token) && count($token) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $token when calling '
+            );
+        }
+        // verify the required parameter 'file' is set
+        if ($file === null || (is_array($file) && count($file) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $file when calling '
+            );
+        }
+        if ($contentRange !== null && !preg_match("/^bytes [0-9]*-[0-9]*_\/[0-9]*$/", $contentRange)) {
+            throw new \InvalidArgumentException("invalid value for \"contentRange\" when calling VideosApi.UploadWithUploadToken, must conform to the pattern /^bytes [0-9]*-[0-9]*_\/[0-9]*$/.");
+        }
+
+
+        $resourcePath = '/upload';
+        $formParams = [];
+        $queryParams = [];
+        $headers = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // token query params
+        if ($token !== null) {
+            $queryParams['token'] = $token;
+        }
+
+        // header params
+        if ($contentRange !== null) {
+            $headerParams['Content-Range'] = ObjectSerializer::toHeaderValue($contentRange);
+        }
+
+
+        // form params
+        if ($file !== null) {
+            $builder = new MultipartStreamBuilder($this->client->getStreamFactory());
+            $builder->addResource('file', $file->fread($file->getSize()), [
+                'filename' => basename($file->getRealPath()),
+                'headers' => ['Content-Type' => 'application/octet-stream']]
+            );
+            $request = new Request(
+                'POST',
+                $resourcePath,
+                [
+                    'Accept' => 'application/json',
+                    'Content-Type' => 'multipart/form-data; boundary="'.$builder->getBoundary().'"',
+                ]
+            );
+            $request->setStream($builder->build());
+
+            return $request;
+        }
+        // form params
+        if ($videoId !== null) {
+        }
+
+        $query = \http_build_query($queryParams);
+
+        return new Request(
+            'POST',
+            $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+
+    public function createUploadWithUploadTokenProgressiveSession(string $token, string $videoId = null) {
+        $resourcePath = '/upload';
+
+        $queryParams = [];
+
+        // token query params
+        if ($token !== null) {
+            $queryParams['token'] = $token;
+        }
+
+        $query = \http_build_query($queryParams);
+        $resourcePath = $resourcePath . ($query ? "?{$query}" : '');
+
+        return new ProgressiveUploadSession($this->client, $resourcePath, $videoId);
+    }
+
+    /**
+     * Retrieve a video
+     *
+     * @param  string $videoId The unique identifier for the video you want details about. (required)
+     *
+     * @throws \ApiVideo\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \ApiVideo\Client\Model\Video|\ApiVideo\Client\Model\NotFound
+     */
+    public function get(string $videoId): \ApiVideo\Client\Model\Video
+    {
+        $request = $this->buildGetRequest($videoId);
+
+        $model = new \ApiVideo\Client\Model\Video($this->client->request($request));
+
+        return $model;
+    }
+
+    /**
+     * Create request for operation 'get'
+     *
+     * @param  string $videoId The unique identifier for the video you want details about. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return Request
+     */
+    private function buildGetRequest(string $videoId): Request
+    {
+        // verify the required parameter 'videoId' is set
+        if ($videoId === null || (is_array($videoId) && count($videoId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $videoId when calling '
+            );
+        }
+
+        $resourcePath = '/videos/{videoId}';
+        $formParams = [];
+        $queryParams = [];
+        $headers = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // path params
+        if ($videoId !== null) {
+            $resourcePath = str_replace(
+                '{' . 'videoId' . '}',
+                ObjectSerializer::toPathValue($videoId),
+                $resourcePath
+            );
+        }
+
+
+
+        $query = \http_build_query($queryParams);
+
+        return new Request(
+            'GET',
+            $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+
+    /**
+     * Update a video
+     *
+     * @param  string $videoId The video ID for the video you want to delete. (required)
+     * @param  \ApiVideo\Client\Model\VideoUpdatePayload $videoUpdatePayload videoUpdatePayload (required)
+     *
+     * @throws \ApiVideo\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \ApiVideo\Client\Model\Video|\ApiVideo\Client\Model\BadRequest|\ApiVideo\Client\Model\NotFound
+     */
+    public function update(string $videoId, \ApiVideo\Client\Model\VideoUpdatePayload $videoUpdatePayload): \ApiVideo\Client\Model\Video
+    {
+        $request = $this->buildUpdateRequest($videoId, $videoUpdatePayload);
+
+        $model = new \ApiVideo\Client\Model\Video($this->client->request($request));
+
+        return $model;
+    }
+
+    /**
+     * Create request for operation 'update'
+     *
+     * @param  string $videoId The video ID for the video you want to delete. (required)
+     * @param  \ApiVideo\Client\Model\VideoUpdatePayload $videoUpdatePayload (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return Request
+     */
+    private function buildUpdateRequest(string $videoId, \ApiVideo\Client\Model\VideoUpdatePayload $videoUpdatePayload): Request
+    {
+        // verify the required parameter 'videoId' is set
+        if ($videoId === null || (is_array($videoId) && count($videoId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $videoId when calling '
+            );
+        }
+        // verify the required parameter 'videoUpdatePayload' is set
+        if ($videoUpdatePayload === null || (is_array($videoUpdatePayload) && count($videoUpdatePayload) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $videoUpdatePayload when calling '
+            );
+        }
+
+        $resourcePath = '/videos/{videoId}';
+        $formParams = [];
+        $queryParams = [];
+        $headers = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // path params
+        if ($videoId !== null) {
+            $resourcePath = str_replace(
+                '{' . 'videoId' . '}',
+                ObjectSerializer::toPathValue($videoId),
+                $resourcePath
+            );
+        }
+
+        if ($videoUpdatePayload) {
+            $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($videoUpdatePayload));
+        }
+
+
+        $query = \http_build_query($queryParams);
+
+        return new Request(
+            'PATCH',
+            $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+
+    /**
+     * Delete a video
+     *
+     * @param  string $videoId The video ID for the video you want to delete. (required)
+     *
+     * @throws \ApiVideo\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function delete(string $videoId): void
+    {
+        $request = $this->buildDeleteRequest($videoId);
+
+        $this->client->request($request);
+    }
+
+    /**
+     * Create request for operation 'delete'
+     *
+     * @param  string $videoId The video ID for the video you want to delete. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return Request
+     */
+    private function buildDeleteRequest(string $videoId): Request
+    {
+        // verify the required parameter 'videoId' is set
+        if ($videoId === null || (is_array($videoId) && count($videoId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $videoId when calling '
+            );
+        }
+
+        $resourcePath = '/videos/{videoId}';
+        $formParams = [];
+        $queryParams = [];
+        $headers = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // path params
+        if ($videoId !== null) {
+            $resourcePath = str_replace(
+                '{' . 'videoId' . '}',
+                ObjectSerializer::toPathValue($videoId),
+                $resourcePath
+            );
+        }
+
+
+
+        $query = \http_build_query($queryParams);
+
+        return new Request(
+            'DELETE',
+            $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+
+    /**
+     * List all videos
+     *
+     * @param  array $queryParams
+     *
+     * @throws \ApiVideo\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \ApiVideo\Client\Model\VideosListResponse|\ApiVideo\Client\Model\BadRequest
+     */
+    public function list(array $queryParams = []): \ApiVideo\Client\Model\VideosListResponse
+    {
+        $request = $this->buildListRequest($queryParams);
+
+        $model = new \ApiVideo\Client\Model\VideosListResponse($this->client->request($request));
+
+        return $model;
+    }
+
+    /**
+     * Create request for operation 'list'
+     *
+     * @param  array $queryParams
+     *
+     * @throws \InvalidArgumentException
+     * @return Request
+     */
+    private function buildListRequest(array $queryParams = []): Request
+    {
+        // unbox the parameters from the associative array
+        $title = array_key_exists('title', $queryParams) ? $queryParams['title'] : null;
+        $tags = array_key_exists('tags', $queryParams) ? $queryParams['tags'] : null;
+        $metadata = array_key_exists('metadata', $queryParams) ? $queryParams['metadata'] : null;
+        $description = array_key_exists('description', $queryParams) ? $queryParams['description'] : null;
+        $liveStreamId = array_key_exists('liveStreamId', $queryParams) ? $queryParams['liveStreamId'] : null;
+        $sortBy = array_key_exists('sortBy', $queryParams) ? $queryParams['sortBy'] : null;
+        $sortOrder = array_key_exists('sortOrder', $queryParams) ? $queryParams['sortOrder'] : null;
+        $currentPage = array_key_exists('currentPage', $queryParams) ? $queryParams['currentPage'] : 1;
+        $pageSize = array_key_exists('pageSize', $queryParams) ? $queryParams['pageSize'] : 25;
+
+
+        $resourcePath = '/videos';
+        $formParams = [];
+        $queryParams = [];
+        $headers = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // title query params
+        if ($title !== null) {
+            $queryParams['title'] = $title;
+        }
+
+        // tags query params
+        if ($tags !== null) {
+            $queryParams['tags'] = $tags;
+        }
+
+        // metadata query params
+        if ($metadata !== null) {
+            if(is_array($metadata)) {
+                $queryParams["metadata"] = array();
+                foreach($metadata as $key => $value) {
+                    $queryParams['metadata'][$key] = $value;
+                }
+            }
+            else {
+                throw new \InvalidArgumentException('invalid value for "$metadata" when calling VideosApi.List, must be an array.');
+            }
+        }
+
+        // description query params
+        if ($description !== null) {
+            $queryParams['description'] = $description;
+        }
+
+        // liveStreamId query params
+        if ($liveStreamId !== null) {
+            $queryParams['liveStreamId'] = $liveStreamId;
+        }
+
+        // sortBy query params
+        if ($sortBy !== null) {
+            $queryParams['sortBy'] = $sortBy;
+        }
+
+        // sortOrder query params
+        if ($sortOrder !== null) {
+            $queryParams['sortOrder'] = $sortOrder;
+        }
+
+        // currentPage query params
+        if ($currentPage !== null) {
+            $queryParams['currentPage'] = $currentPage;
+        }
+
+        // pageSize query params
+        if ($pageSize !== null) {
+            $queryParams['pageSize'] = $pageSize;
+        }
+
+
+
+
+        $query = \http_build_query($queryParams);
+
+        return new Request(
+            'GET',
+            $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+
+    /**
      * Upload a thumbnail
      *
      * @param  string $videoId Unique identifier of the chosen video (required)
@@ -869,6 +730,145 @@ class VideosApi implements ApiInterface
 
         return new Request(
             'POST',
+            $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+
+    /**
+     * Pick a thumbnail
+     *
+     * @param  string $videoId Unique identifier of the video you want to add a thumbnail to, where you use a section of your video as the thumbnail. (required)
+     * @param  \ApiVideo\Client\Model\VideoThumbnailPickPayload $videoThumbnailPickPayload videoThumbnailPickPayload (required)
+     *
+     * @throws \ApiVideo\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \ApiVideo\Client\Model\Video|\ApiVideo\Client\Model\NotFound
+     */
+    public function pickThumbnail(string $videoId, \ApiVideo\Client\Model\VideoThumbnailPickPayload $videoThumbnailPickPayload): \ApiVideo\Client\Model\Video
+    {
+        $request = $this->buildPickThumbnailRequest($videoId, $videoThumbnailPickPayload);
+
+        $model = new \ApiVideo\Client\Model\Video($this->client->request($request));
+
+        return $model;
+    }
+
+    /**
+     * Create request for operation 'pickThumbnail'
+     *
+     * @param  string $videoId Unique identifier of the video you want to add a thumbnail to, where you use a section of your video as the thumbnail. (required)
+     * @param  \ApiVideo\Client\Model\VideoThumbnailPickPayload $videoThumbnailPickPayload (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return Request
+     */
+    private function buildPickThumbnailRequest(string $videoId, \ApiVideo\Client\Model\VideoThumbnailPickPayload $videoThumbnailPickPayload): Request
+    {
+        // verify the required parameter 'videoId' is set
+        if ($videoId === null || (is_array($videoId) && count($videoId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $videoId when calling '
+            );
+        }
+        // verify the required parameter 'videoThumbnailPickPayload' is set
+        if ($videoThumbnailPickPayload === null || (is_array($videoThumbnailPickPayload) && count($videoThumbnailPickPayload) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $videoThumbnailPickPayload when calling '
+            );
+        }
+
+        $resourcePath = '/videos/{videoId}/thumbnail';
+        $formParams = [];
+        $queryParams = [];
+        $headers = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // path params
+        if ($videoId !== null) {
+            $resourcePath = str_replace(
+                '{' . 'videoId' . '}',
+                ObjectSerializer::toPathValue($videoId),
+                $resourcePath
+            );
+        }
+
+        if ($videoThumbnailPickPayload) {
+            $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($videoThumbnailPickPayload));
+        }
+
+
+        $query = \http_build_query($queryParams);
+
+        return new Request(
+            'PATCH',
+            $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+
+    /**
+     * Retrieve video status
+     *
+     * @param  string $videoId The unique identifier for the video you want the status for. (required)
+     *
+     * @throws \ApiVideo\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \ApiVideo\Client\Model\VideoStatus|\ApiVideo\Client\Model\NotFound
+     */
+    public function getStatus(string $videoId): \ApiVideo\Client\Model\VideoStatus
+    {
+        $request = $this->buildGetStatusRequest($videoId);
+
+        $model = new \ApiVideo\Client\Model\VideoStatus($this->client->request($request));
+
+        return $model;
+    }
+
+    /**
+     * Create request for operation 'getStatus'
+     *
+     * @param  string $videoId The unique identifier for the video you want the status for. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return Request
+     */
+    private function buildGetStatusRequest(string $videoId): Request
+    {
+        // verify the required parameter 'videoId' is set
+        if ($videoId === null || (is_array($videoId) && count($videoId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $videoId when calling '
+            );
+        }
+
+        $resourcePath = '/videos/{videoId}/status';
+        $formParams = [];
+        $queryParams = [];
+        $headers = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // path params
+        if ($videoId !== null) {
+            $resourcePath = str_replace(
+                '{' . 'videoId' . '}',
+                ObjectSerializer::toPathValue($videoId),
+                $resourcePath
+            );
+        }
+
+
+
+        $query = \http_build_query($queryParams);
+
+        return new Request(
+            'GET',
             $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

@@ -43,60 +43,57 @@ class WebhooksApi implements ApiInterface
     }
 
     /**
-     * Delete a Webhook
+     * Create Webhook
      *
-     * @param  string $webhookId The webhook you wish to delete. (required)
+     * @param  \ApiVideo\Client\Model\WebhooksCreationPayload $webhooksCreationPayload webhooksCreationPayload (required)
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \ApiVideo\Client\Model\Webhook|\ApiVideo\Client\Model\BadRequest
      */
-    public function delete(string $webhookId): void
+    public function create(\ApiVideo\Client\Model\WebhooksCreationPayload $webhooksCreationPayload): \ApiVideo\Client\Model\Webhook
     {
-        $request = $this->buildDeleteRequest($webhookId);
+        $request = $this->buildCreateRequest($webhooksCreationPayload);
 
-        $this->client->request($request);
+        $model = new \ApiVideo\Client\Model\Webhook($this->client->request($request));
+
+        return $model;
     }
 
     /**
-     * Create request for operation 'delete'
+     * Create request for operation 'create'
      *
-     * @param  string $webhookId The webhook you wish to delete. (required)
+     * @param  \ApiVideo\Client\Model\WebhooksCreationPayload $webhooksCreationPayload (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
      */
-    private function buildDeleteRequest(string $webhookId): Request
+    private function buildCreateRequest(\ApiVideo\Client\Model\WebhooksCreationPayload $webhooksCreationPayload): Request
     {
-        // verify the required parameter 'webhookId' is set
-        if ($webhookId === null || (is_array($webhookId) && count($webhookId) === 0)) {
+        // verify the required parameter 'webhooksCreationPayload' is set
+        if ($webhooksCreationPayload === null || (is_array($webhooksCreationPayload) && count($webhooksCreationPayload) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $webhookId when calling '
+                'Missing the required parameter $webhooksCreationPayload when calling '
             );
         }
 
-        $resourcePath = '/webhooks/{webhookId}';
+        $resourcePath = '/webhooks';
         $formParams = [];
         $queryParams = [];
         $headers = [];
         $httpBody = '';
         $multipart = false;
 
-        // path params
-        if ($webhookId !== null) {
-            $resourcePath = str_replace(
-                '{' . 'webhookId' . '}',
-                ObjectSerializer::toPathValue($webhookId),
-                $resourcePath
-            );
-        }
 
+        if ($webhooksCreationPayload) {
+            $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($webhooksCreationPayload));
+        }
 
 
         $query = \http_build_query($queryParams);
 
         return new Request(
-            'DELETE',
+            'POST',
             $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -169,6 +166,68 @@ class WebhooksApi implements ApiInterface
 
 
     /**
+     * Delete a Webhook
+     *
+     * @param  string $webhookId The webhook you wish to delete. (required)
+     *
+     * @throws \ApiVideo\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function delete(string $webhookId): void
+    {
+        $request = $this->buildDeleteRequest($webhookId);
+
+        $this->client->request($request);
+    }
+
+    /**
+     * Create request for operation 'delete'
+     *
+     * @param  string $webhookId The webhook you wish to delete. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return Request
+     */
+    private function buildDeleteRequest(string $webhookId): Request
+    {
+        // verify the required parameter 'webhookId' is set
+        if ($webhookId === null || (is_array($webhookId) && count($webhookId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $webhookId when calling '
+            );
+        }
+
+        $resourcePath = '/webhooks/{webhookId}';
+        $formParams = [];
+        $queryParams = [];
+        $headers = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // path params
+        if ($webhookId !== null) {
+            $resourcePath = str_replace(
+                '{' . 'webhookId' . '}',
+                ObjectSerializer::toPathValue($webhookId),
+                $resourcePath
+            );
+        }
+
+
+
+        $query = \http_build_query($queryParams);
+
+        return new Request(
+            'DELETE',
+            $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+
+    /**
      * List all webhooks
      *
      * @param  array $queryParams
@@ -231,65 +290,6 @@ class WebhooksApi implements ApiInterface
 
         return new Request(
             'GET',
-            $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-
-    /**
-     * Create Webhook
-     *
-     * @param  \ApiVideo\Client\Model\WebhooksCreationPayload $webhooksCreationPayload webhooksCreationPayload (required)
-     *
-     * @throws \ApiVideo\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\Webhook|\ApiVideo\Client\Model\BadRequest
-     */
-    public function create(\ApiVideo\Client\Model\WebhooksCreationPayload $webhooksCreationPayload): \ApiVideo\Client\Model\Webhook
-    {
-        $request = $this->buildCreateRequest($webhooksCreationPayload);
-
-        $model = new \ApiVideo\Client\Model\Webhook($this->client->request($request));
-
-        return $model;
-    }
-
-    /**
-     * Create request for operation 'create'
-     *
-     * @param  \ApiVideo\Client\Model\WebhooksCreationPayload $webhooksCreationPayload (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return Request
-     */
-    private function buildCreateRequest(\ApiVideo\Client\Model\WebhooksCreationPayload $webhooksCreationPayload): Request
-    {
-        // verify the required parameter 'webhooksCreationPayload' is set
-        if ($webhooksCreationPayload === null || (is_array($webhooksCreationPayload) && count($webhooksCreationPayload) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $webhooksCreationPayload when calling '
-            );
-        }
-
-        $resourcePath = '/webhooks';
-        $formParams = [];
-        $queryParams = [];
-        $headers = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-        if ($webhooksCreationPayload) {
-            $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($webhooksCreationPayload));
-        }
-
-
-        $query = \http_build_query($queryParams);
-
-        return new Request(
-            'POST',
             $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

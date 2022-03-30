@@ -43,6 +43,129 @@ class UploadTokensApi implements ApiInterface
     }
 
     /**
+     * Generate an upload token
+     *
+     * @param  \ApiVideo\Client\Model\TokenCreationPayload $tokenCreationPayload tokenCreationPayload (required)
+     *
+     * @throws \ApiVideo\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \ApiVideo\Client\Model\UploadToken|\ApiVideo\Client\Model\BadRequest
+     */
+    public function createToken(\ApiVideo\Client\Model\TokenCreationPayload $tokenCreationPayload): \ApiVideo\Client\Model\UploadToken
+    {
+        $request = $this->buildCreateTokenRequest($tokenCreationPayload);
+
+        $model = new \ApiVideo\Client\Model\UploadToken($this->client->request($request));
+
+        return $model;
+    }
+
+    /**
+     * Create request for operation 'createToken'
+     *
+     * @param  \ApiVideo\Client\Model\TokenCreationPayload $tokenCreationPayload (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return Request
+     */
+    private function buildCreateTokenRequest(\ApiVideo\Client\Model\TokenCreationPayload $tokenCreationPayload): Request
+    {
+        // verify the required parameter 'tokenCreationPayload' is set
+        if ($tokenCreationPayload === null || (is_array($tokenCreationPayload) && count($tokenCreationPayload) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tokenCreationPayload when calling '
+            );
+        }
+
+        $resourcePath = '/upload-tokens';
+        $formParams = [];
+        $queryParams = [];
+        $headers = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+        if ($tokenCreationPayload) {
+            $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($tokenCreationPayload));
+        }
+
+
+        $query = \http_build_query($queryParams);
+
+        return new Request(
+            'POST',
+            $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+
+    /**
+     * Retrieve upload token
+     *
+     * @param  string $uploadToken The unique identifier for the token you want information about. (required)
+     *
+     * @throws \ApiVideo\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \ApiVideo\Client\Model\UploadToken|\ApiVideo\Client\Model\NotFound
+     */
+    public function getToken(string $uploadToken): \ApiVideo\Client\Model\UploadToken
+    {
+        $request = $this->buildGetTokenRequest($uploadToken);
+
+        $model = new \ApiVideo\Client\Model\UploadToken($this->client->request($request));
+
+        return $model;
+    }
+
+    /**
+     * Create request for operation 'getToken'
+     *
+     * @param  string $uploadToken The unique identifier for the token you want information about. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return Request
+     */
+    private function buildGetTokenRequest(string $uploadToken): Request
+    {
+        // verify the required parameter 'uploadToken' is set
+        if ($uploadToken === null || (is_array($uploadToken) && count($uploadToken) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $uploadToken when calling '
+            );
+        }
+
+        $resourcePath = '/upload-tokens/{uploadToken}';
+        $formParams = [];
+        $queryParams = [];
+        $headers = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // path params
+        if ($uploadToken !== null) {
+            $resourcePath = str_replace(
+                '{' . 'uploadToken' . '}',
+                ObjectSerializer::toPathValue($uploadToken),
+                $resourcePath
+            );
+        }
+
+
+
+        $query = \http_build_query($queryParams);
+
+        return new Request(
+            'GET',
+            $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+
+    /**
      * Delete an upload token
      *
      * @param  string $uploadToken The unique identifier for the upload token you want to delete. Deleting a token will make it so the token can no longer be used for authentication. (required)
@@ -173,129 +296,6 @@ class UploadTokensApi implements ApiInterface
 
         return new Request(
             'GET',
-            $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-
-    /**
-     * Retrieve upload token
-     *
-     * @param  string $uploadToken The unique identifier for the token you want information about. (required)
-     *
-     * @throws \ApiVideo\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\UploadToken|\ApiVideo\Client\Model\NotFound
-     */
-    public function getToken(string $uploadToken): \ApiVideo\Client\Model\UploadToken
-    {
-        $request = $this->buildGetTokenRequest($uploadToken);
-
-        $model = new \ApiVideo\Client\Model\UploadToken($this->client->request($request));
-
-        return $model;
-    }
-
-    /**
-     * Create request for operation 'getToken'
-     *
-     * @param  string $uploadToken The unique identifier for the token you want information about. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return Request
-     */
-    private function buildGetTokenRequest(string $uploadToken): Request
-    {
-        // verify the required parameter 'uploadToken' is set
-        if ($uploadToken === null || (is_array($uploadToken) && count($uploadToken) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $uploadToken when calling '
-            );
-        }
-
-        $resourcePath = '/upload-tokens/{uploadToken}';
-        $formParams = [];
-        $queryParams = [];
-        $headers = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // path params
-        if ($uploadToken !== null) {
-            $resourcePath = str_replace(
-                '{' . 'uploadToken' . '}',
-                ObjectSerializer::toPathValue($uploadToken),
-                $resourcePath
-            );
-        }
-
-
-
-        $query = \http_build_query($queryParams);
-
-        return new Request(
-            'GET',
-            $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-
-    /**
-     * Generate an upload token
-     *
-     * @param  \ApiVideo\Client\Model\TokenCreationPayload $tokenCreationPayload tokenCreationPayload (required)
-     *
-     * @throws \ApiVideo\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\UploadToken|\ApiVideo\Client\Model\BadRequest
-     */
-    public function createToken(\ApiVideo\Client\Model\TokenCreationPayload $tokenCreationPayload): \ApiVideo\Client\Model\UploadToken
-    {
-        $request = $this->buildCreateTokenRequest($tokenCreationPayload);
-
-        $model = new \ApiVideo\Client\Model\UploadToken($this->client->request($request));
-
-        return $model;
-    }
-
-    /**
-     * Create request for operation 'createToken'
-     *
-     * @param  \ApiVideo\Client\Model\TokenCreationPayload $tokenCreationPayload (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return Request
-     */
-    private function buildCreateTokenRequest(\ApiVideo\Client\Model\TokenCreationPayload $tokenCreationPayload): Request
-    {
-        // verify the required parameter 'tokenCreationPayload' is set
-        if ($tokenCreationPayload === null || (is_array($tokenCreationPayload) && count($tokenCreationPayload) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $tokenCreationPayload when calling '
-            );
-        }
-
-        $resourcePath = '/upload-tokens';
-        $formParams = [];
-        $queryParams = [];
-        $headers = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-        if ($tokenCreationPayload) {
-            $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($tokenCreationPayload));
-        }
-
-
-        $query = \http_build_query($queryParams);
-
-        return new Request(
-            'POST',
             $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

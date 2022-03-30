@@ -2,33 +2,33 @@
 
 All URIs are relative to https://ws.api.video.
 
-Method | HTTP request | Description
+Method | Description | HTTP request
 ------------- | ------------- | -------------
-[**listLiveStreamSessions()**](RawStatisticsApi.md#listLiveStreamSessions) | **GET** `/analytics/live-streams/{liveStreamId}` | List live stream player sessions
-[**listSessionEvents()**](RawStatisticsApi.md#listSessionEvents) | **GET** `/analytics/sessions/{sessionId}/events` | List player session events
-[**listVideoSessions()**](RawStatisticsApi.md#listVideoSessions) | **GET** `/analytics/videos/{videoId}` | List video player sessions
+[**listLiveStreamSessions()**](RawStatisticsApi.md#listLiveStreamSessions) | List live stream player sessions | **GET** `/analytics/live-streams/{liveStreamId}`
+[**listSessionEvents()**](RawStatisticsApi.md#listSessionEvents) | List player session events | **GET** `/analytics/sessions/{sessionId}/events`
+[**listVideoSessions()**](RawStatisticsApi.md#listVideoSessions) | List video player sessions | **GET** `/analytics/videos/{videoId}`
 
 
-## listLiveStreamSessions()
-
+## **`listLiveStreamSessions()` - List live stream player sessions**
 
 
 
 ### Arguments
 
 
-Name | Type | Description  | Example | Notes
-------------- | ------------- | ------------- | ------------- | -------------
- `liveStreamId` | **string**| The unique identifier for the live stream you want to retrieve analytics for. | `vi4k0jvEUuaTdRAEjQ4Jfrgz` |
+Name | Type | Description | Notes
+------------- | ------------- | ------------- | ------------- 
+ `liveStreamId` | **string**| The unique identifier for the live stream you want to retrieve analytics for. |
+`queryParams` | array | (see below) |
 
 
-Note: `$queryParams` argument is an associative array with the keys listed below.
+Note: `queryParams` argument is an associative array with the keys listed below.
 
-Name | Type | Description  | Example | Notes
-------------- | ------------- | ------------- | ------------- | -------------
- `period` | **string**| Period must have one of the following formats:  - For a day : \&quot;2018-01-01\&quot;, - For a week: \&quot;2018-W01\&quot;,  - For a month: \&quot;2018-01\&quot; - For a year: \&quot;2018\&quot; For a range period:  -  Date range: \&quot;2018-01-01/2018-01-15\&quot; | `2019-01-01T00:00:00.000Z` | [optional]
- `currentPage` | **int**| Choose the number of search results to return per page. Minimum value: 1 | `2` | [optional] [default to 1]
- `pageSize` | **int**| Results per page. Allowed values 1-100, default is 25. | `30` | [optional] [default to 25]
+Name | Type | Description | Notes
+------------- | ------------- | ------------- | ------------- 
+ `period` | **string**| Period must have one of the following formats:  - For a day : \&quot;2018-01-01\&quot;, - For a week: \&quot;2018-W01\&quot;,  - For a month: \&quot;2018-01\&quot; - For a year: \&quot;2018\&quot; For a range period:  -  Date range: \&quot;2018-01-01/2018-01-15\&quot; | [optional]
+ `currentPage` | **int**| Choose the number of search results to return per page. Minimum value: 1 | [optional] [default to 1]
+ `pageSize` | **int**| Results per page. Allowed values 1-100, default is 25. | [optional] [default to 25]
 
 
 
@@ -39,29 +39,44 @@ Name | Type | Description  | Example | Notes
 
 [**\ApiVideo\Client\Model\RawStatisticsListLiveStreamAnalyticsResponse**](../Model/RawStatisticsListLiveStreamAnalyticsResponse.md)
 
+### Example
+
+```php
+const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
+
+const liveStreamId = 'vi4k0jvEUuaTdRAEjQ4Jfrgz'; // The unique identifier for the live stream you want to retrieve analytics for.
+const period = '2019-01-01'; // Period must have one of the following formats:  - For a day : "2018-01-01", - For a week: "2018-W01", - For a month: "2018-01" - For a year: "2018"  For a range period: -  Date range: "2018-01-01/2018-01-15" 
+const currentPage = 2; // Choose the number of search results to return per page. Minimum value: 1
+const pageSize = 30; // Results per page. Allowed values 1-100, default is 25.
+
+// RawStatisticsListLiveStreamAnalyticsResponse
+const liveStreamSessions = await client.rawStatistics.listLiveStreamSessions({ liveStreamId, period, currentPage, pageSize })
+```
 
 
 
-## listSessionEvents()
+
+## **`listSessionEvents()` - List player session events**
+
 
 
 Useful to track and measure video's engagement.
 
-
 ### Arguments
 
 
-Name | Type | Description  | Example | Notes
-------------- | ------------- | ------------- | ------------- | -------------
- `sessionId` | **string**| A unique identifier you can use to reference and track a session with. | `psEmFwGQUAXR2lFHj5nDOpy` |
+Name | Type | Description | Notes
+------------- | ------------- | ------------- | ------------- 
+ `sessionId` | **string**| A unique identifier you can use to reference and track a session with. |
+`queryParams` | array | (see below) |
 
 
-Note: `$queryParams` argument is an associative array with the keys listed below.
+Note: `queryParams` argument is an associative array with the keys listed below.
 
-Name | Type | Description  | Example | Notes
-------------- | ------------- | ------------- | ------------- | -------------
- `currentPage` | **int**| Choose the number of search results to return per page. Minimum value: 1 | `2` | [optional] [default to 1]
- `pageSize` | **int**| Results per page. Allowed values 1-100, default is 25. | `30` | [optional] [default to 25]
+Name | Type | Description | Notes
+------------- | ------------- | ------------- | ------------- 
+ `currentPage` | **int**| Choose the number of search results to return per page. Minimum value: 1 | [optional] [default to 1]
+ `pageSize` | **int**| Results per page. Allowed values 1-100, default is 25. | [optional] [default to 25]
 
 
 
@@ -72,31 +87,48 @@ Name | Type | Description  | Example | Notes
 
 [**\ApiVideo\Client\Model\RawStatisticsListPlayerSessionEventsResponse**](../Model/RawStatisticsListPlayerSessionEventsResponse.md)
 
+### Example
+
+```php
+<?php
+// First install the api client: "composer require api-video/php-api-client"
+
+require __DIR__ . '/vendor/autoload.php';
+
+$sessionId = 'psEmFwGQUAXR2lFHj5nDOpy'; // A unique identifier you can use to reference and track a session with.
+
+$sessionEvents = $client->rawStatistics()->listSessionEvents($sessionId, array(
+    'currentPage' => 2, // Choose the number of search results to return per page. Minimum ->setvalue(1)
+    'pageSize' => 30 // Results per page. Allowed values 1-100, default is 25.
+)); 
+```
 
 
 
-## listVideoSessions()
+
+## **`listVideoSessions()` - List video player sessions**
+
 
 
 Retrieve all available user sessions for a specific video. Tutorials that use the [analytics endpoint](https://api.video/blog/endpoints/analytics).
 
-
 ### Arguments
 
 
-Name | Type | Description  | Example | Notes
-------------- | ------------- | ------------- | ------------- | -------------
- `videoId` | **string**| The unique identifier for the video you want to retrieve session information for. | `vi4k0jvEUuaTdRAEjQ4Prklg` |
+Name | Type | Description | Notes
+------------- | ------------- | ------------- | ------------- 
+ `videoId` | **string**| The unique identifier for the video you want to retrieve session information for. |
+`queryParams` | array | (see below) |
 
 
-Note: `$queryParams` argument is an associative array with the keys listed below.
+Note: `queryParams` argument is an associative array with the keys listed below.
 
-Name | Type | Description  | Example | Notes
-------------- | ------------- | ------------- | ------------- | -------------
- `period` | **string**| Period must have one of the following formats:  - For a day : 2018-01-01, - For a week: 2018-W01,  - For a month: 2018-01 - For a year: 2018 For a range period:  -  Date range: 2018-01-01/2018-01-15 | `'period_example'` | [optional]
- `metadata` | [**array<string,string>**](../Model/string.md)| Metadata and [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) filter. Send an array of key value pairs you want to filter sessios with. | `metadata[Author]=John Doe&metadata[Format]=Tutorial` | [optional]
- `currentPage` | **int**| Choose the number of search results to return per page. Minimum value: 1 | `2` | [optional] [default to 1]
- `pageSize` | **int**| Results per page. Allowed values 1-100, default is 25. | `30` | [optional] [default to 25]
+Name | Type | Description | Notes
+------------- | ------------- | ------------- | ------------- 
+ `period` | **string**| Period must have one of the following formats:  - For a day : 2018-01-01, - For a week: 2018-W01,  - For a month: 2018-01 - For a year: 2018 For a range period:  -  Date range: 2018-01-01/2018-01-15 | [optional]
+ `metadata` | [**array<string,string>**](../Model/string.md)| Metadata and [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) filter. Send an array of key value pairs you want to filter sessios with. | [optional]
+ `currentPage` | **int**| Choose the number of search results to return per page. Minimum value: 1 | [optional] [default to 1]
+ `pageSize` | **int**| Results per page. Allowed values 1-100, default is 25. | [optional] [default to 25]
 
 
 
@@ -106,6 +138,26 @@ Name | Type | Description  | Example | Notes
 ### Return type
 
 [**\ApiVideo\Client\Model\RawStatisticsListSessionsResponse**](../Model/RawStatisticsListSessionsResponse.md)
+
+### Example
+
+```php
+<?php
+// First install the api client: "composer require api-video/php-api-client"
+
+require __DIR__ . '/vendor/autoload.php';
+
+$videoId = 'vi4k0jvEUuaTdRAEjQ4Prklg'; // The unique identifier for the video you want to retrieve session information for.
+
+$videoSessions = $client->rawStatistics()->listVideoSessions($videoId, array(
+    'period' => '2018-01', // Period must have one of the following formats: - For a day : 2018-01-01, - For a week: 2018-W01, - For a month: 2018-01 - For a year: 2018  For a range period: -  Date range: 2018-01-01/2018-01-15 
+    'metadata' => array( // Metadata and Dynamic Metadata filter. Send an array of key value pairs you want to filter sessions with.
+        'key' => 'value'
+    ),
+    'currentPage' => 2, // Choose the number of search results to return per page. Minimum ->setvalue(1)
+    'pageSize' => 30 // Results per page. Allowed values 1-100, default is 25.
+)); 
+```
 
 
 
