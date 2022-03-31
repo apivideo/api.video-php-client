@@ -114,189 +114,106 @@ $client->videos()->upload(
 
 ## API Endpoints
 
-All URIs are relative to `https://ws.api.video`.
-
 
 ### CaptionsApi
 
-#### Retrieve an instance of CaptionsApi
-
-```php
-// The $client must already be initialized
-$captions = $client->captions();
-```
-
-#### Endpoints
-
-Method | HTTP request | Description
+Method | Description | HTTP request
 ------------- | ------------- | -------------
-[**delete**](docs/Api/CaptionsApi.md#delete) | **DELETE** `/videos/{videoId}/captions/{language}` | Delete a caption
-[**list**](docs/Api/CaptionsApi.md#list) | **GET** `/videos/{videoId}/captions` | List video captions
-[**get**](docs/Api/CaptionsApi.md#get) | **GET** `/videos/{videoId}/captions/{language}` | Retrieve a caption
-[**update**](docs/Api/CaptionsApi.md#update) | **PATCH** `/videos/{videoId}/captions/{language}` | Update a caption
-[**upload**](docs/Api/CaptionsApi.md#upload) | **POST** `/videos/{videoId}/captions/{language}` | Upload a caption
+[**upload()**](docs/Api/CaptionsApi.md#upload) | Upload a caption | **POST** `/videos/{videoId}/captions/{language}`
+[**get()**](docs/Api/CaptionsApi.md#get) | Retrieve a caption | **GET** `/videos/{videoId}/captions/{language}`
+[**update()**](docs/Api/CaptionsApi.md#update) | Update a caption | **PATCH** `/videos/{videoId}/captions/{language}`
+[**delete()**](docs/Api/CaptionsApi.md#delete) | Delete a caption | **DELETE** `/videos/{videoId}/captions/{language}`
+[**list()**](docs/Api/CaptionsApi.md#list) | List video captions | **GET** `/videos/{videoId}/captions`
 
 
 ### ChaptersApi
 
-#### Retrieve an instance of ChaptersApi
-
-```php
-// The $client must already be initialized
-$chapters = $client->chapters();
-```
-
-#### Endpoints
-
-Method | HTTP request | Description
+Method | Description | HTTP request
 ------------- | ------------- | -------------
-[**delete**](docs/Api/ChaptersApi.md#delete) | **DELETE** `/videos/{videoId}/chapters/{language}` | Delete a chapter
-[**list**](docs/Api/ChaptersApi.md#list) | **GET** `/videos/{videoId}/chapters` | List video chapters
-[**get**](docs/Api/ChaptersApi.md#get) | **GET** `/videos/{videoId}/chapters/{language}` | Retrieve a chapter
-[**upload**](docs/Api/ChaptersApi.md#upload) | **POST** `/videos/{videoId}/chapters/{language}` | Upload a chapter
+[**upload()**](docs/Api/ChaptersApi.md#upload) | Upload a chapter | **POST** `/videos/{videoId}/chapters/{language}`
+[**get()**](docs/Api/ChaptersApi.md#get) | Retrieve a chapter | **GET** `/videos/{videoId}/chapters/{language}`
+[**delete()**](docs/Api/ChaptersApi.md#delete) | Delete a chapter | **DELETE** `/videos/{videoId}/chapters/{language}`
+[**list()**](docs/Api/ChaptersApi.md#list) | List video chapters | **GET** `/videos/{videoId}/chapters`
 
 
 ### LiveStreamsApi
 
-#### Retrieve an instance of LiveStreamsApi
-
-```php
-// The $client must already be initialized
-$liveStreams = $client->liveStreams();
-```
-
-#### Endpoints
-
-Method | HTTP request | Description
+Method | Description | HTTP request
 ------------- | ------------- | -------------
-[**delete**](docs/Api/LiveStreamsApi.md#delete) | **DELETE** `/live-streams/{liveStreamId}` | Delete a live stream
-[**deleteThumbnail**](docs/Api/LiveStreamsApi.md#deleteThumbnail) | **DELETE** `/live-streams/{liveStreamId}/thumbnail` | Delete a thumbnail
-[**list**](docs/Api/LiveStreamsApi.md#list) | **GET** `/live-streams` | List all live streams
-[**get**](docs/Api/LiveStreamsApi.md#get) | **GET** `/live-streams/{liveStreamId}` | Retrieve live stream
-[**update**](docs/Api/LiveStreamsApi.md#update) | **PATCH** `/live-streams/{liveStreamId}` | Update a live stream
-[**create**](docs/Api/LiveStreamsApi.md#create) | **POST** `/live-streams` | Create live stream
-[**uploadThumbnail**](docs/Api/LiveStreamsApi.md#uploadThumbnail) | **POST** `/live-streams/{liveStreamId}/thumbnail` | Upload a thumbnail
+[**create()**](docs/Api/LiveStreamsApi.md#create) | Create live stream | **POST** `/live-streams`
+[**get()**](docs/Api/LiveStreamsApi.md#get) | Retrieve live stream | **GET** `/live-streams/{liveStreamId}`
+[**update()**](docs/Api/LiveStreamsApi.md#update) | Update a live stream | **PATCH** `/live-streams/{liveStreamId}`
+[**delete()**](docs/Api/LiveStreamsApi.md#delete) | Delete a live stream | **DELETE** `/live-streams/{liveStreamId}`
+[**list()**](docs/Api/LiveStreamsApi.md#list) | List all live streams | **GET** `/live-streams`
+[**uploadThumbnail()**](docs/Api/LiveStreamsApi.md#uploadThumbnail) | Upload a thumbnail | **POST** `/live-streams/{liveStreamId}/thumbnail`
+[**deleteThumbnail()**](docs/Api/LiveStreamsApi.md#deleteThumbnail) | Delete a thumbnail | **DELETE** `/live-streams/{liveStreamId}/thumbnail`
 
 
 ### PlayerThemesApi
 
-#### Retrieve an instance of PlayerThemesApi
-
-```php
-// The $client must already be initialized
-$playerThemes = $client->playerThemes();
-```
-
-#### Endpoints
-
-Method | HTTP request | Description
+Method | Description | HTTP request
 ------------- | ------------- | -------------
-[**delete**](docs/Api/PlayerThemesApi.md#delete) | **DELETE** `/players/{playerId}` | Delete a player
-[**deleteLogo**](docs/Api/PlayerThemesApi.md#deleteLogo) | **DELETE** `/players/{playerId}/logo` | Delete logo
-[**list**](docs/Api/PlayerThemesApi.md#list) | **GET** `/players` | List all player themes
-[**get**](docs/Api/PlayerThemesApi.md#get) | **GET** `/players/{playerId}` | Retrieve a player
-[**update**](docs/Api/PlayerThemesApi.md#update) | **PATCH** `/players/{playerId}` | Update a player
-[**create**](docs/Api/PlayerThemesApi.md#create) | **POST** `/players` | Create a player
-[**uploadLogo**](docs/Api/PlayerThemesApi.md#uploadLogo) | **POST** `/players/{playerId}/logo` | Upload a logo
+[**create()**](docs/Api/PlayerThemesApi.md#create) | Create a player | **POST** `/players`
+[**get()**](docs/Api/PlayerThemesApi.md#get) | Retrieve a player | **GET** `/players/{playerId}`
+[**update()**](docs/Api/PlayerThemesApi.md#update) | Update a player | **PATCH** `/players/{playerId}`
+[**delete()**](docs/Api/PlayerThemesApi.md#delete) | Delete a player | **DELETE** `/players/{playerId}`
+[**list()**](docs/Api/PlayerThemesApi.md#list) | List all player themes | **GET** `/players`
+[**uploadLogo()**](docs/Api/PlayerThemesApi.md#uploadLogo) | Upload a logo | **POST** `/players/{playerId}/logo`
+[**deleteLogo()**](docs/Api/PlayerThemesApi.md#deleteLogo) | Delete logo | **DELETE** `/players/{playerId}/logo`
 
 
 ### RawStatisticsApi
 
-#### Retrieve an instance of RawStatisticsApi
-
-```php
-// The $client must already be initialized
-$rawStatistics = $client->rawStatistics();
-```
-
-#### Endpoints
-
-Method | HTTP request | Description
+Method | Description | HTTP request
 ------------- | ------------- | -------------
-[**listLiveStreamSessions**](docs/Api/RawStatisticsApi.md#listLiveStreamSessions) | **GET** `/analytics/live-streams/{liveStreamId}` | List live stream player sessions
-[**listSessionEvents**](docs/Api/RawStatisticsApi.md#listSessionEvents) | **GET** `/analytics/sessions/{sessionId}/events` | List player session events
-[**listVideoSessions**](docs/Api/RawStatisticsApi.md#listVideoSessions) | **GET** `/analytics/videos/{videoId}` | List video player sessions
+[**listLiveStreamSessions()**](docs/Api/RawStatisticsApi.md#listLiveStreamSessions) | List live stream player sessions | **GET** `/analytics/live-streams/{liveStreamId}`
+[**listSessionEvents()**](docs/Api/RawStatisticsApi.md#listSessionEvents) | List player session events | **GET** `/analytics/sessions/{sessionId}/events`
+[**listVideoSessions()**](docs/Api/RawStatisticsApi.md#listVideoSessions) | List video player sessions | **GET** `/analytics/videos/{videoId}`
 
 
 ### UploadTokensApi
 
-#### Retrieve an instance of UploadTokensApi
-
-```php
-// The $client must already be initialized
-$uploadTokens = $client->uploadTokens();
-```
-
-#### Endpoints
-
-Method | HTTP request | Description
+Method | Description | HTTP request
 ------------- | ------------- | -------------
-[**deleteToken**](docs/Api/UploadTokensApi.md#deleteToken) | **DELETE** `/upload-tokens/{uploadToken}` | Delete an upload token
-[**list**](docs/Api/UploadTokensApi.md#list) | **GET** `/upload-tokens` | List all active upload tokens.
-[**getToken**](docs/Api/UploadTokensApi.md#getToken) | **GET** `/upload-tokens/{uploadToken}` | Retrieve upload token
-[**createToken**](docs/Api/UploadTokensApi.md#createToken) | **POST** `/upload-tokens` | Generate an upload token
+[**createToken()**](docs/Api/UploadTokensApi.md#createToken) | Generate an upload token | **POST** `/upload-tokens`
+[**getToken()**](docs/Api/UploadTokensApi.md#getToken) | Retrieve upload token | **GET** `/upload-tokens/{uploadToken}`
+[**deleteToken()**](docs/Api/UploadTokensApi.md#deleteToken) | Delete an upload token | **DELETE** `/upload-tokens/{uploadToken}`
+[**list()**](docs/Api/UploadTokensApi.md#list) | List all active upload tokens. | **GET** `/upload-tokens`
 
 
 ### VideosApi
 
-#### Retrieve an instance of VideosApi
-
-```php
-// The $client must already be initialized
-$videos = $client->videos();
-```
-
-#### Endpoints
-
-Method | HTTP request | Description
+Method | Description | HTTP request
 ------------- | ------------- | -------------
-[**delete**](docs/Api/VideosApi.md#delete) | **DELETE** `/videos/{videoId}` | Delete a video
-[**get**](docs/Api/VideosApi.md#get) | **GET** `/videos/{videoId}` | Retrieve a video
-[**getStatus**](docs/Api/VideosApi.md#getStatus) | **GET** `/videos/{videoId}/status` | Retrieve video status
-[**list**](docs/Api/VideosApi.md#list) | **GET** `/videos` | List all videos
-[**update**](docs/Api/VideosApi.md#update) | **PATCH** `/videos/{videoId}` | Update a video
-[**pickThumbnail**](docs/Api/VideosApi.md#pickThumbnail) | **PATCH** `/videos/{videoId}/thumbnail` | Pick a thumbnail
-[**uploadWithUploadToken**](docs/Api/VideosApi.md#uploadWithUploadToken) | **POST** `/upload` | Upload with an upload token
-[**create**](docs/Api/VideosApi.md#create) | **POST** `/videos` | Create a video
-[**upload**](docs/Api/VideosApi.md#upload) | **POST** `/videos/{videoId}/source` | Upload a video
-[**uploadThumbnail**](docs/Api/VideosApi.md#uploadThumbnail) | **POST** `/videos/{videoId}/thumbnail` | Upload a thumbnail
+[**create()**](docs/Api/VideosApi.md#create) | Create a video | **POST** `/videos`
+[**upload()**](docs/Api/VideosApi.md#upload) | Upload a video | **POST** `/videos/{videoId}/source`
+[**uploadWithUploadToken()**](docs/Api/VideosApi.md#uploadWithUploadToken) | Upload with an upload token | **POST** `/upload`
+[**get()**](docs/Api/VideosApi.md#get) | Retrieve a video | **GET** `/videos/{videoId}`
+[**update()**](docs/Api/VideosApi.md#update) | Update a video | **PATCH** `/videos/{videoId}`
+[**delete()**](docs/Api/VideosApi.md#delete) | Delete a video | **DELETE** `/videos/{videoId}`
+[**list()**](docs/Api/VideosApi.md#list) | List all videos | **GET** `/videos`
+[**uploadThumbnail()**](docs/Api/VideosApi.md#uploadThumbnail) | Upload a thumbnail | **POST** `/videos/{videoId}/thumbnail`
+[**pickThumbnail()**](docs/Api/VideosApi.md#pickThumbnail) | Pick a thumbnail | **PATCH** `/videos/{videoId}/thumbnail`
+[**getStatus()**](docs/Api/VideosApi.md#getStatus) | Retrieve video status | **GET** `/videos/{videoId}/status`
 
 
 ### WatermarksApi
 
-#### Retrieve an instance of WatermarksApi
-
-```php
-// The $client must already be initialized
-$watermarks = $client->watermarks();
-```
-
-#### Endpoints
-
-Method | HTTP request | Description
+Method | Description | HTTP request
 ------------- | ------------- | -------------
-[**delete**](docs/Api/WatermarksApi.md#delete) | **DELETE** `/watermarks/{watermarkId}` | Delete a watermark
-[**list**](docs/Api/WatermarksApi.md#list) | **GET** `/watermarks` | List all watermarks
-[**upload**](docs/Api/WatermarksApi.md#upload) | **POST** `/watermarks` | Upload a watermark
+[**upload()**](docs/Api/WatermarksApi.md#upload) | Upload a watermark | **POST** `/watermarks`
+[**delete()**](docs/Api/WatermarksApi.md#delete) | Delete a watermark | **DELETE** `/watermarks/{watermarkId}`
+[**list()**](docs/Api/WatermarksApi.md#list) | List all watermarks | **GET** `/watermarks`
 
 
 ### WebhooksApi
 
-#### Retrieve an instance of WebhooksApi
-
-```php
-// The $client must already be initialized
-$webhooks = $client->webhooks();
-```
-
-#### Endpoints
-
-Method | HTTP request | Description
+Method | Description | HTTP request
 ------------- | ------------- | -------------
-[**delete**](docs/Api/WebhooksApi.md#delete) | **DELETE** `/webhooks/{webhookId}` | Delete a Webhook
-[**get**](docs/Api/WebhooksApi.md#get) | **GET** `/webhooks/{webhookId}` | Retrieve Webhook details
-[**list**](docs/Api/WebhooksApi.md#list) | **GET** `/webhooks` | List all webhooks
-[**create**](docs/Api/WebhooksApi.md#create) | **POST** `/webhooks` | Create Webhook
+[**create()**](docs/Api/WebhooksApi.md#create) | Create Webhook | **POST** `/webhooks`
+[**get()**](docs/Api/WebhooksApi.md#get) | Retrieve Webhook details | **GET** `/webhooks/{webhookId}`
+[**delete()**](docs/Api/WebhooksApi.md#delete) | Delete a Webhook | **DELETE** `/webhooks/{webhookId}`
+[**list()**](docs/Api/WebhooksApi.md#list) | List all webhooks | **GET** `/webhooks`
 
 
 

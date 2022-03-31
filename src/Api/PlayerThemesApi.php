@@ -43,163 +43,39 @@ class PlayerThemesApi implements ApiInterface
     }
 
     /**
-     * Delete a player
+     * Create a player
      *
-     * @param  string $playerId The unique identifier for the player you want to delete. (required)
-     *
-     * @throws \ApiVideo\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return void
-     */
-    public function delete(string $playerId): void
-    {
-        $request = $this->buildDeleteRequest($playerId);
-
-        $this->client->request($request);
-    }
-
-    /**
-     * Create request for operation 'delete'
-     *
-     * @param  string $playerId The unique identifier for the player you want to delete. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return Request
-     */
-    private function buildDeleteRequest(string $playerId): Request
-    {
-        // verify the required parameter 'playerId' is set
-        if ($playerId === null || (is_array($playerId) && count($playerId) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $playerId when calling '
-            );
-        }
-
-        $resourcePath = '/players/{playerId}';
-        $formParams = [];
-        $queryParams = [];
-        $headers = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // path params
-        if ($playerId !== null) {
-            $resourcePath = str_replace(
-                '{' . 'playerId' . '}',
-                ObjectSerializer::toPathValue($playerId),
-                $resourcePath
-            );
-        }
-
-
-
-        $query = \http_build_query($queryParams);
-
-        return new Request(
-            'DELETE',
-            $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-
-    /**
-     * Delete logo
-     *
-     * @param  string $playerId The unique identifier for the player. (required)
+     * @param  \ApiVideo\Client\Model\PlayerThemeCreationPayload $playerThemeCreationPayload playerThemeCreationPayload (required)
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \ApiVideo\Client\Model\PlayerTheme
      */
-    public function deleteLogo(string $playerId): void
+    public function create(\ApiVideo\Client\Model\PlayerThemeCreationPayload $playerThemeCreationPayload): \ApiVideo\Client\Model\PlayerTheme
     {
-        $request = $this->buildDeleteLogoRequest($playerId);
+        $request = $this->buildCreateRequest($playerThemeCreationPayload);
 
-        $this->client->request($request);
-    }
-
-    /**
-     * Create request for operation 'deleteLogo'
-     *
-     * @param  string $playerId The unique identifier for the player. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return Request
-     */
-    private function buildDeleteLogoRequest(string $playerId): Request
-    {
-        // verify the required parameter 'playerId' is set
-        if ($playerId === null || (is_array($playerId) && count($playerId) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $playerId when calling '
-            );
-        }
-
-        $resourcePath = '/players/{playerId}/logo';
-        $formParams = [];
-        $queryParams = [];
-        $headers = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // path params
-        if ($playerId !== null) {
-            $resourcePath = str_replace(
-                '{' . 'playerId' . '}',
-                ObjectSerializer::toPathValue($playerId),
-                $resourcePath
-            );
-        }
-
-
-
-        $query = \http_build_query($queryParams);
-
-        return new Request(
-            'DELETE',
-            $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-
-    /**
-     * List all player themes
-     *
-     * @param  array $queryParams
-     *
-     * @throws \ApiVideo\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\PlayerThemesListResponse|\ApiVideo\Client\Model\BadRequest
-     */
-    public function list(array $queryParams = []): \ApiVideo\Client\Model\PlayerThemesListResponse
-    {
-        $request = $this->buildListRequest($queryParams);
-
-        $model = new \ApiVideo\Client\Model\PlayerThemesListResponse($this->client->request($request));
+        $model = new \ApiVideo\Client\Model\PlayerTheme($this->client->request($request));
 
         return $model;
     }
 
     /**
-     * Create request for operation 'list'
+     * Create request for operation 'create'
      *
-     * @param  array $queryParams
+     * @param  \ApiVideo\Client\Model\PlayerThemeCreationPayload $playerThemeCreationPayload (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
      */
-    private function buildListRequest(array $queryParams = []): Request
+    private function buildCreateRequest(\ApiVideo\Client\Model\PlayerThemeCreationPayload $playerThemeCreationPayload): Request
     {
-        // unbox the parameters from the associative array
-        $sortBy = array_key_exists('sortBy', $queryParams) ? $queryParams['sortBy'] : null;
-        $sortOrder = array_key_exists('sortOrder', $queryParams) ? $queryParams['sortOrder'] : null;
-        $currentPage = array_key_exists('currentPage', $queryParams) ? $queryParams['currentPage'] : 1;
-        $pageSize = array_key_exists('pageSize', $queryParams) ? $queryParams['pageSize'] : 25;
-
+        // verify the required parameter 'playerThemeCreationPayload' is set
+        if ($playerThemeCreationPayload === null || (is_array($playerThemeCreationPayload) && count($playerThemeCreationPayload) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $playerThemeCreationPayload when calling '
+            );
+        }
 
         $resourcePath = '/players';
         $formParams = [];
@@ -208,33 +84,16 @@ class PlayerThemesApi implements ApiInterface
         $httpBody = '';
         $multipart = false;
 
-        // sortBy query params
-        if ($sortBy !== null) {
-            $queryParams['sortBy'] = $sortBy;
+
+        if ($playerThemeCreationPayload) {
+            $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($playerThemeCreationPayload));
         }
-
-        // sortOrder query params
-        if ($sortOrder !== null) {
-            $queryParams['sortOrder'] = $sortOrder;
-        }
-
-        // currentPage query params
-        if ($currentPage !== null) {
-            $queryParams['currentPage'] = $currentPage;
-        }
-
-        // pageSize query params
-        if ($pageSize !== null) {
-            $queryParams['pageSize'] = $pageSize;
-        }
-
-
 
 
         $query = \http_build_query($queryParams);
 
         return new Request(
-            'GET',
+            'POST',
             $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -382,39 +241,101 @@ class PlayerThemesApi implements ApiInterface
 
 
     /**
-     * Create a player
+     * Delete a player
      *
-     * @param  \ApiVideo\Client\Model\PlayerThemeCreationPayload $playerThemeCreationPayload playerThemeCreationPayload (required)
+     * @param  string $playerId The unique identifier for the player you want to delete. (required)
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\PlayerTheme
+     * @return void
      */
-    public function create(\ApiVideo\Client\Model\PlayerThemeCreationPayload $playerThemeCreationPayload): \ApiVideo\Client\Model\PlayerTheme
+    public function delete(string $playerId): void
     {
-        $request = $this->buildCreateRequest($playerThemeCreationPayload);
+        $request = $this->buildDeleteRequest($playerId);
 
-        $model = new \ApiVideo\Client\Model\PlayerTheme($this->client->request($request));
+        $this->client->request($request);
+    }
+
+    /**
+     * Create request for operation 'delete'
+     *
+     * @param  string $playerId The unique identifier for the player you want to delete. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return Request
+     */
+    private function buildDeleteRequest(string $playerId): Request
+    {
+        // verify the required parameter 'playerId' is set
+        if ($playerId === null || (is_array($playerId) && count($playerId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $playerId when calling '
+            );
+        }
+
+        $resourcePath = '/players/{playerId}';
+        $formParams = [];
+        $queryParams = [];
+        $headers = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // path params
+        if ($playerId !== null) {
+            $resourcePath = str_replace(
+                '{' . 'playerId' . '}',
+                ObjectSerializer::toPathValue($playerId),
+                $resourcePath
+            );
+        }
+
+
+
+        $query = \http_build_query($queryParams);
+
+        return new Request(
+            'DELETE',
+            $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+
+    /**
+     * List all player themes
+     *
+     * @param  array $queryParams
+     *
+     * @throws \ApiVideo\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \ApiVideo\Client\Model\PlayerThemesListResponse|\ApiVideo\Client\Model\BadRequest
+     */
+    public function list(array $queryParams = []): \ApiVideo\Client\Model\PlayerThemesListResponse
+    {
+        $request = $this->buildListRequest($queryParams);
+
+        $model = new \ApiVideo\Client\Model\PlayerThemesListResponse($this->client->request($request));
 
         return $model;
     }
 
     /**
-     * Create request for operation 'create'
+     * Create request for operation 'list'
      *
-     * @param  \ApiVideo\Client\Model\PlayerThemeCreationPayload $playerThemeCreationPayload (required)
+     * @param  array $queryParams
      *
      * @throws \InvalidArgumentException
      * @return Request
      */
-    private function buildCreateRequest(\ApiVideo\Client\Model\PlayerThemeCreationPayload $playerThemeCreationPayload): Request
+    private function buildListRequest(array $queryParams = []): Request
     {
-        // verify the required parameter 'playerThemeCreationPayload' is set
-        if ($playerThemeCreationPayload === null || (is_array($playerThemeCreationPayload) && count($playerThemeCreationPayload) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $playerThemeCreationPayload when calling '
-            );
-        }
+        // unbox the parameters from the associative array
+        $sortBy = array_key_exists('sortBy', $queryParams) ? $queryParams['sortBy'] : null;
+        $sortOrder = array_key_exists('sortOrder', $queryParams) ? $queryParams['sortOrder'] : null;
+        $currentPage = array_key_exists('currentPage', $queryParams) ? $queryParams['currentPage'] : 1;
+        $pageSize = array_key_exists('pageSize', $queryParams) ? $queryParams['pageSize'] : 25;
+
 
         $resourcePath = '/players';
         $formParams = [];
@@ -423,16 +344,33 @@ class PlayerThemesApi implements ApiInterface
         $httpBody = '';
         $multipart = false;
 
-
-        if ($playerThemeCreationPayload) {
-            $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($playerThemeCreationPayload));
+        // sortBy query params
+        if ($sortBy !== null) {
+            $queryParams['sortBy'] = $sortBy;
         }
+
+        // sortOrder query params
+        if ($sortOrder !== null) {
+            $queryParams['sortOrder'] = $sortOrder;
+        }
+
+        // currentPage query params
+        if ($currentPage !== null) {
+            $queryParams['currentPage'] = $currentPage;
+        }
+
+        // pageSize query params
+        if ($pageSize !== null) {
+            $queryParams['pageSize'] = $pageSize;
+        }
+
+
 
 
         $query = \http_build_query($queryParams);
 
         return new Request(
-            'POST',
+            'GET',
             $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -529,6 +467,68 @@ class PlayerThemesApi implements ApiInterface
 
         return new Request(
             'POST',
+            $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+
+    /**
+     * Delete logo
+     *
+     * @param  string $playerId The unique identifier for the player. (required)
+     *
+     * @throws \ApiVideo\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function deleteLogo(string $playerId): void
+    {
+        $request = $this->buildDeleteLogoRequest($playerId);
+
+        $this->client->request($request);
+    }
+
+    /**
+     * Create request for operation 'deleteLogo'
+     *
+     * @param  string $playerId The unique identifier for the player. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return Request
+     */
+    private function buildDeleteLogoRequest(string $playerId): Request
+    {
+        // verify the required parameter 'playerId' is set
+        if ($playerId === null || (is_array($playerId) && count($playerId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $playerId when calling '
+            );
+        }
+
+        $resourcePath = '/players/{playerId}/logo';
+        $formParams = [];
+        $queryParams = [];
+        $headers = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // path params
+        if ($playerId !== null) {
+            $resourcePath = str_replace(
+                '{' . 'playerId' . '}',
+                ObjectSerializer::toPathValue($playerId),
+                $resourcePath
+            );
+        }
+
+
+
+        $query = \http_build_query($queryParams);
+
+        return new Request(
+            'DELETE',
             $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

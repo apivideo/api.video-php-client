@@ -43,6 +43,193 @@ class ChaptersApi implements ApiInterface
     }
 
     /**
+     * Upload a chapter
+     *
+     * @param  string $videoId The unique identifier for the video you want to upload a chapter for. (required)
+     * @param  string $language A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation. (required)
+     * @param  \SplFileObject $file The VTT file describing the chapters you want to upload. (required)
+     *
+     * @throws \ApiVideo\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \ApiVideo\Client\Model\Chapter|\ApiVideo\Client\Model\BadRequest|\ApiVideo\Client\Model\NotFound
+     */
+    public function upload(string $videoId, string $language, \SplFileObject $file): \ApiVideo\Client\Model\Chapter
+    {
+        $request = $this->buildUploadRequest($videoId, $language, $file);
+
+        $model = new \ApiVideo\Client\Model\Chapter($this->client->request($request));
+
+        return $model;
+    }
+
+    /**
+     * Create request for operation 'upload'
+     *
+     * @param  string $videoId The unique identifier for the video you want to upload a chapter for. (required)
+     * @param  string $language A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation. (required)
+     * @param  \SplFileObject $file The VTT file describing the chapters you want to upload. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return Request
+     */
+    private function buildUploadRequest(string $videoId, string $language, \SplFileObject $file): Request
+    {
+        // verify the required parameter 'videoId' is set
+        if ($videoId === null || (is_array($videoId) && count($videoId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $videoId when calling '
+            );
+        }
+        // verify the required parameter 'language' is set
+        if ($language === null || (is_array($language) && count($language) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $language when calling '
+            );
+        }
+        // verify the required parameter 'file' is set
+        if ($file === null || (is_array($file) && count($file) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $file when calling '
+            );
+        }
+
+        $resourcePath = '/videos/{videoId}/chapters/{language}';
+        $formParams = [];
+        $queryParams = [];
+        $headers = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // path params
+        if ($videoId !== null) {
+            $resourcePath = str_replace(
+                '{' . 'videoId' . '}',
+                ObjectSerializer::toPathValue($videoId),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($language !== null) {
+            $resourcePath = str_replace(
+                '{' . 'language' . '}',
+                ObjectSerializer::toPathValue($language),
+                $resourcePath
+            );
+        }
+
+
+        // form params
+        if ($file !== null) {
+            $builder = new MultipartStreamBuilder($this->client->getStreamFactory());
+            $builder->addResource('file', $file->fread($file->getSize()), [
+                'filename' => basename($file->getRealPath()),
+                'headers' => ['Content-Type' => 'application/octet-stream']]
+            );
+            $request = new Request(
+                'POST',
+                $resourcePath,
+                [
+                    'Accept' => 'application/json',
+                    'Content-Type' => 'multipart/form-data; boundary="'.$builder->getBoundary().'"',
+                ]
+            );
+            $request->setStream($builder->build());
+
+            return $request;
+        }
+
+        $query = \http_build_query($queryParams);
+
+        return new Request(
+            'POST',
+            $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+
+    /**
+     * Retrieve a chapter
+     *
+     * @param  string $videoId The unique identifier for the video you want to show a chapter for. (required)
+     * @param  string $language A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation. (required)
+     *
+     * @throws \ApiVideo\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \ApiVideo\Client\Model\Chapter|\ApiVideo\Client\Model\NotFound
+     */
+    public function get(string $videoId, string $language): \ApiVideo\Client\Model\Chapter
+    {
+        $request = $this->buildGetRequest($videoId, $language);
+
+        $model = new \ApiVideo\Client\Model\Chapter($this->client->request($request));
+
+        return $model;
+    }
+
+    /**
+     * Create request for operation 'get'
+     *
+     * @param  string $videoId The unique identifier for the video you want to show a chapter for. (required)
+     * @param  string $language A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return Request
+     */
+    private function buildGetRequest(string $videoId, string $language): Request
+    {
+        // verify the required parameter 'videoId' is set
+        if ($videoId === null || (is_array($videoId) && count($videoId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $videoId when calling '
+            );
+        }
+        // verify the required parameter 'language' is set
+        if ($language === null || (is_array($language) && count($language) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $language when calling '
+            );
+        }
+
+        $resourcePath = '/videos/{videoId}/chapters/{language}';
+        $formParams = [];
+        $queryParams = [];
+        $headers = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // path params
+        if ($videoId !== null) {
+            $resourcePath = str_replace(
+                '{' . 'videoId' . '}',
+                ObjectSerializer::toPathValue($videoId),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($language !== null) {
+            $resourcePath = str_replace(
+                '{' . 'language' . '}',
+                ObjectSerializer::toPathValue($language),
+                $resourcePath
+            );
+        }
+
+
+
+        $query = \http_build_query($queryParams);
+
+        return new Request(
+            'GET',
+            $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+
+    /**
      * Delete a chapter
      *
      * @param  string $videoId The unique identifier for the video you want to delete a chapter from. (required)
@@ -193,193 +380,6 @@ class ChaptersApi implements ApiInterface
 
         return new Request(
             'GET',
-            $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-
-    /**
-     * Retrieve a chapter
-     *
-     * @param  string $videoId The unique identifier for the video you want to show a chapter for. (required)
-     * @param  string $language A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation. (required)
-     *
-     * @throws \ApiVideo\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\Chapter|\ApiVideo\Client\Model\NotFound
-     */
-    public function get(string $videoId, string $language): \ApiVideo\Client\Model\Chapter
-    {
-        $request = $this->buildGetRequest($videoId, $language);
-
-        $model = new \ApiVideo\Client\Model\Chapter($this->client->request($request));
-
-        return $model;
-    }
-
-    /**
-     * Create request for operation 'get'
-     *
-     * @param  string $videoId The unique identifier for the video you want to show a chapter for. (required)
-     * @param  string $language A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return Request
-     */
-    private function buildGetRequest(string $videoId, string $language): Request
-    {
-        // verify the required parameter 'videoId' is set
-        if ($videoId === null || (is_array($videoId) && count($videoId) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $videoId when calling '
-            );
-        }
-        // verify the required parameter 'language' is set
-        if ($language === null || (is_array($language) && count($language) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $language when calling '
-            );
-        }
-
-        $resourcePath = '/videos/{videoId}/chapters/{language}';
-        $formParams = [];
-        $queryParams = [];
-        $headers = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // path params
-        if ($videoId !== null) {
-            $resourcePath = str_replace(
-                '{' . 'videoId' . '}',
-                ObjectSerializer::toPathValue($videoId),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($language !== null) {
-            $resourcePath = str_replace(
-                '{' . 'language' . '}',
-                ObjectSerializer::toPathValue($language),
-                $resourcePath
-            );
-        }
-
-
-
-        $query = \http_build_query($queryParams);
-
-        return new Request(
-            'GET',
-            $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-
-    /**
-     * Upload a chapter
-     *
-     * @param  string $videoId The unique identifier for the video you want to upload a chapter for. (required)
-     * @param  string $language A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation. (required)
-     * @param  \SplFileObject $file The VTT file describing the chapters you want to upload. (required)
-     *
-     * @throws \ApiVideo\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\Chapter|\ApiVideo\Client\Model\BadRequest|\ApiVideo\Client\Model\NotFound
-     */
-    public function upload(string $videoId, string $language, \SplFileObject $file): \ApiVideo\Client\Model\Chapter
-    {
-        $request = $this->buildUploadRequest($videoId, $language, $file);
-
-        $model = new \ApiVideo\Client\Model\Chapter($this->client->request($request));
-
-        return $model;
-    }
-
-    /**
-     * Create request for operation 'upload'
-     *
-     * @param  string $videoId The unique identifier for the video you want to upload a chapter for. (required)
-     * @param  string $language A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation. (required)
-     * @param  \SplFileObject $file The VTT file describing the chapters you want to upload. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return Request
-     */
-    private function buildUploadRequest(string $videoId, string $language, \SplFileObject $file): Request
-    {
-        // verify the required parameter 'videoId' is set
-        if ($videoId === null || (is_array($videoId) && count($videoId) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $videoId when calling '
-            );
-        }
-        // verify the required parameter 'language' is set
-        if ($language === null || (is_array($language) && count($language) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $language when calling '
-            );
-        }
-        // verify the required parameter 'file' is set
-        if ($file === null || (is_array($file) && count($file) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $file when calling '
-            );
-        }
-
-        $resourcePath = '/videos/{videoId}/chapters/{language}';
-        $formParams = [];
-        $queryParams = [];
-        $headers = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // path params
-        if ($videoId !== null) {
-            $resourcePath = str_replace(
-                '{' . 'videoId' . '}',
-                ObjectSerializer::toPathValue($videoId),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($language !== null) {
-            $resourcePath = str_replace(
-                '{' . 'language' . '}',
-                ObjectSerializer::toPathValue($language),
-                $resourcePath
-            );
-        }
-
-
-        // form params
-        if ($file !== null) {
-            $builder = new MultipartStreamBuilder($this->client->getStreamFactory());
-            $builder->addResource('file', $file->fread($file->getSize()), [
-                'filename' => basename($file->getRealPath()),
-                'headers' => ['Content-Type' => 'application/octet-stream']]
-            );
-            $request = new Request(
-                'POST',
-                $resourcePath,
-                [
-                    'Accept' => 'application/json',
-                    'Content-Type' => 'multipart/form-data; boundary="'.$builder->getBoundary().'"',
-                ]
-            );
-            $request->setStream($builder->build());
-
-            return $request;
-        }
-
-        $query = \http_build_query($queryParams);
-
-        return new Request(
-            'POST',
             $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

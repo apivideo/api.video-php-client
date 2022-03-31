@@ -43,6 +43,81 @@ class WatermarksApi implements ApiInterface
     }
 
     /**
+     * Upload a watermark
+     *
+     * @param  \SplFileObject $file The &#x60;.jpg&#x60; or &#x60;.png&#x60; image to be added as a watermark. (required)
+     *
+     * @throws \ApiVideo\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \ApiVideo\Client\Model\Watermark|\ApiVideo\Client\Model\BadRequest
+     */
+    public function upload(\SplFileObject $file): \ApiVideo\Client\Model\Watermark
+    {
+        $request = $this->buildUploadRequest($file);
+
+        $model = new \ApiVideo\Client\Model\Watermark($this->client->request($request));
+
+        return $model;
+    }
+
+    /**
+     * Create request for operation 'upload'
+     *
+     * @param  \SplFileObject $file The &#x60;.jpg&#x60; or &#x60;.png&#x60; image to be added as a watermark. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return Request
+     */
+    private function buildUploadRequest(\SplFileObject $file): Request
+    {
+        // verify the required parameter 'file' is set
+        if ($file === null || (is_array($file) && count($file) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $file when calling '
+            );
+        }
+
+        $resourcePath = '/watermarks';
+        $formParams = [];
+        $queryParams = [];
+        $headers = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // form params
+        if ($file !== null) {
+            $builder = new MultipartStreamBuilder($this->client->getStreamFactory());
+            $builder->addResource('file', $file->fread($file->getSize()), [
+                'filename' => basename($file->getRealPath()),
+                'headers' => ['Content-Type' => 'application/octet-stream']]
+            );
+            $request = new Request(
+                'POST',
+                $resourcePath,
+                [
+                    'Accept' => 'application/json',
+                    'Content-Type' => 'multipart/form-data; boundary="'.$builder->getBoundary().'"',
+                ]
+            );
+            $request->setStream($builder->build());
+
+            return $request;
+        }
+
+        $query = \http_build_query($queryParams);
+
+        return new Request(
+            'POST',
+            $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+
+    /**
      * Delete a watermark
      *
      * @param  string $watermarkId The watermark ID for the watermark you want to delete. (required)
@@ -173,81 +248,6 @@ class WatermarksApi implements ApiInterface
 
         return new Request(
             'GET',
-            $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-
-    /**
-     * Upload a watermark
-     *
-     * @param  \SplFileObject $file The &#x60;.jpg&#x60; or &#x60;.png&#x60; image to be added as a watermark. (required)
-     *
-     * @throws \ApiVideo\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\Watermark|\ApiVideo\Client\Model\BadRequest
-     */
-    public function upload(\SplFileObject $file): \ApiVideo\Client\Model\Watermark
-    {
-        $request = $this->buildUploadRequest($file);
-
-        $model = new \ApiVideo\Client\Model\Watermark($this->client->request($request));
-
-        return $model;
-    }
-
-    /**
-     * Create request for operation 'upload'
-     *
-     * @param  \SplFileObject $file The &#x60;.jpg&#x60; or &#x60;.png&#x60; image to be added as a watermark. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return Request
-     */
-    private function buildUploadRequest(\SplFileObject $file): Request
-    {
-        // verify the required parameter 'file' is set
-        if ($file === null || (is_array($file) && count($file) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $file when calling '
-            );
-        }
-
-        $resourcePath = '/watermarks';
-        $formParams = [];
-        $queryParams = [];
-        $headers = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // form params
-        if ($file !== null) {
-            $builder = new MultipartStreamBuilder($this->client->getStreamFactory());
-            $builder->addResource('file', $file->fread($file->getSize()), [
-                'filename' => basename($file->getRealPath()),
-                'headers' => ['Content-Type' => 'application/octet-stream']]
-            );
-            $request = new Request(
-                'POST',
-                $resourcePath,
-                [
-                    'Accept' => 'application/json',
-                    'Content-Type' => 'multipart/form-data; boundary="'.$builder->getBoundary().'"',
-                ]
-            );
-            $request->setStream($builder->build());
-
-            return $request;
-        }
-
-        $query = \http_build_query($queryParams);
-
-        return new Request(
-            'POST',
             $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
