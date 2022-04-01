@@ -253,8 +253,8 @@ $client = new \ApiVideo\Client\Client(
     new \Symfony\Component\HttpClient\Psr18Client()
 );
 
-$videoId = 'vi4k0jvEUuaTdRAEjQ4Jfrgz'; // The unique identifier for the video you want the status for.
-$videoStatus = $client->videos()->getStatus($videoId);  
+$videoId = 'vi4k0jvEUuaTdRAEjQ4Jfrgz'; // The unique identifier for the video you want details about.
+$videoStatus = $client->videos()->get($videoId);
 ```
 
 
