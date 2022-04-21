@@ -22,7 +22,7 @@ class VideoTest extends TestCase
         $this->assertEquals(true, $video->getMp4Support());
         $this->assertEquals(array("maths", "string theory", "video"), $video->getTags());
         $this->assertEquals(array(new Metadata(["key" => "Author", "value" => "John Doe"]), new Metadata(["key" =>"Format", "value" => "Tutorial"])), $video->getMetadata());
-        $this->assertEquals("2019-12-16T08:25:51+00:00", $video->getPublishedAt());
+        $this->assertEquals(new \DateTime("2019-12-16T08:25:51+00:00"), $video->getPublishedAt());
         $this->assertEquals(new \DateTime("2019-12-16T08:48:49+00:00"), $video->getUpdatedAt());
         $this->assertEquals("/videos/vi4k0jvEUuaTdRAEjQ4Jfrgz/source", $video->getSource()->getUri());
         $this->assertEquals("/videos/vi4k0jvEUuaTdRAEjQ4Jfrgz/source", $video->getSource()->getUri());
