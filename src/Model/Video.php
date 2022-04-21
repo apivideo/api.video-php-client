@@ -35,7 +35,7 @@ class Video implements ModelInterface, \JsonSerializable
                 'createdAt' => '\DateTime',
                 'title' => 'string',
                 'description' => 'string',
-                'publishedAt' => 'string',
+                'publishedAt' => '\DateTime',
                 'updatedAt' => '\DateTime',
                 'tags' => 'string[]',
                 'metadata' => '\ApiVideo\Client\Model\Metadata[]',
@@ -51,7 +51,7 @@ class Video implements ModelInterface, \JsonSerializable
                 'createdAt' => 'date-time',
                 'title' => null,
                 'description' => null,
-                'publishedAt' => null,
+                'publishedAt' => 'date-time',
                 'updatedAt' => 'date-time',
                 'tags' => null,
                 'metadata' => null,
@@ -150,7 +150,7 @@ class Video implements ModelInterface, \JsonSerializable
         $this->container['createdAt'] = isset($data['createdAt']) ? new \DateTime($data['createdAt']) : null;
         $this->container['title'] = $data['title'] ?? null;
         $this->container['description'] = $data['description'] ?? null;
-        $this->container['publishedAt'] = $data['publishedAt'] ?? null;
+        $this->container['publishedAt'] = isset($data['publishedAt']) ? new \DateTime($data['publishedAt']) : null;
         $this->container['updatedAt'] = isset($data['updatedAt']) ? new \DateTime($data['updatedAt']) : null;
         $this->container['tags'] = $data['tags'] ?? null;
         $this->container['metadata'] = isset($data['metadata']) ?  array_map(function(array $value): Metadata { return new Metadata($value); }, $data['metadata']) : null;
@@ -288,7 +288,7 @@ class Video implements ModelInterface, \JsonSerializable
     /**
      * Gets publishedAt
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getPublishedAt()
     {
@@ -298,7 +298,7 @@ class Video implements ModelInterface, \JsonSerializable
     /**
      * Sets publishedAt
      *
-     * @param string|null $publishedAt The date and time the API created the video. Date and time are provided using ISO-8601 UTC format.
+     * @param \DateTime|null $publishedAt The date and time the API created the video. Date and time are provided using ISO-8601 UTC format.
      *
      * @return self
      */
