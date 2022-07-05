@@ -26,6 +26,6 @@ abstract class AbstractApiTest extends TestCase
             $httpClient
         );
         
-        $this->client->setApplicationName("client-integration-tests");
+        $this->client->setApplicationName("client-integration-tests", "0");
     }
 }

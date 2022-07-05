@@ -54,11 +54,21 @@ class Client
 
     /**
      * @param string $applicationName the application name. Allowed characters: A-Z, a-z, 0-9, -. Max length: 50.
-     * @param string $applicationVersion the application version (optional). Pattern: xxx[.yyy][.zzz].
+     * @param string $applicationVersion the application version. Pattern: xxx[.yyy][.zzz].
      */
-    public function setApplicationName(string $applicationName, string $applicationVersion = "")
+    public function setApplicationName(string $applicationName, string $applicationVersion)
     {
         $this->baseClient->setApplicationName($applicationName, $applicationVersion);
+    }
+
+
+    /**
+     * @param string $sdkName the SDK name. Allowed characters: A-Z, a-z, 0-9, -. Max length: 50.
+     * @param string $sdkVersion the SDK version. Pattern: xxx[.yyy][.zzz].
+     */
+    public function setSdkName(string $sdkName, string $sdkVersion)
+    {
+        $this->baseClient->setSdkName($sdkName, $sdkVersion);
     }
 
     
