@@ -40,6 +40,11 @@ class Authenticator
     private $originClientHeaderValue;
 
     /**
+     * @var string
+     */
+    private $originSdkHeaderValue;
+
+    /**
      * @param BaseClient $client
      * @param string     $apiKey
      * @param string     $originClientHeaderValue
@@ -60,6 +65,14 @@ class Authenticator
     }
 
     /**
+     * @param String $originSdkHeaderValue
+     */
+    public function setOriginSdkHeaderValue($originSdkHeaderValue): void
+    {
+        $this->originSdkHeaderValue = $originSdkHeaderValue;
+    }
+
+    /**
      * @throws ClientExceptionInterface
      */
     public function authenticate(): void
@@ -77,6 +90,10 @@ class Authenticator
 
         if($this->originAppHeaderValue) {
             $request = $request->setHeader('AV-Origin-App', $this->originAppHeaderValue);
+        }
+
+        if($this->originSdkHeaderValue) {
+            $request = $request->setHeader('AV-Origin-Sdk', $this->originSdkHeaderValue);
         }
 
         $properties = $this->client->request($request);

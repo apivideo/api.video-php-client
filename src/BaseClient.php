@@ -51,6 +51,11 @@ class BaseClient
      */
     private $originAppHeaderValue;
 
+    /**
+     * @var string
+     */
+    private $originSdkHeaderValue;
+
 
 
     /**
@@ -69,9 +74,10 @@ class BaseClient
         $this->streamFactory = $streamFactory;
         $this->chunkSize = $chunkSize;
         $this->originAppHeaderValue = "";
+        $this->originSdkHeaderValue = "";
 
         if ($apiKey) {
-            $this->authenticator = new Authenticator($this, $apiKey, 'php:1.2.4');
+            $this->authenticator = new Authenticator($this, $apiKey, 'php:1.2.5');
         }
     }
 
@@ -101,34 +107,60 @@ class BaseClient
         if($this->originAppHeaderValue) {
             $request = $request->withHeader('AV-Origin-App', $this->originAppHeaderValue);
         }
-        $request = $request->withHeader('AV-Origin-Client', 'php:1.2.4');
+        if($this->originSdkHeaderValue) {
+            $request = $request->withHeader('AV-Origin-Sdk', $this->originSdkHeaderValue);
+        }
+        $request = $request->withHeader('AV-Origin-Client', 'php:1.2.5');
 
         return $this->sendRequest($request);
     }
 
     /**
      * @param string $applicationName the application name. Allowed characters: A-Z, a-z, 0-9, -. Max length: 50.
-     * @param string $applicationVersion the application version (optional). Pattern: xxx[.yyy][.zzz].
+     * @param string $applicationVersion the application version. Pattern: xxx[.yyy][.zzz].
      */
-    public function setApplicationName(string $applicationName, string $applicationVersion = "") {
-        if($applicationVersion && !$applicationName) {
-            throw new \InvalidArgumentException("applicationName is mandatory when applicationVersion is set.");
-        }
+    public function setApplicationName(string $applicationName, string $applicationVersion) {
+        $this->validateOrigin('application', $applicationName, $applicationVersion);
 
-        if ($applicationName && !preg_match_all('/^[\w\-]{1,50}$/m', $applicationName)) {
-            throw new \InvalidArgumentException('Invalid applicationName value. Allowed characters: A-Z, a-z, 0-9, "-", "_". Max length: 50.');
-        }
-
-        if ($applicationVersion && !preg_match_all('/^\d{1,3}(\.\d{1,3}(\.\d{1,3})?)?$/m', $applicationVersion)) {
-            throw new \InvalidArgumentException('Invalid applicationVersion value. The version should match the xxx[.yyy][.zzz] pattern.');
-        }
-
-        $this->originAppHeaderValue = $applicationVersion
-            ? $applicationName . ":" . $applicationVersion
-            : $applicationName;
+        $this->originAppHeaderValue = $applicationName . ":" . $applicationVersion;
 
         if($this->authenticator) {
             $this->authenticator->setOriginAppHeaderValue($this->originAppHeaderValue);
+        }
+    }
+
+    /**
+     * @param string $sdkName the SDK name. Allowed characters: A-Z, a-z, 0-9, -. Max length: 50.
+     * @param string $sdkVersion the SDK version. Pattern: xxx[.yyy][.zzz].
+     */
+    public function setSdkName(string $sdkName, string $sdkVersion) {
+        $this->validateOrigin('sdk', $sdkName, $sdkVersion);
+
+        $this->originSdkHeaderValue = $sdkName . ":" . $sdkVersion;
+
+        if($this->authenticator) {
+            $this->authenticator->setOriginSdkHeaderValue($this->originSdkHeaderValue);
+        }
+    }
+
+    private function validateOrigin(string $type, string $name, string $version) {
+        $nameIsSet = isset($name) && trim($name) != '';
+        $versionIsSet = isset($version) && trim($version) != '';
+
+        if(!$nameIsSet && !$versionIsSet) {
+            return;
+        }
+        if(!$nameIsSet) {
+            throw new \InvalidArgumentException($type . " name is mandatory when " . $type . " version is set.");
+        }
+        if(!$versionIsSet) {
+            throw new \InvalidArgumentException($type . " version is mandatory when " . $type . " name is set.");
+        }
+        if (!preg_match_all('/^[\w\-]{1,50}$/m', $name)) {
+            throw new \InvalidArgumentException('Invalid  ' . $type . ' name value. Allowed characters: A-Z, a-z, 0-9, "-", "_". Max length: 50.');
+        }
+        if (!preg_match_all('/^\d{1,3}(\.\d{1,3}(\.\d{1,3})?)?$/m', $version)) {
+            throw new \InvalidArgumentException('Invalid ' . $type . ' version value. The version should match the xxx[.yyy][.zzz] pattern.');
         }
     }
 
