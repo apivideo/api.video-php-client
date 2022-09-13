@@ -77,7 +77,7 @@ class BaseClient
         $this->originSdkHeaderValue = "";
 
         if ($apiKey) {
-            $this->authenticator = new Authenticator($this, $apiKey, 'php:1.2.5');
+            $this->authenticator = new Authenticator($this, $apiKey, 'php:1.2.6');
         }
     }
 
@@ -87,7 +87,7 @@ class BaseClient
      * @return array|null
      * @throws ClientExceptionInterface
      */
-    public function request(Request $commandRequest): ?array
+    public function request(Request $commandRequest, bool $skipAuthRequest = false): ?array
     {
         $stream = $commandRequest->getStream();
 
@@ -110,9 +110,9 @@ class BaseClient
         if($this->originSdkHeaderValue) {
             $request = $request->withHeader('AV-Origin-Sdk', $this->originSdkHeaderValue);
         }
-        $request = $request->withHeader('AV-Origin-Client', 'php:1.2.5');
+        $request = $request->withHeader('AV-Origin-Client', 'php:1.2.6');
 
-        return $this->sendRequest($request);
+        return $this->sendRequest($request, $skipAuthRequest);
     }
 
     /**
@@ -181,33 +181,40 @@ class BaseClient
     }
 
     /**
+     * @return ClientInterface
+     */
+    public function getHttpClient(): ClientInterface
+    {
+        return $this->httpClient;
+    }
+
+    /**
      * @param RequestInterface $request
      *
      * @return array|null
      * @throws ClientExceptionInterface
+     * @throws AuthenticationFailedException
      */
-    private function sendRequest(RequestInterface $request): ?array
+    private function sendRequest(RequestInterface $request, bool $skipAuthRequest = false): ?array
     {
-        if ($this->authenticator) {
+        if ($this->authenticator && !$skipAuthRequest) {
             $request = $this->authenticator->authenticateRequest($request);
         }
 
-        try {
-            $response = $this->httpClient->sendRequest($request);
+        $response = $this->httpClient->sendRequest($request);
 
-            if (Authenticator::isExpiredAuthTokenResponse($response)) {
-                throw new ExpiredAuthTokenException();
+        if (Authenticator::isExpiredAuthTokenResponse($response)) {
+            if(!$skipAuthRequest) {
+                $this->authenticator->authenticate();
+                return $this->sendRequest($request);
             }
-
-            if (400 <= $response->getStatusCode()) {
-                throw new HttpException($request, $response);
-            }
-
-            return json_decode($response->getBody()->getContents(), true);
-        } catch (ExpiredAuthTokenException $e) {
-            $this->authenticator->authenticate();
-
-            return $this->sendRequest($request);
+            throw new AuthenticationFailedException();
         }
+
+        if (400 <= $response->getStatusCode()) {
+            throw new HttpException($request, $response);
+        }
+
+        return json_decode($response->getBody()->getContents(), true);
     }
 }
