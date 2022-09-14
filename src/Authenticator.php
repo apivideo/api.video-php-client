@@ -96,7 +96,7 @@ class Authenticator
             $request = $request->setHeader('AV-Origin-Sdk', $this->originSdkHeaderValue);
         }
 
-        $properties = $this->client->request($request);
+        $properties = $this->client->request($request, true);
 
         $this->accessToken = $properties[self::PROP_ACCESS_TOKEN];
     }

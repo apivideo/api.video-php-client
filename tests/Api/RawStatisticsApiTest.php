@@ -11,7 +11,7 @@ class RawStatisticsApiTest extends AbstractApiTest
     {
         $liveStream = (new Helper($this->client))->createLiveStream();
 
-        $response = $this->client->rawStatistics()->listLiveStreamSessions($liveStream->getLiveStreamId());
+        $response = $this->client->rawStatistics()->listLiveStreamSessions($liveStream->getLiveStreamId(), ['period' => '2022-01']);
 
         $this->assertCount(0, $response->getData());
     }
@@ -20,7 +20,7 @@ class RawStatisticsApiTest extends AbstractApiTest
     {
         $video = (new Helper($this->client))->createVideo();
 
-        $response = $this->client->rawStatistics()->listVideoSessions($video->getVideoId());
+        $response = $this->client->rawStatistics()->listVideoSessions($video->getVideoId(), ['period' => '2022-01']);
 
         $this->assertCount(0, $response->getData());
     }

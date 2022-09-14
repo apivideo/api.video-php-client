@@ -83,6 +83,12 @@ class RawStatisticsApi implements ApiInterface
                 'Missing the required parameter $liveStreamId when calling '
             );
         }
+        // verify the required parameter 'period' is set
+        if ($period === null || (is_array($period) && count($period) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $period when calling '
+            );
+        }
 
         $resourcePath = '/analytics/live-streams/{liveStreamId}';
         $formParams = [];
@@ -248,6 +254,12 @@ class RawStatisticsApi implements ApiInterface
         if ($videoId === null || (is_array($videoId) && count($videoId) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $videoId when calling '
+            );
+        }
+        // verify the required parameter 'period' is set
+        if ($period === null || (is_array($period) && count($period) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $period when calling '
             );
         }
 
