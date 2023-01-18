@@ -15,4 +15,3 @@ jobs:
         with:
           github-auth-token: ${{ secrets.GITHUB_TOKEN }}
           prefix: v
-
