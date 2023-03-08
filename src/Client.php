@@ -13,7 +13,7 @@ const MAX_CHUNK_SIZE = 128 * 1024 * 1024;
 const DEFAULT_CHUNK_SIZE = 50 * 1024 * 1024;
 
 /**
- * Api.video client
+ * api.video client
  */
 class Client
 {

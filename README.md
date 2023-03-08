@@ -325,7 +325,7 @@ In order to run the PhpUnit tests, it is necessary to enter two variables in the
 - `BASE_URI` (for example : `https://sandbox.api.video`)
 - `API_KEY`
 
-These identifiers must belong to a real Api.video account.
+These identifiers must belong to a real api.video account.
 
 ```
 $ BASE_URI="" API_KEY="..." vendor/bin/phpunit

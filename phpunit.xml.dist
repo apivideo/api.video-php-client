@@ -13,7 +13,7 @@
     <ini name="error_reporting" value="-1"/>
   </php>
   <testsuites>
-    <testsuite name="Api.video PHP client Test Suite">
+    <testsuite name="api.video PHP client Test Suite">
       <directory>./tests/</directory>
     </testsuite>
   </testsuites>
