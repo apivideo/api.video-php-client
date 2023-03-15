@@ -258,6 +258,33 @@ class VideosApiTest extends AbstractApiTest
         $this->assertEquals('thumbnail.jpg', basename($video->getAssets()->getThumbnail()));
     }
 
+    public function testUploadWithUploadTokenWithVideoId()
+    {
+        $token = (new Helper($this->client))->createUploadToken();
+
+        $video = $this->client->videos()->create((new VideoCreationPayload())
+            ->setTitle('Test video creation')
+            ->setDescription('Test description'));
+
+        // No authorization needed for this endpoint
+        $client = new Client(
+            $_ENV['BASE_URI'],
+            null,
+            new Psr18Client()
+        );
+
+        $uploadedVideo = $client->videos()->uploadWithUploadToken(
+            $token->getToken(),
+            new SplFileObject(__DIR__ . '/../resources/558k.mp4'),
+            null,
+            $video->getVideoId()
+        );
+
+        $this->client->uploadTokens()->deleteToken($token->getToken());
+
+        $this->assertNotNull($uploadedVideo->getAssets()->getPlayer());
+    }
+
     public function testUploadWithUploadToken()
     {
         $token = (new Helper($this->client))->createUploadToken();
@@ -273,6 +300,8 @@ class VideosApiTest extends AbstractApiTest
             $token->getToken(),
             new SplFileObject(__DIR__ . '/../resources/558k.mp4')
         );
+
+        $this->client->uploadTokens()->deleteToken($token->getToken());
 
         $this->assertNotNull($uploadedVideo->getAssets()->getPlayer());
     }
