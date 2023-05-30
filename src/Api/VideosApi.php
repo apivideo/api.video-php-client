@@ -43,7 +43,7 @@ class VideosApi implements ApiInterface
     }
 
     /**
-     * Create a video
+     * Create a video object
      *
      * @param  \ApiVideo\Client\Model\VideoCreationPayload $videoCreationPayload video to create (required)
      *
@@ -106,7 +106,7 @@ class VideosApi implements ApiInterface
      *
      * @param  string $videoId Enter the videoId you want to use to upload your video. (required)
      * @param  \SplFileObject $file The path to the video you would like to upload. The path must be local. If you want to use a video from an online source, you must use the \\\&quot;/videos\\\&quot; endpoint and add the \\\&quot;source\\\&quot; parameter when you create a new video. (required)
-     * @param  string $contentRange Content-Range can be used if you want to split your file. You can do this by parts, or by chunk. * If you split your file by parts (recommended option), the &#x60;Content-Range&#x60; header value must match the following pattern: &#x60;part &lt;part&gt;/&lt;total_parts&gt;&#x60;:   * &#x60;&lt;part&gt;&#x60; is a positive integer representing the part number. The first sequential part number is always 1.   * &#x60;&lt;total_parts&gt;&#x60; is a positive integer representing the total parts of the video source. It can also be &#x60;*&#x60; if or as long as it is unknown. Technically, this value is required only one time and cannot differ in several requests. * If you split your file by bytes, bear in mind byte ranges are inclusive, meaning that bytes 0-5242879 represents the first 5,242,880 bytes in a file or object. Also, the Content-Range header value must match the following pattern: &#x60;bytes &lt;from_byte&gt;-&lt;to_byte&gt;/&lt;total_bytes&gt;&#x60;:   * &#x60;&lt;from_byte&gt;&#x60; is a positive integer or 0. It represents the range start (aka lower bound), i.e., the first byte of the chunk compared to the total bytes composing the full video source. The first sequential range always starts at 0.   * &#x60;&lt;to_byte&gt;&#x60; is a positive integer representing the range end (aka upper bound), i.e., the last byte of the chunk compared to the total bytes composing the full video source.   * &#x60;&lt;total_bytes&gt;&#x60; is a positive integer representing the total bytes composing the full video source. It can also be &#x60;*&#x60; if or as long as it is unknown. Technically, this value is required only one time and cannot differ in several requests. * Ordering and chunk or part size   * The order in which the chunks are received on our side does not matter.      * Example: &#x60;part 3/_*&#x60; then &#x60;part 2/_*&#x60; then &#x60;part 1/3&#x60; works.   * The chunks can be sent concurrently. We have a lock mechanism to ensure they are still technically processed one by one to ensure the \&quot;completion\&quot; check behaves as expected.   * The only chunk that can be smaller than our minimum allowed chunk size (5 MiB) is the last sequential one (i.e., the last sequential range for the \&quot;byte-range\&quot; system and the last part for the \&quot;part\&quot; system.     * For instance, if your video is 10.5 MiB big, your last chunk would be 500 KiB, and that would work.      * Another example is if your video is 2 MiB big, then your first and last chunk will be 2MiB and that will work as well. (optional)
+     * @param  string $contentRange &#x60;part &lt;part&gt;/&lt;total_parts&gt;&#x60; ; &#x60;bytes &lt;from_byte&gt;-&lt;to_byte&gt;/&lt;total_bytes&gt;&#x60; (optional)
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -125,7 +125,7 @@ class VideosApi implements ApiInterface
      *
      * @param  string $videoId Enter the videoId you want to use to upload your video. (required)
      * @param  \SplFileObject $file The path to the video you would like to upload. The path must be local. If you want to use a video from an online source, you must use the \\\&quot;/videos\\\&quot; endpoint and add the \\\&quot;source\\\&quot; parameter when you create a new video. (required)
-     * @param  string $contentRange Content-Range can be used if you want to split your file. You can do this by parts, or by chunk. * If you split your file by parts (recommended option), the &#x60;Content-Range&#x60; header value must match the following pattern: &#x60;part &lt;part&gt;/&lt;total_parts&gt;&#x60;:   * &#x60;&lt;part&gt;&#x60; is a positive integer representing the part number. The first sequential part number is always 1.   * &#x60;&lt;total_parts&gt;&#x60; is a positive integer representing the total parts of the video source. It can also be &#x60;*&#x60; if or as long as it is unknown. Technically, this value is required only one time and cannot differ in several requests. * If you split your file by bytes, bear in mind byte ranges are inclusive, meaning that bytes 0-5242879 represents the first 5,242,880 bytes in a file or object. Also, the Content-Range header value must match the following pattern: &#x60;bytes &lt;from_byte&gt;-&lt;to_byte&gt;/&lt;total_bytes&gt;&#x60;:   * &#x60;&lt;from_byte&gt;&#x60; is a positive integer or 0. It represents the range start (aka lower bound), i.e., the first byte of the chunk compared to the total bytes composing the full video source. The first sequential range always starts at 0.   * &#x60;&lt;to_byte&gt;&#x60; is a positive integer representing the range end (aka upper bound), i.e., the last byte of the chunk compared to the total bytes composing the full video source.   * &#x60;&lt;total_bytes&gt;&#x60; is a positive integer representing the total bytes composing the full video source. It can also be &#x60;*&#x60; if or as long as it is unknown. Technically, this value is required only one time and cannot differ in several requests. * Ordering and chunk or part size   * The order in which the chunks are received on our side does not matter.      * Example: &#x60;part 3/_*&#x60; then &#x60;part 2/_*&#x60; then &#x60;part 1/3&#x60; works.   * The chunks can be sent concurrently. We have a lock mechanism to ensure they are still technically processed one by one to ensure the \&quot;completion\&quot; check behaves as expected.   * The only chunk that can be smaller than our minimum allowed chunk size (5 MiB) is the last sequential one (i.e., the last sequential range for the \&quot;byte-range\&quot; system and the last part for the \&quot;part\&quot; system.     * For instance, if your video is 10.5 MiB big, your last chunk would be 500 KiB, and that would work.      * Another example is if your video is 2 MiB big, then your first and last chunk will be 2MiB and that will work as well. (optional)
+     * @param  string $contentRange &#x60;part &lt;part&gt;/&lt;total_parts&gt;&#x60; ; &#x60;bytes &lt;from_byte&gt;-&lt;to_byte&gt;/&lt;total_bytes&gt;&#x60; (optional)
      *
      * @throws \InvalidArgumentException
      * @return Request
@@ -216,7 +216,7 @@ class VideosApi implements ApiInterface
     }
 
     /**
-     * Upload with an upload token
+     * Upload with an delegated upload token
      *
      * @param  \SplFileObject $file The path to the video you want to upload. (required)
      * @param  string $contentRange Content-Range represents the range of bytes that will be returned as a result of the request. Byte ranges are inclusive, meaning that bytes 0-999 represents the first 1000 bytes in a file or object. (optional)
@@ -332,7 +332,7 @@ class VideosApi implements ApiInterface
     }
 
     /**
-     * Retrieve a video
+     * Retrieve a video object
      *
      * @param  string $videoId The unique identifier for the video you want details about. (required)
      *
@@ -396,9 +396,9 @@ class VideosApi implements ApiInterface
 
 
     /**
-     * Update a video
+     * Update a video object
      *
-     * @param  string $videoId The video ID for the video you want to delete. (required)
+     * @param  string $videoId The video ID for the video you want to update. (required)
      * @param  \ApiVideo\Client\Model\VideoUpdatePayload $videoUpdatePayload videoUpdatePayload (required)
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
@@ -417,7 +417,7 @@ class VideosApi implements ApiInterface
     /**
      * Create request for operation 'update'
      *
-     * @param  string $videoId The video ID for the video you want to delete. (required)
+     * @param  string $videoId The video ID for the video you want to update. (required)
      * @param  \ApiVideo\Client\Model\VideoUpdatePayload $videoUpdatePayload (required)
      *
      * @throws \InvalidArgumentException
@@ -471,7 +471,7 @@ class VideosApi implements ApiInterface
 
 
     /**
-     * Delete a video
+     * Delete a video object
      *
      * @param  string $videoId The video ID for the video you want to delete. (required)
      *
@@ -533,7 +533,7 @@ class VideosApi implements ApiInterface
 
 
     /**
-     * List all videos
+     * List all video objects
      *
      * @param  array $queryParams
      *
@@ -738,7 +738,7 @@ class VideosApi implements ApiInterface
 
 
     /**
-     * Pick a thumbnail
+     * Set a thumbnail
      *
      * @param  string $videoId Unique identifier of the video you want to add a thumbnail to, where you use a section of your video as the thumbnail. (required)
      * @param  \ApiVideo\Client\Model\VideoThumbnailPickPayload $videoThumbnailPickPayload videoThumbnailPickPayload (required)
@@ -813,7 +813,7 @@ class VideosApi implements ApiInterface
 
 
     /**
-     * Retrieve video status
+     * Retrieve video status and details
      *
      * @param  string $videoId The unique identifier for the video you want the status for. (required)
      *

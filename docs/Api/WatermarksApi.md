@@ -13,7 +13,7 @@ Method | Description | HTTP request
 
 
 
-Create a new watermark by uploading a `JPG` or a `PNG` image. A watermark is a static image, directly burnt into a video. After you have created your watermark, you can define its placement and aspect when you [create a video](https://docs.api.video/reference/post-video).
+Create a new watermark by uploading a `JPG` or a `PNG` image.
 
 ### Arguments
 
@@ -69,7 +69,7 @@ $client->videos()->upload($video->getVideoId(), new SplFileObject(__DIR__ . '/55
 
 
 
-Delete a watermark. A watermark is a static image, directly burnt-into a video.
+Delete a watermark.
 
 ### Arguments
 
@@ -112,7 +112,7 @@ $client->watermarks->delete(watermarkId);
 
 
 
-List all watermarks. A watermark is a static image, directly burnt into a video. After you have created your watermark, you can define its placement and aspect when you [create a video](https://docs.api.video/reference/post-video).
+List all watermarks associated with your workspace.
 
 ### Arguments
 

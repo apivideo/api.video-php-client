@@ -68,7 +68,7 @@ $playerTheme = $client->playerThemes()->create($playerThemeCreationPayload);
 
 
 
-Use a player ID to retrieve details about the player and display it for viewers.
+Retreive a player theme by player id.
 
 ### Arguments
 
@@ -199,8 +199,6 @@ $client->playerThemes()->delete($playerId);
 
 Retrieve a list of all the player themes you created, as well as details about each one.
 
-Tutorials that use the [player endpoint](https://api.video/blog/endpoints/player).
-
 ### Arguments
 
 
@@ -248,7 +246,7 @@ $playerThemes = $client->playerThemes()->list(array(
 
 
 
-The uploaded image maximum size should be 200x100 and its weight should be 100KB.  It will be scaled down to 30px height and converted to PNG to be displayed in the player.
+Upload an image logo for a player.
 
 ### Arguments
 
