@@ -4,37 +4,23 @@ All URIs are relative to https://ws.api.video.
 
 Method | Description | HTTP request
 ------------- | ------------- | -------------
-[**create()**](VideosApi.md#create) | Create a video | **POST** `/videos`
+[**create()**](VideosApi.md#create) | Create a video object | **POST** `/videos`
 [**upload()**](VideosApi.md#upload) | Upload a video | **POST** `/videos/{videoId}/source`
-[**uploadWithUploadToken()**](VideosApi.md#uploadWithUploadToken) | Upload with an upload token | **POST** `/upload`
-[**get()**](VideosApi.md#get) | Retrieve a video | **GET** `/videos/{videoId}`
-[**update()**](VideosApi.md#update) | Update a video | **PATCH** `/videos/{videoId}`
-[**delete()**](VideosApi.md#delete) | Delete a video | **DELETE** `/videos/{videoId}`
-[**list()**](VideosApi.md#list) | List all videos | **GET** `/videos`
+[**uploadWithUploadToken()**](VideosApi.md#uploadWithUploadToken) | Upload with an delegated upload token | **POST** `/upload`
+[**get()**](VideosApi.md#get) | Retrieve a video object | **GET** `/videos/{videoId}`
+[**update()**](VideosApi.md#update) | Update a video object | **PATCH** `/videos/{videoId}`
+[**delete()**](VideosApi.md#delete) | Delete a video object | **DELETE** `/videos/{videoId}`
+[**list()**](VideosApi.md#list) | List all video objects | **GET** `/videos`
 [**uploadThumbnail()**](VideosApi.md#uploadThumbnail) | Upload a thumbnail | **POST** `/videos/{videoId}/thumbnail`
-[**pickThumbnail()**](VideosApi.md#pickThumbnail) | Pick a thumbnail | **PATCH** `/videos/{videoId}/thumbnail`
-[**getStatus()**](VideosApi.md#getStatus) | Retrieve video status | **GET** `/videos/{videoId}/status`
+[**pickThumbnail()**](VideosApi.md#pickThumbnail) | Set a thumbnail | **PATCH** `/videos/{videoId}/thumbnail`
+[**getStatus()**](VideosApi.md#getStatus) | Retrieve video status and details | **GET** `/videos/{videoId}/status`
 
 
-## **`create()` - Create a video**
-
-
-
-We have tutorials on:
-
-* [Creating and uploading videos](https://api.video/blog/tutorials/video-upload-tutorial)
-
-* [Uploading large videos](https://api.video/blog/tutorials/video-upload-tutorial-large-videos)
-
-* [Using tags with videos](https://api.video/blog/tutorials/video-tagging-best-practices)
-
-* [Private videos](https://api.video/blog/tutorials/tutorial-private-videos)
-
-* [Using Dynamic Metadata](https://api.video/blog/tutorials/dynamic-metadata)
+## **`create()` - Create a video object**
 
 
 
-* Full list of [tutorials](https://api.video/blog/endpoints/video-create) that demonstrate this endpoint.
+Creates a video object. More information on video objects can be found [here](https://docs.api.video/reference/videos-1).
 
 
 
@@ -130,7 +116,7 @@ Name | Type | Description | Notes
 ------------- | ------------- | ------------- | -------------
  `videoId` | **string**| Enter the videoId you want to use to upload your video. |
  `file` | **\SplFileObject**| The path to the video you would like to upload. The path must be local. If you want to use a video from an online source, you must use the \\\&quot;/videos\\\&quot; endpoint and add the \\\&quot;source\\\&quot; parameter when you create a new video. |
- `contentRange` | **string**| Content-Range can be used if you want to split your file. You can do this by parts, or by chunk. * If you split your file by parts (recommended option), the &#x60;Content-Range&#x60; header value must match the following pattern: &#x60;part &lt;part&gt;/&lt;total_parts&gt;&#x60;:   * &#x60;&lt;part&gt;&#x60; is a positive integer representing the part number. The first sequential part number is always 1.   * &#x60;&lt;total_parts&gt;&#x60; is a positive integer representing the total parts of the video source. It can also be &#x60;*&#x60; if or as long as it is unknown. Technically, this value is required only one time and cannot differ in several requests. * If you split your file by bytes, bear in mind byte ranges are inclusive, meaning that bytes 0-5242879 represents the first 5,242,880 bytes in a file or object. Also, the Content-Range header value must match the following pattern: &#x60;bytes &lt;from_byte&gt;-&lt;to_byte&gt;/&lt;total_bytes&gt;&#x60;:   * &#x60;&lt;from_byte&gt;&#x60; is a positive integer or 0. It represents the range start (aka lower bound), i.e., the first byte of the chunk compared to the total bytes composing the full video source. The first sequential range always starts at 0.   * &#x60;&lt;to_byte&gt;&#x60; is a positive integer representing the range end (aka upper bound), i.e., the last byte of the chunk compared to the total bytes composing the full video source.   * &#x60;&lt;total_bytes&gt;&#x60; is a positive integer representing the total bytes composing the full video source. It can also be &#x60;*&#x60; if or as long as it is unknown. Technically, this value is required only one time and cannot differ in several requests. * Ordering and chunk or part size   * The order in which the chunks are received on our side does not matter.      * Example: &#x60;part 3/_*&#x60; then &#x60;part 2/_*&#x60; then &#x60;part 1/3&#x60; works.   * The chunks can be sent concurrently. We have a lock mechanism to ensure they are still technically processed one by one to ensure the \&quot;completion\&quot; check behaves as expected.   * The only chunk that can be smaller than our minimum allowed chunk size (5 MiB) is the last sequential one (i.e., the last sequential range for the \&quot;byte-range\&quot; system and the last part for the \&quot;part\&quot; system.     * For instance, if your video is 10.5 MiB big, your last chunk would be 500 KiB, and that would work.      * Another example is if your video is 2 MiB big, then your first and last chunk will be 2MiB and that will work as well. | [optional]
+ `contentRange` | **string**| &#x60;part &lt;part&gt;/&lt;total_parts&gt;&#x60; ; &#x60;bytes &lt;from_byte&gt;-&lt;to_byte&gt;/&lt;total_bytes&gt;&#x60; | [optional]
 
 
 
@@ -171,7 +157,7 @@ $progressiveSession->uploadLastPart(new SplFileObject(__DIR__ . '/10m.mp4.part.c
 
 
 
-## **`uploadWithUploadToken()` - Upload with an upload token**
+## **`uploadWithUploadToken()` - Upload with an delegated upload token**
 
 
 
@@ -218,7 +204,7 @@ $video = $client->videos()->pickThumbnail($videoId, (new \ApiVideo\Client\Model\
 
 
 
-## **`get()` - Retrieve a video**
+## **`get()` - Retrieve a video object**
 
 
 
@@ -260,11 +246,11 @@ $videoStatus = $client->videos()->getStatus($videoId);
 
 
 
-## **`update()` - Update a video**
+## **`update()` - Update a video object**
 
 
 
-Updates the parameters associated with your video. The video you are updating is determined by the video ID you provide. 
+Updates the parameters associated with a video ID. The video object you are updating is determined by the video ID you provide. 
 
 
 
@@ -278,7 +264,7 @@ NOTE: If you are updating an array, you must provide the entire array as what yo
 
 Name | Type | Description | Notes
 ------------- | ------------- | ------------- | -------------
- `videoId` | **string**| The video ID for the video you want to delete. |
+ `videoId` | **string**| The video ID for the video you want to update. |
  `videoUpdatePayload` | [**\ApiVideo\Client\Model\VideoUpdatePayload**](../Model/VideoUpdatePayload.md)|  |
 
 
@@ -320,7 +306,7 @@ $client->videos()->update($videoId, (new \ApiVideo\Client\Model\VideoUpdatePaylo
 
 
 
-## **`delete()` - Delete a video**
+## **`delete()` - Delete a video object**
 
 
 
@@ -362,7 +348,7 @@ $client->videos()->delete($videoId);
 
 
 
-## **`list()` - List all videos**
+## **`list()` - List all video objects**
 
 
 
@@ -486,7 +472,7 @@ $client->videos()->uploadThumbnail($videoId, $thumbnail);
 
 
 
-## **`pickThumbnail()` - Pick a thumbnail**
+## **`pickThumbnail()` - Set a thumbnail**
 
 
 
@@ -541,7 +527,7 @@ $video = $client->videos()->pickThumbnail($videoId, (new \ApiVideo\Client\Model\
 
 
 
-## **`getStatus()` - Retrieve video status**
+## **`getStatus()` - Retrieve video status and details**
 
 
 

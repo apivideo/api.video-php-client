@@ -277,7 +277,7 @@ class VideoWatermark implements ModelInterface, \JsonSerializable
     /**
      * Sets width
      *
-     * @param string|null $width Width of the watermark-image relative to the video if expressed in %. Otherwise a fixed width. NOTE: To keep intrinsic watermark-image width use initial
+     * @param string|null $width Width of the watermark-image relative to the video if expressed in %. Otherwise a fixed width. NOTE: To keep intrinsic watermark-image width use `initial`.
      *
      * @return self
      */
@@ -301,7 +301,7 @@ class VideoWatermark implements ModelInterface, \JsonSerializable
     /**
      * Sets height
      *
-     * @param string|null $height Width of the watermark-image relative to the video if expressed in %. Otherwise a fixed height. NOTE: To keep intrinsic watermark-image height use initial
+     * @param string|null $height Height of the watermark-image relative to the video if expressed in %. Otherwise a fixed height. NOTE: To keep intrinsic watermark-image height use `initial`.
      *
      * @return self
      */

@@ -178,23 +178,23 @@ Method | Description | HTTP request
 [**createToken()**](docs/Api/UploadTokensApi.md#createToken) | Generate an upload token | **POST** `/upload-tokens`
 [**getToken()**](docs/Api/UploadTokensApi.md#getToken) | Retrieve upload token | **GET** `/upload-tokens/{uploadToken}`
 [**deleteToken()**](docs/Api/UploadTokensApi.md#deleteToken) | Delete an upload token | **DELETE** `/upload-tokens/{uploadToken}`
-[**list()**](docs/Api/UploadTokensApi.md#list) | List all active upload tokens. | **GET** `/upload-tokens`
+[**list()**](docs/Api/UploadTokensApi.md#list) | List all active upload tokens | **GET** `/upload-tokens`
 
 
 ### VideosApi
 
 Method | Description | HTTP request
 ------------- | ------------- | -------------
-[**create()**](docs/Api/VideosApi.md#create) | Create a video | **POST** `/videos`
+[**create()**](docs/Api/VideosApi.md#create) | Create a video object | **POST** `/videos`
 [**upload()**](docs/Api/VideosApi.md#upload) | Upload a video | **POST** `/videos/{videoId}/source`
-[**uploadWithUploadToken()**](docs/Api/VideosApi.md#uploadWithUploadToken) | Upload with an upload token | **POST** `/upload`
-[**get()**](docs/Api/VideosApi.md#get) | Retrieve a video | **GET** `/videos/{videoId}`
-[**update()**](docs/Api/VideosApi.md#update) | Update a video | **PATCH** `/videos/{videoId}`
-[**delete()**](docs/Api/VideosApi.md#delete) | Delete a video | **DELETE** `/videos/{videoId}`
-[**list()**](docs/Api/VideosApi.md#list) | List all videos | **GET** `/videos`
+[**uploadWithUploadToken()**](docs/Api/VideosApi.md#uploadWithUploadToken) | Upload with an delegated upload token | **POST** `/upload`
+[**get()**](docs/Api/VideosApi.md#get) | Retrieve a video object | **GET** `/videos/{videoId}`
+[**update()**](docs/Api/VideosApi.md#update) | Update a video object | **PATCH** `/videos/{videoId}`
+[**delete()**](docs/Api/VideosApi.md#delete) | Delete a video object | **DELETE** `/videos/{videoId}`
+[**list()**](docs/Api/VideosApi.md#list) | List all video objects | **GET** `/videos`
 [**uploadThumbnail()**](docs/Api/VideosApi.md#uploadThumbnail) | Upload a thumbnail | **POST** `/videos/{videoId}/thumbnail`
-[**pickThumbnail()**](docs/Api/VideosApi.md#pickThumbnail) | Pick a thumbnail | **PATCH** `/videos/{videoId}/thumbnail`
-[**getStatus()**](docs/Api/VideosApi.md#getStatus) | Retrieve video status | **GET** `/videos/{videoId}/status`
+[**pickThumbnail()**](docs/Api/VideosApi.md#pickThumbnail) | Set a thumbnail | **PATCH** `/videos/{videoId}/thumbnail`
+[**getStatus()**](docs/Api/VideosApi.md#getStatus) | Retrieve video status and details | **GET** `/videos/{videoId}/status`
 
 
 ### WatermarksApi

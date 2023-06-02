@@ -228,7 +228,7 @@ class UploadTokensApi implements ApiInterface
 
 
     /**
-     * List all active upload tokens.
+     * List all active upload tokens
      *
      * @param  array $queryParams
      *
