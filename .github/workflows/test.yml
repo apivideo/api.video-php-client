@@ -13,11 +13,11 @@ jobs:
       - name: Install dependancies
         uses: php-actions/composer@v5
         with:
-          php_version: 7.3
+          php_version: 8.1
       - name: PHPUnit tests
         uses: php-actions/phpunit@v2
         env:
           API_KEY: ${{ secrets.API_KEY }}
           BASE_URI: https://sandbox.api.video
         with:
-          args: tests
+          args: tests --log-junit output.xml

@@ -53,7 +53,8 @@ final class VideoUploader
         return $this->execute(
             '/upload?token='.$token,
             $file,
-            $this->getChunkSize($contentRange)
+            $this->getChunkSize($contentRange),
+            $videoId
         );
     }
 
@@ -65,14 +66,13 @@ final class VideoUploader
      * @return Video
      * @throws ClientExceptionInterface
      */
-    private function execute(string $path, \SplFileObject $file, int $chunkSize): Video
+    private function execute(string $path, \SplFileObject $file, int $chunkSize, string $videoId = null): Video
     {
         $start = 0;
         $fileSize = filesize($file->getRealPath());
         $handle = fopen($file->getRealPath(), 'r');
 
         $response = null;
-        $videoId = null;
         $part = 1;
         $partsCount = ceil($fileSize / $chunkSize);
 
