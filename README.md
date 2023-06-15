@@ -220,6 +220,7 @@ Method | Description | HTTP request
 ## Models
 
  - [AccessToken](docs/Model/AccessToken.md)
+ - [AdditionalBadRequestErrors](docs/Model/AdditionalBadRequestErrors.md)
  - [AuthenticatePayload](docs/Model/AuthenticatePayload.md)
  - [BadRequest](docs/Model/BadRequest.md)
  - [BytesRange](docs/Model/BytesRange.md)
