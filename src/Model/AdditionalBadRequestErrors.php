@@ -17,60 +17,54 @@ namespace ApiVideo\Client\Model;
 use ApiVideo\Client\ObjectSerializer;
 
 /**
- * BadRequest Class Doc Comment
+ * AdditionalBadRequestErrors Class Doc Comment
  *
  * @category Class
  * @package  ApiVideo\Client
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class BadRequest implements ModelInterface, \JsonSerializable
+class AdditionalBadRequestErrors implements ModelInterface, \JsonSerializable
 {
     public static function getDefinition(): ModelDefinition
     {
         return new ModelDefinition(
-            'bad-request',
+            'additional-bad-request-errors',
             [
                 'type' => 'string',
                 'title' => 'string',
                 'name' => 'string',
-                'status' => 'int',
-                'problems' => '\ApiVideo\Client\Model\AdditionalBadRequestErrors[]'
+                'status' => 'int'
             ],
             [
                 'type' => null,
                 'title' => null,
                 'name' => null,
-                'status' => null,
-                'problems' => null
+                'status' => null
             ],
             [
                 'type' => 'type',
                 'title' => 'title',
                 'name' => 'name',
-                'status' => 'status',
-                'problems' => 'problems'
+                'status' => 'status'
             ],
             [
                 'type' => 'setType',
                 'title' => 'setTitle',
                 'name' => 'setName',
-                'status' => 'setStatus',
-                'problems' => 'setProblems'
+                'status' => 'setStatus'
             ],
             [
                 'type' => 'getType',
                 'title' => 'getTitle',
                 'name' => 'getName',
-                'status' => 'getStatus',
-                'problems' => 'getProblems'
+                'status' => 'getStatus'
             ],
             [
                 'type' => null,
                 'title' => null,
                 'name' => null,
-                'status' => null,
-                'problems' => null
+                'status' => null
             ],
             null
         );
@@ -96,7 +90,6 @@ class BadRequest implements ModelInterface, \JsonSerializable
         $this->container['title'] = $data['title'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
-        $this->container['problems'] = isset($data['problems']) ?  array_map(function(array $value): AdditionalBadRequestErrors { return new AdditionalBadRequestErrors($value); }, $data['problems']) : null;
     }
 
     /**
@@ -215,32 +208,6 @@ class BadRequest implements ModelInterface, \JsonSerializable
     public function setStatus($status)
     {
         $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets problems
-     *
-     * @return \ApiVideo\Client\Model\AdditionalBadRequestErrors[]|null
-     */
-    public function getProblems()
-    {
-        return $this->container['problems'];
-    }
-
-    /**
-     * Sets problems
-     *
-     * @param \ApiVideo\Client\Model\AdditionalBadRequestErrors[]|null $problems Returns any additional problems in the request in an array of objects.
-     *
-     * @return self
-     */
-    public function setProblems($problems)
-    {
-
-
-        $this->container['problems'] = $problems;
 
         return $this;
     }
