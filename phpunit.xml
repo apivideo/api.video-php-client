@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd" backupGlobals="false" colors="true" bootstrap="vendor/autoload.php" failOnRisky="true" failOnWarning="false">
+  <testsuites>
+    <testsuite name="api.video PHP client Test Suite">
+      <directory>./tests/</directory>
+      <exclude>/app/tests/Api/AbstractApiTest.php</exclude>
+    </testsuite>
+  </testsuites>
+</phpunit>
