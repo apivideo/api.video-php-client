@@ -46,15 +46,16 @@ class RawStatisticsApi implements ApiInterface
      * List live stream player sessions
      *
      * @param  string $liveStreamId The unique identifier for the live stream you want to retrieve analytics for. (required)
+     * @param  string $period Period must have one of the following formats:  - For a day : \&quot;2018-01-01\&quot;, - For a week: \&quot;2018-W01\&quot;,  - For a month: \&quot;2018-01\&quot; - For a year: \&quot;2018\&quot; For a range period:  -  Date range: \&quot;2018-01-01/2018-01-15\&quot; (required)
      * @param  array $queryParams
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \ApiVideo\Client\Model\RawStatisticsListLiveStreamAnalyticsResponse|\ApiVideo\Client\Model\NotFound
      */
-    public function listLiveStreamSessions(string $liveStreamId, array $queryParams = []): \ApiVideo\Client\Model\RawStatisticsListLiveStreamAnalyticsResponse
+    public function listLiveStreamSessions(string $liveStreamId, string $period, array $queryParams = []): \ApiVideo\Client\Model\RawStatisticsListLiveStreamAnalyticsResponse
     {
-        $request = $this->buildListLiveStreamSessionsRequest($liveStreamId, $queryParams);
+        $request = $this->buildListLiveStreamSessionsRequest($liveStreamId, $period, $queryParams);
 
         $model = new \ApiVideo\Client\Model\RawStatisticsListLiveStreamAnalyticsResponse($this->client->request($request));
 
@@ -70,10 +71,9 @@ class RawStatisticsApi implements ApiInterface
      * @throws \InvalidArgumentException
      * @return Request
      */
-    private function buildListLiveStreamSessionsRequest(string $liveStreamId, array $queryParams = []): Request
+    private function buildListLiveStreamSessionsRequest(string $liveStreamId, string $period, array $queryParams = []): Request
     {
         // unbox the parameters from the associative array
-        $period = array_key_exists('period', $queryParams) ? $queryParams['period'] : null;
         $currentPage = array_key_exists('currentPage', $queryParams) ? $queryParams['currentPage'] : 1;
         $pageSize = array_key_exists('pageSize', $queryParams) ? $queryParams['pageSize'] : 25;
 
@@ -218,15 +218,16 @@ class RawStatisticsApi implements ApiInterface
      * List video player sessions
      *
      * @param  string $videoId The unique identifier for the video you want to retrieve session information for. (required)
+     * @param  string $period Period must have one of the following formats:  - For a day : 2018-01-01, - For a week: 2018-W01,  - For a month: 2018-01 - For a year: 2018 For a range period:  -  Date range: 2018-01-01/2018-01-15 (required)
      * @param  array $queryParams
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \ApiVideo\Client\Model\RawStatisticsListSessionsResponse|\ApiVideo\Client\Model\NotFound
      */
-    public function listVideoSessions(string $videoId, array $queryParams = []): \ApiVideo\Client\Model\RawStatisticsListSessionsResponse
+    public function listVideoSessions(string $videoId, string $period, array $queryParams = []): \ApiVideo\Client\Model\RawStatisticsListSessionsResponse
     {
-        $request = $this->buildListVideoSessionsRequest($videoId, $queryParams);
+        $request = $this->buildListVideoSessionsRequest($videoId, $period, $queryParams);
 
         $model = new \ApiVideo\Client\Model\RawStatisticsListSessionsResponse($this->client->request($request));
 
@@ -242,10 +243,9 @@ class RawStatisticsApi implements ApiInterface
      * @throws \InvalidArgumentException
      * @return Request
      */
-    private function buildListVideoSessionsRequest(string $videoId, array $queryParams = []): Request
+    private function buildListVideoSessionsRequest(string $videoId, string $period, array $queryParams = []): Request
     {
         // unbox the parameters from the associative array
-        $period = array_key_exists('period', $queryParams) ? $queryParams['period'] : null;
         $metadata = array_key_exists('metadata', $queryParams) ? $queryParams['metadata'] : null;
         $currentPage = array_key_exists('currentPage', $queryParams) ? $queryParams['currentPage'] : 1;
         $pageSize = array_key_exists('pageSize', $queryParams) ? $queryParams['pageSize'] : 25;

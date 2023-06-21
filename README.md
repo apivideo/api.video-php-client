@@ -18,6 +18,7 @@
     - [Upload a video](#upload-a-video)
 - [Documentation](#documentation)
   - [API Endpoints](#api-endpoints)
+    - [AnalyticsApi](#analyticsapi)
     - [CaptionsApi](#captionsapi)
     - [ChaptersApi](#chaptersapi)
     - [LiveStreamsApi](#livestreamsapi)
@@ -113,6 +114,14 @@ $client->videos()->upload(
 # Documentation
 
 ## API Endpoints
+
+
+### AnalyticsApi
+
+Method | Description | HTTP request
+------------- | ------------- | -------------
+[**getLiveStreamsPlays()**](docs/Api/AnalyticsApi.md#getLiveStreamsPlays) | Get play events for live stream | **GET** `/analytics/live-streams/plays`
+[**getVideosPlays()**](docs/Api/AnalyticsApi.md#getVideosPlays) | Get play events for video | **GET** `/analytics/videos/plays`
 
 
 ### CaptionsApi
@@ -221,6 +230,9 @@ Method | Description | HTTP request
 
  - [AccessToken](docs/Model/AccessToken.md)
  - [AdditionalBadRequestErrors](docs/Model/AdditionalBadRequestErrors.md)
+ - [AnalyticsData](docs/Model/AnalyticsData.md)
+ - [AnalyticsPlays400Error](docs/Model/AnalyticsPlays400Error.md)
+ - [AnalyticsPlaysResponse](docs/Model/AnalyticsPlaysResponse.md)
  - [AuthenticatePayload](docs/Model/AuthenticatePayload.md)
  - [BadRequest](docs/Model/BadRequest.md)
  - [BytesRange](docs/Model/BytesRange.md)

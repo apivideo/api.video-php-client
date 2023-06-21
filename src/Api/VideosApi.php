@@ -218,6 +218,7 @@ class VideosApi implements ApiInterface
     /**
      * Upload with an delegated upload token
      *
+     * @param  string $token The unique identifier for the token you want to use to upload a video. (required)
      * @param  \SplFileObject $file The path to the video you want to upload. (required)
      * @param  string $contentRange Content-Range represents the range of bytes that will be returned as a result of the request. Byte ranges are inclusive, meaning that bytes 0-999 represents the first 1000 bytes in a file or object. (optional)
      * @param  string $videoId The video id returned by the first call to this endpoint in a large video upload scenario. (optional)

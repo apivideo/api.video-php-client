@@ -73,6 +73,18 @@ class Client
 
     
     /**
+     * @return \ApiVideo\Client\Api\AnalyticsApi
+     */
+    public function analytics(): \ApiVideo\Client\Api\AnalyticsApi
+    {
+        if (!array_key_exists('analytics', $this->services)) {
+            $this->services['analytics'] = new \ApiVideo\Client\Api\AnalyticsApi($this->baseClient);
+        }
+
+        return $this->services['analytics'];
+    }
+    
+    /**
      * @return \ApiVideo\Client\Api\CaptionsApi
      */
     public function captions(): \ApiVideo\Client\Api\CaptionsApi
