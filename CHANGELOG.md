@@ -1,6 +1,9 @@
 # Changelog
 All changes to this project will be documented in this file.
 
+## [1.3.0] - 2023-06-19
+- Introducing new analytics endpoints
+
 ## [1.2.6] - 2022-09-13
 - period parameter is now mandatory in analytics endpoints
 
