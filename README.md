@@ -268,6 +268,8 @@ Method | Description | HTTP request
  - [RawStatisticsListPlayerSessionEventsResponse](docs/Model/RawStatisticsListPlayerSessionEventsResponse.md)
  - [RawStatisticsListSessionsResponse](docs/Model/RawStatisticsListSessionsResponse.md)
  - [RefreshTokenPayload](docs/Model/RefreshTokenPayload.md)
+ - [RestreamsRequestObject](docs/Model/RestreamsRequestObject.md)
+ - [RestreamsResponseObject](docs/Model/RestreamsResponseObject.md)
  - [TokenCreationPayload](docs/Model/TokenCreationPayload.md)
  - [TokenListResponse](docs/Model/TokenListResponse.md)
  - [UploadToken](docs/Model/UploadToken.md)

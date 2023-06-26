@@ -34,26 +34,6 @@ Name | Type | Description | Notes
 
 [**\ApiVideo\Client\Model\LiveStream**](../Model/LiveStream.md)
 
-### Example
-
-```php
-<?php
-// First install the api client: "composer require api-video/php-api-client"
-
-require __DIR__ . '/vendor/autoload.php';
-
-$client = new \ApiVideo\Client\Client(
-    'https://ws.api.video',
-    'YOUR_API_KEY',
-    new \Symfony\Component\HttpClient\Psr18Client()
-);
-
-$liveStream = $client->liveStreams()->create((new \ApiVideo\Client\Model\LiveStreamCreationPayload())
-    ->setRecord(false) // Whether you are recording or not. True for record, false for not record.
-    ->setName("My Live Stream Video") // Add a name for your live stream here.
-    ->setPublic(true) // Whether your video can be viewed by everyone, or requires authentication to see it. 
-    ->setPlayerId("pl4f4ferf5erfr5zed4fsdd")); // The unique identifier for the player. 
-```
 
 
 
@@ -79,23 +59,6 @@ Name | Type | Description | Notes
 
 [**\ApiVideo\Client\Model\LiveStream**](../Model/LiveStream.md)
 
-### Example
-
-```php
-<?php
-// First install the api client: "composer require api-video/php-api-client"
-
-require __DIR__ . '/vendor/autoload.php';
-
-$client = new \ApiVideo\Client\Client(
-    'https://ws.api.video',
-    'YOUR_API_KEY',
-    new \Symfony\Component\HttpClient\Psr18Client()
-); 
-
-$liveStreamId = 'li400mYKSgQ6xs7taUeSaEKr'; // The unique ID for the live stream you want to retrieve.
-$liveStream = $client->liveStreams()->get($liveStreamId);
-```
 
 
 
@@ -122,31 +85,6 @@ Name | Type | Description | Notes
 
 [**\ApiVideo\Client\Model\LiveStream**](../Model/LiveStream.md)
 
-### Example
-
-```php
-<?php
-// First install the api client: "composer require api-video/php-api-client"
-
-require __DIR__ . '/vendor/autoload.php';
-
-$client = new \ApiVideo\Client\Client(
-    'https://ws.api.video',
-    'YOUR_API_KEY',
-    new \Symfony\Component\HttpClient\Psr18Client()
-); 
-
-$liveStreamId = 'li400mYKSgQ6xs7taUeSaEKr'; // The unique ID for the live stream that you want to update information for such as player details, or whether you want the recording on or off.
-
-$liveStreamUpdatePayload = (new \ApiVideo\Client\Model\LiveStreamUpdatePayload())
-    ->setName("My Live Stream Video") // The name you want to use for your live stream.)
-    ->setPublic(true) // Whether your video can be viewed by everyone, or requires authentication to see it. )
-    ->setRecord(true) // Use this to indicate whether you want the recording on or off. On is true, off is false.)
-    ->setPlayerId("pl45KFKdlddgk654dspkze"); // The unique ID for the player associated with a live stream that you want to update.)
-
-
-$liveStream = $client->liveStreams()->update($liveStreamId, $liveStreamUpdatePayload); 
-```
 
 
 

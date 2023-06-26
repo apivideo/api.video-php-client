@@ -39,6 +39,7 @@ class LiveStream implements ModelInterface, \JsonSerializable
                 'assets' => '\ApiVideo\Client\Model\LiveStreamAssets',
                 'playerId' => 'string',
                 'broadcasting' => 'bool',
+                'restreams' => '\ApiVideo\Client\Model\RestreamsResponseObject[]',
                 'createdAt' => '\DateTime',
                 'updatedAt' => '\DateTime'
             ],
@@ -51,6 +52,7 @@ class LiveStream implements ModelInterface, \JsonSerializable
                 'assets' => null,
                 'playerId' => null,
                 'broadcasting' => null,
+                'restreams' => null,
                 'createdAt' => 'date-time',
                 'updatedAt' => 'date-time'
             ],
@@ -63,6 +65,7 @@ class LiveStream implements ModelInterface, \JsonSerializable
                 'assets' => 'assets',
                 'playerId' => 'playerId',
                 'broadcasting' => 'broadcasting',
+                'restreams' => 'restreams',
                 'createdAt' => 'createdAt',
                 'updatedAt' => 'updatedAt'
             ],
@@ -75,6 +78,7 @@ class LiveStream implements ModelInterface, \JsonSerializable
                 'assets' => 'setAssets',
                 'playerId' => 'setPlayerId',
                 'broadcasting' => 'setBroadcasting',
+                'restreams' => 'setRestreams',
                 'createdAt' => 'setCreatedAt',
                 'updatedAt' => 'setUpdatedAt'
             ],
@@ -87,6 +91,7 @@ class LiveStream implements ModelInterface, \JsonSerializable
                 'assets' => 'getAssets',
                 'playerId' => 'getPlayerId',
                 'broadcasting' => 'getBroadcasting',
+                'restreams' => 'getRestreams',
                 'createdAt' => 'getCreatedAt',
                 'updatedAt' => 'getUpdatedAt'
             ],
@@ -99,6 +104,7 @@ class LiveStream implements ModelInterface, \JsonSerializable
                 'assets' => null,
                 'playerId' => null,
                 'broadcasting' => null,
+                'restreams' => null,
                 'createdAt' => null,
                 'updatedAt' => null
             ],
@@ -130,6 +136,7 @@ class LiveStream implements ModelInterface, \JsonSerializable
         $this->container['assets'] = isset($data['assets']) ? new LiveStreamAssets($data['assets']) : null;
         $this->container['playerId'] = $data['playerId'] ?? null;
         $this->container['broadcasting'] = $data['broadcasting'] ?? null;
+        $this->container['restreams'] = isset($data['restreams']) ?  array_map(function(array $value): RestreamsResponseObject { return new RestreamsResponseObject($value); }, $data['restreams']) : null;
         $this->container['createdAt'] = isset($data['createdAt']) ? new \DateTime($data['createdAt']) : null;
         $this->container['updatedAt'] = isset($data['updatedAt']) ? new \DateTime($data['updatedAt']) : null;
     }
@@ -145,6 +152,9 @@ class LiveStream implements ModelInterface, \JsonSerializable
 
         if ($this->container['liveStreamId'] === null) {
             $invalidProperties[] = "'liveStreamId' can't be null";
+        }
+        if ($this->container['restreams'] === null) {
+            $invalidProperties[] = "'restreams' can't be null";
         }
         return $invalidProperties;
     }
@@ -349,6 +359,30 @@ class LiveStream implements ModelInterface, \JsonSerializable
     public function setBroadcasting($broadcasting)
     {
         $this->container['broadcasting'] = $broadcasting;
+
+        return $this;
+    }
+
+    /**
+     * Gets restreams
+     *
+     * @return \ApiVideo\Client\Model\RestreamsResponseObject[]
+     */
+    public function getRestreams()
+    {
+        return $this->container['restreams'];
+    }
+
+    /**
+     * Sets restreams
+     *
+     * @param \ApiVideo\Client\Model\RestreamsResponseObject[] $restreams Returns the list of RTMP restream destinations.
+     *
+     * @return self
+     */
+    public function setRestreams($restreams)
+    {
+        $this->container['restreams'] = $restreams;
 
         return $this;
     }
