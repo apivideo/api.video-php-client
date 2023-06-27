@@ -254,6 +254,7 @@ Method | Description | HTTP request
  - [LiveStreamSessionSession](docs/Model/LiveStreamSessionSession.md)
  - [LiveStreamUpdatePayload](docs/Model/LiveStreamUpdatePayload.md)
  - [Metadata](docs/Model/Metadata.md)
+ - [Model403ErrorSchema](docs/Model/Model403ErrorSchema.md)
  - [NotFound](docs/Model/NotFound.md)
  - [Pagination](docs/Model/Pagination.md)
  - [PaginationLink](docs/Model/PaginationLink.md)

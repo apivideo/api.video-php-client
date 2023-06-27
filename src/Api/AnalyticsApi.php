@@ -51,7 +51,7 @@ class AnalyticsApi implements ApiInterface
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\AnalyticsPlaysResponse|\ApiVideo\Client\Model\AnalyticsPlays400Error|\ApiVideo\Client\Model\NotFound
+     * @return \ApiVideo\Client\Model\AnalyticsPlaysResponse|\ApiVideo\Client\Model\AnalyticsPlays400Error|\ApiVideo\Client\Model\Model403ErrorSchema|\ApiVideo\Client\Model\NotFound
      */
     public function getLiveStreamsPlays(\DateTime $from, string $dimension, array $queryParams = []): \ApiVideo\Client\Model\AnalyticsPlaysResponse
     {
@@ -157,7 +157,7 @@ class AnalyticsApi implements ApiInterface
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\AnalyticsPlaysResponse|\ApiVideo\Client\Model\AnalyticsPlays400Error|\ApiVideo\Client\Model\NotFound
+     * @return \ApiVideo\Client\Model\AnalyticsPlaysResponse|\ApiVideo\Client\Model\AnalyticsPlays400Error|\ApiVideo\Client\Model\Model403ErrorSchema|\ApiVideo\Client\Model\NotFound
      */
     public function getVideosPlays(\DateTime $from, string $dimension, array $queryParams = []): \ApiVideo\Client\Model\AnalyticsPlaysResponse
     {
