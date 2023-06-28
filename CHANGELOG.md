@@ -2,7 +2,7 @@
 All changes to this project will be documented in this file.
 
 ## [1.3.0] - 2023-06-28
-- Introducing live streams restream feature
+- Introducing new live streams restream feature
 - Introducing new analytics endpoints
 
 ## [1.2.6] - 2022-09-13
