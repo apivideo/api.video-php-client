@@ -34,37 +34,43 @@ class LiveStreamUpdatePayload implements ModelInterface, \JsonSerializable
                 'name' => 'string',
                 'public' => 'bool',
                 'record' => 'bool',
-                'playerId' => 'string'
+                'playerId' => 'string',
+                'restreams' => '\ApiVideo\Client\Model\RestreamsRequestObject[]'
             ],
             [
                 'name' => null,
                 'public' => null,
                 'record' => null,
-                'playerId' => null
+                'playerId' => null,
+                'restreams' => null
             ],
             [
                 'name' => 'name',
                 'public' => 'public',
                 'record' => 'record',
-                'playerId' => 'playerId'
+                'playerId' => 'playerId',
+                'restreams' => 'restreams'
             ],
             [
                 'name' => 'setName',
                 'public' => 'setPublic',
                 'record' => 'setRecord',
-                'playerId' => 'setPlayerId'
+                'playerId' => 'setPlayerId',
+                'restreams' => 'setRestreams'
             ],
             [
                 'name' => 'getName',
                 'public' => 'getPublic',
                 'record' => 'getRecord',
-                'playerId' => 'getPlayerId'
+                'playerId' => 'getPlayerId',
+                'restreams' => 'getRestreams'
             ],
             [
                 'name' => null,
                 'public' => null,
                 'record' => null,
-                'playerId' => null
+                'playerId' => null,
+                'restreams' => null
             ],
             null
         );
@@ -90,6 +96,7 @@ class LiveStreamUpdatePayload implements ModelInterface, \JsonSerializable
         $this->container['public'] = $data['public'] ?? null;
         $this->container['record'] = $data['record'] ?? null;
         $this->container['playerId'] = $data['playerId'] ?? null;
+        $this->container['restreams'] = isset($data['restreams']) ?  array_map(function(array $value): RestreamsRequestObject { return new RestreamsRequestObject($value); }, $data['restreams']) : null;
     }
 
     /**
@@ -100,6 +107,10 @@ class LiveStreamUpdatePayload implements ModelInterface, \JsonSerializable
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        if (!is_null($this->container['restreams']) && (count($this->container['restreams']) > 5)) {
+            $invalidProperties[] = "invalid value for 'restreams', number of items must be less than or equal to 5.";
+        }
 
         return $invalidProperties;
     }
@@ -208,6 +219,34 @@ class LiveStreamUpdatePayload implements ModelInterface, \JsonSerializable
     public function setPlayerId($playerId)
     {
         $this->container['playerId'] = $playerId;
+
+        return $this;
+    }
+
+    /**
+     * Gets restreams
+     *
+     * @return \ApiVideo\Client\Model\RestreamsRequestObject[]|null
+     */
+    public function getRestreams()
+    {
+        return $this->container['restreams'];
+    }
+
+    /**
+     * Sets restreams
+     *
+     * @param \ApiVideo\Client\Model\RestreamsRequestObject[]|null $restreams Use this parameter to add, edit, or remove RTMP services where you want to restream a live stream. The list can only contain up to 5 destinations. This operation updates all restream destinations in the same request. If you do not want to modify an existing restream destination, you need to include it in your request, otherwise it is removed.
+     *
+     * @return self
+     */
+    public function setRestreams($restreams)
+    {
+
+        if (!is_null($restreams) && (count($restreams) > 5)) {
+            throw new \InvalidArgumentException('invalid value for $restreams when calling LiveStreamUpdatePayload., number of items must be less than or equal to 5.');
+        }
+        $this->container['restreams'] = $restreams;
 
         return $this;
     }

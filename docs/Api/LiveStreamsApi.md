@@ -52,7 +52,9 @@ $liveStream = $client->liveStreams()->create((new \ApiVideo\Client\Model\LiveStr
     ->setRecord(false) // Whether you are recording or not. True for record, false for not record.
     ->setName("My Live Stream Video") // Add a name for your live stream here.
     ->setPublic(true) // Whether your video can be viewed by everyone, or requires authentication to see it. 
-    ->setPlayerId("pl4f4ferf5erfr5zed4fsdd")); // The unique identifier for the player. 
+    ->setPlayerId("pl4f4ferf5erfr5zed4fsdd")); // The unique identifier for the player.
+    ->setRestreams(array(  // Use this parameter to add, edit, or remove RTMP services where you want to restream a live stream. The list can only contain up to 5 destinations.
+        new RestreamsRequestObject(['name' => 'My RTMP server', 'serverUrl' => 'rtmp://my.broadcast.example.com/app', 'streamKey' => 'dw-dew8-q6w9-k67w-1ws8'])));
 ```
 
 
@@ -142,7 +144,9 @@ $liveStreamUpdatePayload = (new \ApiVideo\Client\Model\LiveStreamUpdatePayload()
     ->setName("My Live Stream Video") // The name you want to use for your live stream.)
     ->setPublic(true) // Whether your video can be viewed by everyone, or requires authentication to see it. )
     ->setRecord(true) // Use this to indicate whether you want the recording on or off. On is true, off is false.)
-    ->setPlayerId("pl45KFKdlddgk654dspkze"); // The unique ID for the player associated with a live stream that you want to update.)
+    ->setPlayerId("pl45KFKdlddgk654dspkze") // The unique ID for the player associated with a live stream that you want to update.)
+    ->setRestreams(array(
+      new RestreamsRequestObject(['name' => 'My RTMP server', 'serverUrl' => 'rtmp://my.broadcast.example.com/app', 'streamKey' => 'dw-dew8-q6w9-k67w-1ws8'])));
 
 
 $liveStream = $client->liveStreams()->update($liveStreamId, $liveStreamUpdatePayload); 
