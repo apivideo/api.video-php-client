@@ -7,3 +7,4 @@ test.php
 .openapi-generator-ignore
 .phpunit.result.cache
 post-generate.sh
+documentation.md
