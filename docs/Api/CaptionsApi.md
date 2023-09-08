@@ -34,20 +34,6 @@ Name | Type | Description | Notes
 
 [**\ApiVideo\Client\Model\Caption**](../Model/Caption.md)
 
-### Example
-
-```php
-<?php
-// First install the api client: "composer require api-video/php-api-client"
-
-require __DIR__ . '/vendor/autoload.php';
-
-$videoId = 'vi4k0jvEUuaTdRAEjQ4Prklg'; // The unique identifier for the video you want to add a caption to.
-$language = 'en'; // A valid BCP 47 language representation.
-$file = new SplFileObject(__DIR__ . '/en.vtt'); // The video text track (VTT) you want to upload.
-
-$caption = $client->captions()->upload($videoId, $language, $file); 
-```
 
 
 
@@ -76,19 +62,6 @@ Name | Type | Description | Notes
 
 [**\ApiVideo\Client\Model\Caption**](../Model/Caption.md)
 
-### Example
-
-```php
-<?php
-// First install the api client: "composer require api-video/php-api-client"
-
-require __DIR__ . '/vendor/autoload.php';
-
-$videoId = 'vi4k0jvEUuaTdRAEjQ4Prklg'; // The unique identifier for the video you want captions for.
-$language = 'en'; // A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation
-
-$client->captions()->get($videoId, $language); 
-```
 
 
 
@@ -116,22 +89,6 @@ Name | Type | Description | Notes
 
 [**\ApiVideo\Client\Model\Caption**](../Model/Caption.md)
 
-### Example
-
-```php
-<?php
-// First install the api client: "composer require api-video/php-api-client"
-
-require __DIR__ . '/vendor/autoload.php';
-
-$videoId = 'vi4k0jvEUuaTdRAEjQ4Prklg'; // The unique identifier for the video you want to have automatic captions for.
-$language = 'en'; // A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
-
-$captionsUpdatePayload = (new \ApiVideo\Client\Model\CaptionsUpdatePayload())
-    ->setDefault(true);
- 
-$caption = $client->captions()->update($videoId, $language, $captionsUpdatePayload); 
-```
 
 
 
@@ -158,19 +115,6 @@ Name | Type | Description | Notes
 
 void (empty response body)
 
-### Example
-
-```php
-<?php
-// First install the api client: "composer require api-video/php-api-client"
-
-require __DIR__ . '/vendor/autoload.php';
-
-$videoId = 'vi4k0jvEUuaTdRAEjQ4Prklgc'; // The unique identifier for the video you want to delete a caption from.
-$language = 'en'; // A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
-
-$client->captions()->delete($videoId, $language); 
-```
 
 
 
@@ -206,21 +150,6 @@ Name | Type | Description | Notes
 
 [**\ApiVideo\Client\Model\CaptionsListResponse**](../Model/CaptionsListResponse.md)
 
-### Example
-
-```php
-<?php
-// First install the api client: "composer require api-video/php-api-client"
-
-require __DIR__ . '/vendor/autoload.php';
-
-$videoId = 'vi4k0jvEUuaTdRAEjQ4Prklg'; // The unique identifier for the video you want to retrieve a list of captions for.
-
-$captions = $client->captions()->list($videoId, array(
-    'currentPage' => 2, // Choose the number of search results to return per page. Minimum value: 1)
-    'pageSize' => 30 // Results per page. Allowed values 1-100, default is 25.)
-)); 
-```
 
 
 

@@ -31,23 +31,6 @@ Name | Type | Description | Notes
 
 [**\ApiVideo\Client\Model\UploadToken**](../Model/UploadToken.md)
 
-### Example
-
-```php
-<?php
-// First install the api client: "composer require api-video/php-api-client"
-
-require __DIR__ . '/vendor/autoload.php';
-
-$client = new \ApiVideo\Client\Client(
-    'https://ws.api.video',
-    'YOUR_API_KEY',
-    new \Symfony\Component\HttpClient\Psr18Client()
-); 
-
-$uploadToken = 'to1tcmSFHeYY5KzyhOqVKMKb'; // The unique identifier for the upload token you want to delete. Deleting a token will make it so the token can no longer be used for authentication.
-$client->uploadTokens()->deleteToken($uploadToken); 
-```
 
 
 
@@ -73,23 +56,6 @@ Name | Type | Description | Notes
 
 [**\ApiVideo\Client\Model\UploadToken**](../Model/UploadToken.md)
 
-### Example
-
-```php
-<?php
-// First install the api client: "composer require api-video/php-api-client"
-
-require __DIR__ . '/vendor/autoload.php';
-
-$client = new \ApiVideo\Client\Client(
-    'https://ws.api.video',
-    'YOUR_API_KEY',
-    new \Symfony\Component\HttpClient\Psr18Client()
-); 
-
-$uploadTokenId = 'to1tcmSFHeYY5KzyhOqVKMKb'; // The unique identifier for the token you want information about.
-$uploadToken = $client->uploadTokens()->getToken($uploadTokenId); 
-```
 
 
 
@@ -115,23 +81,6 @@ Name | Type | Description | Notes
 
 void (empty response body)
 
-### Example
-
-```php
-<?php
-// First install the api client: "composer require api-video/php-api-client"
-
-require __DIR__ . '/vendor/autoload.php';
-
-$client = new \ApiVideo\Client\Client(
-    'https://ws.api.video',
-    'YOUR_API_KEY',
-    new \Symfony\Component\HttpClient\Psr18Client()
-); 
-
-$uploadTokenId = 'to1tcmSFHeYY5KzyhOqVKMKb'; // The unique identifier for the token you want information about.
-$uploadToken = $client->uploadTokens()->getToken($uploadTokenId); 
-```
 
 
 
@@ -166,22 +115,6 @@ Name | Type | Description | Notes
 
 [**\ApiVideo\Client\Model\TokenListResponse**](../Model/TokenListResponse.md)
 
-### Example
-
-```php
-<?php
-// First install the api client: "composer require api-video/php-api-client"
-
-require __DIR__ . '/vendor/autoload.php';
-
-$client = new \ApiVideo\Client\Client(
-    'https://ws.api.video',
-    'YOUR_API_KEY',
-    new \Symfony\Component\HttpClient\Psr18Client()
-); 
-
-$uploadTokens = $client->uploadTokens()->list(); 
-```
 
 
 
