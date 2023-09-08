@@ -39,19 +39,6 @@ Name | Type | Description | Notes
 
 [**\ApiVideo\Client\Model\RawStatisticsListLiveStreamAnalyticsResponse**](../Model/RawStatisticsListLiveStreamAnalyticsResponse.md)
 
-### Example
-
-```php
-const client = new ApiVideoClient({ apiKey: "YOUR_API_KEY" });
-
-const liveStreamId = 'vi4k0jvEUuaTdRAEjQ4Jfrgz'; // The unique identifier for the live stream you want to retrieve analytics for.
-const period = '2019-01-01'; // Period must have one of the following formats:  - For a day : "2018-01-01", - For a week: "2018-W01", - For a month: "2018-01" - For a year: "2018"  For a range period: -  Date range: "2018-01-01/2018-01-15" 
-const currentPage = 2; // Choose the number of search results to return per page. Minimum value: 1
-const pageSize = 30; // Results per page. Allowed values 1-100, default is 25.
-
-// RawStatisticsListLiveStreamAnalyticsResponse
-const liveStreamSessions = await client.rawStatistics.listLiveStreamSessions({ liveStreamId, period, currentPage, pageSize })
-```
 
 
 
@@ -87,21 +74,6 @@ Name | Type | Description | Notes
 
 [**\ApiVideo\Client\Model\RawStatisticsListPlayerSessionEventsResponse**](../Model/RawStatisticsListPlayerSessionEventsResponse.md)
 
-### Example
-
-```php
-<?php
-// First install the api client: "composer require api-video/php-api-client"
-
-require __DIR__ . '/vendor/autoload.php';
-
-$sessionId = 'psEmFwGQUAXR2lFHj5nDOpy'; // A unique identifier you can use to reference and track a session with.
-
-$sessionEvents = $client->rawStatistics()->listSessionEvents($sessionId, array(
-    'currentPage' => 2, // Choose the number of search results to return per page. Minimum ->setvalue(1)
-    'pageSize' => 30 // Results per page. Allowed values 1-100, default is 25.
-)); 
-```
 
 
 
@@ -139,25 +111,6 @@ Name | Type | Description | Notes
 
 [**\ApiVideo\Client\Model\RawStatisticsListSessionsResponse**](../Model/RawStatisticsListSessionsResponse.md)
 
-### Example
-
-```php
-<?php
-// First install the api client: "composer require api-video/php-api-client"
-
-require __DIR__ . '/vendor/autoload.php';
-
-$videoId = 'vi4k0jvEUuaTdRAEjQ4Prklg'; // The unique identifier for the video you want to retrieve session information for.
-
-$videoSessions = $client->rawStatistics()->listVideoSessions($videoId, array(
-    'period' => '2018-01', // Period must have one of the following formats: - For a day : 2018-01-01, - For a week: 2018-W01, - For a month: 2018-01 - For a year: 2018  For a range period: -  Date range: 2018-01-01/2018-01-15 
-    'metadata' => array( // Metadata and Dynamic Metadata filter. Send an array of key value pairs you want to filter sessions with.
-        'key' => 'value'
-    ),
-    'currentPage' => 2, // Choose the number of search results to return per page. Minimum ->setvalue(1)
-    'pageSize' => 30 // Results per page. Allowed values 1-100, default is 25.
-)); 
-```
 
 
 

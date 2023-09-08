@@ -35,20 +35,6 @@ Name | Type | Description | Notes
 
 [**\ApiVideo\Client\Model\Chapter**](../Model/Chapter.md)
 
-### Example
-
-```php
-<?php
-// First install the api client: "composer require api-video/php-api-client"
-
-require __DIR__ . '/vendor/autoload.php';
-
-$videoId = 'vi4k0jvEUuaTdRAEjQ4Jfrgz'; // The unique identifier for the video you want to upload a chapter for.
-$language = 'en'; // A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
-$file = new SplFileObject(__DIR__ . '/en.vtt'); // The VTT file describing the chapters you want to upload.
-
-$chapter = $client->chapters()->upload($videoId, $language, $file); 
-```
 
 
 
@@ -75,19 +61,6 @@ Name | Type | Description | Notes
 
 [**\ApiVideo\Client\Model\Chapter**](../Model/Chapter.md)
 
-### Example
-
-```php
-<?php
-// First install the api client: "composer require api-video/php-api-client"
-
-require __DIR__ . '/vendor/autoload.php';
-
-$videoId = 'vi4k0jvEUuaTdRAEjQ4Jfrgz'; // The unique identifier for the video you want to delete a chapter from.
-$language = 'en'; // A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
-
-$client->chapters()->delete($videoId, $language); 
-```
 
 
 
@@ -114,19 +87,6 @@ Name | Type | Description | Notes
 
 void (empty response body)
 
-### Example
-
-```php
-<?php
-// First install the api client: "composer require api-video/php-api-client"
-
-require __DIR__ . '/vendor/autoload.php';
-
-$videoId = 'vi4k0jvEUuaTdRAEjQ4Jfrgz'; // The unique identifier for the video you want to delete a chapter from.
-$language = 'en'; // A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
-
-$client->chapters()->delete($videoId, $language); 
-```
 
 
 
@@ -162,21 +122,6 @@ Name | Type | Description | Notes
 
 [**\ApiVideo\Client\Model\ChaptersListResponse**](../Model/ChaptersListResponse.md)
 
-### Example
-
-```php
-<?php
-// First install the api client: "composer require api-video/php-api-client"
-
-require __DIR__ . '/vendor/autoload.php';
-
-$videoId = 'vi4k0jvEUuaTdRAEjQ4Prklg'; // The unique identifier for the video you want to retrieve a list of chapters for.
-
-$captions = $client->chapters()->list($videoId, array(
-    'currentPage' => 2, // Choose the number of search results to return per page. Minimum value: 1)
-    'pageSize' => 30 // Results per page. Allowed values 1-100, default is 25.)
-)); 
-```
 
 
 

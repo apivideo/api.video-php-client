@@ -40,24 +40,6 @@ Name | Type | Description | Notes
 
 [**\ApiVideo\Client\Model\AnalyticsPlaysResponse**](../Model/AnalyticsPlaysResponse.md)
 
-### Example
-
-```php
-<?php
-// First install the api client: "composer require api-video/php-api-client"
-
-require __DIR__ . '/vendor/autoload.php';
-
-$from = new \DateTime("2023-06-01"); // Use this query parameter to set the start date for the time period that you want analytics for. - The API returns analytics data including the day you set in `from`. - The date you set must be **within the last 30 days**. - The value you provide must follow the `YYYY-MM-DD` format. 
-$dimension = "liveStreamId"; // Use this query parameter to define the dimension that you want analytics for. - `liveStreamId`: Returns analytics based on the public live stream identifiers. - `emittedAt`: Returns analytics based on the times of the play events. The API returns data in specific interval groups. When the date period you set in `from` and `to` is less than or equals to 2 days, the response for this dimension is grouped in hourly intervals. Otherwise, it is grouped in daily intervals. - `country`: Returns analytics based on the viewers' country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). - `deviceType`: Returns analytics based on the type of device used by the viewers during the play event. - `operatingSystem`: Returns analytics based on the operating system used by the viewers during the play event. - `browser`: Returns analytics based on the browser used by the viewers during the play event.
-
-$plays = $client->analytics()->getLiveStreamsPlays($from, $dimension, array(
-    'to' => new \DateTime('2023-06-10'), // Use this optional query parameter to set the end date for the time period that you want analytics for. - If you do not specify a `to` date, the API returns analytics data starting from the `from` date up until today, and excluding today. - The date you set must be **within the last 30 days**. - The value you provide must follow the `YYYY-MM-DD` format. 
-    'filter' => "liveStreamId:li3q7HxhApxRF1c8F8r6VeaI", // Use this query parameter to filter your results to a specific live stream in a project that you want analytics for. You must use the `liveStreamId:` prefix when specifying a live stream ID.
-    'currentPage' => 2, // Choose the number of search results to return per page. Minimum value: 1
-    'pageSize' => 30 // Results per page. Allowed values 1-100, default is 25.
-));
-```
 
 
 
@@ -94,24 +76,6 @@ Name | Type | Description | Notes
 
 [**\ApiVideo\Client\Model\AnalyticsPlaysResponse**](../Model/AnalyticsPlaysResponse.md)
 
-### Example
-
-```php
-<?php
-// First install the api client: "composer require api-video/php-api-client"
-
-require __DIR__ . '/vendor/autoload.php';
-
-$from = new \DateTime("2023-06-01"); // Use this query parameter to set the start date for the time period that you want analytics for. - The API returns analytics data including the day you set in `from`. - The date you set must be **within the last 30 days**. - The value you provide must follow the `YYYY-MM-DD` format. 
-$dimension = "videoId"; // Use this query parameter to define the dimension that you want analytics for. - `videoId`: Returns analytics based on the public video identifiers. - `emittedAt`: Returns analytics based on the times of the play events. The API returns data in specific interval groups. When the date period you set in `from` and `to` is less than or equals to 2 days, the response for this dimension is grouped in hourly intervals. Otherwise, it is grouped in daily intervals. - `country`: Returns analytics based on the viewers' country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). - `deviceType`: Returns analytics based on the type of device used by the viewers during the play event. - `operatingSystem`: Returns analytics based on the operating system used by the viewers during the play event. - `browser`: Returns analytics based on the browser used by the viewers during the play event.
-
-$plays = $client->analytics()->getVideosPlays($from, $dimension, array(
-    'to' => new \DateTime('2023-06-10'), // Use this optional query parameter to set the end date for the time period that you want analytics for. - If you do not specify a `to` date, the API returns analytics data starting from the `from` date up until today, and excluding today. - The date you set must be **within the last 30 days**. - The value you provide must follow the `YYYY-MM-DD` format. 
-    'filter' => "videoId:vi3q7HxhApxRF1c8F8r6VeaI", // Use this query parameter to filter your results to a specific video in a project that you want analytics for. You must use the `videoId:` prefix when specifying a video ID.
-    'currentPage' => 2, // Choose the number of search results to return per page. Minimum ->setvalue(1)
-    'pageSize' => 30 // Results per page. Allowed values 1-100, default is 25.
-)); 
-```
 
 
 

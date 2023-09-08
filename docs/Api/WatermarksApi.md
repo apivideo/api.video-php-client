@@ -30,37 +30,6 @@ Name | Type | Description | Notes
 
 [**\ApiVideo\Client\Model\Watermark**](../Model/Watermark.md)
 
-### Example
-
-```php
-<?php
-// First install the api client: "composer require api-video/php-api-client"
-
-require __DIR__ . '/vendor/autoload.php';
-
-$client = new \ApiVideo\Client\Client(
-    'https://ws.api.video',
-    'YOUR_API_KEY',
-    new \Symfony\Component\HttpClient\Psr18Client()
-);
-
-// upload the watermark
-$watermark = $client->watermarks()->upload(new SplFileObject(__DIR__ . '/watermark.png'));
-
-// create a new video with the watermark
-$video = $client->videos()->create((new VideoCreationPayload())
-        ->setWatermark((new VideoWatermark())
-                ->setId($watermark->getWatermarkId())
-                ->setTop("0px")
-                ->setLeft("0px")
-                ->setWidth("100px")
-                ->setHeight("100px"))
-        ->setTitle("Test PHP watermark")
-);
-
-// upload the video
-$client->videos()->upload($video->getVideoId(), new SplFileObject(__DIR__ . '/558k.mp4')); 
-```
 
 
 
@@ -86,24 +55,6 @@ Name | Type | Description | Notes
 
 void (empty response body)
 
-### Example
-
-```php
-<?php
-// First install the api client: "composer require api-video/php-api-client"
-
-require __DIR__ . '/vendor/autoload.php';
-
-$client = new \ApiVideo\Client\Client(
-    'https://ws.api.video',
-    'YOUR_API_KEY',
-    new \Symfony\Component\HttpClient\Psr18Client()
-); 
-
-$watermarkId = 'watermark_1Bji68oeAAwR44dAb5ZhML'; // The watermark ID for the watermark you want to delete.
-
-$client->watermarks->delete(watermarkId);
-```
 
 
 
@@ -138,30 +89,6 @@ Name | Type | Description | Notes
 
 [**\ApiVideo\Client\Model\WatermarksListResponse**](../Model/WatermarksListResponse.md)
 
-### Example
-
-```php
-<?php
-// First install the api client: "composer require api-video/php-api-client"
-
-require __DIR__ . '/vendor/autoload.php';
-
-$client = new \ApiVideo\Client\Client(
-    'https://ws.api.video',
-    'YOUR_API_KEY',
-    new \Symfony\Component\HttpClient\Psr18Client()
-); 
-
-// retrieve the first page of all watermarks
-$watermarks =  client->watermarks()->list();
-
-// retrieve the 5 first watermarks, ordered by creation date
-$watermarks2 = $client->watermarks()->list(array(
-    'pageSize' => 5,
-    'sortBy' => 'createdAt',
-    'sortOrder' => 'asc'
-)); 
-```
 
 
 

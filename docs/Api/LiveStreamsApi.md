@@ -34,28 +34,6 @@ Name | Type | Description | Notes
 
 [**\ApiVideo\Client\Model\LiveStream**](../Model/LiveStream.md)
 
-### Example
-
-```php
-<?php
-// First install the api client: "composer require api-video/php-api-client"
-
-require __DIR__ . '/vendor/autoload.php';
-
-$client = new \ApiVideo\Client\Client(
-    'https://ws.api.video',
-    'YOUR_API_KEY',
-    new \Symfony\Component\HttpClient\Psr18Client()
-);
-
-$liveStream = $client->liveStreams()->create((new \ApiVideo\Client\Model\LiveStreamCreationPayload())
-    ->setRecord(false) // Whether you are recording or not. True for record, false for not record.
-    ->setName("My Live Stream Video") // Add a name for your live stream here.
-    ->setPublic(true) // Whether your video can be viewed by everyone, or requires authentication to see it. 
-    ->setPlayerId("pl4f4ferf5erfr5zed4fsdd")); // The unique identifier for the player.
-    ->setRestreams(array(  // Use this parameter to add, edit, or remove RTMP services where you want to restream a live stream. The list can only contain up to 5 destinations.
-        new RestreamsRequestObject(['name' => 'My RTMP server', 'serverUrl' => 'rtmp://my.broadcast.example.com/app', 'streamKey' => 'dw-dew8-q6w9-k67w-1ws8'])));
-```
 
 
 
@@ -81,23 +59,6 @@ Name | Type | Description | Notes
 
 [**\ApiVideo\Client\Model\LiveStream**](../Model/LiveStream.md)
 
-### Example
-
-```php
-<?php
-// First install the api client: "composer require api-video/php-api-client"
-
-require __DIR__ . '/vendor/autoload.php';
-
-$client = new \ApiVideo\Client\Client(
-    'https://ws.api.video',
-    'YOUR_API_KEY',
-    new \Symfony\Component\HttpClient\Psr18Client()
-); 
-
-$liveStreamId = 'li400mYKSgQ6xs7taUeSaEKr'; // The unique ID for the live stream you want to retrieve.
-$liveStream = $client->liveStreams()->get($liveStreamId);
-```
 
 
 
@@ -124,33 +85,6 @@ Name | Type | Description | Notes
 
 [**\ApiVideo\Client\Model\LiveStream**](../Model/LiveStream.md)
 
-### Example
-
-```php
-<?php
-// First install the api client: "composer require api-video/php-api-client"
-
-require __DIR__ . '/vendor/autoload.php';
-
-$client = new \ApiVideo\Client\Client(
-    'https://ws.api.video',
-    'YOUR_API_KEY',
-    new \Symfony\Component\HttpClient\Psr18Client()
-); 
-
-$liveStreamId = 'li400mYKSgQ6xs7taUeSaEKr'; // The unique ID for the live stream that you want to update information for such as player details, or whether you want the recording on or off.
-
-$liveStreamUpdatePayload = (new \ApiVideo\Client\Model\LiveStreamUpdatePayload())
-    ->setName("My Live Stream Video") // The name you want to use for your live stream.)
-    ->setPublic(true) // Whether your video can be viewed by everyone, or requires authentication to see it. )
-    ->setRecord(true) // Use this to indicate whether you want the recording on or off. On is true, off is false.)
-    ->setPlayerId("pl45KFKdlddgk654dspkze") // The unique ID for the player associated with a live stream that you want to update.)
-    ->setRestreams(array(
-      new RestreamsRequestObject(['name' => 'My RTMP server', 'serverUrl' => 'rtmp://my.broadcast.example.com/app', 'streamKey' => 'dw-dew8-q6w9-k67w-1ws8'])));
-
-
-$liveStream = $client->liveStreams()->update($liveStreamId, $liveStreamUpdatePayload); 
-```
 
 
 
@@ -176,23 +110,6 @@ Name | Type | Description | Notes
 
 void (empty response body)
 
-### Example
-
-```php
-<?php
-// First install the api client: "composer require api-video/php-api-client"
-
-require __DIR__ . '/vendor/autoload.php';
-
-$client = new \ApiVideo\Client\Client(
-    'https://ws.api.video',
-    'YOUR_API_KEY',
-    new \Symfony\Component\HttpClient\Psr18Client()
-); 
-
-$liveStreamId = 'li400mYKSgQ6xs7taUeSaEKr'; // The unique identifier of the live stream whose thumbnail you want to delete.
-$liveStream = $client->liveStreams()->deleteThumbnail($liveStreamId); 
-```
 
 
 
@@ -229,41 +146,6 @@ Name | Type | Description | Notes
 
 [**\ApiVideo\Client\Model\LiveStreamListResponse**](../Model/LiveStreamListResponse.md)
 
-### Example
-
-```php
-<?php
-// First install the api client: "composer require api-video/php-api-client"
-
-require __DIR__ . '/vendor/autoload.php';
-
-$client = new \ApiVideo\Client\Client(
-    'https://ws.api.video',
-    'YOUR_API_KEY',
-    new \Symfony\Component\HttpClient\Psr18Client()
-); 
-
-// retrieve the first page of all livestreams
-$liveStreams = $client->liveStreams()->list();
-
-// retrieve the livestreams having a given name
-$liveStreams2 = $client->liveStreams()->list(array(
-    'name' => 'My livestream'
-));
-
-// retrieve the livestreams having a given stream key
-$liveStreams2 = $client->liveStreams()->list(array(
-  'streamKey' => '30087931-229e-42cf-b5f9-e91bcc1f7332'
-));
-
-// retrieve the second page of 30 items sorted by name desc
-$liveStreams3 = $client->liveStreams()->list(array(
-    'sortBy' => 'name',
-    'sortOrder' => 'desc',
-    'currentPage' => 2,
-    'pageSize' => 30
-)); 
-```
 
 
 
@@ -290,25 +172,6 @@ Name | Type | Description | Notes
 
 [**\ApiVideo\Client\Model\LiveStream**](../Model/LiveStream.md)
 
-### Example
-
-```php
-<?php
-// First install the api client: "composer require api-video/php-api-client"
-
-require __DIR__ . '/vendor/autoload.php';
-
-$client = new \ApiVideo\Client\Client(
-    'https://ws.api.video',
-    'YOUR_API_KEY',
-    new \Symfony\Component\HttpClient\Psr18Client()
-); 
-
-$liveStreamId = 'vi4k0jvEUuaTdRAEjQ4Jfrgz'; // The unique ID for the live stream you want to upload.
-$file = new SplFileObject(__DIR__ . './thumbnail.jpg'); // The image to be added as a thumbnail.
-
-$livestream = $client->liveStreams()->uploadThumbnail($liveStreamId, $file); 
-```
 
 
 
@@ -334,23 +197,6 @@ Name | Type | Description | Notes
 
 [**\ApiVideo\Client\Model\LiveStream**](../Model/LiveStream.md)
 
-### Example
-
-```php
-<?php
-// First install the api client: "composer require api-video/php-api-client"
-
-require __DIR__ . '/vendor/autoload.php';
-
-$client = new \ApiVideo\Client\Client(
-    'https://ws.api.video',
-    'YOUR_API_KEY',
-    new \Symfony\Component\HttpClient\Psr18Client()
-); 
-
-$liveStreamId = 'li400mYKSgQ6xs7taUeSaEKr'; // The unique ID for the live stream you want to watch.
-$liveStream = $client->liveStreams()->get(liveStreamId); 
-```
 
 
 
