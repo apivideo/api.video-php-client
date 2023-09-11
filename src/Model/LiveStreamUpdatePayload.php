@@ -33,42 +33,36 @@ class LiveStreamUpdatePayload implements ModelInterface, \JsonSerializable
             [
                 'name' => 'string',
                 'public' => 'bool',
-                'record' => 'bool',
                 'playerId' => 'string',
                 'restreams' => '\ApiVideo\Client\Model\RestreamsRequestObject[]'
             ],
             [
                 'name' => null,
                 'public' => null,
-                'record' => null,
                 'playerId' => null,
                 'restreams' => null
             ],
             [
                 'name' => 'name',
                 'public' => 'public',
-                'record' => 'record',
                 'playerId' => 'playerId',
                 'restreams' => 'restreams'
             ],
             [
                 'name' => 'setName',
                 'public' => 'setPublic',
-                'record' => 'setRecord',
                 'playerId' => 'setPlayerId',
                 'restreams' => 'setRestreams'
             ],
             [
                 'name' => 'getName',
                 'public' => 'getPublic',
-                'record' => 'getRecord',
                 'playerId' => 'getPlayerId',
                 'restreams' => 'getRestreams'
             ],
             [
                 'name' => null,
                 'public' => null,
-                'record' => null,
                 'playerId' => null,
                 'restreams' => null
             ],
@@ -94,7 +88,6 @@ class LiveStreamUpdatePayload implements ModelInterface, \JsonSerializable
     {
         $this->container['name'] = $data['name'] ?? null;
         $this->container['public'] = $data['public'] ?? null;
-        $this->container['record'] = $data['record'] ?? null;
         $this->container['playerId'] = $data['playerId'] ?? null;
         $this->container['restreams'] = isset($data['restreams']) ?  array_map(function(array $value): RestreamsRequestObject { return new RestreamsRequestObject($value); }, $data['restreams']) : null;
     }
@@ -171,30 +164,6 @@ class LiveStreamUpdatePayload implements ModelInterface, \JsonSerializable
     public function setPublic($public)
     {
         $this->container['public'] = $public;
-
-        return $this;
-    }
-
-    /**
-     * Gets record
-     *
-     * @return bool|null
-     */
-    public function getRecord()
-    {
-        return $this->container['record'];
-    }
-
-    /**
-     * Sets record
-     *
-     * @param bool|null $record Use this to indicate whether you want the recording on or off. On is true, off is false.
-     *
-     * @return self
-     */
-    public function setRecord($record)
-    {
-        $this->container['record'] = $record;
 
         return $this;
     }

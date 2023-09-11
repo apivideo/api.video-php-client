@@ -75,7 +75,7 @@ Updates the livestream object.
 
 Name | Type | Description | Notes
 ------------- | ------------- | ------------- | -------------
- `liveStreamId` | **string**| The unique ID for the live stream that you want to update information for such as player details, or whether you want the recording on or off. |
+ `liveStreamId` | **string**| The unique ID for the live stream that you want to update information for such as player details. |
  `liveStreamUpdatePayload` | [**\ApiVideo\Client\Model\LiveStreamUpdatePayload**](../Model/LiveStreamUpdatePayload.md)|  |
 
 

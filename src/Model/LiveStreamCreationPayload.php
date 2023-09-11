@@ -32,42 +32,36 @@ class LiveStreamCreationPayload implements ModelInterface, \JsonSerializable
             'live-stream-creation-payload',
             [
                 'name' => 'string',
-                'record' => 'bool',
                 'public' => 'bool',
                 'playerId' => 'string',
                 'restreams' => '\ApiVideo\Client\Model\RestreamsRequestObject[]'
             ],
             [
                 'name' => null,
-                'record' => null,
                 'public' => null,
                 'playerId' => null,
                 'restreams' => null
             ],
             [
                 'name' => 'name',
-                'record' => 'record',
                 'public' => 'public',
                 'playerId' => 'playerId',
                 'restreams' => 'restreams'
             ],
             [
                 'name' => 'setName',
-                'record' => 'setRecord',
                 'public' => 'setPublic',
                 'playerId' => 'setPlayerId',
                 'restreams' => 'setRestreams'
             ],
             [
                 'name' => 'getName',
-                'record' => 'getRecord',
                 'public' => 'getPublic',
                 'playerId' => 'getPlayerId',
                 'restreams' => 'getRestreams'
             ],
             [
                 'name' => null,
-                'record' => null,
                 'public' => null,
                 'playerId' => null,
                 'restreams' => null
@@ -93,7 +87,6 @@ class LiveStreamCreationPayload implements ModelInterface, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->container['name'] = $data['name'] ?? null;
-        $this->container['record'] = $data['record'] ?? false;
         $this->container['public'] = $data['public'] ?? null;
         $this->container['playerId'] = $data['playerId'] ?? null;
         $this->container['restreams'] = isset($data['restreams']) ?  array_map(function(array $value): RestreamsRequestObject { return new RestreamsRequestObject($value); }, $data['restreams']) : null;
@@ -150,30 +143,6 @@ class LiveStreamCreationPayload implements ModelInterface, \JsonSerializable
     public function setName($name)
     {
         $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets record
-     *
-     * @return bool|null
-     */
-    public function getRecord()
-    {
-        return $this->container['record'];
-    }
-
-    /**
-     * Sets record
-     *
-     * @param bool|null $record Whether you are recording or not. True for record, false for not record.
-     *
-     * @return self
-     */
-    public function setRecord($record)
-    {
-        $this->container['record'] = $record;
 
         return $this;
     }

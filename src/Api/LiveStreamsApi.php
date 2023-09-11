@@ -168,7 +168,7 @@ class LiveStreamsApi implements ApiInterface
     /**
      * Update a live stream
      *
-     * @param  string $liveStreamId The unique ID for the live stream that you want to update information for such as player details, or whether you want the recording on or off. (required)
+     * @param  string $liveStreamId The unique ID for the live stream that you want to update information for such as player details. (required)
      * @param  \ApiVideo\Client\Model\LiveStreamUpdatePayload $liveStreamUpdatePayload liveStreamUpdatePayload (required)
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
@@ -187,7 +187,7 @@ class LiveStreamsApi implements ApiInterface
     /**
      * Create request for operation 'update'
      *
-     * @param  string $liveStreamId The unique ID for the live stream that you want to update information for such as player details, or whether you want the recording on or off. (required)
+     * @param  string $liveStreamId The unique ID for the live stream that you want to update information for such as player details. (required)
      * @param  \ApiVideo\Client\Model\LiveStreamUpdatePayload $liveStreamUpdatePayload (required)
      *
      * @throws \InvalidArgumentException

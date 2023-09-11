@@ -133,18 +133,6 @@ class Client
     }
     
     /**
-     * @return \ApiVideo\Client\Api\RawStatisticsApi
-     */
-    public function rawStatistics(): \ApiVideo\Client\Api\RawStatisticsApi
-    {
-        if (!array_key_exists('rawStatistics', $this->services)) {
-            $this->services['rawStatistics'] = new \ApiVideo\Client\Api\RawStatisticsApi($this->baseClient);
-        }
-
-        return $this->services['rawStatistics'];
-    }
-    
-    /**
      * @return \ApiVideo\Client\Api\UploadTokensApi
      */
     public function uploadTokens(): \ApiVideo\Client\Api\UploadTokensApi
