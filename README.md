@@ -23,7 +23,6 @@
     - [ChaptersApi](#chaptersapi)
     - [LiveStreamsApi](#livestreamsapi)
     - [PlayerThemesApi](#playerthemesapi)
-    - [RawStatisticsApi](#rawstatisticsapi)
     - [UploadTokensApi](#uploadtokensapi)
     - [VideosApi](#videosapi)
     - [WatermarksApi](#watermarksapi)
@@ -171,15 +170,6 @@ Method | Description | HTTP request
 [**deleteLogo()**](docs/Api/PlayerThemesApi.md#deleteLogo) | Delete logo | **DELETE** `/players/{playerId}/logo`
 
 
-### RawStatisticsApi
-
-Method | Description | HTTP request
-------------- | ------------- | -------------
-[**listLiveStreamSessions()**](docs/Api/RawStatisticsApi.md#listLiveStreamSessions) | List live stream player sessions | **GET** `/analytics/live-streams/{liveStreamId}`
-[**listSessionEvents()**](docs/Api/RawStatisticsApi.md#listSessionEvents) | List player session events | **GET** `/analytics/sessions/{sessionId}/events`
-[**listVideoSessions()**](docs/Api/RawStatisticsApi.md#listVideoSessions) | List video player sessions | **GET** `/analytics/videos/{videoId}`
-
-
 ### UploadTokensApi
 
 Method | Description | HTTP request
@@ -265,9 +255,6 @@ Method | Description | HTTP request
  - [PlayerThemeUpdatePayload](docs/Model/PlayerThemeUpdatePayload.md)
  - [PlayerThemesListResponse](docs/Model/PlayerThemesListResponse.md)
  - [Quality](docs/Model/Quality.md)
- - [RawStatisticsListLiveStreamAnalyticsResponse](docs/Model/RawStatisticsListLiveStreamAnalyticsResponse.md)
- - [RawStatisticsListPlayerSessionEventsResponse](docs/Model/RawStatisticsListPlayerSessionEventsResponse.md)
- - [RawStatisticsListSessionsResponse](docs/Model/RawStatisticsListSessionsResponse.md)
  - [RefreshTokenPayload](docs/Model/RefreshTokenPayload.md)
  - [RestreamsRequestObject](docs/Model/RestreamsRequestObject.md)
  - [RestreamsResponseObject](docs/Model/RestreamsResponseObject.md)

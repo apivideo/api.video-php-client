@@ -34,7 +34,6 @@ class LiveStream implements ModelInterface, \JsonSerializable
                 'liveStreamId' => 'string',
                 'name' => 'string',
                 'streamKey' => 'string',
-                'record' => 'bool',
                 'public' => 'bool',
                 'assets' => '\ApiVideo\Client\Model\LiveStreamAssets',
                 'playerId' => 'string',
@@ -47,7 +46,6 @@ class LiveStream implements ModelInterface, \JsonSerializable
                 'liveStreamId' => null,
                 'name' => null,
                 'streamKey' => null,
-                'record' => null,
                 'public' => null,
                 'assets' => null,
                 'playerId' => null,
@@ -60,7 +58,6 @@ class LiveStream implements ModelInterface, \JsonSerializable
                 'liveStreamId' => 'liveStreamId',
                 'name' => 'name',
                 'streamKey' => 'streamKey',
-                'record' => 'record',
                 'public' => 'public',
                 'assets' => 'assets',
                 'playerId' => 'playerId',
@@ -73,7 +70,6 @@ class LiveStream implements ModelInterface, \JsonSerializable
                 'liveStreamId' => 'setLiveStreamId',
                 'name' => 'setName',
                 'streamKey' => 'setStreamKey',
-                'record' => 'setRecord',
                 'public' => 'setPublic',
                 'assets' => 'setAssets',
                 'playerId' => 'setPlayerId',
@@ -86,7 +82,6 @@ class LiveStream implements ModelInterface, \JsonSerializable
                 'liveStreamId' => 'getLiveStreamId',
                 'name' => 'getName',
                 'streamKey' => 'getStreamKey',
-                'record' => 'getRecord',
                 'public' => 'getPublic',
                 'assets' => 'getAssets',
                 'playerId' => 'getPlayerId',
@@ -99,7 +94,6 @@ class LiveStream implements ModelInterface, \JsonSerializable
                 'liveStreamId' => null,
                 'name' => null,
                 'streamKey' => null,
-                'record' => null,
                 'public' => null,
                 'assets' => null,
                 'playerId' => null,
@@ -131,7 +125,6 @@ class LiveStream implements ModelInterface, \JsonSerializable
         $this->container['liveStreamId'] = $data['liveStreamId'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['streamKey'] = $data['streamKey'] ?? null;
-        $this->container['record'] = $data['record'] ?? null;
         $this->container['public'] = $data['public'] ?? null;
         $this->container['assets'] = isset($data['assets']) ? new LiveStreamAssets($data['assets']) : null;
         $this->container['playerId'] = $data['playerId'] ?? null;
@@ -239,30 +232,6 @@ class LiveStream implements ModelInterface, \JsonSerializable
     public function setStreamKey($streamKey)
     {
         $this->container['streamKey'] = $streamKey;
-
-        return $this;
-    }
-
-    /**
-     * Gets record
-     *
-     * @return bool|null
-     */
-    public function getRecord()
-    {
-        return $this->container['record'];
-    }
-
-    /**
-     * Sets record
-     *
-     * @param bool|null $record Whether you are recording or not.
-     *
-     * @return self
-     */
-    public function setRecord($record)
-    {
-        $this->container['record'] = $record;
 
         return $this;
     }

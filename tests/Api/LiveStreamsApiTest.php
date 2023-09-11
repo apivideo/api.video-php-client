@@ -63,27 +63,23 @@ class LiveStreamsApiTest extends AbstractApiTest
         $payload
             ->setName('Test live stream')
             ->setPublic(false)
-            ->setRecord(true)
         ;
 
         $liveStream = $this->client->liveStreams()->create($payload);
 
         $this->assertEquals('Test live stream', $liveStream->getName());
         $this->assertEquals(false, $liveStream->getPublic());
-        $this->assertEquals(true, $liveStream->getRecord());
 
         $payload = new LiveStreamUpdatePayload();
         $payload
             ->setName('New name')
             ->setPublic(true)
-            ->setRecord(false)
         ;
 
         $liveStream = $this->client->liveStreams()->update($liveStream->getLiveStreamId(), $payload);
 
         $this->assertEquals('New name', $liveStream->getName());
         $this->assertEquals(true, $liveStream->getPublic());
-        $this->assertEquals(false, $liveStream->getRecord());
     }
 
     public function testCreate()
