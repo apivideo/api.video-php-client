@@ -239,7 +239,7 @@ class VideoUpdatePayload implements ModelInterface, \JsonSerializable
     /**
      * Sets public
      *
-     * @param bool|null $public Whether the video is publicly available or not. False means it is set to private. Default is true. Tutorials on [private videos](https://api.video/blog/endpoints/private-videos).
+     * @param bool|null $public Whether the video is publicly available or not. False means it is set to private. Default is true. Tutorials on [private videos](https://api.video/blog/endpoints/private-videos/).
      *
      * @return self
      */
@@ -335,7 +335,7 @@ class VideoUpdatePayload implements ModelInterface, \JsonSerializable
     /**
      * Sets metadata
      *
-     * @param \ApiVideo\Client\Model\Metadata[]|null $metadata A list (array) of dictionaries where each dictionary contains a key value pair that describes the video. As with tags, you must send the complete list of metadata you want as whatever you send here will overwrite the existing metadata for the video. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) allows you to define a key that allows any value pair.
+     * @param \ApiVideo\Client\Model\Metadata[]|null $metadata A list (array) of dictionaries where each dictionary contains a key value pair that describes the video. As with tags, you must send the complete list of metadata you want as whatever you send here will overwrite the existing metadata for the video. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata/) allows you to define a key that allows any value pair.
      *
      * @return self
      */
