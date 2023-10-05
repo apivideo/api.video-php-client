@@ -15,7 +15,7 @@ Method | Description | HTTP request
 
 
 
-Upload a VTT file to add captions to your video. More information can be found [here](https://docs.api.video/reference/captions)
+Upload a VTT file to add captions to your video. More information can be found [here](https://docs.api.video/vod/add-captions)
 
 ### Arguments
 

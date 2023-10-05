@@ -16,7 +16,7 @@ Method | Description | HTTP request
 
 Upload a VTT file to add chapters to your video.
 
-Chapters help break the video into sections. Read our [tutorial](https://api.video/blog/tutorials/adding-chapters-to-your-videos) for more details.
+Chapters help break the video into sections. Read our [tutorial](https://api.video/blog/tutorials/adding-chapters-to-your-videos/) for more details.
 
 ### Arguments
 
