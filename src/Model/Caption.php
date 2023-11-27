@@ -34,36 +34,42 @@ class Caption implements ModelInterface, \JsonSerializable
                 'uri' => 'string',
                 'src' => 'string',
                 'srclang' => 'string',
+                'languageName' => 'string',
                 'default' => 'bool'
             ],
             [
                 'uri' => null,
                 'src' => null,
                 'srclang' => null,
+                'languageName' => null,
                 'default' => null
             ],
             [
                 'uri' => 'uri',
                 'src' => 'src',
                 'srclang' => 'srclang',
+                'languageName' => 'languageName',
                 'default' => 'default'
             ],
             [
                 'uri' => 'setUri',
                 'src' => 'setSrc',
                 'srclang' => 'setSrclang',
+                'languageName' => 'setLanguageName',
                 'default' => 'setDefault'
             ],
             [
                 'uri' => 'getUri',
                 'src' => 'getSrc',
                 'srclang' => 'getSrclang',
+                'languageName' => 'getLanguageName',
                 'default' => 'getDefault'
             ],
             [
                 'uri' => null,
                 'src' => null,
                 'srclang' => null,
+                'languageName' => null,
                 'default' => null
             ],
             null
@@ -89,6 +95,7 @@ class Caption implements ModelInterface, \JsonSerializable
         $this->container['uri'] = $data['uri'] ?? null;
         $this->container['src'] = $data['src'] ?? null;
         $this->container['srclang'] = $data['srclang'] ?? null;
+        $this->container['languageName'] = $data['languageName'] ?? null;
         $this->container['default'] = $data['default'] ?? false;
     }
 
@@ -129,7 +136,7 @@ class Caption implements ModelInterface, \JsonSerializable
     /**
      * Sets uri
      *
-     * @param string|null $uri uri
+     * @param string|null $uri The unique resource identifier of the uploaded caption.
      *
      * @return self
      */
@@ -153,7 +160,7 @@ class Caption implements ModelInterface, \JsonSerializable
     /**
      * Sets src
      *
-     * @param string|null $src src
+     * @param string|null $src A direct URL to the uploaded caption file.
      *
      * @return self
      */
@@ -177,13 +184,37 @@ class Caption implements ModelInterface, \JsonSerializable
     /**
      * Sets srclang
      *
-     * @param string|null $srclang srclang
+     * @param string|null $srclang Indicates the language of the uploaded caption file using IETF language tags.
      *
      * @return self
      */
     public function setSrclang($srclang)
     {
         $this->container['srclang'] = $srclang;
+
+        return $this;
+    }
+
+    /**
+     * Gets languageName
+     *
+     * @return string|null
+     */
+    public function getLanguageName()
+    {
+        return $this->container['languageName'];
+    }
+
+    /**
+     * Sets languageName
+     *
+     * @param string|null $languageName Returns the native name of the caption language in UTF-8 encoding.
+     *
+     * @return self
+     */
+    public function setLanguageName($languageName)
+    {
+        $this->container['languageName'] = $languageName;
 
         return $this;
     }
