@@ -29,7 +29,7 @@ class CaptionsApiTest extends AbstractApiTest
     {
         $video = (new Helper($this->client))->createVideo();
 
-        foreach (['fr', 'ch', 'en', 'de', 'es'] as $language) {
+        foreach (['fr', 'ja', 'en', 'de', 'es'] as $language) {
             $this->client->captions()->upload(
                 $video->getVideoId(),
                 $language,
