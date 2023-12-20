@@ -28,7 +28,7 @@ class ChaptersApiTest extends AbstractApiTest
     {
         $video = (new Helper($this->client))->createVideo();
 
-        foreach (['fr', 'ch', 'en', 'de', 'es'] as $language) {
+        foreach (['fr', 'ja', 'en', 'de', 'es'] as $language) {
             $this->client->chapters()->upload(
                 $video->getVideoId(),
                 $language,
