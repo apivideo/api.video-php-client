@@ -2,6 +2,7 @@
 
 namespace ApiVideo\Client;
 
+use ApiVideo\Client\Exception\AuthenticationFailedException;
 use ApiVideo\Client\Exception\ExpiredAuthTokenException;
 use ApiVideo\Client\Exception\HttpException;
 use ApiVideo\Client\Resource\Video\Video;
@@ -77,7 +78,7 @@ class BaseClient
         $this->originSdkHeaderValue = "";
 
         if ($apiKey) {
-            $this->authenticator = new Authenticator($this, $apiKey, 'php:1.3.0');
+            $this->authenticator = new Authenticator($this, $apiKey, 'php:1.3.1');
         }
     }
 
@@ -85,7 +86,7 @@ class BaseClient
      * @param Request $commandRequest
      *
      * @return array|null
-     * @throws ClientExceptionInterface
+     * @throws ClientExceptionInterface|AuthenticationFailedException
      */
     public function request(Request $commandRequest, bool $skipAuthRequest = false): ?array
     {
@@ -110,7 +111,7 @@ class BaseClient
         if($this->originSdkHeaderValue) {
             $request = $request->withHeader('AV-Origin-Sdk', $this->originSdkHeaderValue);
         }
-        $request = $request->withHeader('AV-Origin-Client', 'php:1.3.0');
+        $request = $request->withHeader('AV-Origin-Client', 'php:1.3.1');
 
         return $this->sendRequest($request, $skipAuthRequest);
     }
