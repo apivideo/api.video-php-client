@@ -71,9 +71,10 @@ class VideoStatusIngest implements ModelInterface, \JsonSerializable
         );
     }
 
-    const STATUS_MISSING = 'missing';
     const STATUS_UPLOADING = 'uploading';
     const STATUS_UPLOADED = 'uploaded';
+    const STATUS_INGESTING = 'ingesting';
+    const STATUS_INGESTED = 'ingested';
 
     /**
      * Gets allowable values of the enum
@@ -83,9 +84,10 @@ class VideoStatusIngest implements ModelInterface, \JsonSerializable
     public function getStatusAllowableValues()
     {
         return [
-            self::STATUS_MISSING,
             self::STATUS_UPLOADING,
             self::STATUS_UPLOADED,
+            self::STATUS_INGESTING,
+            self::STATUS_INGESTED,
         ];
     }
 
@@ -156,7 +158,7 @@ class VideoStatusIngest implements ModelInterface, \JsonSerializable
     /**
      * Sets status
      *
-     * @param string|null $status There are three possible ingest statuses. missing - you are missing information required to ingest the video. uploading - the video is in the process of being uploaded. uploaded - the video is ready for use.
+     * @param string|null $status There are four possible statuses depending on how you provide a video file: - `uploading` - the API is gathering the video source file from an upload. - `uploaded` - the video file is fully uploaded. - `ingesting` - the API is gathering the video source file from either a URL, or from cloning. - `ingested` - the video file is fully stored.
      *
      * @return self
      */
