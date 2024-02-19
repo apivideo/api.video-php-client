@@ -1,6 +1,9 @@
 # Changelog
 All changes to this project will be documented in this file.
 
+## [1.3.2] - 2024-02-19
+- Update VideoStatusIngest enum
+
 ## [1.3.1] - 2023-06-28
 - Added missing AuthenticationFailedException
 
