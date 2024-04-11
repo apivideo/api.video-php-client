@@ -49,7 +49,7 @@ class PlayerThemesApi implements ApiInterface
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\PlayerTheme
+     * @return \ApiVideo\Client\Model\PlayerTheme|\ApiVideo\Client\Model\TooManyRequests
      */
     public function create(\ApiVideo\Client\Model\PlayerThemeCreationPayload $playerThemeCreationPayload): \ApiVideo\Client\Model\PlayerTheme
     {
@@ -108,7 +108,7 @@ class PlayerThemesApi implements ApiInterface
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\PlayerTheme|\ApiVideo\Client\Model\NotFound
+     * @return \ApiVideo\Client\Model\PlayerTheme|\ApiVideo\Client\Model\NotFound|\ApiVideo\Client\Model\TooManyRequests
      */
     public function get(string $playerId): \ApiVideo\Client\Model\PlayerTheme
     {
@@ -173,7 +173,7 @@ class PlayerThemesApi implements ApiInterface
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\PlayerTheme|\ApiVideo\Client\Model\NotFound
+     * @return \ApiVideo\Client\Model\PlayerTheme|\ApiVideo\Client\Model\NotFound|\ApiVideo\Client\Model\TooManyRequests
      */
     public function update(string $playerId, \ApiVideo\Client\Model\PlayerThemeUpdatePayload $playerThemeUpdatePayload): \ApiVideo\Client\Model\PlayerTheme
     {
@@ -309,7 +309,7 @@ class PlayerThemesApi implements ApiInterface
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\PlayerThemesListResponse|\ApiVideo\Client\Model\BadRequest
+     * @return \ApiVideo\Client\Model\PlayerThemesListResponse|\ApiVideo\Client\Model\BadRequest|\ApiVideo\Client\Model\TooManyRequests
      */
     public function list(array $queryParams = []): \ApiVideo\Client\Model\PlayerThemesListResponse
     {
@@ -387,7 +387,7 @@ class PlayerThemesApi implements ApiInterface
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\PlayerTheme|\ApiVideo\Client\Model\BadRequest|\ApiVideo\Client\Model\NotFound
+     * @return \ApiVideo\Client\Model\PlayerTheme|\ApiVideo\Client\Model\BadRequest|\ApiVideo\Client\Model\NotFound|\ApiVideo\Client\Model\TooManyRequests
      */
     public function uploadLogo(string $playerId, \SplFileObject $file, string $link = null): \ApiVideo\Client\Model\PlayerTheme
     {

@@ -49,7 +49,7 @@ class WebhooksApi implements ApiInterface
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\Webhook|\ApiVideo\Client\Model\BadRequest
+     * @return \ApiVideo\Client\Model\Webhook|\ApiVideo\Client\Model\BadRequest|\ApiVideo\Client\Model\TooManyRequests
      */
     public function create(\ApiVideo\Client\Model\WebhooksCreationPayload $webhooksCreationPayload): \ApiVideo\Client\Model\Webhook
     {
@@ -108,7 +108,7 @@ class WebhooksApi implements ApiInterface
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\Webhook
+     * @return \ApiVideo\Client\Model\Webhook|\ApiVideo\Client\Model\TooManyRequests
      */
     public function get(string $webhookId): \ApiVideo\Client\Model\Webhook
     {
@@ -234,7 +234,7 @@ class WebhooksApi implements ApiInterface
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\WebhooksListResponse
+     * @return \ApiVideo\Client\Model\WebhooksListResponse|\ApiVideo\Client\Model\TooManyRequests
      */
     public function list(array $queryParams = []): \ApiVideo\Client\Model\WebhooksListResponse
     {

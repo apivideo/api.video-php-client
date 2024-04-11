@@ -273,6 +273,7 @@ Method | Description | HTTP request
  - [RestreamsResponseObject](https://github.com/apivideo/api.video-php-client/blob/main/docs/Model/RestreamsResponseObject.md)
  - [TokenCreationPayload](https://github.com/apivideo/api.video-php-client/blob/main/docs/Model/TokenCreationPayload.md)
  - [TokenListResponse](https://github.com/apivideo/api.video-php-client/blob/main/docs/Model/TokenListResponse.md)
+ - [TooManyRequests](https://github.com/apivideo/api.video-php-client/blob/main/docs/Model/TooManyRequests.md)
  - [UploadToken](https://github.com/apivideo/api.video-php-client/blob/main/docs/Model/UploadToken.md)
  - [Video](https://github.com/apivideo/api.video-php-client/blob/main/docs/Model/Video.md)
  - [VideoAssets](https://github.com/apivideo/api.video-php-client/blob/main/docs/Model/VideoAssets.md)

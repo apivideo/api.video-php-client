@@ -49,7 +49,7 @@ class WatermarksApi implements ApiInterface
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\Watermark|\ApiVideo\Client\Model\BadRequest
+     * @return \ApiVideo\Client\Model\Watermark|\ApiVideo\Client\Model\BadRequest|\ApiVideo\Client\Model\TooManyRequests
      */
     public function upload(\SplFileObject $file): \ApiVideo\Client\Model\Watermark
     {
@@ -186,7 +186,7 @@ class WatermarksApi implements ApiInterface
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\WatermarksListResponse|\ApiVideo\Client\Model\BadRequest
+     * @return \ApiVideo\Client\Model\WatermarksListResponse|\ApiVideo\Client\Model\BadRequest|\ApiVideo\Client\Model\TooManyRequests
      */
     public function list(array $queryParams = []): \ApiVideo\Client\Model\WatermarksListResponse
     {

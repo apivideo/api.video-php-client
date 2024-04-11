@@ -49,7 +49,7 @@ class LiveStreamsApi implements ApiInterface
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\LiveStream|\ApiVideo\Client\Model\BadRequest
+     * @return \ApiVideo\Client\Model\LiveStream|\ApiVideo\Client\Model\BadRequest|\ApiVideo\Client\Model\TooManyRequests
      */
     public function create(\ApiVideo\Client\Model\LiveStreamCreationPayload $liveStreamCreationPayload): \ApiVideo\Client\Model\LiveStream
     {
@@ -108,7 +108,7 @@ class LiveStreamsApi implements ApiInterface
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\LiveStream
+     * @return \ApiVideo\Client\Model\LiveStream|\ApiVideo\Client\Model\TooManyRequests
      */
     public function get(string $liveStreamId): \ApiVideo\Client\Model\LiveStream
     {
@@ -173,7 +173,7 @@ class LiveStreamsApi implements ApiInterface
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\LiveStream|\ApiVideo\Client\Model\BadRequest
+     * @return \ApiVideo\Client\Model\LiveStream|\ApiVideo\Client\Model\BadRequest|\ApiVideo\Client\Model\TooManyRequests
      */
     public function update(string $liveStreamId, \ApiVideo\Client\Model\LiveStreamUpdatePayload $liveStreamUpdatePayload): \ApiVideo\Client\Model\LiveStream
     {
@@ -309,7 +309,7 @@ class LiveStreamsApi implements ApiInterface
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\LiveStreamListResponse
+     * @return \ApiVideo\Client\Model\LiveStreamListResponse|\ApiVideo\Client\Model\TooManyRequests
      */
     public function list(array $queryParams = []): \ApiVideo\Client\Model\LiveStreamListResponse
     {
@@ -398,7 +398,7 @@ class LiveStreamsApi implements ApiInterface
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\LiveStream|\ApiVideo\Client\Model\BadRequest|\ApiVideo\Client\Model\NotFound
+     * @return \ApiVideo\Client\Model\LiveStream|\ApiVideo\Client\Model\BadRequest|\ApiVideo\Client\Model\NotFound|\ApiVideo\Client\Model\TooManyRequests
      */
     public function uploadThumbnail(string $liveStreamId, \SplFileObject $file): \ApiVideo\Client\Model\LiveStream
     {
@@ -488,7 +488,7 @@ class LiveStreamsApi implements ApiInterface
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\LiveStream|\ApiVideo\Client\Model\NotFound
+     * @return \ApiVideo\Client\Model\LiveStream|\ApiVideo\Client\Model\NotFound|\ApiVideo\Client\Model\TooManyRequests
      */
     public function deleteThumbnail(string $liveStreamId): \ApiVideo\Client\Model\LiveStream
     {
