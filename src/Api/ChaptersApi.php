@@ -51,7 +51,7 @@ class ChaptersApi implements ApiInterface
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\Chapter|\ApiVideo\Client\Model\BadRequest|\ApiVideo\Client\Model\NotFound
+     * @return \ApiVideo\Client\Model\Chapter|\ApiVideo\Client\Model\BadRequest|\ApiVideo\Client\Model\NotFound|\ApiVideo\Client\Model\TooManyRequests
      */
     public function upload(string $videoId, string $language, \SplFileObject $file): \ApiVideo\Client\Model\Chapter
     {
@@ -157,7 +157,7 @@ class ChaptersApi implements ApiInterface
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\Chapter|\ApiVideo\Client\Model\NotFound
+     * @return \ApiVideo\Client\Model\Chapter|\ApiVideo\Client\Model\NotFound|\ApiVideo\Client\Model\TooManyRequests
      */
     public function get(string $videoId, string $language): \ApiVideo\Client\Model\Chapter
     {
@@ -315,7 +315,7 @@ class ChaptersApi implements ApiInterface
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\ChaptersListResponse|\ApiVideo\Client\Model\NotFound
+     * @return \ApiVideo\Client\Model\ChaptersListResponse|\ApiVideo\Client\Model\NotFound|\ApiVideo\Client\Model\TooManyRequests
      */
     public function list(string $videoId, array $queryParams = []): \ApiVideo\Client\Model\ChaptersListResponse
     {

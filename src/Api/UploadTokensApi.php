@@ -49,7 +49,7 @@ class UploadTokensApi implements ApiInterface
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\UploadToken|\ApiVideo\Client\Model\BadRequest
+     * @return \ApiVideo\Client\Model\UploadToken|\ApiVideo\Client\Model\BadRequest|\ApiVideo\Client\Model\TooManyRequests
      */
     public function createToken(\ApiVideo\Client\Model\TokenCreationPayload $tokenCreationPayload): \ApiVideo\Client\Model\UploadToken
     {
@@ -108,7 +108,7 @@ class UploadTokensApi implements ApiInterface
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\UploadToken|\ApiVideo\Client\Model\NotFound
+     * @return \ApiVideo\Client\Model\UploadToken|\ApiVideo\Client\Model\NotFound|\ApiVideo\Client\Model\TooManyRequests
      */
     public function getToken(string $uploadToken): \ApiVideo\Client\Model\UploadToken
     {
@@ -234,7 +234,7 @@ class UploadTokensApi implements ApiInterface
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\TokenListResponse
+     * @return \ApiVideo\Client\Model\TokenListResponse|\ApiVideo\Client\Model\TooManyRequests
      */
     public function list(array $queryParams = []): \ApiVideo\Client\Model\TokenListResponse
     {

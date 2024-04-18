@@ -51,7 +51,7 @@ class CaptionsApi implements ApiInterface
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\Caption|\ApiVideo\Client\Model\BadRequest|\ApiVideo\Client\Model\NotFound
+     * @return \ApiVideo\Client\Model\Caption|\ApiVideo\Client\Model\BadRequest|\ApiVideo\Client\Model\NotFound|\ApiVideo\Client\Model\TooManyRequests
      */
     public function upload(string $videoId, string $language, \SplFileObject $file): \ApiVideo\Client\Model\Caption
     {
@@ -157,7 +157,7 @@ class CaptionsApi implements ApiInterface
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\Caption|\ApiVideo\Client\Model\BadRequest|\ApiVideo\Client\Model\NotFound
+     * @return \ApiVideo\Client\Model\Caption|\ApiVideo\Client\Model\BadRequest|\ApiVideo\Client\Model\NotFound|\ApiVideo\Client\Model\TooManyRequests
      */
     public function get(string $videoId, string $language): \ApiVideo\Client\Model\Caption
     {
@@ -238,7 +238,7 @@ class CaptionsApi implements ApiInterface
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\Caption|\ApiVideo\Client\Model\BadRequest|\ApiVideo\Client\Model\NotFound
+     * @return \ApiVideo\Client\Model\Caption|\ApiVideo\Client\Model\BadRequest|\ApiVideo\Client\Model\NotFound|\ApiVideo\Client\Model\TooManyRequests
      */
     public function update(string $videoId, string $language, \ApiVideo\Client\Model\CaptionsUpdatePayload $captionsUpdatePayload): \ApiVideo\Client\Model\Caption
     {
@@ -406,7 +406,7 @@ class CaptionsApi implements ApiInterface
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\CaptionsListResponse|\ApiVideo\Client\Model\NotFound
+     * @return \ApiVideo\Client\Model\CaptionsListResponse|\ApiVideo\Client\Model\NotFound|\ApiVideo\Client\Model\TooManyRequests
      */
     public function list(string $videoId, array $queryParams = []): \ApiVideo\Client\Model\CaptionsListResponse
     {

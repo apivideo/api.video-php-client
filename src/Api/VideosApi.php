@@ -49,7 +49,7 @@ class VideosApi implements ApiInterface
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\Video|\ApiVideo\Client\Model\Video|\ApiVideo\Client\Model\BadRequest
+     * @return \ApiVideo\Client\Model\Video|\ApiVideo\Client\Model\Video|\ApiVideo\Client\Model\BadRequest|\ApiVideo\Client\Model\TooManyRequests
      */
     public function create(\ApiVideo\Client\Model\VideoCreationPayload $videoCreationPayload): \ApiVideo\Client\Model\Video
     {
@@ -110,7 +110,7 @@ class VideosApi implements ApiInterface
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\Video|\ApiVideo\Client\Model\BadRequest|\ApiVideo\Client\Model\NotFound
+     * @return \ApiVideo\Client\Model\Video|\ApiVideo\Client\Model\BadRequest|\ApiVideo\Client\Model\NotFound|\ApiVideo\Client\Model\TooManyRequests
      */
     public function upload(string $videoId, \SplFileObject $file, string $contentRange = null): \ApiVideo\Client\Model\Video
     {
@@ -225,7 +225,7 @@ class VideosApi implements ApiInterface
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\Video|\ApiVideo\Client\Model\BadRequest
+     * @return \ApiVideo\Client\Model\Video|\ApiVideo\Client\Model\BadRequest|\ApiVideo\Client\Model\TooManyRequests
      */
     public function uploadWithUploadToken(string $token, \SplFileObject $file, string $contentRange = null, string $videoId = null): \ApiVideo\Client\Model\Video
     {
@@ -339,7 +339,7 @@ class VideosApi implements ApiInterface
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\Video|\ApiVideo\Client\Model\NotFound
+     * @return \ApiVideo\Client\Model\Video|\ApiVideo\Client\Model\NotFound|\ApiVideo\Client\Model\TooManyRequests
      */
     public function get(string $videoId): \ApiVideo\Client\Model\Video
     {
@@ -404,7 +404,7 @@ class VideosApi implements ApiInterface
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\Video|\ApiVideo\Client\Model\BadRequest|\ApiVideo\Client\Model\NotFound
+     * @return \ApiVideo\Client\Model\Video|\ApiVideo\Client\Model\BadRequest|\ApiVideo\Client\Model\NotFound|\ApiVideo\Client\Model\TooManyRequests
      */
     public function update(string $videoId, \ApiVideo\Client\Model\VideoUpdatePayload $videoUpdatePayload): \ApiVideo\Client\Model\Video
     {
@@ -540,7 +540,7 @@ class VideosApi implements ApiInterface
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\VideosListResponse|\ApiVideo\Client\Model\BadRequest
+     * @return \ApiVideo\Client\Model\VideosListResponse|\ApiVideo\Client\Model\BadRequest|\ApiVideo\Client\Model\TooManyRequests
      */
     public function list(array $queryParams = []): \ApiVideo\Client\Model\VideosListResponse
     {
@@ -655,7 +655,7 @@ class VideosApi implements ApiInterface
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\Video|\ApiVideo\Client\Model\BadRequest|\ApiVideo\Client\Model\NotFound
+     * @return \ApiVideo\Client\Model\Video|\ApiVideo\Client\Model\BadRequest|\ApiVideo\Client\Model\NotFound|\ApiVideo\Client\Model\TooManyRequests
      */
     public function uploadThumbnail(string $videoId, \SplFileObject $file): \ApiVideo\Client\Model\Video
     {
@@ -746,7 +746,7 @@ class VideosApi implements ApiInterface
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\Video|\ApiVideo\Client\Model\NotFound
+     * @return \ApiVideo\Client\Model\Video|\ApiVideo\Client\Model\NotFound|\ApiVideo\Client\Model\TooManyRequests
      */
     public function pickThumbnail(string $videoId, \ApiVideo\Client\Model\VideoThumbnailPickPayload $videoThumbnailPickPayload): \ApiVideo\Client\Model\Video
     {
@@ -820,7 +820,7 @@ class VideosApi implements ApiInterface
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\VideoStatus|\ApiVideo\Client\Model\NotFound
+     * @return \ApiVideo\Client\Model\VideoStatus|\ApiVideo\Client\Model\NotFound|\ApiVideo\Client\Model\TooManyRequests
      */
     public function getStatus(string $videoId): \ApiVideo\Client\Model\VideoStatus
     {
