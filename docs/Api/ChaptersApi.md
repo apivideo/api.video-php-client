@@ -4,10 +4,10 @@ All URIs are relative to https://ws.api.video.
 
 Method | Description | HTTP request
 ------------- | ------------- | -------------
-[**upload()**](ChaptersApi.md#upload) | Upload a chapter | **POST** `/videos/{videoId}/chapters/{language}`
-[**get()**](ChaptersApi.md#get) | Retrieve a chapter | **GET** `/videos/{videoId}/chapters/{language}`
-[**delete()**](ChaptersApi.md#delete) | Delete a chapter | **DELETE** `/videos/{videoId}/chapters/{language}`
-[**list()**](ChaptersApi.md#list) | List video chapters | **GET** `/videos/{videoId}/chapters`
+[**upload()**](ChaptersApi.md#upload) | Upload a chapter | **POST** /videos/{videoId}/chapters/{language}
+[**get()**](ChaptersApi.md#get) | Retrieve a chapter | **GET** /videos/{videoId}/chapters/{language}
+[**delete()**](ChaptersApi.md#delete) | Delete a chapter | **DELETE** /videos/{videoId}/chapters/{language}
+[**list()**](ChaptersApi.md#list) | List video chapters | **GET** /videos/{videoId}/chapters
 
 
 ## **`upload()` - Upload a chapter**

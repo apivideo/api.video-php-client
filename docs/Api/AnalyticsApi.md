@@ -4,8 +4,8 @@ All URIs are relative to https://ws.api.video.
 
 Method | Description | HTTP request
 ------------- | ------------- | -------------
-[**getLiveStreamsPlays()**](AnalyticsApi.md#getLiveStreamsPlays) | Get play events for live stream | **GET** `/analytics/live-streams/plays`
-[**getVideosPlays()**](AnalyticsApi.md#getVideosPlays) | Get play events for video | **GET** `/analytics/videos/plays`
+[**getLiveStreamsPlays()**](AnalyticsApi.md#getLiveStreamsPlays) | Get play events for live stream | **GET** /analytics/live-streams/plays
+[**getVideosPlays()**](AnalyticsApi.md#getVideosPlays) | Get play events for video | **GET** /analytics/videos/plays
 
 
 ## **`getLiveStreamsPlays()` - Get play events for live stream**

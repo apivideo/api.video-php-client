@@ -4,13 +4,13 @@ All URIs are relative to https://ws.api.video.
 
 Method | Description | HTTP request
 ------------- | ------------- | -------------
-[**create()**](PlayerThemesApi.md#create) | Create a player | **POST** `/players`
-[**get()**](PlayerThemesApi.md#get) | Retrieve a player | **GET** `/players/{playerId}`
-[**update()**](PlayerThemesApi.md#update) | Update a player | **PATCH** `/players/{playerId}`
-[**delete()**](PlayerThemesApi.md#delete) | Delete a player | **DELETE** `/players/{playerId}`
-[**list()**](PlayerThemesApi.md#list) | List all player themes | **GET** `/players`
-[**uploadLogo()**](PlayerThemesApi.md#uploadLogo) | Upload a logo | **POST** `/players/{playerId}/logo`
-[**deleteLogo()**](PlayerThemesApi.md#deleteLogo) | Delete logo | **DELETE** `/players/{playerId}/logo`
+[**create()**](PlayerThemesApi.md#create) | Create a player | **POST** /players
+[**get()**](PlayerThemesApi.md#get) | Retrieve a player | **GET** /players/{playerId}
+[**update()**](PlayerThemesApi.md#update) | Update a player | **PATCH** /players/{playerId}
+[**delete()**](PlayerThemesApi.md#delete) | Delete a player | **DELETE** /players/{playerId}
+[**list()**](PlayerThemesApi.md#list) | List all player themes | **GET** /players
+[**uploadLogo()**](PlayerThemesApi.md#uploadLogo) | Upload a logo | **POST** /players/{playerId}/logo
+[**deleteLogo()**](PlayerThemesApi.md#deleteLogo) | Delete logo | **DELETE** /players/{playerId}/logo
 
 
 ## **`create()` - Create a player**
