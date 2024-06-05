@@ -4,9 +4,9 @@ All URIs are relative to https://ws.api.video.
 
 Method | Description | HTTP request
 ------------- | ------------- | -------------
-[**upload()**](WatermarksApi.md#upload) | Upload a watermark | **POST** `/watermarks`
-[**delete()**](WatermarksApi.md#delete) | Delete a watermark | **DELETE** `/watermarks/{watermarkId}`
-[**list()**](WatermarksApi.md#list) | List all watermarks | **GET** `/watermarks`
+[**upload()**](WatermarksApi.md#upload) | Upload a watermark | **POST** /watermarks
+[**delete()**](WatermarksApi.md#delete) | Delete a watermark | **DELETE** /watermarks/{watermarkId}
+[**list()**](WatermarksApi.md#list) | List all watermarks | **GET** /watermarks
 
 
 ## **`upload()` - Upload a watermark**

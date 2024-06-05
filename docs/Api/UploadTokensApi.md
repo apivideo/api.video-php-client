@@ -4,10 +4,10 @@ All URIs are relative to https://ws.api.video.
 
 Method | Description | HTTP request
 ------------- | ------------- | -------------
-[**createToken()**](UploadTokensApi.md#createToken) | Generate an upload token | **POST** `/upload-tokens`
-[**getToken()**](UploadTokensApi.md#getToken) | Retrieve upload token | **GET** `/upload-tokens/{uploadToken}`
-[**deleteToken()**](UploadTokensApi.md#deleteToken) | Delete an upload token | **DELETE** `/upload-tokens/{uploadToken}`
-[**list()**](UploadTokensApi.md#list) | List all active upload tokens | **GET** `/upload-tokens`
+[**createToken()**](UploadTokensApi.md#createToken) | Generate an upload token | **POST** /upload-tokens
+[**getToken()**](UploadTokensApi.md#getToken) | Retrieve upload token | **GET** /upload-tokens/{uploadToken}
+[**deleteToken()**](UploadTokensApi.md#deleteToken) | Delete an upload token | **DELETE** /upload-tokens/{uploadToken}
+[**list()**](UploadTokensApi.md#list) | List all active upload tokens | **GET** /upload-tokens
 
 
 ## **`createToken()` - Generate an upload token**

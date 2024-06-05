@@ -4,11 +4,11 @@ All URIs are relative to https://ws.api.video.
 
 Method | Description | HTTP request
 ------------- | ------------- | -------------
-[**upload()**](CaptionsApi.md#upload) | Upload a caption | **POST** `/videos/{videoId}/captions/{language}`
-[**get()**](CaptionsApi.md#get) | Retrieve a caption | **GET** `/videos/{videoId}/captions/{language}`
-[**update()**](CaptionsApi.md#update) | Update a caption | **PATCH** `/videos/{videoId}/captions/{language}`
-[**delete()**](CaptionsApi.md#delete) | Delete a caption | **DELETE** `/videos/{videoId}/captions/{language}`
-[**list()**](CaptionsApi.md#list) | List video captions | **GET** `/videos/{videoId}/captions`
+[**upload()**](CaptionsApi.md#upload) | Upload a caption | **POST** /videos/{videoId}/captions/{language}
+[**get()**](CaptionsApi.md#get) | Retrieve a caption | **GET** /videos/{videoId}/captions/{language}
+[**update()**](CaptionsApi.md#update) | Update a caption | **PATCH** /videos/{videoId}/captions/{language}
+[**delete()**](CaptionsApi.md#delete) | Delete a caption | **DELETE** /videos/{videoId}/captions/{language}
+[**list()**](CaptionsApi.md#list) | List video captions | **GET** /videos/{videoId}/captions
 
 
 ## **`upload()` - Upload a caption**

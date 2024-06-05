@@ -4,16 +4,16 @@ All URIs are relative to https://ws.api.video.
 
 Method | Description | HTTP request
 ------------- | ------------- | -------------
-[**create()**](VideosApi.md#create) | Create a video object | **POST** `/videos`
-[**upload()**](VideosApi.md#upload) | Upload a video | **POST** `/videos/{videoId}/source`
-[**uploadWithUploadToken()**](VideosApi.md#uploadWithUploadToken) | Upload with an delegated upload token | **POST** `/upload`
-[**get()**](VideosApi.md#get) | Retrieve a video object | **GET** `/videos/{videoId}`
-[**update()**](VideosApi.md#update) | Update a video object | **PATCH** `/videos/{videoId}`
-[**delete()**](VideosApi.md#delete) | Delete a video object | **DELETE** `/videos/{videoId}`
-[**list()**](VideosApi.md#list) | List all video objects | **GET** `/videos`
-[**uploadThumbnail()**](VideosApi.md#uploadThumbnail) | Upload a thumbnail | **POST** `/videos/{videoId}/thumbnail`
-[**pickThumbnail()**](VideosApi.md#pickThumbnail) | Set a thumbnail | **PATCH** `/videos/{videoId}/thumbnail`
-[**getStatus()**](VideosApi.md#getStatus) | Retrieve video status and details | **GET** `/videos/{videoId}/status`
+[**create()**](VideosApi.md#create) | Create a video object | **POST** /videos
+[**upload()**](VideosApi.md#upload) | Upload a video | **POST** /videos/{videoId}/source
+[**uploadWithUploadToken()**](VideosApi.md#uploadWithUploadToken) | Upload with an delegated upload token | **POST** /upload
+[**get()**](VideosApi.md#get) | Retrieve a video object | **GET** /videos/{videoId}
+[**update()**](VideosApi.md#update) | Update a video object | **PATCH** /videos/{videoId}
+[**delete()**](VideosApi.md#delete) | Delete a video object | **DELETE** /videos/{videoId}
+[**list()**](VideosApi.md#list) | List all video objects | **GET** /videos
+[**uploadThumbnail()**](VideosApi.md#uploadThumbnail) | Upload a thumbnail | **POST** /videos/{videoId}/thumbnail
+[**pickThumbnail()**](VideosApi.md#pickThumbnail) | Set a thumbnail | **PATCH** /videos/{videoId}/thumbnail
+[**getStatus()**](VideosApi.md#getStatus) | Retrieve video status and details | **GET** /videos/{videoId}/status
 
 
 ## **`create()` - Create a video object**

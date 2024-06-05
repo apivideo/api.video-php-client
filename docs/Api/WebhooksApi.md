@@ -4,10 +4,10 @@ All URIs are relative to https://ws.api.video.
 
 Method | Description | HTTP request
 ------------- | ------------- | -------------
-[**create()**](WebhooksApi.md#create) | Create Webhook | **POST** `/webhooks`
-[**get()**](WebhooksApi.md#get) | Retrieve Webhook details | **GET** `/webhooks/{webhookId}`
-[**delete()**](WebhooksApi.md#delete) | Delete a Webhook | **DELETE** `/webhooks/{webhookId}`
-[**list()**](WebhooksApi.md#list) | List all webhooks | **GET** `/webhooks`
+[**create()**](WebhooksApi.md#create) | Create Webhook | **POST** /webhooks
+[**get()**](WebhooksApi.md#get) | Retrieve Webhook details | **GET** /webhooks/{webhookId}
+[**delete()**](WebhooksApi.md#delete) | Delete a Webhook | **DELETE** /webhooks/{webhookId}
+[**list()**](WebhooksApi.md#list) | List all webhooks | **GET** /webhooks
 
 
 ## **`create()` - Create Webhook**

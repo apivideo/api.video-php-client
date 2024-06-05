@@ -4,13 +4,13 @@ All URIs are relative to https://ws.api.video.
 
 Method | Description | HTTP request
 ------------- | ------------- | -------------
-[**create()**](LiveStreamsApi.md#create) | Create live stream | **POST** `/live-streams`
-[**get()**](LiveStreamsApi.md#get) | Retrieve live stream | **GET** `/live-streams/{liveStreamId}`
-[**update()**](LiveStreamsApi.md#update) | Update a live stream | **PATCH** `/live-streams/{liveStreamId}`
-[**delete()**](LiveStreamsApi.md#delete) | Delete a live stream | **DELETE** `/live-streams/{liveStreamId}`
-[**list()**](LiveStreamsApi.md#list) | List all live streams | **GET** `/live-streams`
-[**uploadThumbnail()**](LiveStreamsApi.md#uploadThumbnail) | Upload a thumbnail | **POST** `/live-streams/{liveStreamId}/thumbnail`
-[**deleteThumbnail()**](LiveStreamsApi.md#deleteThumbnail) | Delete a thumbnail | **DELETE** `/live-streams/{liveStreamId}/thumbnail`
+[**create()**](LiveStreamsApi.md#create) | Create live stream | **POST** /live-streams
+[**get()**](LiveStreamsApi.md#get) | Retrieve live stream | **GET** /live-streams/{liveStreamId}
+[**update()**](LiveStreamsApi.md#update) | Update a live stream | **PATCH** /live-streams/{liveStreamId}
+[**delete()**](LiveStreamsApi.md#delete) | Delete a live stream | **DELETE** /live-streams/{liveStreamId}
+[**list()**](LiveStreamsApi.md#list) | List all live streams | **GET** /live-streams
+[**uploadThumbnail()**](LiveStreamsApi.md#uploadThumbnail) | Upload a thumbnail | **POST** /live-streams/{liveStreamId}/thumbnail
+[**deleteThumbnail()**](LiveStreamsApi.md#deleteThumbnail) | Delete a thumbnail | **DELETE** /live-streams/{liveStreamId}/thumbnail
 
 
 ## **`create()` - Create live stream**
