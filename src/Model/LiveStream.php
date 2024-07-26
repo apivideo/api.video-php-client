@@ -249,7 +249,7 @@ class LiveStream implements ModelInterface, \JsonSerializable
     /**
      * Sets public
      *
-     * @param bool|null $public Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Learn more about the Private Video feature [here](https://docs.api.video/delivery-analytics/video-privacy-access-management).
+     * @param bool|null $public Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Learn more about the Private Video feature [here](https://docs.api.video/delivery/video-privacy-access-management).
      *
      * @return self
      */
@@ -345,7 +345,7 @@ class LiveStream implements ModelInterface, \JsonSerializable
     /**
      * Sets restreams
      *
-     * @param \ApiVideo\Client\Model\RestreamsResponseObject[] $restreams Returns the list of RTMP restream destinations.
+     * @param \ApiVideo\Client\Model\RestreamsResponseObject[] $restreams Returns the list of restream destinations.
      *
      * @return self
      */

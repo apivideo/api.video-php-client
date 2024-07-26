@@ -156,7 +156,7 @@ class RestreamsRequestObject implements ModelInterface, \JsonSerializable
     /**
      * Sets serverUrl
      *
-     * @param string $serverUrl Use this parameter to set the RTMP URL of the restream destination.
+     * @param string $serverUrl Use this parameter to set the `RTMPS` or `RTMP` server URL of the restream destination.
      *
      * @return self
      */

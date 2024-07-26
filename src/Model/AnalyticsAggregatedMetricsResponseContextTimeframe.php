@@ -17,49 +17,43 @@ namespace ApiVideo\Client\Model;
 use ApiVideo\Client\ObjectSerializer;
 
 /**
- * VideoSessionDevice Class Doc Comment
+ * AnalyticsAggregatedMetricsResponseContextTimeframe Class Doc Comment
  *
  * @category Class
- * @description What type of device the user is on when in the video session.
+ * @description Returns the starting and ending date-times of the period you want analytics for.
  * @package  ApiVideo\Client
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class VideoSessionDevice implements ModelInterface, \JsonSerializable
+class AnalyticsAggregatedMetricsResponseContextTimeframe implements ModelInterface, \JsonSerializable
 {
     public static function getDefinition(): ModelDefinition
     {
         return new ModelDefinition(
-            'video-session-device',
+            'analytics_aggregated_metrics_response_context_timeframe',
             [
-                'type' => 'string',
-                'vendor' => 'string',
-                'model' => 'string'
+                'from' => '\DateTime',
+                'to' => '\DateTime'
             ],
             [
-                'type' => null,
-                'vendor' => null,
-                'model' => null
+                'from' => 'date-time',
+                'to' => 'date-time'
             ],
             [
-                'type' => 'type',
-                'vendor' => 'vendor',
-                'model' => 'model'
+                'from' => 'from',
+                'to' => 'to'
             ],
             [
-                'type' => 'setType',
-                'vendor' => 'setVendor',
-                'model' => 'setModel'
+                'from' => 'setFrom',
+                'to' => 'setTo'
             ],
             [
-                'type' => 'getType',
-                'vendor' => 'getVendor',
-                'model' => 'getModel'
+                'from' => 'getFrom',
+                'to' => 'getTo'
             ],
             [
-                'type' => null,
-                'vendor' => null,
-                'model' => null
+                'from' => null,
+                'to' => null
             ],
             null
         );
@@ -81,9 +75,8 @@ class VideoSessionDevice implements ModelInterface, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['type'] = $data['type'] ?? null;
-        $this->container['vendor'] = $data['vendor'] ?? null;
-        $this->container['model'] = $data['model'] ?? null;
+        $this->container['from'] = isset($data['from']) ? new \DateTime($data['from']) : null;
+        $this->container['to'] = isset($data['to']) ? new \DateTime($data['to']) : null;
     }
 
     /**
@@ -111,73 +104,49 @@ class VideoSessionDevice implements ModelInterface, \JsonSerializable
 
 
     /**
-     * Gets type
+     * Gets from
      *
-     * @return string|null
+     * @return \DateTime|null
      */
-    public function getType()
+    public function getFrom()
     {
-        return $this->container['type'];
+        return $this->container['from'];
     }
 
     /**
-     * Sets type
+     * Sets from
      *
-     * @param string|null $type What the type is like desktop, laptop, mobile.
+     * @param \DateTime|null $from Returns the starting date-time of the period you want analytics for in ATOM date-time format.
      *
      * @return self
      */
-    public function setType($type)
+    public function setFrom($from)
     {
-        $this->container['type'] = $type;
+        $this->container['from'] = $from;
 
         return $this;
     }
 
     /**
-     * Gets vendor
+     * Gets to
      *
-     * @return string|null
+     * @return \DateTime|null
      */
-    public function getVendor()
+    public function getTo()
     {
-        return $this->container['vendor'];
+        return $this->container['to'];
     }
 
     /**
-     * Sets vendor
+     * Sets to
      *
-     * @param string|null $vendor If known, what the brand of the device is, like Apple, Dell, etc.
+     * @param \DateTime|null $to Returns the starting date-time of the period you want analytics for in ATOM date-time format.
      *
      * @return self
      */
-    public function setVendor($vendor)
+    public function setTo($to)
     {
-        $this->container['vendor'] = $vendor;
-
-        return $this;
-    }
-
-    /**
-     * Gets model
-     *
-     * @return string|null
-     */
-    public function getModel()
-    {
-        return $this->container['model'];
-    }
-
-    /**
-     * Sets model
-     *
-     * @param string|null $model The specific model of the device, if known.
-     *
-     * @return self
-     */
-    public function setModel($model)
-    {
-        $this->container['model'] = $model;
+        $this->container['to'] = $to;
 
         return $this;
     }

@@ -17,43 +17,42 @@ namespace ApiVideo\Client\Model;
 use ApiVideo\Client\ObjectSerializer;
 
 /**
- * VideoSessionLocation Class Doc Comment
+ * AnalyticsMetricsBreakdownResponseData Class Doc Comment
  *
  * @category Class
- * @description The location of the viewer.
  * @package  ApiVideo\Client
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class VideoSessionLocation implements ModelInterface, \JsonSerializable
+class AnalyticsMetricsBreakdownResponseData implements ModelInterface, \JsonSerializable
 {
     public static function getDefinition(): ModelDefinition
     {
         return new ModelDefinition(
-            'video-session-location',
+            'analytics_metrics_breakdown_response_data',
             [
-                'country' => 'string',
-                'city' => 'string'
+                'dimensionValue' => 'string',
+                'metricValue' => 'float'
             ],
             [
-                'country' => null,
-                'city' => null
+                'dimensionValue' => null,
+                'metricValue' => 'float'
             ],
             [
-                'country' => 'country',
-                'city' => 'city'
+                'dimensionValue' => 'dimensionValue',
+                'metricValue' => 'metricValue'
             ],
             [
-                'country' => 'setCountry',
-                'city' => 'setCity'
+                'dimensionValue' => 'setDimensionValue',
+                'metricValue' => 'setMetricValue'
             ],
             [
-                'country' => 'getCountry',
-                'city' => 'getCity'
+                'dimensionValue' => 'getDimensionValue',
+                'metricValue' => 'getMetricValue'
             ],
             [
-                'country' => null,
-                'city' => null
+                'dimensionValue' => null,
+                'metricValue' => null
             ],
             null
         );
@@ -75,8 +74,8 @@ class VideoSessionLocation implements ModelInterface, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['country'] = $data['country'] ?? null;
-        $this->container['city'] = $data['city'] ?? null;
+        $this->container['dimensionValue'] = $data['dimensionValue'] ?? null;
+        $this->container['metricValue'] = $data['metricValue'] ?? null;
     }
 
     /**
@@ -104,49 +103,49 @@ class VideoSessionLocation implements ModelInterface, \JsonSerializable
 
 
     /**
-     * Gets country
+     * Gets dimensionValue
      *
      * @return string|null
      */
-    public function getCountry()
+    public function getDimensionValue()
     {
-        return $this->container['country'];
+        return $this->container['dimensionValue'];
     }
 
     /**
-     * Sets country
+     * Sets dimensionValue
      *
-     * @param string|null $country The country of the viewer.
+     * @param string|null $dimensionValue Returns a specific value for the dimension you selected, based on the data. For example if you select `continent` as a dimension, then `dimensionValue` returns values like `EU` or \"AZ\".
      *
      * @return self
      */
-    public function setCountry($country)
+    public function setDimensionValue($dimensionValue)
     {
-        $this->container['country'] = $country;
+        $this->container['dimensionValue'] = $dimensionValue;
 
         return $this;
     }
 
     /**
-     * Gets city
+     * Gets metricValue
      *
-     * @return string|null
+     * @return float|null
      */
-    public function getCity()
+    public function getMetricValue()
     {
-        return $this->container['city'];
+        return $this->container['metricValue'];
     }
 
     /**
-     * Sets city
+     * Sets metricValue
      *
-     * @param string|null $city The city of the viewer.
+     * @param float|null $metricValue Returns the data for a specific dimension value.
      *
      * @return self
      */
-    public function setCity($city)
+    public function setMetricValue($metricValue)
     {
-        $this->container['city'] = $city;
+        $this->container['metricValue'] = $metricValue;
 
         return $this;
     }

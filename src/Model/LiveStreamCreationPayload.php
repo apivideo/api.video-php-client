@@ -160,7 +160,7 @@ class LiveStreamCreationPayload implements ModelInterface, \JsonSerializable
     /**
      * Sets public
      *
-     * @param bool|null $public Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Learn more about the Private Video feature [here](https://docs.api.video/delivery-analytics/video-privacy-access-management).
+     * @param bool|null $public Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Learn more about the Private Video feature [here](https://docs.api.video/delivery/video-privacy-access-management).
      *
      * @return self
      */
@@ -208,7 +208,7 @@ class LiveStreamCreationPayload implements ModelInterface, \JsonSerializable
     /**
      * Sets restreams
      *
-     * @param \ApiVideo\Client\Model\RestreamsRequestObject[]|null $restreams Use this parameter to add, edit, or remove RTMP services where you want to restream a live stream. The list can only contain up to 5 destinations.
+     * @param \ApiVideo\Client\Model\RestreamsRequestObject[]|null $restreams Use this parameter to add, edit, or remove `RTMPS` or `RTMP` services where you want to restream a live stream. The list can only contain up to 5 destinations.
      *
      * @return self
      */
