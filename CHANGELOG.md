@@ -1,6 +1,10 @@
 # Changelog
 All changes to this project will be documented in this file.
 
+## [1.4.0] - 2024-07-29
+- Add new analytics methods
+- Add livestream complete() method
+
 ## [1.3.2] - 2024-02-19
 - Update VideoStatusIngest enum
 

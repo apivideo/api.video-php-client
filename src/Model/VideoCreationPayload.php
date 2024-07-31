@@ -253,7 +253,7 @@ class VideoCreationPayload implements ModelInterface, \JsonSerializable
     /**
      * Sets public
      *
-     * @param bool|null $public Default: True. If set to `false` the video will become private. More information on private videos can be found [here](https://docs.api.video/delivery-analytics/video-privacy-access-management)
+     * @param bool|null $public Default: True. If set to `false` the video will become private. More information on private videos can be found [here](https://docs.api.video/delivery/video-privacy-access-management)
      *
      * @return self
      */

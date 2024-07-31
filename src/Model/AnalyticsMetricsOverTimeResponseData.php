@@ -17,49 +17,42 @@ namespace ApiVideo\Client\Model;
 use ApiVideo\Client\ObjectSerializer;
 
 /**
- * LiveStreamSessionDevice Class Doc Comment
+ * AnalyticsMetricsOverTimeResponseData Class Doc Comment
  *
  * @category Class
- * @description What type of device the user is on when in the live stream session.
  * @package  ApiVideo\Client
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class LiveStreamSessionDevice implements ModelInterface, \JsonSerializable
+class AnalyticsMetricsOverTimeResponseData implements ModelInterface, \JsonSerializable
 {
     public static function getDefinition(): ModelDefinition
     {
         return new ModelDefinition(
-            'live-stream-session-device',
+            'analytics_metrics_over_time_response_data',
             [
-                'type' => 'string',
-                'vendor' => 'string',
-                'model' => 'string'
+                'emittedAt' => 'string',
+                'metricValue' => 'float'
             ],
             [
-                'type' => null,
-                'vendor' => null,
-                'model' => null
+                'emittedAt' => null,
+                'metricValue' => 'float'
             ],
             [
-                'type' => 'type',
-                'vendor' => 'vendor',
-                'model' => 'model'
+                'emittedAt' => 'emittedAt',
+                'metricValue' => 'metricValue'
             ],
             [
-                'type' => 'setType',
-                'vendor' => 'setVendor',
-                'model' => 'setModel'
+                'emittedAt' => 'setEmittedAt',
+                'metricValue' => 'setMetricValue'
             ],
             [
-                'type' => 'getType',
-                'vendor' => 'getVendor',
-                'model' => 'getModel'
+                'emittedAt' => 'getEmittedAt',
+                'metricValue' => 'getMetricValue'
             ],
             [
-                'type' => null,
-                'vendor' => null,
-                'model' => null
+                'emittedAt' => null,
+                'metricValue' => null
             ],
             null
         );
@@ -81,9 +74,8 @@ class LiveStreamSessionDevice implements ModelInterface, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['type'] = $data['type'] ?? null;
-        $this->container['vendor'] = $data['vendor'] ?? null;
-        $this->container['model'] = $data['model'] ?? null;
+        $this->container['emittedAt'] = $data['emittedAt'] ?? null;
+        $this->container['metricValue'] = $data['metricValue'] ?? null;
     }
 
     /**
@@ -111,73 +103,49 @@ class LiveStreamSessionDevice implements ModelInterface, \JsonSerializable
 
 
     /**
-     * Gets type
+     * Gets emittedAt
      *
      * @return string|null
      */
-    public function getType()
+    public function getEmittedAt()
     {
-        return $this->container['type'];
+        return $this->container['emittedAt'];
     }
 
     /**
-     * Sets type
+     * Sets emittedAt
      *
-     * @param string|null $type What the type is like desktop, laptop, mobile.
+     * @param string|null $emittedAt Returns the timestamp of the event that belongs to a specific metric in ATOM date-time format. For example, if you set `play` with an `hour` interval in your request, then `emittedAt` returns the hourly timestamps of every play event within the timeframe you defined.
      *
      * @return self
      */
-    public function setType($type)
+    public function setEmittedAt($emittedAt)
     {
-        $this->container['type'] = $type;
+        $this->container['emittedAt'] = $emittedAt;
 
         return $this;
     }
 
     /**
-     * Gets vendor
+     * Gets metricValue
      *
-     * @return string|null
+     * @return float|null
      */
-    public function getVendor()
+    public function getMetricValue()
     {
-        return $this->container['vendor'];
+        return $this->container['metricValue'];
     }
 
     /**
-     * Sets vendor
+     * Sets metricValue
      *
-     * @param string|null $vendor If known, what the brand of the device is, like Apple, Dell, etc.
+     * @param float|null $metricValue Returns the data for a specific metric value.
      *
      * @return self
      */
-    public function setVendor($vendor)
+    public function setMetricValue($metricValue)
     {
-        $this->container['vendor'] = $vendor;
-
-        return $this;
-    }
-
-    /**
-     * Gets model
-     *
-     * @return string|null
-     */
-    public function getModel()
-    {
-        return $this->container['model'];
-    }
-
-    /**
-     * Sets model
-     *
-     * @param string|null $model The specific model of the device, if known.
-     *
-     * @return self
-     */
-    public function setModel($model)
-    {
-        $this->container['model'] = $model;
+        $this->container['metricValue'] = $metricValue;
 
         return $this;
     }

@@ -545,4 +545,66 @@ class LiveStreamsApi implements ApiInterface
     }
 
 
+    /**
+     * Complete a live stream
+     *
+     * @param  string $liveStreamId The unique ID for the live stream you want to complete. (required)
+     *
+     * @throws \ApiVideo\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function complete(string $liveStreamId): void
+    {
+        $request = $this->buildCompleteRequest($liveStreamId);
+
+        $this->client->request($request);
+    }
+
+    /**
+     * Create request for operation 'complete'
+     *
+     * @param  string $liveStreamId The unique ID for the live stream you want to complete. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return Request
+     */
+    private function buildCompleteRequest(string $liveStreamId): Request
+    {
+        // verify the required parameter 'liveStreamId' is set
+        if ($liveStreamId === null || (is_array($liveStreamId) && count($liveStreamId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $liveStreamId when calling '
+            );
+        }
+
+        $resourcePath = '/live-streams/{liveStreamId}/complete';
+        $formParams = [];
+        $queryParams = [];
+        $headers = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // path params
+        if ($liveStreamId !== null) {
+            $resourcePath = str_replace(
+                '{' . 'liveStreamId' . '}',
+                ObjectSerializer::toPathValue($liveStreamId),
+                $resourcePath
+            );
+        }
+
+
+
+        $query = \http_build_query($queryParams);
+
+        return new Request(
+            'PUT',
+            $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+
 }

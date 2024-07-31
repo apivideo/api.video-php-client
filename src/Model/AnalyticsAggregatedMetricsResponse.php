@@ -17,43 +17,42 @@ namespace ApiVideo\Client\Model;
 use ApiVideo\Client\ObjectSerializer;
 
 /**
- * LiveStreamSessionLocation Class Doc Comment
+ * AnalyticsAggregatedMetricsResponse Class Doc Comment
  *
  * @category Class
- * @description The location of the viewer of the live stream.
  * @package  ApiVideo\Client
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class LiveStreamSessionLocation implements ModelInterface, \JsonSerializable
+class AnalyticsAggregatedMetricsResponse implements ModelInterface, \JsonSerializable
 {
     public static function getDefinition(): ModelDefinition
     {
         return new ModelDefinition(
-            'live-stream-session-location',
+            'analytics-aggregated-metrics-response',
             [
-                'country' => 'string',
-                'city' => 'string'
+                'context' => '\ApiVideo\Client\Model\AnalyticsAggregatedMetricsResponseContext',
+                'data' => 'float'
             ],
             [
-                'country' => null,
-                'city' => null
+                'context' => null,
+                'data' => 'float'
             ],
             [
-                'country' => 'country',
-                'city' => 'city'
+                'context' => 'context',
+                'data' => 'data'
             ],
             [
-                'country' => 'setCountry',
-                'city' => 'setCity'
+                'context' => 'setContext',
+                'data' => 'setData'
             ],
             [
-                'country' => 'getCountry',
-                'city' => 'getCity'
+                'context' => 'getContext',
+                'data' => 'getData'
             ],
             [
-                'country' => null,
-                'city' => null
+                'context' => null,
+                'data' => null
             ],
             null
         );
@@ -75,8 +74,8 @@ class LiveStreamSessionLocation implements ModelInterface, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['country'] = $data['country'] ?? null;
-        $this->container['city'] = $data['city'] ?? null;
+        $this->container['context'] = isset($data['context']) ? new AnalyticsAggregatedMetricsResponseContext($data['context']) : null;
+        $this->container['data'] = $data['data'] ?? null;
     }
 
     /**
@@ -88,6 +87,12 @@ class LiveStreamSessionLocation implements ModelInterface, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['context'] === null) {
+            $invalidProperties[] = "'context' can't be null";
+        }
+        if ($this->container['data'] === null) {
+            $invalidProperties[] = "'data' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -104,49 +109,49 @@ class LiveStreamSessionLocation implements ModelInterface, \JsonSerializable
 
 
     /**
-     * Gets country
+     * Gets context
      *
-     * @return string|null
+     * @return \ApiVideo\Client\Model\AnalyticsAggregatedMetricsResponseContext
      */
-    public function getCountry()
+    public function getContext()
     {
-        return $this->container['country'];
+        return $this->container['context'];
     }
 
     /**
-     * Sets country
+     * Sets context
      *
-     * @param string|null $country The country of the viewer of the live stream.
+     * @param \ApiVideo\Client\Model\AnalyticsAggregatedMetricsResponseContext $context context
      *
      * @return self
      */
-    public function setCountry($country)
+    public function setContext($context)
     {
-        $this->container['country'] = $country;
+        $this->container['context'] = $context;
 
         return $this;
     }
 
     /**
-     * Gets city
+     * Gets data
      *
-     * @return string|null
+     * @return float
      */
-    public function getCity()
+    public function getData()
     {
-        return $this->container['city'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets city
+     * Sets data
      *
-     * @param string|null $city The city of the viewer of the live stream.
+     * @param float $data data
      *
      * @return self
      */
-    public function setCity($city)
+    public function setData($data)
     {
-        $this->container['city'] = $city;
+        $this->container['data'] = $data;
 
         return $this;
     }

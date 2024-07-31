@@ -146,7 +146,7 @@ class RestreamsResponseObject implements ModelInterface, \JsonSerializable
     /**
      * Sets serverUrl
      *
-     * @param string|null $serverUrl Returns the RTMP URL of a restream destination.
+     * @param string|null $serverUrl Returns the server URL of a restream destination.
      *
      * @return self
      */

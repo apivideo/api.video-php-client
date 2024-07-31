@@ -17,49 +17,48 @@ namespace ApiVideo\Client\Model;
 use ApiVideo\Client\ObjectSerializer;
 
 /**
- * VideoSessionClient Class Doc Comment
+ * UnrecognizedRequestUrl Class Doc Comment
  *
  * @category Class
- * @description What kind of browser the viewer is using for the video session.
  * @package  ApiVideo\Client
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class VideoSessionClient implements ModelInterface, \JsonSerializable
+class UnrecognizedRequestUrl implements ModelInterface, \JsonSerializable
 {
     public static function getDefinition(): ModelDefinition
     {
         return new ModelDefinition(
-            'video-session-client',
+            'unrecognized-request-url',
             [
-                'name' => 'string',
-                'version' => 'string',
-                'type' => 'string'
+                'type' => 'string',
+                'title' => 'string',
+                'status' => 'int'
             ],
             [
-                'name' => null,
-                'version' => null,
-                'type' => null
+                'type' => null,
+                'title' => null,
+                'status' => null
             ],
             [
-                'name' => 'name',
-                'version' => 'version',
-                'type' => 'type'
+                'type' => 'type',
+                'title' => 'title',
+                'status' => 'status'
             ],
             [
-                'name' => 'setName',
-                'version' => 'setVersion',
-                'type' => 'setType'
+                'type' => 'setType',
+                'title' => 'setTitle',
+                'status' => 'setStatus'
             ],
             [
-                'name' => 'getName',
-                'version' => 'getVersion',
-                'type' => 'getType'
+                'type' => 'getType',
+                'title' => 'getTitle',
+                'status' => 'getStatus'
             ],
             [
-                'name' => null,
-                'version' => null,
-                'type' => null
+                'type' => null,
+                'title' => null,
+                'status' => null
             ],
             null
         );
@@ -81,9 +80,9 @@ class VideoSessionClient implements ModelInterface, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['version'] = $data['version'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
+        $this->container['title'] = $data['title'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
     }
 
     /**
@@ -111,54 +110,6 @@ class VideoSessionClient implements ModelInterface, \JsonSerializable
 
 
     /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name The name of the browser used to view the video session.
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets version
-     *
-     * @return string|null
-     */
-    public function getVersion()
-    {
-        return $this->container['version'];
-    }
-
-    /**
-     * Sets version
-     *
-     * @param string|null $version The version of the browser used to view the video session.
-     *
-     * @return self
-     */
-    public function setVersion($version)
-    {
-        $this->container['version'] = $version;
-
-        return $this;
-    }
-
-    /**
      * Gets type
      *
      * @return string|null
@@ -171,13 +122,61 @@ class VideoSessionClient implements ModelInterface, \JsonSerializable
     /**
      * Sets type
      *
-     * @param string|null $type The type of client used to view the video session.
+     * @param string|null $type A link to the error documentation.
      *
      * @return self
      */
     public function setType($type)
     {
         $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets title
+     *
+     * @return string|null
+     */
+    public function getTitle()
+    {
+        return $this->container['title'];
+    }
+
+    /**
+     * Sets title
+     *
+     * @param string|null $title A description of the error that occurred.
+     *
+     * @return self
+     */
+    public function setTitle($title)
+    {
+        $this->container['title'] = $title;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return int|null
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param int|null $status The HTTP status code.
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
 
         return $this;
     }
