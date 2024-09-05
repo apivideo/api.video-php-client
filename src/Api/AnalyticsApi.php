@@ -193,6 +193,8 @@ class AnalyticsApi implements ApiInterface
         // unbox the parameters from the associative array
         $from = array_key_exists('from', $queryParams) ? $queryParams['from'] : null;
         $to = array_key_exists('to', $queryParams) ? $queryParams['to'] : null;
+        $sortBy = array_key_exists('sortBy', $queryParams) ? $queryParams['sortBy'] : null;
+        $sortOrder = array_key_exists('sortOrder', $queryParams) ? $queryParams['sortOrder'] : null;
         $filterBy = array_key_exists('filterBy', $queryParams) ? $queryParams['filterBy'] : null;
         $currentPage = array_key_exists('currentPage', $queryParams) ? $queryParams['currentPage'] : 1;
         $pageSize = array_key_exists('pageSize', $queryParams) ? $queryParams['pageSize'] : 25;
@@ -231,6 +233,22 @@ class AnalyticsApi implements ApiInterface
         }
         if ($to !== null) {
             $queryParams['to'] = $to;
+        }
+
+        // sortBy query params
+        if (is_array($sortBy)) {
+            $sortBy = ObjectSerializer::serializeCollection($sortBy, 'form', true);
+        }
+        if ($sortBy !== null) {
+            $queryParams['sortBy'] = $sortBy;
+        }
+
+        // sortOrder query params
+        if (is_array($sortOrder)) {
+            $sortOrder = ObjectSerializer::serializeCollection($sortOrder, 'form', true);
+        }
+        if ($sortOrder !== null) {
+            $queryParams['sortOrder'] = $sortOrder;
         }
 
         // filterBy query params
@@ -320,6 +338,8 @@ class AnalyticsApi implements ApiInterface
         $from = array_key_exists('from', $queryParams) ? $queryParams['from'] : null;
         $to = array_key_exists('to', $queryParams) ? $queryParams['to'] : null;
         $interval = array_key_exists('interval', $queryParams) ? $queryParams['interval'] : null;
+        $sortBy = array_key_exists('sortBy', $queryParams) ? $queryParams['sortBy'] : null;
+        $sortOrder = array_key_exists('sortOrder', $queryParams) ? $queryParams['sortOrder'] : null;
         $filterBy = array_key_exists('filterBy', $queryParams) ? $queryParams['filterBy'] : null;
         $currentPage = array_key_exists('currentPage', $queryParams) ? $queryParams['currentPage'] : 1;
         $pageSize = array_key_exists('pageSize', $queryParams) ? $queryParams['pageSize'] : 25;
@@ -360,6 +380,22 @@ class AnalyticsApi implements ApiInterface
         }
         if ($interval !== null) {
             $queryParams['interval'] = $interval;
+        }
+
+        // sortBy query params
+        if (is_array($sortBy)) {
+            $sortBy = ObjectSerializer::serializeCollection($sortBy, 'form', true);
+        }
+        if ($sortBy !== null) {
+            $queryParams['sortBy'] = $sortBy;
+        }
+
+        // sortOrder query params
+        if (is_array($sortOrder)) {
+            $sortOrder = ObjectSerializer::serializeCollection($sortOrder, 'form', true);
+        }
+        if ($sortOrder !== null) {
+            $queryParams['sortOrder'] = $sortOrder;
         }
 
         // filterBy query params
