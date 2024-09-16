@@ -153,7 +153,7 @@ class Webhook implements ModelInterface, \JsonSerializable
     /**
      * Sets createdAt
      *
-     * @param \DateTime|null $createdAt When an webhook was created, presented in ISO-8601 format.
+     * @param \DateTime|null $createdAt When an webhook was created, presented in ATOM UTC format.
      *
      * @return self
      */

@@ -13,7 +13,10 @@ Method | Description | HTTP request
 [**list()**](VideosApi.md#list) | List all video objects | **GET** /videos
 [**uploadThumbnail()**](VideosApi.md#uploadThumbnail) | Upload a thumbnail | **POST** /videos/{videoId}/thumbnail
 [**pickThumbnail()**](VideosApi.md#pickThumbnail) | Set a thumbnail | **PATCH** /videos/{videoId}/thumbnail
+[**getDiscarded()**](VideosApi.md#getDiscarded) | Retrieve a discarded video object | **GET** /discarded/videos/{videoId}
 [**getStatus()**](VideosApi.md#getStatus) | Retrieve video status and details | **GET** /videos/{videoId}/status
+[**listDiscarded()**](VideosApi.md#listDiscarded) | List all discarded video objects | **GET** /discarded/videos
+[**updateDiscarded()**](VideosApi.md#updateDiscarded) | Update a discarded video object | **PATCH** /discarded/videos/{videoId}
 
 
 ## **`create()` - Create a video object**
@@ -177,7 +180,7 @@ Name | Type | Description | Notes
 
 
 
-If you do not need a video any longer, you can send a request to delete it. All you need is the videoId.
+If you do not need a video any longer, you can send a request to delete it. All you need is the videoId. By default, deleted videos cannot be recovered. If you have the Video Restore feature enabled, this operation will discard the video instead of permanently deleting it. Make sure you subscribe to the Video Restore feature if you want to be able to restore deleted videos! The Video Restore feature retains videos for 90 days, after which the videos are permanently deleted
 
 ### Arguments
 
@@ -216,7 +219,7 @@ Name | Type | Description | Notes
 ------------- | ------------- | ------------- | ------------- 
  `title` | **string**| The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. | [optional]
  `tags` | [**string[]**](../Model/string.md)| A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. | [optional]
- `metadata` | [**array<string,string>**](../Model/string.md)| Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata/) allows you to define a key that allows any value pair. | [optional]
+ `metadata` | [**array<string,string>**](../Model/string.md)| Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. | [optional]
  `description` | **string**| Retrieve video objects by &#x60;description&#x60;. | [optional]
  `liveStreamId` | **string**| Retrieve video objects that were recorded from a live stream by &#x60;liveStreamId&#x60;. | [optional]
  `sortBy` | **string**| Use this parameter to sort videos by the their created time, published time, updated time, or by title. | [optional]
@@ -311,6 +314,31 @@ Name | Type | Description | Notes
 
 
 
+## **`getDiscarded()` - Retrieve a discarded video object**
+
+
+
+This call provides the same information provided on video creation. For private videos, it will generate a unique token url. Use this to retrieve any details you need about a video, or set up a private viewing URL.
+
+### Arguments
+
+
+
+Name | Type | Description | Notes
+------------- | ------------- | ------------- | -------------
+ `videoId` | **string**| The unique identifier for the video you want details about. |
+
+
+
+
+### Return type
+
+[**\ApiVideo\Client\Model\Video**](../Model/Video.md)
+
+
+
+
+
 ## **`getStatus()` - Retrieve video status and details**
 
 
@@ -331,6 +359,73 @@ Name | Type | Description | Notes
 ### Return type
 
 [**\ApiVideo\Client\Model\VideoStatus**](../Model/VideoStatus.md)
+
+
+
+
+
+## **`listDiscarded()` - List all discarded video objects**
+
+
+
+This method returns a list of your discarded videos (with all their details). With no parameters added, the API returns the first page of all discarded videos. You can filter discarded videos using the parameters described below.
+
+### Arguments
+
+
+
+
+
+Note: `queryParams` argument is an associative array with the keys listed below.
+
+Name | Type | Description | Notes
+------------- | ------------- | ------------- | ------------- 
+ `title` | **string**| The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. | [optional]
+ `tags` | [**string[]**](../Model/string.md)| A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. | [optional]
+ `metadata` | [**array<string,string>**](../Model/string.md)| Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. | [optional]
+ `description` | **string**| Retrieve video objects by &#x60;description&#x60;. | [optional]
+ `liveStreamId` | **string**| Retrieve video objects that were recorded from a live stream by &#x60;liveStreamId&#x60;. | [optional]
+ `sortBy` | **string**| Use this parameter to sort videos by the their created time, published time, updated time, or by title. | [optional]
+ `sortOrder` | **string**| Use this parameter to sort results. &#x60;asc&#x60; is ascending and sorts from A to Z. &#x60;desc&#x60; is descending and sorts from Z to A. | [optional]
+ `currentPage` | **int**| Choose the number of search results to return per page. Minimum value: 1 | [optional] [default to 1]
+ `pageSize` | **int**| Results per page. Allowed values 1-100, default is 25. | [optional] [default to 25]
+
+
+
+
+
+
+### Return type
+
+[**\ApiVideo\Client\Model\VideosListResponse**](../Model/VideosListResponse.md)
+
+
+
+
+
+## **`updateDiscarded()` - Update a discarded video object**
+
+
+
+Use this endpoint to restore a discarded video when you have the Video Restore feature enabled.
+
+
+
+### Arguments
+
+
+
+Name | Type | Description | Notes
+------------- | ------------- | ------------- | -------------
+ `videoId` | **string**| The video ID for the video you want to restore. |
+ `discardedVideoUpdatePayload` | [**\ApiVideo\Client\Model\DiscardedVideoUpdatePayload**](../Model/DiscardedVideoUpdatePayload.md)|  |
+
+
+
+
+### Return type
+
+[**\ApiVideo\Client\Model\Video**](../Model/Video.md)
 
 
 

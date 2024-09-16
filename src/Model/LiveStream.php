@@ -369,7 +369,7 @@ class LiveStream implements ModelInterface, \JsonSerializable
     /**
      * Sets createdAt
      *
-     * @param \DateTime|null $createdAt When the player was created, presented in ISO-8601 format.
+     * @param \DateTime|null $createdAt When the player was created, presented in ATOM UTC format.
      *
      * @return self
      */
@@ -393,7 +393,7 @@ class LiveStream implements ModelInterface, \JsonSerializable
     /**
      * Sets updatedAt
      *
-     * @param \DateTime|null $updatedAt When the player was last updated, presented in ISO-8601 format.
+     * @param \DateTime|null $updatedAt When the player was last updated, presented in ATOM UTC format.
      *
      * @return self
      */

@@ -208,7 +208,10 @@ Method | Description | HTTP request
 [**list()**](https://github.com/apivideo/api.video-php-client/blob/main/docs/Api/VideosApi.md#list) | List all video objects | **GET** `/videos`
 [**uploadThumbnail()**](https://github.com/apivideo/api.video-php-client/blob/main/docs/Api/VideosApi.md#uploadThumbnail) | Upload a thumbnail | **POST** `/videos/{videoId}/thumbnail`
 [**pickThumbnail()**](https://github.com/apivideo/api.video-php-client/blob/main/docs/Api/VideosApi.md#pickThumbnail) | Set a thumbnail | **PATCH** `/videos/{videoId}/thumbnail`
+[**getDiscarded()**](https://github.com/apivideo/api.video-php-client/blob/main/docs/Api/VideosApi.md#getDiscarded) | Retrieve a discarded video object | **GET** `/discarded/videos/{videoId}`
 [**getStatus()**](https://github.com/apivideo/api.video-php-client/blob/main/docs/Api/VideosApi.md#getStatus) | Retrieve video status and details | **GET** `/videos/{videoId}/status`
+[**listDiscarded()**](https://github.com/apivideo/api.video-php-client/blob/main/docs/Api/VideosApi.md#listDiscarded) | List all discarded video objects | **GET** `/discarded/videos`
+[**updateDiscarded()**](https://github.com/apivideo/api.video-php-client/blob/main/docs/Api/VideosApi.md#updateDiscarded) | Update a discarded video object | **PATCH** `/discarded/videos/{videoId}`
 
 
 #### WatermarksApi
@@ -255,6 +258,7 @@ Method | Description | HTTP request
  - [CaptionsUpdatePayload](https://github.com/apivideo/api.video-php-client/blob/main/docs/Model/CaptionsUpdatePayload.md)
  - [Chapter](https://github.com/apivideo/api.video-php-client/blob/main/docs/Model/Chapter.md)
  - [ChaptersListResponse](https://github.com/apivideo/api.video-php-client/blob/main/docs/Model/ChaptersListResponse.md)
+ - [DiscardedVideoUpdatePayload](https://github.com/apivideo/api.video-php-client/blob/main/docs/Model/DiscardedVideoUpdatePayload.md)
  - [FilterBy](https://github.com/apivideo/api.video-php-client/blob/main/docs/Model/FilterBy.md)
  - [FilterBy1](https://github.com/apivideo/api.video-php-client/blob/main/docs/Model/FilterBy1.md)
  - [FilterBy2](https://github.com/apivideo/api.video-php-client/blob/main/docs/Model/FilterBy2.md)

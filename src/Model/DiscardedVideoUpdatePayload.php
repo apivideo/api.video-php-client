@@ -17,42 +17,36 @@ namespace ApiVideo\Client\Model;
 use ApiVideo\Client\ObjectSerializer;
 
 /**
- * Watermark Class Doc Comment
+ * DiscardedVideoUpdatePayload Class Doc Comment
  *
  * @category Class
  * @package  ApiVideo\Client
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Watermark implements ModelInterface, \JsonSerializable
+class DiscardedVideoUpdatePayload implements ModelInterface, \JsonSerializable
 {
     public static function getDefinition(): ModelDefinition
     {
         return new ModelDefinition(
-            'watermark',
+            'discarded-video-update-payload',
             [
-                'watermarkId' => 'string',
-                'createdAt' => '\DateTime'
+                'discarded' => 'bool'
             ],
             [
-                'watermarkId' => null,
-                'createdAt' => 'date-time'
+                'discarded' => null
             ],
             [
-                'watermarkId' => 'watermarkId',
-                'createdAt' => 'createdAt'
+                'discarded' => 'discarded'
             ],
             [
-                'watermarkId' => 'setWatermarkId',
-                'createdAt' => 'setCreatedAt'
+                'discarded' => 'setDiscarded'
             ],
             [
-                'watermarkId' => 'getWatermarkId',
-                'createdAt' => 'getCreatedAt'
+                'discarded' => 'getDiscarded'
             ],
             [
-                'watermarkId' => null,
-                'createdAt' => null
+                'discarded' => null
             ],
             null
         );
@@ -74,8 +68,7 @@ class Watermark implements ModelInterface, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['watermarkId'] = $data['watermarkId'] ?? null;
-        $this->container['createdAt'] = isset($data['createdAt']) ? new \DateTime($data['createdAt']) : null;
+        $this->container['discarded'] = $data['discarded'] ?? null;
     }
 
     /**
@@ -103,49 +96,25 @@ class Watermark implements ModelInterface, \JsonSerializable
 
 
     /**
-     * Gets watermarkId
+     * Gets discarded
      *
-     * @return string|null
+     * @return bool|null
      */
-    public function getWatermarkId()
+    public function getDiscarded()
     {
-        return $this->container['watermarkId'];
+        return $this->container['discarded'];
     }
 
     /**
-     * Sets watermarkId
+     * Sets discarded
      *
-     * @param string|null $watermarkId The unique identifier of the watermark.
+     * @param bool|null $discarded Use this parameter to restore a discarded video when you have the Video Restore feature enabled. This parameter only accepts `false` as a value!
      *
      * @return self
      */
-    public function setWatermarkId($watermarkId)
+    public function setDiscarded($discarded)
     {
-        $this->container['watermarkId'] = $watermarkId;
-
-        return $this;
-    }
-
-    /**
-     * Gets createdAt
-     *
-     * @return \DateTime|null
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['createdAt'];
-    }
-
-    /**
-     * Sets createdAt
-     *
-     * @param \DateTime|null $createdAt When the watermark was created, presented in ATOM UTC format.
-     *
-     * @return self
-     */
-    public function setCreatedAt($createdAt)
-    {
-        $this->container['createdAt'] = $createdAt;
+        $this->container['discarded'] = $discarded;
 
         return $this;
     }

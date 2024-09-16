@@ -1,6 +1,9 @@
 # Changelog
 All changes to this project will be documented in this file.
 
+## [1.4.2] - 2024-09-16
+- Add discarded video endpoints
+
 ## [1.4.1] - 2024-09-05
 - Add sort parameters in analytics endpoints
 
