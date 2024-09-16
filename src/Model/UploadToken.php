@@ -193,7 +193,7 @@ class UploadToken implements ModelInterface, \JsonSerializable
     /**
      * Sets createdAt
      *
-     * @param \DateTime|null $createdAt When the token was created, displayed in ISO-8601 format.
+     * @param \DateTime|null $createdAt When the token was created, displayed in ATOM UTC format.
      *
      * @return self
      */
@@ -217,7 +217,7 @@ class UploadToken implements ModelInterface, \JsonSerializable
     /**
      * Sets expiresAt
      *
-     * @param \DateTime|null $expiresAt When the token expires, displayed in ISO-8601 format.
+     * @param \DateTime|null $expiresAt When the token expires, displayed in ATOM UTC format.
      *
      * @return self
      */

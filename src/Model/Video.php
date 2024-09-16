@@ -37,6 +37,9 @@ class Video implements ModelInterface, \JsonSerializable
                 'description' => 'string',
                 'publishedAt' => '\DateTime',
                 'updatedAt' => '\DateTime',
+                'discardedAt' => '\DateTime',
+                'deletesAt' => '\DateTime',
+                'discarded' => 'bool',
                 'tags' => 'string[]',
                 'metadata' => '\ApiVideo\Client\Model\Metadata[]',
                 'source' => '\ApiVideo\Client\Model\VideoSource',
@@ -53,6 +56,9 @@ class Video implements ModelInterface, \JsonSerializable
                 'description' => null,
                 'publishedAt' => 'date-time',
                 'updatedAt' => 'date-time',
+                'discardedAt' => 'date-time',
+                'deletesAt' => 'date-time',
+                'discarded' => null,
                 'tags' => null,
                 'metadata' => null,
                 'source' => null,
@@ -69,6 +75,9 @@ class Video implements ModelInterface, \JsonSerializable
                 'description' => 'description',
                 'publishedAt' => 'publishedAt',
                 'updatedAt' => 'updatedAt',
+                'discardedAt' => 'discardedAt',
+                'deletesAt' => 'deletesAt',
+                'discarded' => 'discarded',
                 'tags' => 'tags',
                 'metadata' => 'metadata',
                 'source' => 'source',
@@ -85,6 +94,9 @@ class Video implements ModelInterface, \JsonSerializable
                 'description' => 'setDescription',
                 'publishedAt' => 'setPublishedAt',
                 'updatedAt' => 'setUpdatedAt',
+                'discardedAt' => 'setDiscardedAt',
+                'deletesAt' => 'setDeletesAt',
+                'discarded' => 'setDiscarded',
                 'tags' => 'setTags',
                 'metadata' => 'setMetadata',
                 'source' => 'setSource',
@@ -101,6 +113,9 @@ class Video implements ModelInterface, \JsonSerializable
                 'description' => 'getDescription',
                 'publishedAt' => 'getPublishedAt',
                 'updatedAt' => 'getUpdatedAt',
+                'discardedAt' => 'getDiscardedAt',
+                'deletesAt' => 'getDeletesAt',
+                'discarded' => 'getDiscarded',
                 'tags' => 'getTags',
                 'metadata' => 'getMetadata',
                 'source' => 'getSource',
@@ -117,6 +132,9 @@ class Video implements ModelInterface, \JsonSerializable
                 'description' => null,
                 'publishedAt' => null,
                 'updatedAt' => null,
+                'discardedAt' => null,
+                'deletesAt' => null,
+                'discarded' => null,
                 'tags' => null,
                 'metadata' => null,
                 'source' => null,
@@ -152,6 +170,9 @@ class Video implements ModelInterface, \JsonSerializable
         $this->container['description'] = $data['description'] ?? null;
         $this->container['publishedAt'] = isset($data['publishedAt']) ? new \DateTime($data['publishedAt']) : null;
         $this->container['updatedAt'] = isset($data['updatedAt']) ? new \DateTime($data['updatedAt']) : null;
+        $this->container['discardedAt'] = isset($data['discardedAt']) ? new \DateTime($data['discardedAt']) : null;
+        $this->container['deletesAt'] = isset($data['deletesAt']) ? new \DateTime($data['deletesAt']) : null;
+        $this->container['discarded'] = $data['discarded'] ?? null;
         $this->container['tags'] = $data['tags'] ?? null;
         $this->container['metadata'] = isset($data['metadata']) ?  array_map(function(array $value): Metadata { return new Metadata($value); }, $data['metadata']) : null;
         $this->container['source'] = isset($data['source']) ? new VideoSource($data['source']) : null;
@@ -226,7 +247,7 @@ class Video implements ModelInterface, \JsonSerializable
     /**
      * Sets createdAt
      *
-     * @param \DateTime|null $createdAt When a video was created, presented in ISO-8601 format.
+     * @param \DateTime|null $createdAt When a video was created, presented in ATOM UTC format.
      *
      * @return self
      */
@@ -298,7 +319,7 @@ class Video implements ModelInterface, \JsonSerializable
     /**
      * Sets publishedAt
      *
-     * @param \DateTime|null $publishedAt The date and time the API created the video. Date and time are provided using ISO-8601 UTC format.
+     * @param \DateTime|null $publishedAt The date and time the API created the video. Date and time are provided using ATOM UTC format.
      *
      * @return self
      */
@@ -322,13 +343,85 @@ class Video implements ModelInterface, \JsonSerializable
     /**
      * Sets updatedAt
      *
-     * @param \DateTime|null $updatedAt The date and time the video was updated. Date and time are provided using ISO-8601 UTC format.
+     * @param \DateTime|null $updatedAt The date and time the video was updated. Date and time are provided using ATOM UTC format.
      *
      * @return self
      */
     public function setUpdatedAt($updatedAt)
     {
         $this->container['updatedAt'] = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Gets discardedAt
+     *
+     * @return \DateTime|null
+     */
+    public function getDiscardedAt()
+    {
+        return $this->container['discardedAt'];
+    }
+
+    /**
+     * Sets discardedAt
+     *
+     * @param \DateTime|null $discardedAt The date and time the video was discarded. The API populates this field only if you have the Video Restore feature enabled and discard a video. Date and time are provided using ATOM UTC format.
+     *
+     * @return self
+     */
+    public function setDiscardedAt($discardedAt)
+    {
+        $this->container['discardedAt'] = $discardedAt;
+
+        return $this;
+    }
+
+    /**
+     * Gets deletesAt
+     *
+     * @return \DateTime|null
+     */
+    public function getDeletesAt()
+    {
+        return $this->container['deletesAt'];
+    }
+
+    /**
+     * Sets deletesAt
+     *
+     * @param \DateTime|null $deletesAt The date and time the video will be permanently deleted. The API populates this field only if you have the Video Restore feature enabled and discard a video. Discarded videos are pemanently deleted after 90 days. Date and time are provided using ATOM UTC format.
+     *
+     * @return self
+     */
+    public function setDeletesAt($deletesAt)
+    {
+        $this->container['deletesAt'] = $deletesAt;
+
+        return $this;
+    }
+
+    /**
+     * Gets discarded
+     *
+     * @return bool|null
+     */
+    public function getDiscarded()
+    {
+        return $this->container['discarded'];
+    }
+
+    /**
+     * Sets discarded
+     *
+     * @param bool|null $discarded Returns `true` for videos you discarded when you have the Video Restore feature enabled. Returns `false` for every other video.
+     *
+     * @return self
+     */
+    public function setDiscarded($discarded)
+    {
+        $this->container['discarded'] = $discarded;
 
         return $this;
     }
@@ -370,7 +463,7 @@ class Video implements ModelInterface, \JsonSerializable
     /**
      * Sets metadata
      *
-     * @param \ApiVideo\Client\Model\Metadata[]|null $metadata Metadata you can use to categorise and filter videos. Metadata is a list of dictionaries, where each dictionary represents a key value pair for categorising a video. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata/) allows you to define a key that allows any value pair.
+     * @param \ApiVideo\Client\Model\Metadata[]|null $metadata Metadata you can use to categorise and filter videos. Metadata is a list of dictionaries, where each dictionary represents a key value pair for categorising a video.
      *
      * @return self
      */

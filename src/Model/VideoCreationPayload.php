@@ -373,7 +373,7 @@ class VideoCreationPayload implements ModelInterface, \JsonSerializable
     /**
      * Sets metadata
      *
-     * @param \ApiVideo\Client\Model\Metadata[]|null $metadata A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic, allowing you to segment your audience. Read more on [dynamic metadata](https://api.video/blog/endpoints/dynamic-metadata/).
+     * @param \ApiVideo\Client\Model\Metadata[]|null $metadata A list of key value pairs that you use to provide metadata for your video.
      *
      * @return self
      */

@@ -814,6 +814,70 @@ class VideosApi implements ApiInterface
 
 
     /**
+     * Retrieve a discarded video object
+     *
+     * @param  string $videoId The unique identifier for the video you want details about. (required)
+     *
+     * @throws \ApiVideo\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \ApiVideo\Client\Model\Video|\ApiVideo\Client\Model\NotFound|\ApiVideo\Client\Model\TooManyRequests
+     */
+    public function getDiscarded(string $videoId): \ApiVideo\Client\Model\Video
+    {
+        $request = $this->buildGetDiscardedRequest($videoId);
+
+        $model = new \ApiVideo\Client\Model\Video($this->client->request($request));
+
+        return $model;
+    }
+
+    /**
+     * Create request for operation 'getDiscarded'
+     *
+     * @param  string $videoId The unique identifier for the video you want details about. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return Request
+     */
+    private function buildGetDiscardedRequest(string $videoId): Request
+    {
+        // verify the required parameter 'videoId' is set
+        if ($videoId === null || (is_array($videoId) && count($videoId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $videoId when calling '
+            );
+        }
+
+        $resourcePath = '/discarded/videos/{videoId}';
+        $formParams = [];
+        $queryParams = [];
+        $headers = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // path params
+        if ($videoId !== null) {
+            $resourcePath = str_replace(
+                '{' . 'videoId' . '}',
+                ObjectSerializer::toPathValue($videoId),
+                $resourcePath
+            );
+        }
+
+
+
+        $query = \http_build_query($queryParams);
+
+        return new Request(
+            'GET',
+            $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+
+    /**
      * Retrieve video status and details
      *
      * @param  string $videoId The unique identifier for the video you want the status for. (required)
@@ -870,6 +934,195 @@ class VideosApi implements ApiInterface
 
         return new Request(
             'GET',
+            $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+
+    /**
+     * List all discarded video objects
+     *
+     * @param  array $queryParams
+     *
+     * @throws \ApiVideo\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \ApiVideo\Client\Model\VideosListResponse|\ApiVideo\Client\Model\BadRequest|\ApiVideo\Client\Model\TooManyRequests
+     */
+    public function listDiscarded(array $queryParams = []): \ApiVideo\Client\Model\VideosListResponse
+    {
+        $request = $this->buildListDiscardedRequest($queryParams);
+
+        $model = new \ApiVideo\Client\Model\VideosListResponse($this->client->request($request));
+
+        return $model;
+    }
+
+    /**
+     * Create request for operation 'listDiscarded'
+     *
+     * @param  array $queryParams
+     *
+     * @throws \InvalidArgumentException
+     * @return Request
+     */
+    private function buildListDiscardedRequest(array $queryParams = []): Request
+    {
+        // unbox the parameters from the associative array
+        $title = array_key_exists('title', $queryParams) ? $queryParams['title'] : null;
+        $tags = array_key_exists('tags', $queryParams) ? $queryParams['tags'] : null;
+        $metadata = array_key_exists('metadata', $queryParams) ? $queryParams['metadata'] : null;
+        $description = array_key_exists('description', $queryParams) ? $queryParams['description'] : null;
+        $liveStreamId = array_key_exists('liveStreamId', $queryParams) ? $queryParams['liveStreamId'] : null;
+        $sortBy = array_key_exists('sortBy', $queryParams) ? $queryParams['sortBy'] : null;
+        $sortOrder = array_key_exists('sortOrder', $queryParams) ? $queryParams['sortOrder'] : null;
+        $currentPage = array_key_exists('currentPage', $queryParams) ? $queryParams['currentPage'] : 1;
+        $pageSize = array_key_exists('pageSize', $queryParams) ? $queryParams['pageSize'] : 25;
+
+
+        $resourcePath = '/discarded/videos';
+        $formParams = [];
+        $queryParams = [];
+        $headers = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // title query params
+        if ($title !== null) {
+            $queryParams['title'] = $title;
+        }
+
+        // tags query params
+        if ($tags !== null) {
+            $queryParams['tags'] = $tags;
+        }
+
+        // metadata query params
+        if ($metadata !== null) {
+            if(is_array($metadata)) {
+                $queryParams["metadata"] = array();
+                foreach($metadata as $key => $value) {
+                    $queryParams['metadata'][$key] = $value;
+                }
+            }
+            else {
+                throw new \InvalidArgumentException('invalid value for "$metadata" when calling VideosApi.ListDiscarded, must be an array.');
+            }
+        }
+
+        // description query params
+        if ($description !== null) {
+            $queryParams['description'] = $description;
+        }
+
+        // liveStreamId query params
+        if ($liveStreamId !== null) {
+            $queryParams['liveStreamId'] = $liveStreamId;
+        }
+
+        // sortBy query params
+        if ($sortBy !== null) {
+            $queryParams['sortBy'] = $sortBy;
+        }
+
+        // sortOrder query params
+        if ($sortOrder !== null) {
+            $queryParams['sortOrder'] = $sortOrder;
+        }
+
+        // currentPage query params
+        if ($currentPage !== null) {
+            $queryParams['currentPage'] = $currentPage;
+        }
+
+        // pageSize query params
+        if ($pageSize !== null) {
+            $queryParams['pageSize'] = $pageSize;
+        }
+
+
+
+
+        $query = \http_build_query($queryParams);
+
+        return new Request(
+            'GET',
+            $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+
+    /**
+     * Update a discarded video object
+     *
+     * @param  string $videoId The video ID for the video you want to restore. (required)
+     * @param  \ApiVideo\Client\Model\DiscardedVideoUpdatePayload $discardedVideoUpdatePayload discardedVideoUpdatePayload (required)
+     *
+     * @throws \ApiVideo\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \ApiVideo\Client\Model\Video|\ApiVideo\Client\Model\BadRequest|\ApiVideo\Client\Model\NotFound|\ApiVideo\Client\Model\TooManyRequests
+     */
+    public function updateDiscarded(string $videoId, \ApiVideo\Client\Model\DiscardedVideoUpdatePayload $discardedVideoUpdatePayload): \ApiVideo\Client\Model\Video
+    {
+        $request = $this->buildUpdateDiscardedRequest($videoId, $discardedVideoUpdatePayload);
+
+        $model = new \ApiVideo\Client\Model\Video($this->client->request($request));
+
+        return $model;
+    }
+
+    /**
+     * Create request for operation 'updateDiscarded'
+     *
+     * @param  string $videoId The video ID for the video you want to restore. (required)
+     * @param  \ApiVideo\Client\Model\DiscardedVideoUpdatePayload $discardedVideoUpdatePayload (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return Request
+     */
+    private function buildUpdateDiscardedRequest(string $videoId, \ApiVideo\Client\Model\DiscardedVideoUpdatePayload $discardedVideoUpdatePayload): Request
+    {
+        // verify the required parameter 'videoId' is set
+        if ($videoId === null || (is_array($videoId) && count($videoId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $videoId when calling '
+            );
+        }
+        // verify the required parameter 'discardedVideoUpdatePayload' is set
+        if ($discardedVideoUpdatePayload === null || (is_array($discardedVideoUpdatePayload) && count($discardedVideoUpdatePayload) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $discardedVideoUpdatePayload when calling '
+            );
+        }
+
+        $resourcePath = '/discarded/videos/{videoId}';
+        $formParams = [];
+        $queryParams = [];
+        $headers = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // path params
+        if ($videoId !== null) {
+            $resourcePath = str_replace(
+                '{' . 'videoId' . '}',
+                ObjectSerializer::toPathValue($videoId),
+                $resourcePath
+            );
+        }
+
+        if ($discardedVideoUpdatePayload) {
+            $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($discardedVideoUpdatePayload));
+        }
+
+
+        $query = \http_build_query($queryParams);
+
+        return new Request(
+            'PATCH',
             $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

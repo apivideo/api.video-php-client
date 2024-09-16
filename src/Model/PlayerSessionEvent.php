@@ -160,7 +160,7 @@ class PlayerSessionEvent implements ModelInterface, \JsonSerializable
     /**
      * Sets emittedAt
      *
-     * @param \DateTime|null $emittedAt When an event occurred, presented in ISO-8601 format.
+     * @param \DateTime|null $emittedAt When an event occurred, presented in ATOM UTC format.
      *
      * @return self
      */
