@@ -34,37 +34,43 @@ class Webhook implements ModelInterface, \JsonSerializable
                 'webhookId' => 'string',
                 'createdAt' => '\DateTime',
                 'events' => 'string[]',
-                'url' => 'string'
+                'url' => 'string',
+                'signatureSecret' => 'string'
             ],
             [
                 'webhookId' => null,
                 'createdAt' => 'date-time',
                 'events' => null,
-                'url' => null
+                'url' => null,
+                'signatureSecret' => null
             ],
             [
                 'webhookId' => 'webhookId',
                 'createdAt' => 'createdAt',
                 'events' => 'events',
-                'url' => 'url'
+                'url' => 'url',
+                'signatureSecret' => 'signatureSecret'
             ],
             [
                 'webhookId' => 'setWebhookId',
                 'createdAt' => 'setCreatedAt',
                 'events' => 'setEvents',
-                'url' => 'setUrl'
+                'url' => 'setUrl',
+                'signatureSecret' => 'setSignatureSecret'
             ],
             [
                 'webhookId' => 'getWebhookId',
                 'createdAt' => 'getCreatedAt',
                 'events' => 'getEvents',
-                'url' => 'getUrl'
+                'url' => 'getUrl',
+                'signatureSecret' => 'getSignatureSecret'
             ],
             [
                 'webhookId' => null,
                 'createdAt' => null,
                 'events' => null,
-                'url' => null
+                'url' => null,
+                'signatureSecret' => null
             ],
             null
         );
@@ -90,6 +96,7 @@ class Webhook implements ModelInterface, \JsonSerializable
         $this->container['createdAt'] = isset($data['createdAt']) ? new \DateTime($data['createdAt']) : null;
         $this->container['events'] = $data['events'] ?? null;
         $this->container['url'] = $data['url'] ?? null;
+        $this->container['signatureSecret'] = $data['signatureSecret'] ?? null;
     }
 
     /**
@@ -129,7 +136,7 @@ class Webhook implements ModelInterface, \JsonSerializable
     /**
      * Sets webhookId
      *
-     * @param string|null $webhookId Unique identifier of the webhook
+     * @param string|null $webhookId A unique identifier of the webhook you subscribed to.
      *
      * @return self
      */
@@ -153,7 +160,7 @@ class Webhook implements ModelInterface, \JsonSerializable
     /**
      * Sets createdAt
      *
-     * @param \DateTime|null $createdAt When an webhook was created, presented in ATOM UTC format.
+     * @param \DateTime|null $createdAt The time and date when you created this webhook subscription, in ATOM UTC format.
      *
      * @return self
      */
@@ -177,7 +184,7 @@ class Webhook implements ModelInterface, \JsonSerializable
     /**
      * Sets events
      *
-     * @param string[]|null $events A list of events that will trigger the webhook.
+     * @param string[]|null $events A list of events that you subscribed to. When these events occur, the API triggers a webhook call to the URL you provided.
      *
      * @return self
      */
@@ -201,13 +208,37 @@ class Webhook implements ModelInterface, \JsonSerializable
     /**
      * Sets url
      *
-     * @param string|null $url URL of the webhook
+     * @param string|null $url The URL where the API sends the webhook.
      *
      * @return self
      */
     public function setUrl($url)
     {
         $this->container['url'] = $url;
+
+        return $this;
+    }
+
+    /**
+     * Gets signatureSecret
+     *
+     * @return string|null
+     */
+    public function getSignatureSecret()
+    {
+        return $this->container['signatureSecret'];
+    }
+
+    /**
+     * Sets signatureSecret
+     *
+     * @param string|null $signatureSecret A secret key for the webhook you subscribed to. You can use it to verify the origin of the webhook call that you receive.
+     *
+     * @return self
+     */
+    public function setSignatureSecret($signatureSecret)
+    {
+        $this->container['signatureSecret'] = $signatureSecret;
 
         return $this;
     }
