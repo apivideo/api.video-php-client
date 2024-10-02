@@ -133,6 +133,18 @@ class Client
     }
     
     /**
+     * @return \ApiVideo\Client\Api\TagsApi
+     */
+    public function tags(): \ApiVideo\Client\Api\TagsApi
+    {
+        if (!array_key_exists('tags', $this->services)) {
+            $this->services['tags'] = new \ApiVideo\Client\Api\TagsApi($this->baseClient);
+        }
+
+        return $this->services['tags'];
+    }
+    
+    /**
      * @return \ApiVideo\Client\Api\UploadTokensApi
      */
     public function uploadTokens(): \ApiVideo\Client\Api\UploadTokensApi
