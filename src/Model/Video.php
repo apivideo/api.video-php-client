@@ -40,6 +40,8 @@ class Video implements ModelInterface, \JsonSerializable
                 'discardedAt' => '\DateTime',
                 'deletesAt' => '\DateTime',
                 'discarded' => 'bool',
+                'language' => 'string',
+                'languageOrigin' => 'string',
                 'tags' => 'string[]',
                 'metadata' => '\ApiVideo\Client\Model\Metadata[]',
                 'source' => '\ApiVideo\Client\Model\VideoSource',
@@ -59,6 +61,8 @@ class Video implements ModelInterface, \JsonSerializable
                 'discardedAt' => 'date-time',
                 'deletesAt' => 'date-time',
                 'discarded' => null,
+                'language' => null,
+                'languageOrigin' => null,
                 'tags' => null,
                 'metadata' => null,
                 'source' => null,
@@ -78,6 +82,8 @@ class Video implements ModelInterface, \JsonSerializable
                 'discardedAt' => 'discardedAt',
                 'deletesAt' => 'deletesAt',
                 'discarded' => 'discarded',
+                'language' => 'language',
+                'languageOrigin' => 'languageOrigin',
                 'tags' => 'tags',
                 'metadata' => 'metadata',
                 'source' => 'source',
@@ -97,6 +103,8 @@ class Video implements ModelInterface, \JsonSerializable
                 'discardedAt' => 'setDiscardedAt',
                 'deletesAt' => 'setDeletesAt',
                 'discarded' => 'setDiscarded',
+                'language' => 'setLanguage',
+                'languageOrigin' => 'setLanguageOrigin',
                 'tags' => 'setTags',
                 'metadata' => 'setMetadata',
                 'source' => 'setSource',
@@ -116,6 +124,8 @@ class Video implements ModelInterface, \JsonSerializable
                 'discardedAt' => 'getDiscardedAt',
                 'deletesAt' => 'getDeletesAt',
                 'discarded' => 'getDiscarded',
+                'language' => 'getLanguage',
+                'languageOrigin' => 'getLanguageOrigin',
                 'tags' => 'getTags',
                 'metadata' => 'getMetadata',
                 'source' => 'getSource',
@@ -135,6 +145,8 @@ class Video implements ModelInterface, \JsonSerializable
                 'discardedAt' => null,
                 'deletesAt' => null,
                 'discarded' => null,
+                'language' => null,
+                'languageOrigin' => null,
                 'tags' => null,
                 'metadata' => null,
                 'source' => null,
@@ -148,6 +160,21 @@ class Video implements ModelInterface, \JsonSerializable
         );
     }
 
+    const LANGUAGE_ORIGIN_API = 'api';
+    const LANGUAGE_ORIGIN_AUTO = 'auto';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getLanguageOriginAllowableValues()
+    {
+        return [
+            self::LANGUAGE_ORIGIN_API,
+            self::LANGUAGE_ORIGIN_AUTO,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -173,6 +200,8 @@ class Video implements ModelInterface, \JsonSerializable
         $this->container['discardedAt'] = isset($data['discardedAt']) ? new \DateTime($data['discardedAt']) : null;
         $this->container['deletesAt'] = isset($data['deletesAt']) ? new \DateTime($data['deletesAt']) : null;
         $this->container['discarded'] = $data['discarded'] ?? null;
+        $this->container['language'] = $data['language'] ?? null;
+        $this->container['languageOrigin'] = $data['languageOrigin'] ?? null;
         $this->container['tags'] = $data['tags'] ?? null;
         $this->container['metadata'] = isset($data['metadata']) ?  array_map(function(array $value): Metadata { return new Metadata($value); }, $data['metadata']) : null;
         $this->container['source'] = isset($data['source']) ? new VideoSource($data['source']) : null;
@@ -195,6 +224,15 @@ class Video implements ModelInterface, \JsonSerializable
         if ($this->container['videoId'] === null) {
             $invalidProperties[] = "'videoId' can't be null";
         }
+        $allowedValues = $this->getLanguageOriginAllowableValues();
+        if (!is_null($this->container['languageOrigin']) && !in_array($this->container['languageOrigin'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'languageOrigin', must be one of '%s'",
+                $this->container['languageOrigin'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -422,6 +460,64 @@ class Video implements ModelInterface, \JsonSerializable
     public function setDiscarded($discarded)
     {
         $this->container['discarded'] = $discarded;
+
+        return $this;
+    }
+
+    /**
+     * Gets language
+     *
+     * @return string|null
+     */
+    public function getLanguage()
+    {
+        return $this->container['language'];
+    }
+
+    /**
+     * Sets language
+     *
+     * @param string|null $language Returns the language of a video in [IETF language tag](https://en.wikipedia.org/wiki/IETF_language_tag) format. You can set the language during video creation via the API, otherwise it is detected automatically.
+     *
+     * @return self
+     */
+    public function setLanguage($language)
+    {
+        $this->container['language'] = $language;
+
+        return $this;
+    }
+
+    /**
+     * Gets languageOrigin
+     *
+     * @return string|null
+     */
+    public function getLanguageOrigin()
+    {
+        return $this->container['languageOrigin'];
+    }
+
+    /**
+     * Sets languageOrigin
+     *
+     * @param string|null $languageOrigin Returns the origin of the last update on the video's `language` attribute.  - `api` means that the last update was requested from the API. - `auto` means that the last update was done automatically by the API.
+     *
+     * @return self
+     */
+    public function setLanguageOrigin($languageOrigin)
+    {
+        $allowedValues = $this->getLanguageOriginAllowableValues();
+        if (!is_null($languageOrigin) && !in_array($languageOrigin, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'languageOrigin', must be one of '%s'",
+                    $languageOrigin,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['languageOrigin'] = $languageOrigin;
 
         return $this;
     }
