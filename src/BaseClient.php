@@ -78,7 +78,7 @@ class BaseClient
         $this->originSdkHeaderValue = "";
 
         if ($apiKey) {
-            $this->authenticator = new Authenticator($this, $apiKey, 'php:1.4.3');
+            $this->authenticator = new Authenticator($this, $apiKey, 'php:1.4.4');
         }
     }
 
@@ -111,7 +111,7 @@ class BaseClient
         if($this->originSdkHeaderValue) {
             $request = $request->withHeader('AV-Origin-Sdk', $this->originSdkHeaderValue);
         }
-        $request = $request->withHeader('AV-Origin-Client', 'php:1.4.3');
+        $request = $request->withHeader('AV-Origin-Client', 'php:1.4.4');
 
         return $this->sendRequest($request, $skipAuthRequest);
     }

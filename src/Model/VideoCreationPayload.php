@@ -41,7 +41,9 @@ class VideoCreationPayload implements ModelInterface, \JsonSerializable
                 'tags' => 'string[]',
                 'metadata' => '\ApiVideo\Client\Model\Metadata[]',
                 'clip' => '\ApiVideo\Client\Model\VideoClip',
-                'watermark' => '\ApiVideo\Client\Model\VideoWatermark'
+                'watermark' => '\ApiVideo\Client\Model\VideoWatermark',
+                'language' => 'string',
+                'transcript' => 'bool'
             ],
             [
                 'title' => null,
@@ -54,7 +56,9 @@ class VideoCreationPayload implements ModelInterface, \JsonSerializable
                 'tags' => null,
                 'metadata' => null,
                 'clip' => null,
-                'watermark' => null
+                'watermark' => null,
+                'language' => null,
+                'transcript' => null
             ],
             [
                 'title' => 'title',
@@ -67,7 +71,9 @@ class VideoCreationPayload implements ModelInterface, \JsonSerializable
                 'tags' => 'tags',
                 'metadata' => 'metadata',
                 'clip' => 'clip',
-                'watermark' => 'watermark'
+                'watermark' => 'watermark',
+                'language' => 'language',
+                'transcript' => 'transcript'
             ],
             [
                 'title' => 'setTitle',
@@ -80,7 +86,9 @@ class VideoCreationPayload implements ModelInterface, \JsonSerializable
                 'tags' => 'setTags',
                 'metadata' => 'setMetadata',
                 'clip' => 'setClip',
-                'watermark' => 'setWatermark'
+                'watermark' => 'setWatermark',
+                'language' => 'setLanguage',
+                'transcript' => 'setTranscript'
             ],
             [
                 'title' => 'getTitle',
@@ -93,7 +101,9 @@ class VideoCreationPayload implements ModelInterface, \JsonSerializable
                 'tags' => 'getTags',
                 'metadata' => 'getMetadata',
                 'clip' => 'getClip',
-                'watermark' => 'getWatermark'
+                'watermark' => 'getWatermark',
+                'language' => 'getLanguage',
+                'transcript' => 'getTranscript'
             ],
             [
                 'title' => null,
@@ -106,12 +116,91 @@ class VideoCreationPayload implements ModelInterface, \JsonSerializable
                 'tags' => null,
                 'metadata' => null,
                 'clip' => null,
-                'watermark' => null
+                'watermark' => null,
+                'language' => null,
+                'transcript' => null
             ],
             null
         );
     }
 
+    const LANGUAGE_AR = 'ar';
+    const LANGUAGE_CA = 'ca';
+    const LANGUAGE_CS = 'cs';
+    const LANGUAGE_DA = 'da';
+    const LANGUAGE_DE = 'de';
+    const LANGUAGE_EL = 'el';
+    const LANGUAGE_EN = 'en';
+    const LANGUAGE_ES = 'es';
+    const LANGUAGE_FA = 'fa';
+    const LANGUAGE_FI = 'fi';
+    const LANGUAGE_FR = 'fr';
+    const LANGUAGE_HE = 'he';
+    const LANGUAGE_HI = 'hi';
+    const LANGUAGE_HR = 'hr';
+    const LANGUAGE_HU = 'hu';
+    const LANGUAGE_IT = 'it';
+    const LANGUAGE_JA = 'ja';
+    const LANGUAGE_KO = 'ko';
+    const LANGUAGE_ML = 'ml';
+    const LANGUAGE_NL = 'nl';
+    const LANGUAGE_NN = 'nn';
+    const LANGUAGE_FALSE = 'false';
+    const LANGUAGE_PL = 'pl';
+    const LANGUAGE_PT = 'pt';
+    const LANGUAGE_RU = 'ru';
+    const LANGUAGE_SK = 'sk';
+    const LANGUAGE_SL = 'sl';
+    const LANGUAGE_TE = 'te';
+    const LANGUAGE_TR = 'tr';
+    const LANGUAGE_UK = 'uk';
+    const LANGUAGE_UR = 'ur';
+    const LANGUAGE_VI = 'vi';
+    const LANGUAGE_ZH = 'zh';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getLanguageAllowableValues()
+    {
+        return [
+            self::LANGUAGE_AR,
+            self::LANGUAGE_CA,
+            self::LANGUAGE_CS,
+            self::LANGUAGE_DA,
+            self::LANGUAGE_DE,
+            self::LANGUAGE_EL,
+            self::LANGUAGE_EN,
+            self::LANGUAGE_ES,
+            self::LANGUAGE_FA,
+            self::LANGUAGE_FI,
+            self::LANGUAGE_FR,
+            self::LANGUAGE_HE,
+            self::LANGUAGE_HI,
+            self::LANGUAGE_HR,
+            self::LANGUAGE_HU,
+            self::LANGUAGE_IT,
+            self::LANGUAGE_JA,
+            self::LANGUAGE_KO,
+            self::LANGUAGE_ML,
+            self::LANGUAGE_NL,
+            self::LANGUAGE_NN,
+            self::LANGUAGE_FALSE,
+            self::LANGUAGE_PL,
+            self::LANGUAGE_PT,
+            self::LANGUAGE_RU,
+            self::LANGUAGE_SK,
+            self::LANGUAGE_SL,
+            self::LANGUAGE_TE,
+            self::LANGUAGE_TR,
+            self::LANGUAGE_UK,
+            self::LANGUAGE_UR,
+            self::LANGUAGE_VI,
+            self::LANGUAGE_ZH,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -139,6 +228,8 @@ class VideoCreationPayload implements ModelInterface, \JsonSerializable
         $this->container['metadata'] = isset($data['metadata']) ?  array_map(function(array $value): Metadata { return new Metadata($value); }, $data['metadata']) : null;
         $this->container['clip'] = isset($data['clip']) ? new VideoClip($data['clip']) : null;
         $this->container['watermark'] = isset($data['watermark']) ? new VideoWatermark($data['watermark']) : null;
+        $this->container['language'] = $data['language'] ?? null;
+        $this->container['transcript'] = $data['transcript'] ?? null;
     }
 
     /**
@@ -153,6 +244,15 @@ class VideoCreationPayload implements ModelInterface, \JsonSerializable
         if ($this->container['title'] === null) {
             $invalidProperties[] = "'title' can't be null";
         }
+        $allowedValues = $this->getLanguageAllowableValues();
+        if (!is_null($this->container['language']) && !in_array($this->container['language'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'language', must be one of '%s'",
+                $this->container['language'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -428,6 +528,64 @@ class VideoCreationPayload implements ModelInterface, \JsonSerializable
     public function setWatermark($watermark)
     {
         $this->container['watermark'] = $watermark;
+
+        return $this;
+    }
+
+    /**
+     * Gets language
+     *
+     * @return string|null
+     */
+    public function getLanguage()
+    {
+        return $this->container['language'];
+    }
+
+    /**
+     * Sets language
+     *
+     * @param string|null $language Use this parameter to set the language of the video. When this parameter is set, the API creates a transcript of the video using the language you specify. You must use the [IETF language tag](https://en.wikipedia.org/wiki/IETF_language_tag) format.  `language` is a permanent attribute of the video. You can update it to another language using the [`PATCH /videos/{videoId}`](https://docs.api.video/reference/api/Videos#update-a-video-object) operation. This triggers the API to generate a new transcript using a different language.
+     *
+     * @return self
+     */
+    public function setLanguage($language)
+    {
+        $allowedValues = $this->getLanguageAllowableValues();
+        if (!is_null($language) && !in_array($language, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'language', must be one of '%s'",
+                    $language,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['language'] = $language;
+
+        return $this;
+    }
+
+    /**
+     * Gets transcript
+     *
+     * @return bool|null
+     */
+    public function getTranscript()
+    {
+        return $this->container['transcript'];
+    }
+
+    /**
+     * Sets transcript
+     *
+     * @param bool|null $transcript Use this parameter to enable transcription.   - When `true`, the API generates a transcript for the video. - The default value is `false`. - If you define a video language using the `language` parameter, the API uses that language to transcribe the video. If you do not define a language, the API detects it based on the video.  - When the API generates a transcript, it will be available as a caption for the video.
+     *
+     * @return self
+     */
+    public function setTranscript($transcript)
+    {
+        $this->container['transcript'] = $transcript;
 
         return $this;
     }
