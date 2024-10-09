@@ -108,7 +108,7 @@ class CaptionsUpdatePayload implements ModelInterface, \JsonSerializable
     /**
      * Sets default
      *
-     * @param bool|null $default default
+     * @param bool|null $default Set this parameter to `true` to define a caption as the default for a video.
      *
      * @return self
      */
