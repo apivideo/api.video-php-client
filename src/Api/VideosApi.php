@@ -404,7 +404,7 @@ class VideosApi implements ApiInterface
      *
      * @throws \ApiVideo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \ApiVideo\Client\Model\Video|\ApiVideo\Client\Model\BadRequest|\ApiVideo\Client\Model\NotFound|\ApiVideo\Client\Model\TooManyRequests
+     * @return \ApiVideo\Client\Model\Video|\ApiVideo\Client\Model\BadRequest|\ApiVideo\Client\Model\NotFound|\ApiVideo\Client\Model\ConflictError|\ApiVideo\Client\Model\TooManyRequests
      */
     public function update(string $videoId, \ApiVideo\Client\Model\VideoUpdatePayload $videoUpdatePayload): \ApiVideo\Client\Model\Video
     {

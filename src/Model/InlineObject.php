@@ -17,59 +17,60 @@ namespace ApiVideo\Client\Model;
 use ApiVideo\Client\ObjectSerializer;
 
 /**
- * NotFound Class Doc Comment
+ * InlineObject Class Doc Comment
  *
  * @category Class
  * @package  ApiVideo\Client
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class NotFound implements ModelInterface, \JsonSerializable
+class InlineObject implements ModelInterface, \JsonSerializable
 {
     public static function getDefinition(): ModelDefinition
     {
         return new ModelDefinition(
-            'not-found',
+            'inline_object',
             [
-                'type' => 'string',
-                'title' => 'string',
-                'name' => 'string',
-                'status' => 'int'
+                'videoId' => 'string',
+                'origin' => 'string'
             ],
             [
-                'type' => null,
-                'title' => null,
-                'name' => null,
-                'status' => null
+                'videoId' => null,
+                'origin' => null
             ],
             [
-                'type' => 'type',
-                'title' => 'title',
-                'name' => 'name',
-                'status' => 'status'
+                'videoId' => 'videoId',
+                'origin' => 'origin'
             ],
             [
-                'type' => 'setType',
-                'title' => 'setTitle',
-                'name' => 'setName',
-                'status' => 'setStatus'
+                'videoId' => 'setVideoId',
+                'origin' => 'setOrigin'
             ],
             [
-                'type' => 'getType',
-                'title' => 'getTitle',
-                'name' => 'getName',
-                'status' => 'getStatus'
+                'videoId' => 'getVideoId',
+                'origin' => 'getOrigin'
             ],
             [
-                'type' => null,
-                'title' => null,
-                'name' => null,
-                'status' => null
+                'videoId' => null,
+                'origin' => null
             ],
             null
         );
     }
 
+    const ORIGIN_AUTO = 'auto';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getOriginAllowableValues()
+    {
+        return [
+            self::ORIGIN_AUTO,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -86,10 +87,8 @@ class NotFound implements ModelInterface, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['type'] = $data['type'] ?? null;
-        $this->container['title'] = $data['title'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
+        $this->container['videoId'] = $data['videoId'] ?? null;
+        $this->container['origin'] = $data['origin'] ?? null;
     }
 
     /**
@@ -100,6 +99,15 @@ class NotFound implements ModelInterface, \JsonSerializable
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getOriginAllowableValues();
+        if (!is_null($this->container['origin']) && !in_array($this->container['origin'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'origin', must be one of '%s'",
+                $this->container['origin'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -117,97 +125,59 @@ class NotFound implements ModelInterface, \JsonSerializable
 
 
     /**
-     * Gets type
+     * Gets videoId
      *
      * @return string|null
      */
-    public function getType()
+    public function getVideoId()
     {
-        return $this->container['type'];
+        return $this->container['videoId'];
     }
 
     /**
-     * Sets type
+     * Sets videoId
      *
-     * @param string|null $type A link to the error documentation.
+     * @param string|null $videoId Create a summary of a video using the video ID.
      *
      * @return self
      */
-    public function setType($type)
+    public function setVideoId($videoId)
     {
-        $this->container['type'] = $type;
+        $this->container['videoId'] = $videoId;
 
         return $this;
     }
 
     /**
-     * Gets title
+     * Gets origin
      *
      * @return string|null
      */
-    public function getTitle()
+    public function getOrigin()
     {
-        return $this->container['title'];
+        return $this->container['origin'];
     }
 
     /**
-     * Sets title
+     * Sets origin
      *
-     * @param string|null $title A description of the error that occurred.
+     * @param string|null $origin Use this parameter to define how the API generates the summary. The only allowed value is `auto`, which means that the API generates a summary automatically.  If you do not set this parameter, **the API will not generate a summary automatically**.  In this case, `sourceStatus` will return `missing`, and you have to manually add a summary using the `PATCH /summaries/{summaryId}/source` endpoint operation.
      *
      * @return self
      */
-    public function setTitle($title)
+    public function setOrigin($origin)
     {
-        $this->container['title'] = $title;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name The name of the parameter that caused the error.
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return int|null
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param int|null $status The HTTP status code.
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        $this->container['status'] = $status;
+        $allowedValues = $this->getOriginAllowableValues();
+        if (!is_null($origin) && !in_array($origin, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'origin', must be one of '%s'",
+                    $origin,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['origin'] = $origin;
 
         return $this;
     }

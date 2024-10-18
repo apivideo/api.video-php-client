@@ -24,6 +24,7 @@
     - [ChaptersApi](#chaptersapi)
     - [LiveStreamsApi](#livestreamsapi)
     - [PlayerThemesApi](#playerthemesapi)
+    - [SummariesApi](#summariesapi)
     - [TagsApi](#tagsapi)
     - [UploadTokensApi](#uploadtokensapi)
     - [VideosApi](#videosapi)
@@ -186,6 +187,17 @@ Method | Description | HTTP request
 [**deleteLogo()**](https://github.com/apivideo/api.video-php-client/blob/main/docs/Api/PlayerThemesApi.md#deleteLogo) | Delete logo | **DELETE** `/players/{playerId}/logo`
 
 
+#### SummariesApi
+
+Method | Description | HTTP request
+------------- | ------------- | -------------
+[**create()**](https://github.com/apivideo/api.video-php-client/blob/main/docs/Api/SummariesApi.md#create) | Generate video summary | **POST** `/summaries`
+[**get()**](https://github.com/apivideo/api.video-php-client/blob/main/docs/Api/SummariesApi.md#get) | Get summary details | **GET** `/summaries/{summaryId}/source`
+[**update()**](https://github.com/apivideo/api.video-php-client/blob/main/docs/Api/SummariesApi.md#update) | Update summary details | **PATCH** `/summaries/{summaryId}/source`
+[**delete()**](https://github.com/apivideo/api.video-php-client/blob/main/docs/Api/SummariesApi.md#delete) | Delete video summary | **DELETE** `/summaries/{summaryId}`
+[**list()**](https://github.com/apivideo/api.video-php-client/blob/main/docs/Api/SummariesApi.md#list) | List summaries | **GET** `/summaries`
+
+
 #### TagsApi
 
 Method | Description | HTTP request
@@ -266,10 +278,13 @@ Method | Description | HTTP request
  - [CaptionsUpdatePayload](https://github.com/apivideo/api.video-php-client/blob/main/docs/Model/CaptionsUpdatePayload.md)
  - [Chapter](https://github.com/apivideo/api.video-php-client/blob/main/docs/Model/Chapter.md)
  - [ChaptersListResponse](https://github.com/apivideo/api.video-php-client/blob/main/docs/Model/ChaptersListResponse.md)
+ - [ConflictError](https://github.com/apivideo/api.video-php-client/blob/main/docs/Model/ConflictError.md)
  - [DiscardedVideoUpdatePayload](https://github.com/apivideo/api.video-php-client/blob/main/docs/Model/DiscardedVideoUpdatePayload.md)
  - [FilterBy](https://github.com/apivideo/api.video-php-client/blob/main/docs/Model/FilterBy.md)
  - [FilterBy1](https://github.com/apivideo/api.video-php-client/blob/main/docs/Model/FilterBy1.md)
  - [FilterBy2](https://github.com/apivideo/api.video-php-client/blob/main/docs/Model/FilterBy2.md)
+ - [GetSummaries](https://github.com/apivideo/api.video-php-client/blob/main/docs/Model/GetSummaries.md)
+ - [InlineObject](https://github.com/apivideo/api.video-php-client/blob/main/docs/Model/InlineObject.md)
  - [Link](https://github.com/apivideo/api.video-php-client/blob/main/docs/Model/Link.md)
  - [ListTagsResponse](https://github.com/apivideo/api.video-php-client/blob/main/docs/Model/ListTagsResponse.md)
  - [ListTagsResponseData](https://github.com/apivideo/api.video-php-client/blob/main/docs/Model/ListTagsResponseData.md)
@@ -293,10 +308,13 @@ Method | Description | HTTP request
  - [RefreshTokenPayload](https://github.com/apivideo/api.video-php-client/blob/main/docs/Model/RefreshTokenPayload.md)
  - [RestreamsRequestObject](https://github.com/apivideo/api.video-php-client/blob/main/docs/Model/RestreamsRequestObject.md)
  - [RestreamsResponseObject](https://github.com/apivideo/api.video-php-client/blob/main/docs/Model/RestreamsResponseObject.md)
+ - [SummaryObject](https://github.com/apivideo/api.video-php-client/blob/main/docs/Model/SummaryObject.md)
+ - [SummarySource](https://github.com/apivideo/api.video-php-client/blob/main/docs/Model/SummarySource.md)
  - [TokenCreationPayload](https://github.com/apivideo/api.video-php-client/blob/main/docs/Model/TokenCreationPayload.md)
  - [TokenListResponse](https://github.com/apivideo/api.video-php-client/blob/main/docs/Model/TokenListResponse.md)
  - [TooManyRequests](https://github.com/apivideo/api.video-php-client/blob/main/docs/Model/TooManyRequests.md)
  - [UnrecognizedRequestUrl](https://github.com/apivideo/api.video-php-client/blob/main/docs/Model/UnrecognizedRequestUrl.md)
+ - [UpdateSummaryRequest](https://github.com/apivideo/api.video-php-client/blob/main/docs/Model/UpdateSummaryRequest.md)
  - [UploadToken](https://github.com/apivideo/api.video-php-client/blob/main/docs/Model/UploadToken.md)
  - [Video](https://github.com/apivideo/api.video-php-client/blob/main/docs/Model/Video.md)
  - [VideoAssets](https://github.com/apivideo/api.video-php-client/blob/main/docs/Model/VideoAssets.md)
