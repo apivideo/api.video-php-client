@@ -43,7 +43,8 @@ class VideoCreationPayload implements ModelInterface, \JsonSerializable
                 'clip' => '\ApiVideo\Client\Model\VideoClip',
                 'watermark' => '\ApiVideo\Client\Model\VideoWatermark',
                 'language' => 'string',
-                'transcript' => 'bool'
+                'transcript' => 'bool',
+                'transcriptSummary' => 'bool'
             ],
             [
                 'title' => null,
@@ -58,7 +59,8 @@ class VideoCreationPayload implements ModelInterface, \JsonSerializable
                 'clip' => null,
                 'watermark' => null,
                 'language' => null,
-                'transcript' => null
+                'transcript' => null,
+                'transcriptSummary' => null
             ],
             [
                 'title' => 'title',
@@ -73,7 +75,8 @@ class VideoCreationPayload implements ModelInterface, \JsonSerializable
                 'clip' => 'clip',
                 'watermark' => 'watermark',
                 'language' => 'language',
-                'transcript' => 'transcript'
+                'transcript' => 'transcript',
+                'transcriptSummary' => 'transcriptSummary'
             ],
             [
                 'title' => 'setTitle',
@@ -88,7 +91,8 @@ class VideoCreationPayload implements ModelInterface, \JsonSerializable
                 'clip' => 'setClip',
                 'watermark' => 'setWatermark',
                 'language' => 'setLanguage',
-                'transcript' => 'setTranscript'
+                'transcript' => 'setTranscript',
+                'transcriptSummary' => 'setTranscriptSummary'
             ],
             [
                 'title' => 'getTitle',
@@ -103,7 +107,8 @@ class VideoCreationPayload implements ModelInterface, \JsonSerializable
                 'clip' => 'getClip',
                 'watermark' => 'getWatermark',
                 'language' => 'getLanguage',
-                'transcript' => 'getTranscript'
+                'transcript' => 'getTranscript',
+                'transcriptSummary' => 'getTranscriptSummary'
             ],
             [
                 'title' => null,
@@ -118,7 +123,8 @@ class VideoCreationPayload implements ModelInterface, \JsonSerializable
                 'clip' => null,
                 'watermark' => null,
                 'language' => null,
-                'transcript' => null
+                'transcript' => null,
+                'transcriptSummary' => null
             ],
             null
         );
@@ -230,6 +236,7 @@ class VideoCreationPayload implements ModelInterface, \JsonSerializable
         $this->container['watermark'] = isset($data['watermark']) ? new VideoWatermark($data['watermark']) : null;
         $this->container['language'] = $data['language'] ?? null;
         $this->container['transcript'] = $data['transcript'] ?? null;
+        $this->container['transcriptSummary'] = $data['transcriptSummary'] ?? null;
     }
 
     /**
@@ -586,6 +593,30 @@ class VideoCreationPayload implements ModelInterface, \JsonSerializable
     public function setTranscript($transcript)
     {
         $this->container['transcript'] = $transcript;
+
+        return $this;
+    }
+
+    /**
+     * Gets transcriptSummary
+     *
+     * @return bool|null
+     */
+    public function getTranscriptSummary()
+    {
+        return $this->container['transcriptSummary'];
+    }
+
+    /**
+     * Sets transcriptSummary
+     *
+     * @param bool|null $transcriptSummary Use this parameter to enable summarization. We recommend using this parameter together with `transcript: true`.  - When `true`, the API generates a summary for the video, based on the transcription. - The default value is `false`. - If you define a video language using the `language` parameter, the API uses that language to summarize the video. If you do not define a language, the API detects it based on the video.
+     *
+     * @return self
+     */
+    public function setTranscriptSummary($transcriptSummary)
+    {
+        $this->container['transcriptSummary'] = $transcriptSummary;
 
         return $this;
     }
