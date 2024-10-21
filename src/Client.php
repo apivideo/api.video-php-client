@@ -133,6 +133,18 @@ class Client
     }
     
     /**
+     * @return \ApiVideo\Client\Api\SummariesApi
+     */
+    public function summaries(): \ApiVideo\Client\Api\SummariesApi
+    {
+        if (!array_key_exists('summaries', $this->services)) {
+            $this->services['summaries'] = new \ApiVideo\Client\Api\SummariesApi($this->baseClient);
+        }
+
+        return $this->services['summaries'];
+    }
+    
+    /**
      * @return \ApiVideo\Client\Api\TagsApi
      */
     public function tags(): \ApiVideo\Client\Api\TagsApi

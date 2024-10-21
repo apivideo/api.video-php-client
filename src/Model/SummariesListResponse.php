@@ -17,54 +17,42 @@ namespace ApiVideo\Client\Model;
 use ApiVideo\Client\ObjectSerializer;
 
 /**
- * NotFound Class Doc Comment
+ * SummariesListResponse Class Doc Comment
  *
  * @category Class
  * @package  ApiVideo\Client
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class NotFound implements ModelInterface, \JsonSerializable
+class SummariesListResponse implements ModelInterface, \JsonSerializable
 {
     public static function getDefinition(): ModelDefinition
     {
         return new ModelDefinition(
-            'not-found',
+            'summaries-list-response',
             [
-                'type' => 'string',
-                'title' => 'string',
-                'name' => 'string',
-                'status' => 'int'
+                'data' => '\ApiVideo\Client\Model\Summary[]',
+                'pagination' => '\ApiVideo\Client\Model\Pagination'
             ],
             [
-                'type' => null,
-                'title' => null,
-                'name' => null,
-                'status' => null
+                'data' => null,
+                'pagination' => null
             ],
             [
-                'type' => 'type',
-                'title' => 'title',
-                'name' => 'name',
-                'status' => 'status'
+                'data' => 'data',
+                'pagination' => 'pagination'
             ],
             [
-                'type' => 'setType',
-                'title' => 'setTitle',
-                'name' => 'setName',
-                'status' => 'setStatus'
+                'data' => 'setData',
+                'pagination' => 'setPagination'
             ],
             [
-                'type' => 'getType',
-                'title' => 'getTitle',
-                'name' => 'getName',
-                'status' => 'getStatus'
+                'data' => 'getData',
+                'pagination' => 'getPagination'
             ],
             [
-                'type' => null,
-                'title' => null,
-                'name' => null,
-                'status' => null
+                'data' => null,
+                'pagination' => null
             ],
             null
         );
@@ -86,10 +74,8 @@ class NotFound implements ModelInterface, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['type'] = $data['type'] ?? null;
-        $this->container['title'] = $data['title'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
+        $this->container['data'] = isset($data['data']) ?  array_map(function(array $value): Summary { return new Summary($value); }, $data['data']) : null;
+        $this->container['pagination'] = isset($data['pagination']) ? new Pagination($data['pagination']) : null;
     }
 
     /**
@@ -101,6 +87,12 @@ class NotFound implements ModelInterface, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['data'] === null) {
+            $invalidProperties[] = "'data' can't be null";
+        }
+        if ($this->container['pagination'] === null) {
+            $invalidProperties[] = "'pagination' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -117,97 +109,49 @@ class NotFound implements ModelInterface, \JsonSerializable
 
 
     /**
-     * Gets type
+     * Gets data
      *
-     * @return string|null
+     * @return \ApiVideo\Client\Model\Summary[]
      */
-    public function getType()
+    public function getData()
     {
-        return $this->container['type'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets type
+     * Sets data
      *
-     * @param string|null $type A link to the error documentation.
+     * @param \ApiVideo\Client\Model\Summary[] $data An array of summary objects.
      *
      * @return self
      */
-    public function setType($type)
+    public function setData($data)
     {
-        $this->container['type'] = $type;
+        $this->container['data'] = $data;
 
         return $this;
     }
 
     /**
-     * Gets title
+     * Gets pagination
      *
-     * @return string|null
+     * @return \ApiVideo\Client\Model\Pagination
      */
-    public function getTitle()
+    public function getPagination()
     {
-        return $this->container['title'];
+        return $this->container['pagination'];
     }
 
     /**
-     * Sets title
+     * Sets pagination
      *
-     * @param string|null $title A description of the error that occurred.
+     * @param \ApiVideo\Client\Model\Pagination $pagination pagination
      *
      * @return self
      */
-    public function setTitle($title)
+    public function setPagination($pagination)
     {
-        $this->container['title'] = $title;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name The name of the parameter that caused the error.
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return int|null
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param int|null $status The HTTP status code.
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        $this->container['status'] = $status;
+        $this->container['pagination'] = $pagination;
 
         return $this;
     }
