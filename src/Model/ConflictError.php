@@ -17,54 +17,60 @@ namespace ApiVideo\Client\Model;
 use ApiVideo\Client\ObjectSerializer;
 
 /**
- * NotFound Class Doc Comment
+ * ConflictError Class Doc Comment
  *
  * @category Class
  * @package  ApiVideo\Client
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class NotFound implements ModelInterface, \JsonSerializable
+class ConflictError implements ModelInterface, \JsonSerializable
 {
     public static function getDefinition(): ModelDefinition
     {
         return new ModelDefinition(
-            'not-found',
+            'conflict-error',
             [
                 'type' => 'string',
                 'title' => 'string',
                 'name' => 'string',
-                'status' => 'int'
+                'status' => 'int',
+                'detail' => 'string'
             ],
             [
                 'type' => null,
                 'title' => null,
                 'name' => null,
-                'status' => null
+                'status' => null,
+                'detail' => null
             ],
             [
                 'type' => 'type',
                 'title' => 'title',
                 'name' => 'name',
-                'status' => 'status'
+                'status' => 'status',
+                'detail' => 'detail'
             ],
             [
                 'type' => 'setType',
                 'title' => 'setTitle',
                 'name' => 'setName',
-                'status' => 'setStatus'
+                'status' => 'setStatus',
+                'detail' => 'setDetail'
             ],
             [
                 'type' => 'getType',
                 'title' => 'getTitle',
                 'name' => 'getName',
-                'status' => 'getStatus'
+                'status' => 'getStatus',
+                'detail' => 'getDetail'
             ],
             [
                 'type' => null,
                 'title' => null,
                 'name' => null,
-                'status' => null
+                'status' => null,
+                'detail' => null
             ],
             null
         );
@@ -90,6 +96,7 @@ class NotFound implements ModelInterface, \JsonSerializable
         $this->container['title'] = $data['title'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
+        $this->container['detail'] = $data['detail'] ?? null;
     }
 
     /**
@@ -208,6 +215,30 @@ class NotFound implements ModelInterface, \JsonSerializable
     public function setStatus($status)
     {
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets detail
+     *
+     * @return string|null
+     */
+    public function getDetail()
+    {
+        return $this->container['detail'];
+    }
+
+    /**
+     * Sets detail
+     *
+     * @param string|null $detail A solution for the error.
+     *
+     * @return self
+     */
+    public function setDetail($detail)
+    {
+        $this->container['detail'] = $detail;
 
         return $this;
     }

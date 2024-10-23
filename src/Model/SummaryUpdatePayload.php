@@ -17,54 +17,48 @@ namespace ApiVideo\Client\Model;
 use ApiVideo\Client\ObjectSerializer;
 
 /**
- * NotFound Class Doc Comment
+ * SummaryUpdatePayload Class Doc Comment
  *
  * @category Class
  * @package  ApiVideo\Client
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class NotFound implements ModelInterface, \JsonSerializable
+class SummaryUpdatePayload implements ModelInterface, \JsonSerializable
 {
     public static function getDefinition(): ModelDefinition
     {
         return new ModelDefinition(
-            'not-found',
+            'summary-update-payload',
             [
-                'type' => 'string',
                 'title' => 'string',
-                'name' => 'string',
-                'status' => 'int'
+                'abstract' => 'string',
+                'takeaways' => 'string[]'
             ],
             [
-                'type' => null,
                 'title' => null,
-                'name' => null,
-                'status' => null
+                'abstract' => null,
+                'takeaways' => null
             ],
             [
-                'type' => 'type',
                 'title' => 'title',
-                'name' => 'name',
-                'status' => 'status'
+                'abstract' => 'abstract',
+                'takeaways' => 'takeaways'
             ],
             [
-                'type' => 'setType',
                 'title' => 'setTitle',
-                'name' => 'setName',
-                'status' => 'setStatus'
+                'abstract' => 'setAbstract',
+                'takeaways' => 'setTakeaways'
             ],
             [
-                'type' => 'getType',
                 'title' => 'getTitle',
-                'name' => 'getName',
-                'status' => 'getStatus'
+                'abstract' => 'getAbstract',
+                'takeaways' => 'getTakeaways'
             ],
             [
-                'type' => null,
                 'title' => null,
-                'name' => null,
-                'status' => null
+                'abstract' => null,
+                'takeaways' => null
             ],
             null
         );
@@ -86,10 +80,9 @@ class NotFound implements ModelInterface, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['type'] = $data['type'] ?? null;
         $this->container['title'] = $data['title'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
+        $this->container['abstract'] = $data['abstract'] ?? null;
+        $this->container['takeaways'] = $data['takeaways'] ?? null;
     }
 
     /**
@@ -100,6 +93,10 @@ class NotFound implements ModelInterface, \JsonSerializable
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        if (!is_null($this->container['takeaways']) && (count($this->container['takeaways']) > 3)) {
+            $invalidProperties[] = "invalid value for 'takeaways', number of items must be less than or equal to 3.";
+        }
 
         return $invalidProperties;
     }
@@ -117,30 +114,6 @@ class NotFound implements ModelInterface, \JsonSerializable
 
 
     /**
-     * Gets type
-     *
-     * @return string|null
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string|null $type A link to the error documentation.
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
      * Gets title
      *
      * @return string|null
@@ -153,7 +126,7 @@ class NotFound implements ModelInterface, \JsonSerializable
     /**
      * Sets title
      *
-     * @param string|null $title A description of the error that occurred.
+     * @param string|null $title A video title, based on the contents of the video.
      *
      * @return self
      */
@@ -165,49 +138,53 @@ class NotFound implements ModelInterface, \JsonSerializable
     }
 
     /**
-     * Gets name
+     * Gets abstract
      *
      * @return string|null
      */
-    public function getName()
+    public function getAbstract()
     {
-        return $this->container['name'];
+        return $this->container['abstract'];
     }
 
     /**
-     * Sets name
+     * Sets abstract
      *
-     * @param string|null $name The name of the parameter that caused the error.
+     * @param string|null $abstract A short outline of the contents of the video.
      *
      * @return self
      */
-    public function setName($name)
+    public function setAbstract($abstract)
     {
-        $this->container['name'] = $name;
+        $this->container['abstract'] = $abstract;
 
         return $this;
     }
 
     /**
-     * Gets status
+     * Gets takeaways
      *
-     * @return int|null
+     * @return string[]|null
      */
-    public function getStatus()
+    public function getTakeaways()
     {
-        return $this->container['status'];
+        return $this->container['takeaways'];
     }
 
     /**
-     * Sets status
+     * Sets takeaways
      *
-     * @param int|null $status The HTTP status code.
+     * @param string[]|null $takeaways A list of 3 key points from the video, in chronological order.
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setTakeaways($takeaways)
     {
-        $this->container['status'] = $status;
+
+        if (!is_null($takeaways) && (count($takeaways) > 3)) {
+            throw new \InvalidArgumentException('invalid value for $takeaways when calling SummaryUpdatePayload., number of items must be less than or equal to 3.');
+        }
+        $this->container['takeaways'] = $takeaways;
 
         return $this;
     }

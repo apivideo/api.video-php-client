@@ -40,7 +40,8 @@ class VideoUpdatePayload implements ModelInterface, \JsonSerializable
                 'tags' => 'string[]',
                 'metadata' => '\ApiVideo\Client\Model\Metadata[]',
                 'language' => 'string',
-                'transcript' => 'bool'
+                'transcript' => 'bool',
+                'transcriptSummary' => 'bool'
             ],
             [
                 'playerId' => null,
@@ -52,7 +53,8 @@ class VideoUpdatePayload implements ModelInterface, \JsonSerializable
                 'tags' => null,
                 'metadata' => null,
                 'language' => null,
-                'transcript' => null
+                'transcript' => null,
+                'transcriptSummary' => null
             ],
             [
                 'playerId' => 'playerId',
@@ -64,7 +66,8 @@ class VideoUpdatePayload implements ModelInterface, \JsonSerializable
                 'tags' => 'tags',
                 'metadata' => 'metadata',
                 'language' => 'language',
-                'transcript' => 'transcript'
+                'transcript' => 'transcript',
+                'transcriptSummary' => 'transcriptSummary'
             ],
             [
                 'playerId' => 'setPlayerId',
@@ -76,7 +79,8 @@ class VideoUpdatePayload implements ModelInterface, \JsonSerializable
                 'tags' => 'setTags',
                 'metadata' => 'setMetadata',
                 'language' => 'setLanguage',
-                'transcript' => 'setTranscript'
+                'transcript' => 'setTranscript',
+                'transcriptSummary' => 'setTranscriptSummary'
             ],
             [
                 'playerId' => 'getPlayerId',
@@ -88,7 +92,8 @@ class VideoUpdatePayload implements ModelInterface, \JsonSerializable
                 'tags' => 'getTags',
                 'metadata' => 'getMetadata',
                 'language' => 'getLanguage',
-                'transcript' => 'getTranscript'
+                'transcript' => 'getTranscript',
+                'transcriptSummary' => 'getTranscriptSummary'
             ],
             [
                 'playerId' => 'isPlayerIdDefined',
@@ -100,7 +105,8 @@ class VideoUpdatePayload implements ModelInterface, \JsonSerializable
                 'tags' => null,
                 'metadata' => null,
                 'language' => null,
-                'transcript' => null
+                'transcript' => null,
+                'transcriptSummary' => null
             ],
             null
         );
@@ -209,6 +215,7 @@ class VideoUpdatePayload implements ModelInterface, \JsonSerializable
         $this->container['metadata'] = isset($data['metadata']) ?  array_map(function(array $value): Metadata { return new Metadata($value); }, $data['metadata']) : null;
         $this->container['language'] = $data['language'] ?? null;
         $this->container['transcript'] = $data['transcript'] ?? null;
+        $this->container['transcriptSummary'] = $data['transcriptSummary'] ?? null;
     }
 
     /**
@@ -500,6 +507,30 @@ class VideoUpdatePayload implements ModelInterface, \JsonSerializable
     public function setTranscript($transcript)
     {
         $this->container['transcript'] = $transcript;
+
+        return $this;
+    }
+
+    /**
+     * Gets transcriptSummary
+     *
+     * @return bool|null
+     */
+    public function getTranscriptSummary()
+    {
+        return $this->container['transcriptSummary'];
+    }
+
+    /**
+     * Sets transcriptSummary
+     *
+     * @param bool|null $transcriptSummary Use this parameter to enable summarization.   - When `true`, the API generates a summary for the video, based on the transcription. - The default value is `false`. - If you define a video language using the `language` parameter, the API uses that language to summarize the video. If you do not define a language, the API detects it based on the video.
+     *
+     * @return self
+     */
+    public function setTranscriptSummary($transcriptSummary)
+    {
+        $this->container['transcriptSummary'] = $transcriptSummary;
 
         return $this;
     }
